@@ -1,0 +1,33 @@
+project:
+  type: book
+  output-dir: docs
+book:
+  title: "R 编程基础讲义（黄利东）"
+  chapters:
+    - index.qmd
+    - lecture1.qmd
+    - lecture2.qmd
+    - lecture3.qmd
+    - lecture4.qmd
+    - lecture5.qmd
+    - lecture6.qmd
+    - lecture7.qmd
+    - lecture8.qmd
+    - lecture9.qmd
+    - lecture10.qmd
+    - lecture11.qmd
+    - lecture12.qmd
+    - lecture13.qmd
+    - lecture14.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    number-sections: true
+    code-fold: true
+
+execute:
+  echo: true
+  warning: false
+  message: false

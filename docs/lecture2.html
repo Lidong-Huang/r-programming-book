@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>RStudio 的界面与包的安装 – R 编程基础讲义（黄利东）</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lecture3.html" rel="next">
+<link href="./lecture1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R 编程基础讲义（黄利东）</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R 编程常见问题、开发习惯与 AI 辅助编程</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">第五次课-矩阵、数组、列表与数据框</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">第六次课-列表与数据框的操作</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">第八次课-控制流</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10次课—初级绘图函数plot</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">第11课 基本统计分析</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">第12课-R假设检验方法</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">第十三课 ggplot绘图</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#本讲学习目标" id="toc-本讲学习目标" class="nav-link active" data-scroll-target="#本讲学习目标"><span class="header-section-number">3.1</span> 本讲学习目标</a></li>
+  <li><a href="#rstudio-是什么" id="toc-rstudio-是什么" class="nav-link" data-scroll-target="#rstudio-是什么"><span class="header-section-number">3.2</span> RStudio 是什么</a></li>
+  <li><a href="#rstudio-主界面结构" id="toc-rstudio-主界面结构" class="nav-link" data-scroll-target="#rstudio-主界面结构"><span class="header-section-number">3.3</span> RStudio 主界面结构</a>
+  <ul class="collapse">
+  <li><a href="#source脚本编辑区" id="toc-source脚本编辑区" class="nav-link" data-scroll-target="#source脚本编辑区"><span class="header-section-number">3.3.1</span> Source（脚本编辑区）</a></li>
+  <li><a href="#console控制台" id="toc-console控制台" class="nav-link" data-scroll-target="#console控制台"><span class="header-section-number">3.3.2</span> Console（控制台）</a></li>
+  <li><a href="#environment-面板" id="toc-environment-面板" class="nav-link" data-scroll-target="#environment-面板"><span class="header-section-number">3.3.3</span> Environment 面板</a></li>
+  <li><a href="#history-面板" id="toc-history-面板" class="nav-link" data-scroll-target="#history-面板"><span class="header-section-number">3.3.4</span> History 面板</a></li>
+  <li><a href="#connections-面板" id="toc-connections-面板" class="nav-link" data-scroll-target="#connections-面板"><span class="header-section-number">3.3.5</span> Connections 面板</a></li>
+  <li><a href="#三个面板的区别" id="toc-三个面板的区别" class="nav-link" data-scroll-target="#三个面板的区别"><span class="header-section-number">3.3.6</span> 三个面板的区别</a></li>
+  <li><a href="#files-面板" id="toc-files-面板" class="nav-link" data-scroll-target="#files-面板"><span class="header-section-number">3.3.7</span> Files 面板</a></li>
+  <li><a href="#plots-面板" id="toc-plots-面板" class="nav-link" data-scroll-target="#plots-面板"><span class="header-section-number">3.3.8</span> Plots 面板</a></li>
+  <li><a href="#packages-面板" id="toc-packages-面板" class="nav-link" data-scroll-target="#packages-面板"><span class="header-section-number">3.3.9</span> Packages 面板</a></li>
+  <li><a href="#help-面板" id="toc-help-面板" class="nav-link" data-scroll-target="#help-面板"><span class="header-section-number">3.3.10</span> Help 面板</a></li>
+  <li><a href="#viewer-面板" id="toc-viewer-面板" class="nav-link" data-scroll-target="#viewer-面板"><span class="header-section-number">3.3.11</span> Viewer 面板</a></li>
+  <li><a href="#presentation-面板" id="toc-presentation-面板" class="nav-link" data-scroll-target="#presentation-面板"><span class="header-section-number">3.3.12</span> Presentation 面板</a></li>
+  <li><a href="#右下角窗口功能总结" id="toc-右下角窗口功能总结" class="nav-link" data-scroll-target="#右下角窗口功能总结"><span class="header-section-number">3.3.13</span> 右下角窗口功能总结</a></li>
+  </ul></li>
+  <li><a href="#什么是-r-包" id="toc-什么是-r-包" class="nav-link" data-scroll-target="#什么是-r-包"><span class="header-section-number">3.4</span> 什么是 R 包</a>
+  <ul class="collapse">
+  <li><a href="#选择-cran-镜像" id="toc-选择-cran-镜像" class="nav-link" data-scroll-target="#选择-cran-镜像"><span class="header-section-number">3.4.1</span> 选择 CRAN 镜像</a></li>
+  <li><a href="#包的安装方式" id="toc-包的安装方式" class="nav-link" data-scroll-target="#包的安装方式"><span class="header-section-number">3.4.2</span> 包的安装方式</a></li>
+  <li><a href="#包的删除与更新" id="toc-包的删除与更新" class="nav-link" data-scroll-target="#包的删除与更新"><span class="header-section-number">3.4.3</span> 包的删除与更新</a></li>
+  <li><a href="#查看包路径与已安装包" id="toc-查看包路径与已安装包" class="nav-link" data-scroll-target="#查看包路径与已安装包"><span class="header-section-number">3.4.4</span> 查看包路径与已安装包</a></li>
+  <li><a href="#加载包的方法" id="toc-加载包的方法" class="nav-link" data-scroll-target="#加载包的方法"><span class="header-section-number">3.4.5</span> 加载包的方法</a></li>
+  <li><a href="#包的使用示例" id="toc-包的使用示例" class="nav-link" data-scroll-target="#包的使用示例"><span class="header-section-number">3.4.6</span> 包的使用示例</a></li>
+  <li><a href="#常见问题与建议" id="toc-常见问题与建议" class="nav-link" data-scroll-target="#常见问题与建议"><span class="header-section-number">3.4.7</span> 常见问题与建议</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">RStudio 的界面与包的安装</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="本讲学习目标" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="本讲学习目标"><span class="header-section-number">3.1</span> 本讲学习目标</h2>
+<p>完成本讲后，你将能够：</p>
+<ul>
+<li>理解 RStudio 四个核心功能区域的作用</li>
+<li>掌握脚本编写与代码运行的基本操作</li>
+<li>理解 Project 的重要性</li>
+<li>区分“安装包”与“加载包”的区别</li>
+<li>独立完成常用 R 包的安装与加载</li>
+<li>能够排查常见的包安装错误</li>
+</ul>
+<hr>
+</section>
+<section id="rstudio-是什么" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="rstudio-是什么"><span class="header-section-number">3.2</span> RStudio 是什么</h2>
+<p>RStudio（现称 Posit Desktop）是 R 的集成开发环境（IDE）。</p>
+<p>R 负责计算，RStudio 负责提供操作界面。</p>
+<p>通过 RStudio，你可以：</p>
+<ul>
+<li>编写 R 脚本</li>
+<li>运行代码并查看结果</li>
+<li>管理文件与项目</li>
+<li>安装与加载扩展包</li>
+<li>生成报告与图形</li>
+</ul>
+<hr>
+</section>
+<section id="rstudio-主界面结构" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="rstudio-主界面结构"><span class="header-section-number">3.3</span> RStudio 主界面结构</h2>
+<p>RStudio 默认由四个窗格组成（图3.1）。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Rstudiowindow.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图3.1 Rstudio的窗口</figcaption>
+</figure>
+</div>
+<section id="source脚本编辑区" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="source脚本编辑区"><span class="header-section-number">3.3.1</span> Source（脚本编辑区）</h3>
+<p>脚本用于编写：</p>
+<ul>
+<li><code>.R</code> 脚本</li>
+<li><code>.qmd</code> 或 <code>.Rmd</code> 文档</li>
+<li>函数与分析代码</li>
+</ul>
+<p>推荐做法：</p>
+<ul>
+<li>所有代码写在脚本中</li>
+<li>使用 <code>Ctrl + Enter</code> 运行当前行</li>
+<li>使用 <code>Ctrl + S</code> 保存文件</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Rstudio.script.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图3.2 Rstudio的 脚本区域截图</figcaption>
+</figure>
+</div>
+<hr>
+<p>脚本区的功能介绍</p>
+<section id="show-in-new-window" class="level4" data-number="3.3.1.1">
+<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="show-in-new-window"><span class="header-section-number">3.3.1.1</span> Show in New Window</h4>
+<p>Show in New Window 用于将当前文档或预览内容在独立窗口中打开。</p>
+<p>常见用途：</p>
+<ul>
+<li>将图形或报告在新窗口查看</li>
+<li>在双屏显示时单独查看输出</li>
+<li>避免编辑区被输出内容占用</li>
+</ul>
+<hr>
+</section>
+<section id="save" class="level4" data-number="3.3.1.2">
+<h4 data-number="3.3.1.2" class="anchored" data-anchor-id="save"><span class="header-section-number">3.3.1.2</span> Save</h4>
+<p>Save 用于保存当前脚本文件。</p>
+<p>快捷键：</p>
+<ul>
+<li>Windows：Ctrl + S</li>
+<li>macOS：Cmd + S</li>
+</ul>
+<p>良好习惯：</p>
+<ul>
+<li>写几行代码就保存一次</li>
+<li>运行前先保存</li>
+<li>修改后立即保存</li>
+</ul>
+<p>未保存的脚本在关闭 RStudio 时可能丢失修改内容。</p>
+<hr>
+</section>
+<section id="source-on-save" class="level4" data-number="3.3.1.3">
+<h4 data-number="3.3.1.3" class="anchored" data-anchor-id="source-on-save"><span class="header-section-number">3.3.1.3</span> Source on Save</h4>
+<p>Source on Save 表示“保存时自动运行脚本”。</p>
+<p>开启后：</p>
+<ul>
+<li>每次点击 Save</li>
+<li>RStudio 会自动执行整个脚本</li>
+</ul>
+<p>适合场景：</p>
+<ul>
+<li>开发函数脚本</li>
+<li>自动刷新数据对象</li>
+<li>编写教学示例</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>若脚本包含耗时计算，不建议开启</li>
+<li>若脚本有错误，会在保存时立即报错</li>
+</ul>
+<hr>
+</section>
+<section id="find" class="level4" data-number="3.3.1.4">
+<h4 data-number="3.3.1.4" class="anchored" data-anchor-id="find"><span class="header-section-number">3.3.1.4</span> Find</h4>
+<p>Find 用于在当前文件中查找关键词。</p>
+<p>快捷键：</p>
+<ul>
+<li>Ctrl + F（当前文件）</li>
+<li>Ctrl + Shift + F（全项目查找）</li>
+</ul>
+<p>常见用途：</p>
+<ul>
+<li>查找变量名</li>
+<li>查找函数调用位置</li>
+<li>批量修改代码</li>
+</ul>
+<p>建议：</p>
+<ul>
+<li>大型项目一定要掌握全局查找功能</li>
+</ul>
+<hr>
+</section>
+<section id="code-tools" class="level4" data-number="3.3.1.5">
+<h4 data-number="3.3.1.5" class="anchored" data-anchor-id="code-tools"><span class="header-section-number">3.3.1.5</span> Code Tools</h4>
+<p>Code Tools 提供代码辅助与编辑功能。</p>
+<p>常见功能包括：</p>
+<ul>
+<li>自动补全（Tab 键）</li>
+<li>自动缩进</li>
+<li>代码折叠</li>
+<li>格式化代码</li>
+</ul>
+<p>示例：</p>
+<p>输入：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean()  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="compile-report" class="level4" data-number="3.3.1.6">
+<h4 data-number="3.3.1.6" class="anchored" data-anchor-id="compile-report"><span class="header-section-number">3.3.1.6</span> Compile Report</h4>
+<p>Compile Report 用于将 R Markdown 或 Quarto 文档编译为报告。</p>
+<p>在 <code>.qmd</code> 文件中，它通常对应工具栏上的 <strong>Render 按钮</strong>。</p>
+<p>常见输出格式包括：</p>
+<ul>
+<li>HTML</li>
+<li>PDF</li>
+<li>Word</li>
+</ul>
+<p>Compile Report 的作用</p>
+<ul>
+<li>执行文档中的所有代码块</li>
+<li>重新生成完整报告</li>
+<li>输出最终文件（如 <code>.html</code>、<code>.pdf</code>）</li>
+</ul>
+<p>当你点击 Render 时，Quarto 会：</p>
+<ol type="1">
+<li>从文档第一行开始运行</li>
+<li>执行所有代码块</li>
+<li>生成最终排版好的报告文件</li>
+</ol>
+<hr>
+</section>
+<section id="与普通-run-的区别" class="level4" data-number="3.3.1.7">
+<h4 data-number="3.3.1.7" class="anchored" data-anchor-id="与普通-run-的区别"><span class="header-section-number">3.3.1.7</span> 与普通 Run 的区别</h4>
+<ul>
+<li><strong>Run</strong> 只运行当前代码块或选中代码</li>
+<li><strong>Compile Report</strong> 会运行整个文档</li>
+</ul>
+<p>因此：</p>
+<ul>
+<li>调试阶段使用 Run</li>
+<li>最终生成报告使用 Compile Report</li>
+</ul>
+<hr>
+</section>
+<section id="run" class="level4" data-number="3.3.1.8">
+<h4 data-number="3.3.1.8" class="anchored" data-anchor-id="run"><span class="header-section-number">3.3.1.8</span> Run</h4>
+<p>Run 用于执行当前行或选中代码。</p>
+<p>快捷键：</p>
+<ul>
+<li>Windows：Ctrl + Enter</li>
+<li>macOS：Cmd + Enter</li>
+</ul>
+<hr>
+<p>适用场景</p>
+<ul>
+<li>测试一段代码</li>
+<li>分步运行程序</li>
+<li>调试函数逻辑</li>
+</ul>
+<p>示例：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+</section>
+<section id="re-run" class="level4" data-number="3.3.1.9">
+<h4 data-number="3.3.1.9" class="anchored" data-anchor-id="re-run"><span class="header-section-number">3.3.1.9</span> Re-run</h4>
+<p>Re-run 表示重新运行最近执行的代码。</p>
+<p>它会重复刚刚执行的命令。</p>
+<p>适用场景</p>
+<ul>
+<li>修改少量参数后快速测试<br>
+</li>
+<li>重新验证刚才的计算结果<br>
+</li>
+<li>重复执行最近一次操作</li>
+</ul>
+<p>注意事项</p>
+<ul>
+<li>Re-run 只重复上一条命令<br>
+</li>
+<li>不会重新运行整个脚本<br>
+</li>
+<li>不会清空当前环境</li>
+</ul>
+<hr>
+</section>
+<section id="source" class="level4" data-number="3.3.1.10">
+<h4 data-number="3.3.1.10" class="anchored" data-anchor-id="source"><span class="header-section-number">3.3.1.10</span> Source</h4>
+<p>Source 用于执行整个脚本文件。</p>
+<p>点击 Source 后，RStudio 会：</p>
+<ul>
+<li>从第一行运行到最后一行<br>
+</li>
+<li>依次在 Console 中执行所有代码</li>
+</ul>
+<p>等价命令为：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># source("your_script.R")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="console控制台" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="console控制台"><span class="header-section-number">3.3.2</span> Console（控制台）</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/console.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图3.3 Rstudio console</figcaption>
+</figure>
+</div>
+<p>用于：</p>
+<ul>
+<li>执行代码</li>
+<li>显示输出结果</li>
+<li>显示错误与警告信息</li>
+</ul>
+<p>示例：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p><em>Console</em> 的运行机制</p>
+<p>Console 本质上是一个 <strong>R 会话（R session）</strong> 的交互界面。</p>
+<p>其运行机制可以理解为以下过程：</p>
+<ul>
+<li>用户在 Console 中输入代码<br>
+</li>
+<li>代码被发送给 R 解释器<br>
+</li>
+<li>R 逐行解析并执行代码<br>
+</li>
+<li>执行结果返回并显示在 Console 中</li>
+</ul>
+<p>R 采用的是 <strong>解释执行机制</strong>，而不是一次性编译运行。因此：</p>
+<ul>
+<li>每一行代码都是即时执行的<br>
+</li>
+<li>代码的执行顺序非常重要<br>
+</li>
+<li>后续代码依赖前面代码是否成功运行</li>
+</ul>
+<p>例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<p>如果没有先运行 <code>x &lt;- 10</code>，第二行将会报错。</p>
+<hr>
+<p>会话（Session）的概念</p>
+<p>Console 中的所有对象都存在于当前的 R 会话中。</p>
+<p>其主要特点包括：</p>
+<ul>
+<li>关闭 RStudio 或重启 R 会话后，对象会消失<br>
+</li>
+<li>不同会话之间互不影响<br>
+</li>
+<li>当前环境是“临时的”，不是永久保存的</li>
+</ul>
+<p>重启 R 会话的方法：</p>
+<ul>
+<li>菜单：Session → Restart R<br>
+</li>
+<li>快捷键：Ctrl + Shift + F10</li>
+</ul>
+<p>重启后，当前环境会被完全清空。</p>
+<hr>
+<p>Console 与脚本的关系</p>
+<p>Console 是代码的 <strong>执行窗口</strong>，脚本是代码的 <strong>存储窗口</strong>。</p>
+<p>推荐的基本原则是：</p>
+<ul>
+<li>代码应写在脚本中<br>
+</li>
+<li>通过 Run 或 Source 将代码发送到 Console 执行<br>
+</li>
+<li>不要只在 Console 中临时输入代码</li>
+</ul>
+<p>原因在于：</p>
+<ul>
+<li>Console 中输入的代码不会自动保存<br>
+</li>
+<li>分析过程的复现必须依赖脚本文件</li>
+</ul>
+<hr>
+<p>Console 报错信息的含义</p>
+<p>Console 中常见的信息类型主要有三类：</p>
+<ul>
+<li><strong>Error</strong>：代码无法执行<br>
+</li>
+<li><strong>Warning</strong>：代码执行成功，但存在潜在问题<br>
+</li>
+<li><strong>Message</strong>：普通提示信息</li>
+</ul>
+<p>示例错误：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y + 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>如果对象 <code>y</code> 不存在，Console 会返回错误提示。</p>
+<p>学会阅读并理解错误信息，是学习 R 语言的关键能力之一。</p>
+<hr>
+<p>提示符（Prompt）的含义</p>
+<p>Console 左侧常见的提示符包括：</p>
+<ul>
+<li><code>&gt;</code> 表示可以输入新的命令<br>
+</li>
+<li><code>+</code> 表示上一条命令尚未完成</li>
+</ul>
+<p>例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &gt; if (TRUE) {</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># +</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>当出现 <code>+</code> 时，说明代码结构尚未闭合，需要补充相应的内容（如 <code>}</code>）。</p>
+<hr>
+<section id="console-的内涵与学习意义" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="console-的内涵与学习意义"><span class="header-section-number">3.3.2.1</span> Console 的内涵与学习意义</h4>
+<p>Console 不仅是代码执行窗口，更是理解 R 语言逻辑的核心场所。</p>
+<p>它体现了：</p>
+<ul>
+<li>顺序执行的逻辑结构<br>
+</li>
+<li>对象之间的依赖关系<br>
+</li>
+<li>数据在内存中的存在方式<br>
+</li>
+<li>交互式计算的思想</li>
+</ul>
+<p>通过 Console，可以直观理解：</p>
+<ul>
+<li>什么是变量<br>
+</li>
+<li>函数如何返回结果<br>
+</li>
+<li>对象如何被创建、覆盖与更新</li>
+</ul>
+<p>因此，Console 是学习 R 语言的起点，也是调试程序与理解分析过程的关键窗口。</p>
+</section>
+</section>
+<section id="environment-面板" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="environment-面板"><span class="header-section-number">3.3.3</span> Environment 面板</h3>
+<p>Environment（环境）面板用于显示当前 R 会话中的对象。</p>
+<p>它反映的是当前内存中存在的变量、数据框、模型对象等内容。</p>
+<p>例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>运行后，Environment 中会显示：</p>
+<ul>
+<li>x<br>
+</li>
+<li>df</li>
+</ul>
+<section id="environment-的核心特点" class="level4" data-number="3.3.3.1">
+<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="environment-的核心特点"><span class="header-section-number">3.3.3.1</span> Environment 的核心特点</h4>
+<ul>
+<li>显示当前会话中的所有对象<br>
+</li>
+<li>可以查看对象结构<br>
+</li>
+<li>可以点击数据框进行预览<br>
+</li>
+<li>可以手动删除对象</li>
+</ul>
+<p>删除某个对象：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>清空全部对象：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="学习建议" class="level4" data-number="3.3.3.2">
+<h4 data-number="3.3.3.2" class="anchored" data-anchor-id="学习建议"><span class="header-section-number">3.3.3.2</span> 学习建议</h4>
+<ul>
+<li>不要依赖手动点击删除对象<br>
+</li>
+<li>养成通过脚本重建环境的习惯<br>
+</li>
+<li>定期重启 R 会话测试代码完整性</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="history-面板" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="history-面板"><span class="header-section-number">3.3.4</span> History 面板</h3>
+<p>History（历史）面板用于记录在 Console 中执行过的命令。</p>
+<section id="history-的特点" class="level4" data-number="3.3.4.1">
+<h4 data-number="3.3.4.1" class="anchored" data-anchor-id="history-的特点"><span class="header-section-number">3.3.4.1</span> History 的特点</h4>
+<ul>
+<li>自动记录当前会话中输入的命令<br>
+</li>
+<li>可双击重新执行<br>
+</li>
+<li>可选中多条命令发送到脚本</li>
+</ul>
+</section>
+<section id="使用场景" class="level4" data-number="3.3.4.2">
+<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="使用场景"><span class="header-section-number">3.3.4.2</span> 使用场景</h4>
+<ul>
+<li>回溯刚刚执行的代码<br>
+</li>
+<li>找回误删命令<br>
+</li>
+<li>将临时测试代码保存到脚本</li>
+</ul>
+<p>将历史命令写入脚本：</p>
+<ul>
+<li>选中命令<br>
+</li>
+<li>点击 “To Source”</li>
+</ul>
+<p>保存历史记录：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># savehistory("my_history.Rhistory")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>读取历史记录：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loadhistory("my_history.Rhistory")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<hr>
+</section>
+</section>
+<section id="connections-面板" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="connections-面板"><span class="header-section-number">3.3.5</span> Connections 面板</h3>
+<p>Connections（连接）面板用于管理外部数据源连接。</p>
+<p>常见连接类型包括：</p>
+<ul>
+<li>数据库（MySQL、PostgreSQL 等）<br>
+</li>
+<li>Spark<br>
+</li>
+<li>云存储<br>
+</li>
+<li>远程服务器</li>
+</ul>
+<p>当建立数据库连接时，例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 示例（需安装 DBI 包）</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(DBI)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># con &lt;- dbConnect(...)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>连接成功后，会在 Connections 面板中显示。</p>
+<section id="connections-的作用" class="level4" data-number="3.3.5.1">
+<h4 data-number="3.3.5.1" class="anchored" data-anchor-id="connections-的作用"><span class="header-section-number">3.3.5.1</span> Connections 的作用</h4>
+<ul>
+<li>可视化数据库结构<br>
+</li>
+<li>浏览表结构<br>
+</li>
+<li>快速预览数据<br>
+</li>
+<li>管理连接状态</li>
+</ul>
+<p>断开连接示例：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbDisconnect(con)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<hr>
+</section>
+</section>
+<section id="三个面板的区别" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="三个面板的区别"><span class="header-section-number">3.3.6</span> 三个面板的区别</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>面板</th>
+<th>功能核心</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Environment</td>
+<td>当前会话对象管理</td>
+<td>查看与管理变量</td>
+</tr>
+<tr class="even">
+<td>History</td>
+<td>命令历史记录</td>
+<td>回溯与复用命令</td>
+</tr>
+<tr class="odd">
+<td>Connections</td>
+<td>外部数据源连接管理</td>
+<td>数据库与远程连接</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="files-面板" class="level3" data-number="3.3.7">
+<h3 data-number="3.3.7" class="anchored" data-anchor-id="files-面板"><span class="header-section-number">3.3.7</span> Files 面板</h3>
+<p>Files 面板用于浏览和管理当前工作目录中的文件。</p>
+<p>它的核心作用是：</p>
+<ul>
+<li>查看当前项目文件结构<br>
+</li>
+<li>新建文件夹<br>
+</li>
+<li>删除或重命名文件<br>
+</li>
+<li>设置工作目录</li>
+</ul>
+<section id="常见操作" class="level4" data-number="3.3.7.1">
+<h4 data-number="3.3.7.1" class="anchored" data-anchor-id="常见操作"><span class="header-section-number">3.3.7.1</span> 常见操作</h4>
+<p>进入子文件夹：</p>
+<ul>
+<li>双击文件夹名称</li>
+</ul>
+<p>返回上级目录：</p>
+<ul>
+<li>点击“..”</li>
+</ul>
+<p>设置当前目录为工作目录：</p>
+<ul>
+<li>More → Set As Working Directory</li>
+</ul>
+<p>查看当前工作目录：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "E:/hld/课件/R语言编程基础/quarto_book_from_lectures"</code></pre>
+</div>
+</div>
+<p>Files 面板本质上是对当前项目目录的可视化管理工具。</p>
+<hr>
+</section>
+</section>
+<section id="plots-面板" class="level3" data-number="3.3.8">
+<h3 data-number="3.3.8" class="anchored" data-anchor-id="plots-面板"><span class="header-section-number">3.3.8</span> Plots 面板</h3>
+<p>Plots 面板用于显示图形输出结果。</p>
+<p>当运行绘图代码时，例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>生成的图形会自动显示在 Plots 面板中。</p>
+<section id="plots-的常见功能" class="level4" data-number="3.3.8.1">
+<h4 data-number="3.3.8.1" class="anchored" data-anchor-id="plots-的常见功能"><span class="header-section-number">3.3.8.1</span> Plots 的常见功能</h4>
+<ul>
+<li>切换上一张或下一张图<br>
+</li>
+<li>导出图像（Export）<br>
+</li>
+<li>放大图形（Zoom）<br>
+</li>
+<li>保存为 PNG / PDF</li>
+</ul>
+<p>建议：</p>
+<ul>
+<li>分析结束后及时导出高质量图片<br>
+</li>
+<li>使用脚本保存图形以保证可复现</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="packages-面板" class="level3" data-number="3.3.9">
+<h3 data-number="3.3.9" class="anchored" data-anchor-id="packages-面板"><span class="header-section-number">3.3.9</span> Packages 面板</h3>
+<p>Packages 面板用于管理已安装的 R 包。</p>
+<p>主要功能包括：</p>
+<ul>
+<li>查看已安装的包<br>
+</li>
+<li>勾选加载包（等价于 library()）<br>
+</li>
+<li>安装新包<br>
+</li>
+<li>更新包</li>
+</ul>
+<p>例如加载包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggplot2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>在 Packages 面板中勾选 ggplot2，效果与上面代码相同。</p>
+<p>建议：</p>
+<ul>
+<li>优先使用代码加载包<br>
+</li>
+<li>保证脚本完整可复现</li>
+</ul>
+<hr>
+</section>
+<section id="help-面板" class="level3" data-number="3.3.10">
+<h3 data-number="3.3.10" class="anchored" data-anchor-id="help-面板"><span class="header-section-number">3.3.10</span> Help 面板</h3>
+<p>Help 面板用于查看函数帮助文档。</p>
+<p>例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>或：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Help 面板会显示：</p>
+<ul>
+<li>函数说明<br>
+</li>
+<li>参数解释<br>
+</li>
+<li>使用示例</li>
+</ul>
+<p>学习建议：</p>
+<ul>
+<li>遇到不熟悉的函数先查看帮助<br>
+</li>
+<li>重点阅读 Arguments 和 Examples 部分</li>
+</ul>
+<hr>
+</section>
+<section id="viewer-面板" class="level3" data-number="3.3.11">
+<h3 data-number="3.3.11" class="anchored" data-anchor-id="viewer-面板"><span class="header-section-number">3.3.11</span> Viewer 面板</h3>
+<p>Viewer 面板用于显示网页内容和交互式结果。</p>
+<p>常见用途包括：</p>
+<ul>
+<li>显示 HTML 报告<br>
+</li>
+<li>显示 Shiny 应用<br>
+</li>
+<li>预览 Quarto 渲染结果<br>
+</li>
+<li>显示交互式图形</li>
+</ul>
+<p>例如运行 Shiny 应用时，界面会显示在 Viewer 中。</p>
+<p>Viewer 是 RStudio 内部的“浏览器窗口”。</p>
+<hr>
+</section>
+<section id="presentation-面板" class="level3" data-number="3.3.12">
+<h3 data-number="3.3.12" class="anchored" data-anchor-id="presentation-面板"><span class="header-section-number">3.3.12</span> Presentation 面板</h3>
+<p>Presentation 面板用于展示基于 R Markdown 或 Quarto 制作的演示文稿。</p>
+<p>功能包括：</p>
+<ul>
+<li>播放幻灯片<br>
+</li>
+<li>切换页面<br>
+</li>
+<li>全屏展示</li>
+</ul>
+<p>适用于：</p>
+<ul>
+<li>教学展示<br>
+</li>
+<li>会议汇报<br>
+</li>
+<li>课程演示</li>
+</ul>
+<p>现代教学中更推荐使用 Quarto 生成 revealjs 幻灯片。</p>
+<hr>
+</section>
+<section id="右下角窗口功能总结" class="level3" data-number="3.3.13">
+<h3 data-number="3.3.13" class="anchored" data-anchor-id="右下角窗口功能总结"><span class="header-section-number">3.3.13</span> 右下角窗口功能总结</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>面板</th>
+<th>核心功能</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Files</td>
+<td>文件管理</td>
+<td>浏览与管理项目文件</td>
+</tr>
+<tr class="even">
+<td>Plots</td>
+<td>图形管理</td>
+<td>查看与导出图像</td>
+</tr>
+<tr class="odd">
+<td>Packages</td>
+<td>包管理</td>
+<td>安装与加载扩展包</td>
+</tr>
+<tr class="even">
+<td>Help</td>
+<td>文档查询</td>
+<td>查阅函数说明</td>
+</tr>
+<tr class="odd">
+<td>Viewer</td>
+<td>网页预览</td>
+<td>显示 HTML 与交互内容</td>
+</tr>
+<tr class="even">
+<td>Presentation</td>
+<td>演示播放</td>
+<td>播放幻灯片</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="什么是-r-包" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="什么是-r-包"><span class="header-section-number">3.4</span> 什么是 R 包</h2>
+<p>R 之所以功能强大，是因为其拥有庞大的扩展包生态系统。</p>
+<p>所谓“包（Package）”，是指一组已经封装好的函数、数据和文档的集合，用于实现特定功能。</p>
+<p>可以理解为：</p>
+<ul>
+<li>R 是核心系统<br>
+</li>
+<li>包是扩展模块</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li><code>ggplot2</code> 用于绘图<br>
+</li>
+<li><code>dplyr</code> 用于数据处理<br>
+</li>
+<li><code>sf</code> 用于空间数据分析<br>
+</li>
+<li><code>shiny</code> 用于交互式应用开发</li>
+</ul>
+<p>CRAN（Comprehensive R Archive Network）是 R 官方包仓库：</p>
+<p><a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p>
+<p>国内镜像可参考：</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/" class="uri">https://mirrors.tuna.tsinghua.edu.cn/CRAN/</a></p>
+<hr>
+<section id="选择-cran-镜像" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="选择-cran-镜像"><span class="header-section-number">3.4.1</span> 选择 CRAN 镜像</h3>
+<p>为了提高下载速度，建议选择合适的镜像。</p>
+<p>方法一：首次安装时选择镜像</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#chooseCRANmirror()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>方法二：设置默认镜像</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>或使用国内镜像：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># options(repos = c(CRAN = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="包的安装方式" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="包的安装方式"><span class="header-section-number">3.4.2</span> 包的安装方式</h3>
+<section id="联机在线安装最常用" class="level4" data-number="3.4.2.1">
+<h4 data-number="3.4.2.1" class="anchored" data-anchor-id="联机在线安装最常用"><span class="header-section-number">3.4.2.1</span> 联机在线安装（最常用）</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("MASS")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>一次安装多个包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("ggplot2","dplyr","readxl"))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="使用界面安装" class="level4" data-number="3.4.2.2">
+<h4 data-number="3.4.2.2" class="anchored" data-anchor-id="使用界面安装"><span class="header-section-number">3.4.2.2</span> 使用界面安装</h4>
+<ul>
+<li>RStudio → Packages → Install<br>
+</li>
+<li>输入包名 → Install</li>
+</ul>
+<hr>
+</section>
+<section id="离线安装本地安装" class="level4" data-number="3.4.2.3">
+<h4 data-number="3.4.2.3" class="anchored" data-anchor-id="离线安装本地安装"><span class="header-section-number">3.4.2.3</span> 离线安装（本地安装）</h4>
+<p>适用于：</p>
+<ul>
+<li>无网络环境<br>
+</li>
+<li>非 CRAN 注册包</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("包文件路径/package.tar.gz", repos = NULL, type = "source")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Windows 下也可安装 <code>.zip</code> 文件。</p>
+<hr>
+</section>
+<section id="从-github-安装外源包" class="level4" data-number="3.4.2.4">
+<h4 data-number="3.4.2.4" class="anchored" data-anchor-id="从-github-安装外源包"><span class="header-section-number">3.4.2.4</span> 从 GitHub 安装外源包</h4>
+<p>有些包尚未发布到 CRAN，可从 GitHub 安装。</p>
+<p>首先安装 <code>remotes</code> 包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("remotes")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>然后安装 GitHub 包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("用户名/仓库名")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("tidyverse/ggplot2")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>注意：</p>
+<ul>
+<li>Windows 用户可能需要安装 Rtools<br>
+</li>
+<li>安装过程中可能涉及编译</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="包的删除与更新" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="包的删除与更新"><span class="header-section-number">3.4.3</span> 包的删除与更新</h3>
+<p>删除已安装的包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove.packages("MASS")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>更新所有包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update.packages()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="查看包路径与已安装包" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="查看包路径与已安装包"><span class="header-section-number">3.4.4</span> 查看包路径与已安装包</h3>
+<p>查看当前包安装路径：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/l/AppData/Local/R/win-library/4.4"
+[2] "C:/Program Files/R/R-4.4.1/library"        </code></pre>
+</div>
+</div>
+<p>查看已安装包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installed.packages()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>查看某个包的帮助文档：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">"MASS"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="加载包的方法" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="加载包的方法"><span class="header-section-number">3.4.5</span> 加载包的方法</h3>
+<p>加载包：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(ggplot2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>或：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#require(ggplot2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>区别：</p>
+<ul>
+<li><code>library()</code> 加载失败会报错<br>
+</li>
+<li><code>require()</code> 加载失败返回 FALSE</li>
+</ul>
+<p>也可以在 RStudio 右下角 Packages 面板中勾选加载。</p>
+<hr>
+</section>
+<section id="包的使用示例" class="level3" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="包的使用示例"><span class="header-section-number">3.4.6</span> 包的使用示例</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">shade =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture2_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>思考：</p>
+<ul>
+<li>在图中哪一类人群存活率较高？<br>
+</li>
+<li>性别是否对生存率产生影响？</li>
+</ul>
+<hr>
+</section>
+<section id="常见问题与建议" class="level3" data-number="3.4.7">
+<h3 data-number="3.4.7" class="anchored" data-anchor-id="常见问题与建议"><span class="header-section-number">3.4.7</span> 常见问题与建议</h3>
+<ul>
+<li>安装失败时优先检查镜像<br>
+</li>
+<li>Windows 用户如提示编译错误，需安装 Rtools<br>
+</li>
+<li>加载包失败时检查拼写是否正确<br>
+</li>
+<li>尽量在脚本中写明 <code>library()</code>，保证代码可复现</li>
+</ul>
+<hr>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lecture1.html" class="pagination-link" aria-label="R语言与RStudio的下载与安装">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lecture3.html" class="pagination-link" aria-label="R 编程常见问题、开发习惯与 AI 辅助编程">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R 编程常见问题、开发习惯与 AI 辅助编程</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

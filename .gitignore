@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+**/*.quarto_ipynb
+# 忽略所有文件
+/*
+
+# 但排除以下文件/文件夹（不忽略它们）
+!/docs/
+!.gitignore
+!_quarto.yml

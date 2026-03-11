@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; R语言与RStudio的下载与安装 – R 编程基础讲义（黄利东）</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lecture2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R 编程基础讲义（黄利东）</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R 编程常见问题、开发习惯与 AI 辅助编程</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">第五次课-矩阵、数组、列表与数据框</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">第六次课-列表与数据框的操作</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">第八次课-控制流</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10次课—初级绘图函数plot</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">第11课 基本统计分析</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">第12课-R假设检验方法</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">第十三课 ggplot绘图</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#本章学习目标" id="toc-本章学习目标" class="nav-link active" data-scroll-target="#本章学习目标"><span class="header-section-number">2.1</span> 本章学习目标</a></li>
+  <li><a href="#r-与-rstudio-的关系必须先理解" id="toc-r-与-rstudio-的关系必须先理解" class="nav-link" data-scroll-target="#r-与-rstudio-的关系必须先理解"><span class="header-section-number">2.2</span> R 与 RStudio 的关系（必须先理解）</a>
+  <ul class="collapse">
+  <li><a href="#r-是什么" id="toc-r-是什么" class="nav-link" data-scroll-target="#r-是什么"><span class="header-section-number">2.2.1</span> R 是什么？</a></li>
+  <li><a href="#rstudio-是什么" id="toc-rstudio-是什么" class="nav-link" data-scroll-target="#rstudio-是什么"><span class="header-section-number">2.2.2</span> RStudio 是什么？</a></li>
+  <li><a href="#重要结论" id="toc-重要结论" class="nav-link" data-scroll-target="#重要结论"><span class="header-section-number">2.2.3</span> 重要结论</a></li>
+  </ul></li>
+  <li><a href="#windows-系统安装-r详细步骤" id="toc-windows-系统安装-r详细步骤" class="nav-link" data-scroll-target="#windows-系统安装-r详细步骤"><span class="header-section-number">2.3</span> Windows 系统安装 R（详细步骤）</a>
+  <ul class="collapse">
+  <li><a href="#进入官方网站" id="toc-进入官方网站" class="nav-link" data-scroll-target="#进入官方网站"><span class="header-section-number">2.3.1</span> 进入官方网站</a></li>
+  <li><a href="#选择系统版本" id="toc-选择系统版本" class="nav-link" data-scroll-target="#选择系统版本"><span class="header-section-number">2.3.2</span> 选择系统版本</a></li>
+  <li><a href="#进入-windows-下载页面" id="toc-进入-windows-下载页面" class="nav-link" data-scroll-target="#进入-windows-下载页面"><span class="header-section-number">2.3.3</span> 进入 Windows 下载页面</a></li>
+  <li><a href="#下载最新版-r" id="toc-下载最新版-r" class="nav-link" data-scroll-target="#下载最新版-r"><span class="header-section-number">2.3.4</span> 下载最新版 R</a></li>
+  <li><a href="#开始安装" id="toc-开始安装" class="nav-link" data-scroll-target="#开始安装"><span class="header-section-number">2.3.5</span> 开始安装</a></li>
+  <li><a href="#组件选择" id="toc-组件选择" class="nav-link" data-scroll-target="#组件选择"><span class="header-section-number">2.3.6</span> 组件选择</a></li>
+  <li><a href="#安装完成验证" id="toc-安装完成验证" class="nav-link" data-scroll-target="#安装完成验证"><span class="header-section-number">2.3.7</span> 安装完成验证</a></li>
+  </ul></li>
+  <li><a href="#macos-安装-r" id="toc-macos-安装-r" class="nav-link" data-scroll-target="#macos-安装-r"><span class="header-section-number">2.4</span> macOS 安装 R</a>
+  <ul class="collapse">
+  <li><a href="#进入-cran" id="toc-进入-cran" class="nav-link" data-scroll-target="#进入-cran"><span class="header-section-number">2.4.1</span> 进入 CRAN</a></li>
+  <li><a href="#下载-pkg-文件" id="toc-下载-pkg-文件" class="nav-link" data-scroll-target="#下载-pkg-文件"><span class="header-section-number">2.4.2</span> 下载 pkg 文件</a></li>
+  <li><a href="#双击安装" id="toc-双击安装" class="nav-link" data-scroll-target="#双击安装"><span class="header-section-number">2.4.3</span> 双击安装</a></li>
+  <li><a href="#安装-rstudioposit-desktop" id="toc-安装-rstudioposit-desktop" class="nav-link" data-scroll-target="#安装-rstudioposit-desktop"><span class="header-section-number">2.4.4</span> 安装 RStudio（Posit Desktop）</a></li>
+  <li><a href="#进入官网" id="toc-进入官网" class="nav-link" data-scroll-target="#进入官网"><span class="header-section-number">2.4.5</span> 进入官网</a></li>
+  <li><a href="#选择版本" id="toc-选择版本" class="nav-link" data-scroll-target="#选择版本"><span class="header-section-number">2.4.6</span> 选择版本</a></li>
+  <li><a href="#下载对应系统版本" id="toc-下载对应系统版本" class="nav-link" data-scroll-target="#下载对应系统版本"><span class="header-section-number">2.4.7</span> 下载对应系统版本</a></li>
+  <li><a href="#安装步骤" id="toc-安装步骤" class="nav-link" data-scroll-target="#安装步骤"><span class="header-section-number">2.4.8</span> 安装步骤</a></li>
+  <li><a href="#首次启动验证" id="toc-首次启动验证" class="nav-link" data-scroll-target="#首次启动验证"><span class="header-section-number">2.4.9</span> 首次启动验证</a></li>
+  </ul></li>
+  <li><a href="#常见错误与问题排查重点" id="toc-常见错误与问题排查重点" class="nav-link" data-scroll-target="#常见错误与问题排查重点"><span class="header-section-number">2.5</span> 常见错误与问题排查（重点）</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-无法启动最常见问题" id="toc-rstudio-无法启动最常见问题" class="nav-link" data-scroll-target="#rstudio-无法启动最常见问题"><span class="header-section-number">2.5.1</span> RStudio 无法启动（最常见问题）</a></li>
+  <li><a href="#安装后没有桌面快捷方式" id="toc-安装后没有桌面快捷方式" class="nav-link" data-scroll-target="#安装后没有桌面快捷方式"><span class="header-section-number">2.5.2</span> 安装后没有桌面快捷方式</a></li>
+  <li><a href="#点击图标提示权限错误" id="toc-点击图标提示权限错误" class="nav-link" data-scroll-target="#点击图标提示权限错误"><span class="header-section-number">2.5.3</span> 点击图标提示权限错误</a></li>
+  <li><a href="#rstudio-打开但-console-不显示-r-版本" id="toc-rstudio-打开但-console-不显示-r-版本" class="nav-link" data-scroll-target="#rstudio-打开但-console-不显示-r-版本"><span class="header-section-number">2.5.4</span> RStudio 打开但 Console 不显示 R 版本</a></li>
+  <li><a href="#安装后界面是英文或乱码" id="toc-安装后界面是英文或乱码" class="nav-link" data-scroll-target="#安装后界面是英文或乱码"><span class="header-section-number">2.5.5</span> 安装后界面是英文或乱码</a></li>
+  </ul></li>
+  <li><a href="#本节小结" id="toc-本节小结" class="nav-link" data-scroll-target="#本节小结"><span class="header-section-number">2.6</span> 本节小结</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="本章学习目标" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="本章学习目标"><span class="header-section-number">2.1</span> 本章学习目标</h2>
+<p>完成本章后，你将能够：</p>
+<ul>
+<li>正确理解 R 与 RStudio 的区别</li>
+<li>从官方网站下载 R</li>
+<li>正确安装 R</li>
+<li>下载并安装 RStudio（Posit Desktop）</li>
+<li>在 Windows 系统上安装 Rtools</li>
+<li>解决常见安装问题</li>
+</ul>
+<hr>
+</section>
+<section id="r-与-rstudio-的关系必须先理解" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="r-与-rstudio-的关系必须先理解"><span class="header-section-number">2.2</span> R 与 RStudio 的关系（必须先理解）</h2>
+<p>在开始安装之前，必须澄清一个核心概念。</p>
+<section id="r-是什么" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="r-是什么"><span class="header-section-number">2.2.1</span> R 是什么？</h3>
+<p>R 是：</p>
+<ul>
+<li>一种统计计算语言<br>
+</li>
+<li>一个完整的计算系统<br>
+</li>
+<li>真正执行代码的“核心引擎”</li>
+</ul>
+<p>R 负责进行所有的数据计算与统计分析。</p>
+<hr>
+</section>
+<section id="rstudio-是什么" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="rstudio-是什么"><span class="header-section-number">2.2.2</span> RStudio 是什么？</h3>
+<p>RStudio（现称 <strong>Posit Desktop</strong>）是：</p>
+<ul>
+<li>一个开发环境（IDE）</li>
+<li>一个图形界面工具</li>
+<li>帮助我们更方便编写与运行 R 代码</li>
+</ul>
+<hr>
+</section>
+<section id="重要结论" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="重要结论"><span class="header-section-number">2.2.3</span> 重要结论</h3>
+<blockquote class="blockquote">
+<p>必须先安装 R，再安装 RStudio。<br>
+如果没有安装 R，RStudio 将无法运行。</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="windows-系统安装-r详细步骤" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="windows-系统安装-r详细步骤"><span class="header-section-number">2.3</span> Windows 系统安装 R（详细步骤）</h2>
+<section id="进入官方网站" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="进入官方网站"><span class="header-section-number">2.3.1</span> 进入官方网站</h3>
+<p>打开浏览器访问：<a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/R page.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>图2.1 R下载页面</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="选择系统版本" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="选择系统版本"><span class="header-section-number">2.3.2</span> 选择系统版本</h3>
+<p>点击：</p>
+<p>👉 <strong>Download R for Windows</strong></p>
+<hr>
+</section>
+<section id="进入-windows-下载页面" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="进入-windows-下载页面"><span class="header-section-number">2.3.3</span> 进入 Windows 下载页面</h3>
+<p>点击：</p>
+<p>👉 <strong>install R for the first time</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/download_windows.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>图2.2 R下载页面</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="下载最新版-r" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="下载最新版-r"><span class="header-section-number">2.3.4</span> 下载最新版 R</h3>
+<p>点击：</p>
+<p>👉 <strong>Download R-4.5.2 for Windows (87 megabytes, 64 bit)(2026-3-2)</strong></p>
+<hr>
+</section>
+<section id="开始安装" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="开始安装"><span class="header-section-number">2.3.5</span> 开始安装</h3>
+<p>双击下载的安装程序。</p>
+<p>安装过程中注意：</p>
+<ul>
+<li>语言选择：English 或 Chinese 均可</li>
+<li>安装路径：建议使用默认路径</li>
+</ul>
+<p>建议路径：</p>
+<p>⚠ 不建议：</p>
+<ul>
+<li>安装在中文路径</li>
+<li>安装在 OneDrive 同步目录</li>
+</ul>
+<hr>
+</section>
+<section id="组件选择" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="组件选择"><span class="header-section-number">2.3.6</span> 组件选择</h3>
+<p>保持默认勾选即可。</p>
+<p>如出现：</p>
+<p>“Add R to system PATH”</p>
+<p>建议勾选。</p>
+<hr>
+</section>
+<section id="安装完成验证" class="level3" data-number="2.3.7">
+<h3 data-number="2.3.7" class="anchored" data-anchor-id="安装完成验证"><span class="header-section-number">2.3.7</span> 安装完成验证</h3>
+<p>安装完成后：</p>
+<ul>
+<li>打开开始菜单</li>
+<li>运行 “R”</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Startmenu.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图2.3 开始菜单搜索R</figcaption>
+</figure>
+</div>
+<p>若出现控制台界面（图2.4），说明安装成功。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/R_startup.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图2.4 R启动界面</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="macos-安装-r" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="macos-安装-r"><span class="header-section-number">2.4</span> macOS 安装 R</h2>
+<section id="进入-cran" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="进入-cran"><span class="header-section-number">2.4.1</span> 进入 CRAN</h3>
+<p>访问：<a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a></p>
+<p>点击：</p>
+<p>👉 Download R for macOS</p>
+<hr>
+</section>
+<section id="下载-pkg-文件" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="下载-pkg-文件"><span class="header-section-number">2.4.2</span> 下载 pkg 文件</h3>
+<p>下载最新版 <code>.pkg</code> 文件。</p>
+<hr>
+</section>
+<section id="双击安装" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="双击安装"><span class="header-section-number">2.4.3</span> 双击安装</h3>
+<ul>
+<li>按提示安装</li>
+<li>输入管理员密码</li>
+<li>使用默认路径</li>
+</ul>
+<hr>
+</section>
+<section id="安装-rstudioposit-desktop" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="安装-rstudioposit-desktop"><span class="header-section-number">2.4.4</span> 安装 RStudio（Posit Desktop）</h3>
+</section>
+<section id="进入官网" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="进入官网"><span class="header-section-number">2.4.5</span> 进入官网</h3>
+<p>在浏览器中访问：<a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
+<p>该页面为 RStudio（现称 Posit Desktop）的官方下载页面（图2.5）。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Rstudios.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>图2.5 RStudio下载页面</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="选择版本" class="level3" data-number="2.4.6">
+<h3 data-number="2.4.6" class="anchored" data-anchor-id="选择版本"><span class="header-section-number">2.4.6</span> 选择版本</h3>
+<p>在页面中选择：</p>
+<ul>
+<li><strong>Windows 10/11 RStudio-2026.01.1-403.exe</strong></li>
+<li><strong>macOS 14/15/26 RStudio-2026.01.1-403.dmg</strong></li>
+</ul>
+<hr>
+</section>
+<section id="下载对应系统版本" class="level3" data-number="2.4.7">
+<h3 data-number="2.4.7" class="anchored" data-anchor-id="下载对应系统版本"><span class="header-section-number">2.4.7</span> 下载对应系统版本</h3>
+<p>根据你的操作系统选择下载：</p>
+<ul>
+<li>Windows</li>
+<li>macOS</li>
+</ul>
+<p>下载完成后会得到对应的安装文件（<code>.exe</code> 或 <code>.dmg</code>）。</p>
+<hr>
+</section>
+<section id="安装步骤" class="level3" data-number="2.4.8">
+<h3 data-number="2.4.8" class="anchored" data-anchor-id="安装步骤"><span class="header-section-number">2.4.8</span> 安装步骤</h3>
+<p>双击下载的安装文件，按照提示完成安装。</p>
+<p>建议：</p>
+<ul>
+<li>保持默认安装路径</li>
+<li>不需要修改高级设置</li>
+<li>直接点击 “Next” 直到完成</li>
+</ul>
+<hr>
+</section>
+<section id="首次启动验证" class="level3" data-number="2.4.9">
+<h3 data-number="2.4.9" class="anchored" data-anchor-id="首次启动验证"><span class="header-section-number">2.4.9</span> 首次启动验证</h3>
+<p>安装完成后启动 RStudio。</p>
+<p>在左上角的 <strong>Console（控制台）</strong> 窗口中，如果显示类似图2.6：</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Rstudio_startup.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图2.6 Rstudio的启动页面</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="常见错误与问题排查重点" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="常见错误与问题排查重点"><span class="header-section-number">2.5</span> 常见错误与问题排查（重点）</h2>
+<section id="rstudio-无法启动最常见问题" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="rstudio-无法启动最常见问题"><span class="header-section-number">2.5.1</span> RStudio 无法启动（最常见问题）</h3>
+<section id="情况-1双击无反应" class="level4" data-number="2.5.1.1">
+<h4 data-number="2.5.1.1" class="anchored" data-anchor-id="情况-1双击无反应"><span class="header-section-number">2.5.1.1</span> 情况 1：双击无反应</h4>
+<p>可能原因：</p>
+<ul>
+<li>未安装 R</li>
+<li>R 安装损坏</li>
+<li>系统 PATH 未正确设置</li>
+<li>权限问题</li>
+</ul>
+<p>解决方法：</p>
+<ol type="1">
+<li>确认是否已成功安装 R<br>
+在开始菜单搜索 “R x64” 是否可以正常打开。</li>
+<li>若 R 无法打开，请重新安装 R。</li>
+<li>右键 RStudio → “以管理员身份运行” 尝试启动。</li>
+<li>若仍失败，卸载 RStudio 后重新安装。</li>
+</ol>
+<hr>
+</section>
+<section id="情况-2提示-r-not-found" class="level4" data-number="2.5.1.2">
+<h4 data-number="2.5.1.2" class="anchored" data-anchor-id="情况-2提示-r-not-found"><span class="header-section-number">2.5.1.2</span> 情况 2：提示 “R not found”</h4>
+<p>原因：</p>
+<ul>
+<li>先安装了 RStudio，后安装 R</li>
+<li>R 安装路径异常</li>
+</ul>
+<p>解决：</p>
+<ul>
+<li>卸载 RStudio</li>
+<li>确认 R 可正常运行</li>
+<li>重新安装 RStudio</li>
+</ul>
+<hr>
+</section>
+<section id="情况-3启动后闪退" class="level4" data-number="2.5.1.3">
+<h4 data-number="2.5.1.3" class="anchored" data-anchor-id="情况-3启动后闪退"><span class="header-section-number">2.5.1.3</span> 情况 3：启动后闪退</h4>
+<p>可能原因：</p>
+<ul>
+<li>系统环境冲突</li>
+<li>杀毒软件拦截</li>
+<li>安装在中文路径或特殊目录</li>
+</ul>
+<p>解决建议：</p>
+<ul>
+<li>卸载并重新安装</li>
+<li>使用默认路径安装</li>
+<li>关闭杀毒软件后测试</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="安装后没有桌面快捷方式" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="安装后没有桌面快捷方式"><span class="header-section-number">2.5.2</span> 安装后没有桌面快捷方式</h3>
+<p>这是 Windows 用户常见问题。</p>
+<section id="解决方法" class="level4" data-number="2.5.2.1">
+<h4 data-number="2.5.2.1" class="anchored" data-anchor-id="解决方法"><span class="header-section-number">2.5.2.1</span> 解决方法：</h4>
+<ol type="1">
+<li>打开：</li>
+</ol>
+<p>C:Files<br>
+</p>
+<p>或</p>
+<p>C:Files<br>
+</p>
+<ol start="2" type="1">
+<li>找到：</li>
+</ol>
+<p>rstudio.exe</p>
+<ol start="3" type="1">
+<li>右键 → “发送到” → “桌面快捷方式”</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="点击图标提示权限错误" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="点击图标提示权限错误"><span class="header-section-number">2.5.3</span> 点击图标提示权限错误</h3>
+<p>解决：</p>
+<ul>
+<li>右键图标 → 属性</li>
+<li>取消“以管理员身份运行”勾选</li>
+<li>或改为始终以管理员运行（若权限限制）</li>
+</ul>
+<hr>
+</section>
+<section id="rstudio-打开但-console-不显示-r-版本" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="rstudio-打开但-console-不显示-r-版本"><span class="header-section-number">2.5.4</span> RStudio 打开但 Console 不显示 R 版本</h3>
+<p>说明 RStudio 没有找到 R。</p>
+<p>检查：</p>
+<ol type="1">
+<li>R 是否安装在默认路径：</li>
+</ol>
+<p>C:Files<br>
+</p>
+<ol start="2" type="1">
+<li>是否安装 64 位版本</li>
+<li>是否重启过电脑</li>
+</ol>
+<hr>
+</section>
+<section id="安装后界面是英文或乱码" class="level3" data-number="2.5.5">
+<h3 data-number="2.5.5" class="anchored" data-anchor-id="安装后界面是英文或乱码"><span class="header-section-number">2.5.5</span> 安装后界面是英文或乱码</h3>
+<p>可在 RStudio 中设置：</p>
+<p>Tools → Global Options → Appearance</p>
+<p>修改：</p>
+<ul>
+<li>字体（建议使用 Consolas / JetBrains Mono）</li>
+<li>编码（UTF-8）</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="本节小结" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="本节小结"><span class="header-section-number">2.6</span> 本节小结</h2>
+<ul>
+<li>必须先安装 R，再安装 RStudio</li>
+<li>RStudio 无法启动通常是 R 未正确安装</li>
+<li>建议使用默认安装路径</li>
+<li>若无桌面图标，可手动创建快捷方式</li>
+<li>Windows 用户建议安装 Rtools</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="前言">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前言</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lecture2.html" class="pagination-link" aria-label="RStudio 的界面与包的安装">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
