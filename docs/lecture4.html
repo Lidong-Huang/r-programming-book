@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; 第四次课-向量 – R 编程基础讲义（黄利东）</title>
+<title>5&nbsp; R的数据类型 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,6 +106,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -119,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R的数据类型</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -173,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R的数据类型</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,23 +275,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#关于网络ppt内容的再次申名" id="toc-关于网络ppt内容的再次申名" class="nav-link active" data-scroll-target="#关于网络ppt内容的再次申名"><span class="header-section-number">6</span> 关于网络ppt内容的再次申名</a></li>
-  <li><a href="#r语言支持的数据类型回顾上节课的内容" id="toc-r语言支持的数据类型回顾上节课的内容" class="nav-link" data-scroll-target="#r语言支持的数据类型回顾上节课的内容"><span class="header-section-number">7</span> R语言支持的数据类型(回顾上节课的内容)</a></li>
-  <li><a href="#r语言的数据结构" id="toc-r语言的数据结构" class="nav-link" data-scroll-target="#r语言的数据结构"><span class="header-section-number">8</span> R语言的数据结构</a></li>
-  <li><a href="#向量及向量索引indexing-and-subsetting" id="toc-向量及向量索引indexing-and-subsetting" class="nav-link" data-scroll-target="#向量及向量索引indexing-and-subsetting"><span class="header-section-number">9</span> 向量及向量索引(Indexing and Subsetting)</a></li>
-  <li><a href="#向量索引取子集" id="toc-向量索引取子集" class="nav-link" data-scroll-target="#向量索引取子集"><span class="header-section-number">10</span> 向量索引（取子集）</a></li>
-  <li><a href="#逻辑索引同学在不在" id="toc-逻辑索引同学在不在" class="nav-link" data-scroll-target="#逻辑索引同学在不在"><span class="header-section-number">11</span> <strong>逻辑索引（同学在不在）</strong></a>
+  <li><a href="#r语言基础数据类型总结" id="toc-r语言基础数据类型总结" class="nav-link active" data-scroll-target="#r语言基础数据类型总结"><span class="header-section-number">5.1</span> R语言基础数据类型总结(🐼)</a></li>
+  <li><a href="#为什么要学习r的数据类型" id="toc-为什么要学习r的数据类型" class="nav-link" data-scroll-target="#为什么要学习r的数据类型"><span class="header-section-number">5.2</span> 为什么要学习R的数据类型？</a></li>
+  <li><a href="#r语言支持的数据类型" id="toc-r语言支持的数据类型" class="nav-link" data-scroll-target="#r语言支持的数据类型"><span class="header-section-number">5.3</span> R语言支持的数据类型</a></li>
+  <li><a href="#查看类型的函数-typeofmode-与-class-的区别" id="toc-查看类型的函数-typeofmode-与-class-的区别" class="nav-link" data-scroll-target="#查看类型的函数-typeofmode-与-class-的区别"><span class="header-section-number">5.4</span> 查看类型的函数 typeof()、mode() 与 class() 的区别</a></li>
+  <li><a href="#数值型numeric" id="toc-数值型numeric" class="nav-link" data-scroll-target="#数值型numeric"><span class="header-section-number">5.5</span> 数值型（numeric）</a></li>
+  <li><a href="#复数型" id="toc-复数型" class="nav-link" data-scroll-target="#复数型"><span class="header-section-number">5.6</span> 复数型</a></li>
+  <li><a href="#逻辑型" id="toc-逻辑型" class="nav-link" data-scroll-target="#逻辑型"><span class="header-section-number">5.7</span> 逻辑型</a></li>
+  <li><a href="#字符型" id="toc-字符型" class="nav-link" data-scroll-target="#字符型"><span class="header-section-number">5.8</span> 字符型</a>
   <ul class="collapse">
-  <li><a href="#whichwhich.minwhich.max函数" id="toc-whichwhich.minwhich.max函数" class="nav-link" data-scroll-target="#whichwhich.minwhich.max函数"><span class="header-section-number">11.1</span> which()、which.min()、which.max()函数</a></li>
+  <li><a href="#字符串拼接" id="toc-字符串拼接" class="nav-link" data-scroll-target="#字符串拼接"><span class="header-section-number">5.8.1</span> 字符串拼接</a></li>
+  <li><a href="#字符串截取与长度" id="toc-字符串截取与长度" class="nav-link" data-scroll-target="#字符串截取与长度"><span class="header-section-number">5.8.2</span> 字符串截取与长度</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">5.8.3</span> </a></li>
+  <li><a href="#类型转换" id="toc-类型转换" class="nav-link" data-scroll-target="#类型转换"><span class="header-section-number">5.8.4</span> 类型转换</a></li>
   </ul></li>
-  <li><a href="#名称索引张三同学" id="toc-名称索引张三同学" class="nav-link" data-scroll-target="#名称索引张三同学"><span class="header-section-number">12</span> <strong>名称索引（张三同学）</strong></a></li>
-  <li><a href="#向量元素修改" id="toc-向量元素修改" class="nav-link" data-scroll-target="#向量元素修改"><span class="header-section-number">13</span> 向量元素修改</a></li>
-  <li><a href="#向量排序" id="toc-向量排序" class="nav-link" data-scroll-target="#向量排序"><span class="header-section-number">14</span> 向量排序</a></li>
-  <li><a href="#向量运算" id="toc-向量运算" class="nav-link" data-scroll-target="#向量运算"><span class="header-section-number">15</span> 向量运算</a></li>
-  <li><a href="#向量乘算运算" id="toc-向量乘算运算" class="nav-link" data-scroll-target="#向量乘算运算"><span class="header-section-number">16</span> 向量乘算运算</a></li>
-  <li><a href="#向量初等数学函数运算" id="toc-向量初等数学函数运算" class="nav-link" data-scroll-target="#向量初等数学函数运算"><span class="header-section-number">17</span> 向量初等数学函数运算</a></li>
-  <li><a href="#向量统计函数运算" id="toc-向量统计函数运算" class="nav-link" data-scroll-target="#向量统计函数运算"><span class="header-section-number">18</span> 向量统计函数运算</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">19</span> </a></li>
+  <li><a href="#因子型" id="toc-因子型" class="nav-link" data-scroll-target="#因子型"><span class="header-section-number">5.9</span> 因子型</a>
+  <ul class="collapse">
+  <li><a href="#底层存储机制" id="toc-底层存储机制" class="nav-link" data-scroll-target="#底层存储机制"><span class="header-section-number">5.9.1</span> 底层存储机制</a></li>
+  <li><a href="#自定义水平顺序" id="toc-自定义水平顺序" class="nav-link" data-scroll-target="#自定义水平顺序"><span class="header-section-number">5.9.2</span> 自定义水平顺序</a></li>
+  <li><a href="#有序因子" id="toc-有序因子" class="nav-link" data-scroll-target="#有序因子"><span class="header-section-number">5.9.3</span> 有序因子</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -271,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R的数据类型</span></h1>
 </div>
 
 
@@ -288,571 +320,676 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="关于网络ppt内容的再次申名" class="level1 nextsteps" data-number="6">
-<h1 class="nextsteps" data-number="6"><span class="header-section-number">6</span> 关于网络ppt内容的再次申名</h1>
+<section id="r语言基础数据类型总结" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="r语言基础数据类型总结"><span class="header-section-number">5.1</span> R语言基础数据类型总结(🐼)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据类型</th>
+<th>R表示方式</th>
+<th>typeof()结果</th>
+<th>典型取值示例</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>数值型 (numeric)</td>
+<td>普通数字</td>
+<td><code>double</code></td>
+<td><code>1</code> <code>3.14</code> <code>-5</code></td>
+<td>存储连续数值，最常见的数据类型</td>
+</tr>
+<tr class="even">
+<td>整数型 (integer)</td>
+<td>数字后加 <code>L</code></td>
+<td><code>integer</code></td>
+<td><code>1L</code> <code>10L</code></td>
+<td>存储整数，常用于索引或计数</td>
+</tr>
+<tr class="odd">
+<td>复数型 (complex)</td>
+<td><code>a + bi</code> 或 <code>complex()</code></td>
+<td><code>complex</code></td>
+<td><code>3+2i</code></td>
+<td>表示复数，常见于数学和信号处理</td>
+</tr>
+<tr class="even">
+<td>逻辑型 (logical)</td>
+<td><code>TRUE</code> / <code>FALSE</code></td>
+<td><code>logical</code></td>
+<td><code>TRUE</code> <code>FALSE</code> <code>NA</code></td>
+<td>条件判断、逻辑运算</td>
+</tr>
+<tr class="odd">
+<td>字符型 (character)</td>
+<td>用引号 <code>" "</code> 或 <code>' '</code></td>
+<td><code>character</code></td>
+<td><code>"R"</code> <code>"data"</code></td>
+<td>存储文本数据</td>
+</tr>
+<tr class="even">
+<td>因子型 (factor)</td>
+<td><code>factor()</code>函数</td>
+<td><code>integer</code>（底层）</td>
+<td><code>factor(c("male","female"))</code></td>
+<td>表示分类变量</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="为什么要学习r的数据类型" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="为什么要学习r的数据类型"><span class="header-section-number">5.2</span> 为什么要学习R的数据类型？</h2>
+<p>在现代科研中，<strong>数据就是研究对象</strong>。</p>
+<p>无论是</p>
 <ul>
-<li><p>以“&gt;”开头引导编程代码，拷贝时不要拷贝这个符号到R的工作区，或者拷贝后删掉，方可运行代码</p></li>
-<li><p>“##”引导开头的是代码运行结果，请不要拷贝这个到R中</p></li>
-<li><p>有括号的变量是R内置函数，有可能有参数也有可能没有参数</p></li>
+<li>环境数据<br>
+</li>
+<li>农业数据<br>
+</li>
+<li>遥感数据<br>
+</li>
+<li>实验数据</li>
 </ul>
-<style>
-.nextsteps {
-  color: #fff;
-  background-color: #159957;
-  background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%);
-  padding: 1.5rem 2rem;
-}
-</style>
+<p>最终都会变成 <strong>R中的对象（object）</strong>。</p>
+<p>因此学习R语言的第一步就是理解：</p>
+<blockquote class="blockquote">
+<p><strong>数据在R中是如何被存储和组织的</strong></p>
+</blockquote>
+<p>简单来说：</p>
+<p>数据 → 数据类型 → 数据结构 → 分析</p>
+<hr>
 </section>
-<section id="r语言支持的数据类型回顾上节课的内容" class="level1 nextsteps" data-number="7">
-<h1 class="nextsteps" data-number="7"><span class="header-section-number">7</span> R语言支持的数据类型(回顾上节课的内容)</h1>
+<section id="r语言支持的数据类型" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="r语言支持的数据类型"><span class="header-section-number">5.3</span> R语言支持的数据类型</h2>
+<p>R的基础数据类型主要包括：</p>
 <ul>
-<li><p><strong>数值型（numeric）</strong></p></li>
-<li><p><strong>复数型（complex）</strong></p></li>
-<li><p><strong>逻辑型（logical）</strong></p></li>
-<li><p><strong>字符型（character）</strong></p></li>
-<li><p><strong>因子型（character）</strong></p></li>
+<li><strong>数值型（numeric）</strong></li>
+<li><strong>复数型（complex）</strong></li>
+<li><strong>逻辑型（logical）</strong></li>
+<li><strong>字符型（character）</strong></li>
+<li><strong>因子型（factor）</strong></li>
 </ul>
+<p>这些类型是 <strong>R语言一切数据结构的基础</strong>。</p>
+<hr>
 </section>
-<section id="r语言的数据结构" class="level1 nextsteps" data-number="8">
-<h1 class="nextsteps" data-number="8"><span class="header-section-number">8</span> R语言的数据结构</h1>
-<p>注意数据类型和数据结构的区别！</p>
-<ul>
-<li><p><strong>向量/Vector</strong></p></li>
-<li><p><strong>矩阵/Matrix</strong></p></li>
-<li><p><strong>数组/Array</strong></p></li>
-<li><p><strong>列表/List</strong></p></li>
-<li><p><strong>数据框/Dataframe</strong></p></li>
-</ul>
+<section id="查看类型的函数-typeofmode-与-class-的区别" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="查看类型的函数-typeofmode-与-class-的区别"><span class="header-section-number">5.4</span> 查看类型的函数 typeof()、mode() 与 class() 的区别</h2>
+<p>在 R 中，一个对象往往同时具有 <strong>底层存储类型（type）</strong> 和 <strong>抽象类别（class）</strong>。<br>
+<code>typeof()</code>、<code>mode()</code> 和 <code>class()</code> 三个函数分别从不同角度描述对象。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>主要功能</th>
+<th>关注层面</th>
+<th>典型用途</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>typeof()</code></td>
+<td>查看对象在R内部的<strong>存储类型</strong></td>
+<td>底层实现</td>
+<td>了解对象在内存中的数据类型</td>
+<td><code>typeof(2)</code> → <code>"double"</code></td>
+</tr>
+<tr class="even">
+<td><code>mode()</code></td>
+<td>S语言遗留函数，表示对象的<strong>存储模式</strong></td>
+<td>历史兼容层</td>
+<td>较少使用，主要用于兼容旧代码</td>
+<td><code>mode(2)</code> → <code>"numeric"</code></td>
+</tr>
+<tr class="odd">
+<td><code>class()</code></td>
+<td>查看对象的<strong>抽象类别</strong></td>
+<td>面向对象系统</td>
+<td>决定函数调用的方法（S3/S4）</td>
+<td><code>class(2)</code> → <code>"numeric"</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
 </section>
-<section id="向量及向量索引indexing-and-subsetting" class="level1 nextsteps" data-number="9">
-<h1 class="nextsteps" data-number="9"><span class="header-section-number">9</span> 向量及向量索引(Indexing and Subsetting)</h1>
-<p><em>向量运算是R语言编程的核心和特色</em></p>
-<p>向量是同类型数据的集合</p>
-</section>
-<section id="向量索引取子集" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 向量索引（取子集）</h1>
-<p>R中向量的主要几种索引方式</p>
-<ul>
-<li><strong>序号索引（第5位同学）</strong> 通过向量元素的位置(正整数)实现索引</li>
-</ul>
+<section id="数值型numeric" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="数值型numeric"><span class="header-section-number">5.5</span> 数值型（numeric）</h2>
+<p>数值型是R中最常见的数据类型。</p>
+<p>例如：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)<span class="co">#直接创建</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 4.2 3.3</code></pre>
+<pre><code>[1] "double"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.3 2.1</code></pre>
+<pre><code>[1] "numeric"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">order</span>(x)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 3.3 4.2 5.4</code></pre>
+<pre><code>[1] "numeric"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Duplicate indices will duplicate values</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 2.1</code></pre>
-</div>
-</div>
-<p>负整数索引</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)<span class="co">#直接创建</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 3.3 5.4</code></pre>
-</div>
-</div>
-<p>空值索引</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)<span class="co">#直接创建</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x[]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 4.2 3.3 5.4</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x[] <span class="ot">&lt;-</span> <span class="dv">5</span><span class="co">#与x &lt;- 5有何不同</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="逻辑索引同学在不在" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> <strong>逻辑索引（同学在不在）</strong></h1>
-<p>通过TRUE与向量元素的位置对应实现索引</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)<span class="co">#直接创建</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 4.2</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.2 3.3 5.4</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 3.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent to</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.1 3.3</code></pre>
-</div>
-</div>
-<section id="whichwhich.minwhich.max函数" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="whichwhich.minwhich.max函数"><span class="header-section-number">11.1</span> which()、which.min()、which.max()函数</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)<span class="co">#直接创建</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(x<span class="sc">&gt;</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3 4</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">which</span>(x<span class="sc">==</span><span class="dv">10</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>integer(0)</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span>L</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "integer"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+</div>
+<p><code>L</code> 是 <strong>integer literal suffix（整数常量后缀）</strong>。</p>
+<p>通常会看到：</p>
+<ul>
+<li><code>x &lt;- 1</code> 的 <code>typeof(x)</code> 是 <code>"double"</code></li>
+<li><code>y &lt;- 1L</code> 的 <code>typeof(y)</code> 是 <code>"integer"</code></li>
+</ul>
+<p>这说明：</p>
+<ul>
+<li><code>1</code> 在 R 里默认按 <strong>双精度数值（double）</strong> 存储</li>
+<li><code>1L</code> 才是 <strong>整数（integer）</strong></li>
+</ul>
+<hr>
+<p>为什么 R 默认把 <code>1</code> 当作 double？</p>
+<p>这是因为 R 继承自 <strong>S 语言的统计计算体系</strong>。<br>
+在统计分析中，大多数数值运算都需要浮点数，例如：</p>
+<ul>
+<li>均值</li>
+<li>方差</li>
+<li>回归</li>
+<li>概率计算</li>
+</ul>
+<p>因此 R 统一把普通数字当作 <strong>double</strong>。</p>
+</section>
+<section id="复数型" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="复数型"><span class="header-section-number">5.6</span> 复数型</h2>
+<p>复数型是 R 语言中用于表示复数的数据类型。复数通常表示为 <span class="math inline">\(z = a + bi\)</span> 的形式，其中 <span class="math inline">\(a\)</span> 是实部，<span class="math inline">\(b\)</span> 是虚部，<span class="math inline">\(i\)</span> 是虚数单位（<span class="math inline">\(i^2 = -1\)</span>）。</p>
+<p>在 R 中，复数必须显式定义。如果只输入实数，R 会将其视为数值型，除非通过特定函数或格式明确指定其为复数。</p>
+<p>我们可以使用 <code>complex()</code> 函数来创建复数，或者直接使用虚数单位 <code>i</code>（注意：直接输入时，虚数单位 <code>i</code> 必须紧跟在数字后面，如 <code>2i</code>）。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 方法一：使用 complex 函数构造 </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">complex</span>(<span class="at">real =</span> x, <span class="at">imaginary =</span> y)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>z </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1+1i</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看类型 </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "complex"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 方法二：直接赋值（注意 'i' 的写法）</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span>i </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>z2 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3+2i</code></pre>
+</div>
+</div>
+</section>
+<section id="逻辑型" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="逻辑型"><span class="header-section-number">5.7</span> 逻辑型</h2>
+<p>逻辑型是 R 语言中最基础的数据类型之一，主要用于表示真值。它只有两个有效取值：<code>TRUE</code>（真）和 <code>FALSE</code>（假）。此外，还有一个特殊的逻辑值 <code>NA</code>，用于表示缺失值。</p>
+<p>在 R 语言中，逻辑型变量在底层实际上是作为<strong>32位整数</strong>存储的。虽然我们看到的是 <code>TRUE</code> 和 <code>FALSE</code>，但在内存中它们分别对应整数 <code>1</code> 和 <code>0</code>。我们可以通过 <code>typeof()</code> 和 <code>class()</code> 函数来验证这一点。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义逻辑变量</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看底层存储类型</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看 NA 的类型 </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 注意：R 中的 NA 默认是逻辑型 NA，但也存在 NA_integer_ 等其他类型</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 验证逻辑值与数值的关系 </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>integer(0)</code></pre>
 </div>
-</div>
-</section>
-</section>
-<section id="名称索引张三同学" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> <strong>名称索引（张三同学）</strong></h1>
-<p>通过预先设置名称，并按名称进行索引</p>
+<p>从上面的代码可以看出： * <code>typeof(x)</code> 返回 <code>"logical"</code>，表明其官方类型。 * <code>as.numeric(TRUE)</code> 返回 <code>1</code>，<code>as.numeric(FALSE)</code> 返回 <code>0</code>。这意味着在数学运算中，R 会自动将逻辑值强制转换为数值进行计算。</p>
+<p>逻辑运算是对逻辑值进行操作的核心方式，主要包括“与”、“或”、“非”三种基本运算。R 语言提供了两套运算符：</p>
+<ul>
+<li><strong>单目运算符 (<code>&amp;</code>, <code>|</code>)</strong>：向量化运算，对向量的每一个元素进行比较。</li>
+<li><strong>双目运算符 (<code>&amp;&amp;</code>, <code>||</code>)</strong>：非向量化运算，仅比较向量的第一个元素，常用于 <code>if</code> 条件判断。</li>
+</ul>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">4.2</span>, <span class="fl">3.3</span>, <span class="fl">5.4</span>)<span class="co">#直接创建</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>(y <span class="ot">&lt;-</span> <span class="fu">setNames</span>(x, letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="cn">FALSE</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 逻辑与：只有两者都为 TRUE 时才返回 TRUE</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&amp;</span> b  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  a   b   c   d 
-2.1 4.2 3.3 5.4 </code></pre>
+<pre><code>[1] FALSE</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">c</span>(<span class="st">"d"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. 逻辑或：只要有一个为 TRUE 就返回 TRUE</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>a <span class="sc">|</span> b  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  d   c   a 
-5.4 3.3 2.1 </code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Like integer indices, you can repeat indices</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y[<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"a"</span>, <span class="st">"a"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. 逻辑非：取反</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>b     </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  a   a   a 
-2.1 2.1 2.1 </code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 </section>
-<section id="向量元素修改" class="level1 nextsteps" data-number="13">
-<h1 class="nextsteps" data-number="13"><span class="header-section-number">13</span> 向量元素修改</h1>
+<section id="字符型" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="字符型"><span class="header-section-number">5.8</span> 字符型</h2>
+<p>字符型用于存储文本数据（字符串）。在 R 中，字符型数据需要用双引号 <code>""</code> 或单引号 <code>''</code> 括起来。即便内容是数字，只要加上引号，它就被视为字符型。</p>
+<p>R 中的字符型向量存储的是字符串。<code>typeof()</code> 返回 <code>"character"</code>，这表示底层的 C 语言类型是指向字符数组的指针（在 R 内部通过 <code>CHARSXP</code> 和 <code>STRING</code> 指针管理）。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span><span class="co">#直接创建</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">15</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"1"</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看底层存储类型 </span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  1 11 12 13 14 15 16 17 18 19 20 NA NA NA  1</code></pre>
+<pre><code>[1] "character"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看面向对象的类 </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-[13]  TRUE  TRUE FALSE</code></pre>
+<pre><code>[1] "character"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(x)</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">12</span>)]</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看长度（向量中元素的个数）</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre><code>[1] 1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看字符串的实际字符数 </span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
-</section>
-<section id="向量排序" class="level1 nextsteps" data-number="14">
-<h1 class="nextsteps" data-number="14"><span class="header-section-number">14</span> 向量排序</h1>
+<p><strong>注意区别</strong>： * <code>length(x)</code> 返回的是向量中元素的个数（这里 <code>x</code> 只有一个元素 “1”，所以返回 1）。 * <code>nchar(x)</code> 返回的是字符串内容本身的长度（“1” 只有一个字符，所以返回 1）。</p>
+<p>R 提供了丰富的函数来处理字符型数据，主要包括拼接、截取、查找和替换。</p>
+<section id="字符串拼接" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="字符串拼接"><span class="header-section-number">5.8.1</span> 字符串拼接</h3>
+<p>使用 <code>paste()</code> 或 <code>paste0()</code> 函数。<code>paste()</code> 默认以空格分隔，<code>paste0()</code> 则无分隔符，效率更高。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>)<span class="sc">*</span><span class="dv">100</span><span class="co"># 生成随机均匀分布</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">round</span>(z)<span class="co">#取整，四舍五入</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(z)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">"001"</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">"R Language"</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># paste 自动转换类型并拼接 </span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"ID:"</span>, id, <span class="st">"Name:"</span>, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  9 22 41 52 56 58 63 68 89 94</code></pre>
+<pre><code>[1] "ID: 001 Name: R Language"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(z,<span class="at">decreasing =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste0 紧密拼接 </span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(id, <span class="st">"_"</span>, name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 94 89 68 63 58 56 52 41 22  9</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(z)<span class="co">#对比z理解这个函数的内涵</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 52  9 41 68 89 63 58 94 56 22</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">sample</span>(LETTERS,<span class="dv">10</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "P" "F" "G" "J" "L" "X" "E" "T" "A" "Z"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(w)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "A" "E" "F" "G" "J" "L" "P" "T" "X" "Z"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(w)<span class="co">#位置信息</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  7  3  4  5  6  9  2  8  1 10</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">order</span>(w)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  9  7  2  3  4  5  1  8  6 10</code></pre>
+<pre><code>[1] "001_R Language"</code></pre>
 </div>
 </div>
 </section>
-<section id="向量运算" class="level1 nextsteps" data-number="15">
-<h1 class="nextsteps" data-number="15"><span class="header-section-number">15</span> 向量运算</h1>
-<p>-<font style="background:   #1E90FF"><strong>向量加减法运算</strong></font></p>
+<section id="字符串截取与长度" class="level3" data-number="5.8.2">
+<h3 data-number="5.8.2" class="anchored" data-anchor-id="字符串截取与长度"><span class="header-section-number">5.8.2</span> 字符串截取与长度</h3>
+<p>使用 <code>substr()</code> 或 <code>substring()</code> 提取部分字符串。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">20</span><span class="co">#直接创建</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">30</span><span class="sc">:</span><span class="dv">40</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="st">"Data Science"</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 从第 1 位到第 4 位截取 </span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(text, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">stop =</span> <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 40 42 44 46 48 50 52 54 56 58 60</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>x<span class="sc">+</span>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 11 13 15 17 19 16 18 20 22 24 21</code></pre>
+<pre><code>[1] "Data"</code></pre>
 </div>
 </div>
 </section>
-<section id="向量乘算运算" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> 向量乘算运算</h1>
+<section id="section" class="level3" data-number="5.8.3">
+<h3 data-number="5.8.3" class="anchored" data-anchor-id="section"><span class="header-section-number">5.8.3</span> </h3>
+<p>在字符串中，某些特殊字符需要使用反斜杠 <code>\</code> 进行转义。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span><span class="co">#直接创建</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">8</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># \n 换行符 </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Line 1</span><span class="sc">\n</span><span class="st">Line 2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 4 6 8</code></pre>
+<pre><code>Line 1
+Line 2</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># \" 输出双引号本身 </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"He said, </span><span class="sc">\"</span><span class="st">Hello World</span><span class="sc">\"</span><span class="st">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  5 12 21 32</code></pre>
+<pre><code>He said, "Hello World".</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">%*%</span>y<span class="co">#内积</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># \t 制表符 </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Col1</span><span class="sc">\t</span><span class="st">Col2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>     [,1]
-[1,]   70</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crossprod</span>(x,y)<span class="co">#内积第二种方法</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1]
-[1,]   70</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">%o%</span>y<span class="co">#向量外积方法1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3] [,4]
-[1,]    5    6    7    8
-[2,]   10   12   14   16
-[3,]   15   18   21   24
-[4,]   20   24   28   32</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outer</span>(x,y)<span class="co">#向量外积方法2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3] [,4]
-[1,]    5    6    7    8
-[2,]   10   12   14   16
-[3,]   15   18   21   24
-[4,]   20   24   28   32</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tcrossprod</span>(x,y)<span class="co">#向量外积方法3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3] [,4]
-[1,]    5    6    7    8
-[2,]   10   12   14   16
-[3,]   15   18   21   24
-[4,]   20   24   28   32</code></pre>
+<pre><code>Col1    Col2</code></pre>
 </div>
 </div>
 </section>
-<section id="向量初等数学函数运算" class="level1" data-number="17">
-<h1 data-number="17"><span class="header-section-number">17</span> 向量初等数学函数运算</h1>
+<section id="类型转换" class="level3" data-number="5.8.4">
+<h3 data-number="5.8.4" class="anchored" data-anchor-id="类型转换"><span class="header-section-number">5.8.4</span> 类型转换</h3>
+<p>字符型与其他类型（如数值型、逻辑型）之间经常需要相互转换。</p>
+<p>强制转换为字符型 使用 <code>as.character()</code> 函数。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span><span class="co">#直接创建</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数值转字符 </span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>num_val <span class="ot">&lt;-</span> <span class="fl">123.45</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(num_val)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.000000 1.414214 1.732051 2.000000</code></pre>
+<pre><code>[1] "123.45"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 逻辑转字符 </span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(<span class="cn">TRUE</span>) <span class="co"># 结果为 "TRUE"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  4  9 16</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  2.718282  7.389056 20.085537 54.598150</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0000000 0.6931472 1.0986123 1.3862944</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.8414710  0.9092974  0.1411200 -0.7568025</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(x<span class="sc">*</span>pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  1.224606e-16 -2.449213e-16  3.673819e-16 -4.898425e-16</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.5403023 -0.4161468 -0.9899925 -0.6536436</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x<span class="sc">*</span>pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -1  1 -1  1</code></pre>
+<pre><code>[1] "TRUE"</code></pre>
 </div>
 </div>
 </section>
-<section id="向量统计函数运算" class="level1" data-number="18">
-<h1 data-number="18"><span class="header-section-number">18</span> 向量统计函数运算</h1>
+</section>
+<section id="因子型" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="因子型"><span class="header-section-number">5.9</span> 因子型</h2>
+<p>因子型是 R 语言中特有的一种数据类型，用于处理<strong>分类数据</strong>（Categorical Data）。它本质上是一个带有属性（水平和类）的整数向量。因子在统计建模（如线性回归、方差分析）和数据可视化中非常重要，因为它能明确区分“名义变量”（无顺序，如性别）和“有序变量”（有顺序，如等级）。</p>
+<section id="底层存储机制" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="底层存储机制"><span class="header-section-number">5.9.1</span> 底层存储机制</h3>
+<p>虽然因子打印出来像字符，但 <code>typeof()</code> 揭示了它的真面目：它在底层是使用<strong>整数</strong>存储的。每个整数对应一个“水平”标签。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1111</span>)</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">2</span>)<span class="co">#100个平均值为1，标准差为2的正态分布随机数</span></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector </span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -4.861693</code></pre>
+<pre><code>[1] "female" "male"   "male"   "female"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.min</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting the vector x into a factor </span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># named gender </span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(x, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>))</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] female male   male   female
+Levels: male female</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看底层存储类型：整数 </span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.94693</code></pre>
+<pre><code>[1] "integer"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看面向对象的类 </span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 100</code></pre>
+<pre><code>[1] "factor"</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看因子的水平 </span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -4.861693  6.946930</code></pre>
+<pre><code>[1] "male"   "female"</code></pre>
+</div>
+</div>
+<p><strong>代码解析：</strong> * <code>typeof(gender)</code> 返回 <code>"integer"</code>，说明因子底层存储的是整数索引。 * <code>levels(gender)</code> 返回 <code>c("male", "female")</code>。在这个例子中，底层的整数映射关系为：<code>1</code> -&gt; “male”，<code>2</code> -&gt; “female”。 * 打印 <code>gender</code> 时显示的 Levels 列表清晰地展示了所有可能的取值。</p>
+<p>因子的核心在于水平的控制 ,即<code>levels</code> 属性。它不仅定义了允许的取值，还定义了顺序。</p>
+</section>
+<section id="自定义水平顺序" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="自定义水平顺序"><span class="header-section-number">5.9.2</span> 自定义水平顺序</h3>
+<p>默认情况下，水平按字母顺序排列。但在实际分析中，我们经常需要自定义顺序（例如：设置基准组）。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 默认情况：按字母顺序，Female 在前 </span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"High"</span>, <span class="st">"Low"</span>, <span class="st">"Medium"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] High   Low    Medium
+Levels: High Low Medium</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 强制指定顺序：Low &lt; Medium &lt; High </span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 这里的 levels 参数决定了整数映射：Low=1, Medium=2, High=3 </span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"High"</span>, <span class="st">"Low"</span>, <span class="st">"Medium"</span>), </span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.483015</code></pre>
+<pre><code>[1] High   Low    Medium
+Levels: Low Medium High</code></pre>
 </div>
+</div>
+<section id="包含未观测值" class="level4" data-number="5.9.2.1">
+<h4 data-number="5.9.2.1" class="anchored" data-anchor-id="包含未观测值"><span class="header-section-number">5.9.2.1</span> 包含未观测值</h4>
+<p>因子可以包含数据中尚未出现的水平，这在处理训练集和测试集不一致时非常有用。</p>
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 数据中只有 "male" 和 "female"，但我们预设 "unknown" 也是一个有效水平 </span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>gender_full <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"unknown"</span>))</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gender_full)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.873137</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.207518</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.359668</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
--4.86169 -0.04547  1.35967  1.48301  2.93994  6.94693 </code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 100</code></pre>
+<pre><code>[1] male   female
+Levels: male female unknown</code></pre>
 </div>
 </div>
 </section>
-<section id="section" class="level1" data-number="19">
-<h1 data-number="19"><span class="header-section-number">19</span> </h1>
-<p><font color="#0099ff" size="12" face="黑体">问题？</font></p>
+</section>
+<section id="有序因子" class="level3" data-number="5.9.3">
+<h3 data-number="5.9.3" class="anchored" data-anchor-id="有序因子"><span class="header-section-number">5.9.3</span> 有序因子</h3>
+<p>对于像“低、中、高”这样有内在顺序的分类数据，应使用 <code>ordered = TRUE</code>。这允许在因子上进行比较运算。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>status <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"high"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>), </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>), </span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(status)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] low    high   medium high  
+Levels: low &lt; medium &lt; high</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 有序因子支持比较运算 </span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>status[<span class="dv">1</span>] <span class="sc">&lt;</span> status[<span class="dv">2</span>] <span class="co"># low &lt; high 返回 TRUE </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>无序因子不支持比较</p>
+<pre><code>gender[1] &lt; gender[2] # 会报错 </code></pre>
+<p>##作业：综合判断与解释</p>
+<p>请根据下面代码，填写表格并补充解释。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>obj1 <span class="ot">&lt;-</span> <span class="fl">25.6</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>obj2 <span class="ot">&lt;-</span> <span class="dv">25</span>L</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>obj3 <span class="ot">&lt;-</span> <span class="st">"25.6"</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>obj4 <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>))</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>obj5 <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>obj6 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">4</span>i</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>请完成下表：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>对象</th>
+<th>值</th>
+<th>typeof()</th>
+<th>class()</th>
+<th>所属数据类型</th>
+<th>你的解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>obj1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>obj2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>obj3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>obj4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>obj5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>obj6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

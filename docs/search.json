@@ -322,11 +322,11 @@
   {
     "objectID": "lecture4.html",
     "href": "lecture4.html",
-    "title": "5  第四次课-向量",
+    "title": "5  R的数据类型",
     "section": "",
-    "text": "6 关于网络ppt内容的再次申名",
+    "text": "5.1 R语言基础数据类型总结(🐼)",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>第四次课-向量</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
   },
   {
@@ -342,11 +342,11 @@
   {
     "objectID": "lecture5.html",
     "href": "lecture5.html",
-    "title": "6  第五次课-矩阵、数组、列表与数据框",
+    "title": "6  R的数据结构",
     "section": "",
-    "text": "7 回顾——向量及向量索引\n\n\n\n8 向量合并及匹配\n\n\nCode\n&gt; vec.1 &lt;- 1:5\n&gt; vec.2 &lt;- 8:16\n&gt; vec.3 &lt;- c(vec.1,vec.2)\n&gt; vec.3\n\n\n [1]  1  2  3  4  5  8  9 10 11 12 13 14 15 16\n\n\nCode\n&gt; match(8,vec.3)\n\n\n[1] 6\n\n\nCode\n&gt; match(c(8,10),vec.3)\n\n\n[1] 6 8\n\n\nCode\n&gt; 8%in%vec.3\n\n\n[1] TRUE\n\n\nCode\n&gt; vec.3%in%8\n\n\n [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE\n\n\nCode\n&gt; 7%in%vec.3\n\n\n[1] FALSE\n\n\n\n\n9 矩阵\n\n矩阵是一个二维数组，只是每个元素都拥有相同的模式（数值型、字符型或逻辑型）。可通 过函数matrix()创建矩阵\nmatrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,dimnames = NULL)\n\n参数说明：\n\ndata 向量，矩阵的数据\nnrow 行数\nncol 列数\nbyrow 逻辑值，为 FALSE 按列排列，为 TRUE 按行排列\ndimname 设置行和列的名称\n\n\n\nCode\nmatrix(1:20, nrow=5, ncol=4)\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    6   11   16\n[2,]    2    7   12   17\n[3,]    3    8   13   18\n[4,]    4    9   14   19\n[5,]    5   10   15   20\n\n\nCode\nmatrix(1:20, nrow=5, ncol=4,byrow = T)\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    2    3    4\n[2,]    5    6    7    8\n[3,]    9   10   11   12\n[4,]   13   14   15   16\n[5,]   17   18   19   20\n\n\n\n\n10 矩阵与向量的关系\n\n向量的赋予维度(dim)属性便可转化为矩阵或数组\n矩阵和数组更侧重于数学计算的便利性\n\n\n\nCode\nx &lt;- 1:9\ndim(x) &lt;- c(3,3)\nx\n\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\nCode\ndim(x) &lt;-NULL\nx\n\n\n[1] 1 2 3 4 5 6 7 8 9\n\n\n\n\n11 矩阵索引-元素位置索引\n-矩阵的索引从行列两个方向入手，见下面的例子\n\n\nCode\ny &lt;- matrix(1:20, nrow=5, ncol=4)#矩阵存储在y中\ny[2,]#索引亦然是用方括号，二维矩阵的索引在方括号中用逗号隔开，逗号左边是行，右边是列\n\n\n[1]  2  7 12 17\n\n\nCode\ny[,2]#能猜到这是哪一部分么？\n\n\n[1]  6  7  8  9 10\n\n\nCode\ny[2,2]#行列对应单元数据\n\n\n[1] 7\n\n\nCode\nz &lt;-y[2,]#上面的代码相当于先拿出第2行，再选出第2个元素\nz[2]\n\n\n[1] 7\n\n\nCode\ny[c(1,2),c(2,3)]#多重选择 \n\n\n     [,1] [,2]\n[1,]    6   11\n[2,]    7   12\n\n\nCode\ny[-1,]#不选第一行\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    2    7   12   17\n[2,]    3    8   13   18\n[3,]    4    9   14   19\n[4,]    5   10   15   20\n\n\n\n\n12 矩阵其他索引方式\n-逻辑索引\n-向量化索引/按列从上到下，从左到右\n\n\nCode\ny &lt;- matrix(11:30, nrow=5, ncol=4)\ny\n\n\n     [,1] [,2] [,3] [,4]\n[1,]   11   16   21   26\n[2,]   12   17   22   27\n[3,]   13   18   23   28\n[4,]   14   19   24   29\n[5,]   15   20   25   30\n\n\nCode\ny[T,c(F,T)]#思考为什么啊\n\n\n     [,1] [,2]\n[1,]   16   26\n[2,]   17   27\n[3,]   18   28\n[4,]   19   29\n[5,]   20   30\n\n\nCode\ny[1:5]\n\n\n[1] 11 12 13 14 15\n\n\n\n\n13 矩阵运算1\n-A + B是矩阵加法， A - B是矩阵减法\n-A %*% B是矩阵乘法。\n-x*A若x是标量，A是矩阵，作矩阵数乘。\n-如果x是向量，A是矩阵， 则x %*% A表示行向量x左乘矩阵A，\n-A%*%x表示列向量x右乘矩阵A。\n\n\nCode\nset.seed(110)\nA &lt;- matrix(rnorm(12), nrow=3, ncol=4)\nA\n\n\n          [,1]      [,2]        [,3]      [,4]\n[1,] 0.2911952 1.4778760 -0.04460784 0.2256401\n[2,] 1.3888632 0.4387201  1.48441337 1.4199606\n[3,] 0.6490100 0.5223182 -1.59101108 0.9697612\n\n\nCode\nB &lt;- matrix(rnorm(12,-1,2), 3)#注意生成方式的区别\nB\n\n\n          [,1]       [,2]       [,3]       [,4]\n[1,]  2.808512 -0.5875462  2.1154084 -4.0074773\n[2,] -2.400824 -4.0926231 -4.9218862  0.6770989\n[3,]  2.556057  0.2923954 -0.2222837 -2.6654285\n\n\nCode\nA+B\n\n\n          [,1]       [,2]      [,3]      [,4]\n[1,]  3.099707  0.8903298  2.070801 -3.781837\n[2,] -1.011961 -3.6539030 -3.437473  2.097060\n[3,]  3.205067  0.8147136 -1.813295 -1.695667\n\n\nCode\nA-B\n\n\n          [,1]      [,2]      [,3]      [,4]\n[1,] -2.517317 2.0654221 -2.160016 4.2331174\n[2,]  3.789687 4.5313433  6.406300 0.7428617\n[3,] -1.907047 0.2299227 -1.368727 3.6351897\n\n\nCode\nA*B\n\n\n           [,1]       [,2]        [,3]       [,4]\n[1,]  0.8178254 -0.8683204 -0.09436379 -0.9042476\n[2,] -3.3344159 -1.7955161 -7.30611374  0.9614538\n[3,]  1.6589066  0.1527234  0.35365578 -2.5848292\n\n\nCode\n#A %*% B，出错误，为什么？\nA %*% t(B)#t()是矩阵转置的意思\n\n\n          [,1]       [,2]       [,3]\n[1,] -1.049106  -6.375162  0.5849238\n[2,]  1.092552 -11.474592 -0.4364713\n[3,] -5.736068   4.791590 -0.4195434\n\n\nCode\n2*A\n\n\n          [,1]      [,2]        [,3]      [,4]\n[1,] 0.5823905 2.9557519 -0.08921567 0.4512802\n[2,] 2.7777263 0.8774402  2.96882675 2.8399212\n[3,] 1.2980201 1.0446363 -3.18202216 1.9395224\n\n\n\n\n14 矩阵运算2\n\n\nCode\nset.seed(110)\nC &lt;- matrix(rnorm(16), nrow=4, ncol=4)\nD &lt;- round(C)#四舍五入\nD\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    0   -2    2\n[2,]    1    1    0   -1\n[3,]    1    0    1    2\n[4,]    1    1    1    0\n\n\nCode\ndet(D)\n\n\n[1] 4\n\n\nCode\nE &lt;- solve(D)\nD%*%E\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n\nCode\nE%*%D\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n\nCode\nG &lt;- 1:4# F不用是因为F代表FALSE\nsolve(D,G)\n\n\n[1] -0.25  3.50  0.75  1.25\n\n\n\n\n15 矩阵操作\n\n\nCode\nset.seed(110)\nC &lt;- matrix(rnorm(16), nrow=4, ncol=4)\nD &lt;- round(C)#四舍五入\ndiag(D)\n\n\n[1] 0 1 1 0\n\n\nCode\neigen(D)\n\n\neigen() decomposition\n$values\n[1]  1.7429256+1.0941392i  1.7429256-1.0941392i -0.7429256+0.6265678i\n[4] -0.7429256-0.6265678i\n\n$vectors\n                      [,1]                  [,2]                   [,3]\n[1,]  0.1820599-0.3539865i  0.1820599+0.3539865i -0.74407160+0.0000000i\n[2,]  0.1365193-0.3963668i  0.1365193+0.3963668i  0.55236372+0.1391179i\n[3,] -0.7053579+0.0000000i -0.7053579+0.0000000i  0.02942912+0.1294845i\n[4,] -0.3530442-0.2088866i -0.3530442+0.2088866i  0.30582402-0.1036212i\n                       [,4]\n[1,] -0.74407160+0.0000000i\n[2,]  0.55236372-0.1391179i\n[3,]  0.02942912-0.1294845i\n[4,]  0.30582402+0.1036212i\n\n\nCode\ndim(D)\n\n\n[1] 4 4\n\n\nCode\nnrow(D)\n\n\n[1] 4\n\n\nCode\nncol(D)\n\n\n[1] 4\n\n\nCode\ncolnames(D) &lt;- LETTERS[1:4]\nrownames(D) &lt;- letters[1:4]\nD\n\n\n  A B  C  D\na 0 0 -2  2\nb 1 1  0 -1\nc 1 0  1  2\nd 1 1  1  0\n\n\n\n\n16 创建数组\n\n\nCode\ny &lt;- array(1:24, c(4, 3, 2))# 4行，3列，2页\ny\n\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    5    9\n[2,]    2    6   10\n[3,]    3    7   11\n[4,]    4    8   12\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]   13   17   21\n[2,]   14   18   22\n[3,]   15   19   23\n[4,]   16   20   24\n\n\n\n\n17 列表\nR中列表是存储不同数据类型的结构形式\n列表通过以下的list()形式创建\n列表是可以嵌套列表的\n\n\nCode\nl1 &lt;- list(\n  1:3, \n  \"a\", \n  c(TRUE, FALSE, TRUE), \n  c(2.3, 5.9)\n)\nl1\n\n\n[[1]]\n[1] 1 2 3\n\n[[2]]\n[1] \"a\"\n\n[[3]]\n[1]  TRUE FALSE  TRUE\n\n[[4]]\n[1] 2.3 5.9\n\n\nCode\ntypeof(l1)\n\n\n[1] \"list\"\n\n\n\n\n18 列表数据占用的内存空间\n列表是通过参考reference”与数据建立映射关系，以达到节约内存的目的\n\n\nCode\nlobstr::obj_size(iris)\n\n\n7.20 kB\n\n\nCode\nl2 &lt;- list(iris, iris, iris, iris)\nlobstr::obj_size(l2)\n\n\n7.28 kB\n\n\n\n\n19 列表的转换\n\n\nCode\nlist(1:3)\n\n\n[[1]]\n[1] 1 2 3\n\n\nCode\nas.list(1:3)\n\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 2\n\n[[3]]\n[1] 3\n\n\n\n\n20 列表的索引\n列表可以通过三种符号索引 [[, [, and $.\n\n编号索引[[, [\n名称索引[[, [\n美元索引$\n\n\n\nCode\nx &lt;- list(ntype=1:3, ctype=\"a\", ltype=c(T,F,F),ftype=\n            factor(letters[1:3]))\n\nx[[1]]\n\n\n[1] 1 2 3\n\n\nCode\nx[1]\n\n\n$ntype\n[1] 1 2 3\n\n\nCode\nx[\"ntype\"]\n\n\n$ntype\n[1] 1 2 3\n\n\nCode\nx[[\"ntype\"]]\n\n\n[1] 1 2 3\n\n\nCode\nx$ntype\n\n\n[1] 1 2 3\n\n\nCode\n# x[[1:4]]\nx[1:4]\n\n\n$ntype\n[1] 1 2 3\n\n$ctype\n[1] \"a\"\n\n$ltype\n[1]  TRUE FALSE FALSE\n\n$ftype\n[1] a b c\nLevels: a b c\n\n\n\n\n21 数据框\n数据框是一种特殊类型的列表，是元素等长的列表\n数据框可以直接通过data.frame()创建\n数据框是R主要工作的数据结构\n\n\nCode\nName &lt;- c(\"Jon\", \"Bill\", \"Maria\", \"Ben\", \"Tina\")\nAge &lt;- c(23, 41, 32, 58, 26)\ndf &lt;- data.frame(Name, Age)\ndf\n\n\n   Name Age\n1   Jon  23\n2  Bill  41\n3 Maria  32\n4   Ben  58\n5  Tina  26\n\n\n\n\n22 R内置的数据框数据\n可以用data()函数查看R内置的数据集\nairquality #纽约1973年5-9月每日空气质量\nanscombe #四组x-y数据，虽有相似的统计量，但实际数据差别较大\nattenu #多个观测站对加利福尼亚23次地震的观测数据\nattitude #30个部门在七个方面的调查结果，调查结果是同一部门35个职员赞成的百分比\nbeaver1 #一只海狸每10分钟的体温数据，共114条数据\nbeaver2 #另一只海狸每10分钟的体温数据，共100条数据\nBOD #随水质的提高，生化反应对氧的需求（mg/l）随时间（天）的变化\ncars #1920年代汽车速度对刹车距离的影响\nchickwts #不同饮食种类对小鸡生长速度的影响\nesoph #法国的一个食管癌病例对照研究\nfaithful #一个间歇泉的爆发时间和持续时间\nFormaldehyde #两种方法测定甲醛浓度时分光光度计的读数\nFreeny #每季度收入和其他四因素的记录\ndating from #配对的病例对照数据，用于条件logistic回归\nInsectSprays #使用不同杀虫剂时昆虫数目\niris #3种鸢尾花形态数据\nLifeCycleSavings #50个国家的存款率\nlongley #强共线性的宏观经济数据\nmorley #光速测量试验数据\nmtcars #32辆汽车在11个指标上的数据\nOrchardSprays #使用拉丁方设计研究不同喷雾剂对蜜蜂的影响\nPlantGrowth #三种处理方式对植物产量的影响\npressure #温度和气压\nPuromycin #两种细胞中辅因子浓度对酶促反应的影响\nquakes #1000次地震观测数据（震级&gt;4）\nrandu #在VMS1.5中使用FORTRAN中的RANDU三个一组生成随机数字，共400组。\nrock #48块石头的形态数据\nsleep #两药物的催眠效果\nstackloss #化工厂将氨转为硝酸的数据\nswiss #瑞士生育率和社会经济指标\nToothGrowth #VC剂量和摄入方式对豚鼠牙齿的影响\ntrees #树木形态指标\nUSArrests #美国50个州的四个犯罪率指标\nUSJudgeRatings #43名律师的12个评价指标\nwarpbreaks #织布机异常数据\nwomen #15名女性的身高和体重\n\n\n23 Exercise and Homework\n\n请在mtcars数据中筛选出气缸数为4的汽车性能数据\n请把mtcars数据集中的数据行进行随机打乱",
+    "text": "6.1 数据类型与数据结构的区别(🐈)\n在学习 R 编程时，很多初学者容易混淆 数据类型（data type） 和 数据结构（data structure）。\n实际上，它们解决的是两个不同层次的问题。\n简单理解：\n例如：\n这些都是 数据类型。\n但是在实际分析中，我们往往需要存储 很多数据，例如：\n这时就需要 数据结构 来组织数据。\n可以用一个简单的类比理解：\n例如：\n因此：",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>第五次课-矩阵、数组、列表与数据框</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
   },
   {
@@ -697,6 +697,246 @@
     "text": "4.4 变量（Variable）\n在 R 语言中，变量（variable）是一个用于存储数据或对象的名称。\n变量本质上是一个对象（object）的标识符，通过变量名可以访问和操作存储在内存中的数据。变量只是一个名字标签，用来指向数据或引用数据。\n简单来说：\n\n变量 = 数据的名字\n\n当我们创建变量时，R 会在内存中存储数据，并用变量名指向该数据。\n\n\n4.4.1 创建变量\n在 R 中，变量通常通过赋值运算符 &lt;- 创建。\n例如：\n\n\nCode\nx &lt;- 10\n\n\n这条语句的含义是：\n\n在内存中创建一个对象\n将数值 10 存储在该对象中\n用变量名 x 指向这个对象\n\n此时，变量 x 就代表数值 10。\n我们可以查看变量：\n\n\nCode\nx\n\n\n[1] 10\n\n\n\n\n\n4.4.2 变量可以存储不同类型的数据\n变量不仅可以存储数字，还可以存储多种类型的数据。\n\n4.4.2.1 数值变量\n\n\nCode\na &lt;- 5\n\n\n\n\n4.4.2.2 字符变量\n\n\nCode\nname &lt;- \"R language\"\n\n\n\n\n4.4.2.3 向量变量\n\n\nCode\nv &lt;- c(1, 2, 3, 4, 5)\n\n\n\n\n4.4.2.4 数据框变量\n\n\nCode\ndf &lt;- data.frame(x = 1:3, y = c(\"A\", \"B\", \"C\"))\n\n\n因此，在 R 中变量实际上是对象的名称。\n\n\n\n\n4.4.3 变量存储在内存中\n当变量被创建时，数据会存储在 R 会话（session）的内存中。\n例如：\n\n\nCode\nx &lt;- 100\n\n\n此时：\n\n数据 100 被存入内存\n变量 x 指向该数据\n\n可以在 RStudio 的 Environment 面板 中看到变量 x。\n\n创建一个包含 100 万个数字的巨大向量\n\n\n\nCode\nbig_data &lt;- 1:1000000\n\n\n\n查看它的大小\n\n\n\nCode\nsize &lt;- object.size(big_data)\nprint(size)\n\n\n4000048 bytes\n\n\n\n以更直观的方式显示 (MB)\n\n\n\nCode\nformat(size, units = \"MB\")\n\n\n[1] \"3.8 Mb\"\n\n\n\n\n\n4.4.4 覆盖变量\n变量的值可以被重新赋值。\n例如：\n\n\nCode\nx &lt;- 10\nx &lt;- 20\n\n\n第二条语句会覆盖原来的值。\n最终：\n\n\nCode\nx\n\n\n[1] 20\n\n\n结果为：\n20\n\n\n\n4.4.5 变量命名规则\n变量名称可以包含：\n\n字母\n数字\n下划线 _\n\n但不能使用保留关键字。\n例如：\n\n\nCode\n##_abc &lt;- 1\n\n\n某些关键字不能直接作为变量名，例如：\nif &lt;- 10\n如果必须使用，可以加反引号：\n`if` &lt;- 10\n但不建议这样做。",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#为什么要学习r的数据类型",
+    "href": "lecture4.html#为什么要学习r的数据类型",
+    "title": "5  R的数据类型",
+    "section": "5.2 为什么要学习R的数据类型？",
+    "text": "5.2 为什么要学习R的数据类型？\n在现代科研中，数据就是研究对象。\n无论是\n\n环境数据\n\n农业数据\n\n遥感数据\n\n实验数据\n\n最终都会变成 R中的对象（object）。\n因此学习R语言的第一步就是理解：\n\n数据在R中是如何被存储和组织的\n\n简单来说：\n数据 → 数据类型 → 数据结构 → 分析",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#r语言支持的数据类型",
+    "href": "lecture4.html#r语言支持的数据类型",
+    "title": "5  R的数据类型",
+    "section": "5.3 R语言支持的数据类型",
+    "text": "5.3 R语言支持的数据类型\nR的基础数据类型主要包括：\n\n数值型（numeric）\n复数型（complex）\n逻辑型（logical）\n字符型（character）\n因子型（factor）\n\n这些类型是 R语言一切数据结构的基础。",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#数值型numeric",
+    "href": "lecture4.html#数值型numeric",
+    "title": "5  R的数据类型",
+    "section": "5.5 数值型（numeric）",
+    "text": "5.5 数值型（numeric）\n数值型是R中最常见的数据类型。\n例如：\n\n\nCode\nx &lt;- 2\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\nmode(x)\n\n\n[1] \"numeric\"\n\n\nCode\nclass(x)\n\n\n[1] \"numeric\"\n\n\nCode\ny &lt;- 1L\ntypeof(y)\n\n\n[1] \"integer\"\n\n\nCode\nclass(y)\n\n\n[1] \"integer\"\n\n\nL 是 integer literal suffix（整数常量后缀）。\n通常会看到：\n\nx &lt;- 1 的 typeof(x) 是 \"double\"\ny &lt;- 1L 的 typeof(y) 是 \"integer\"\n\n这说明：\n\n1 在 R 里默认按 双精度数值（double） 存储\n1L 才是 整数（integer）\n\n\n为什么 R 默认把 1 当作 double？\n这是因为 R 继承自 S 语言的统计计算体系。\n在统计分析中，大多数数值运算都需要浮点数，例如：\n\n均值\n方差\n回归\n概率计算\n\n因此 R 统一把普通数字当作 double。",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#为什么-r-默认把-1-当作-double",
+    "href": "lecture4.html#为什么-r-默认把-1-当作-double",
+    "title": "5  R的数据类型与数据结构",
+    "section": "5.4 为什么 R 默认把 1 当作 double？",
+    "text": "5.4 为什么 R 默认把 1 当作 double？\n这是因为 R 继承自 S 语言的统计计算体系。\n在统计分析中，大多数数值运算都需要浮点数，例如：\n\n均值\n方差\n回归\n概率计算\n\n因此 R 统一把普通数字当作 double。 typeof()、mode() 与 class() 的区别\n在 R 中，一个对象往往同时具有 底层存储类型（type） 和 抽象类别（class）。\ntypeof()、mode() 和 class() 三个函数分别从不同角度描述对象。\n\n\n\n\n\n\n\n\n\n\n函数\n主要功能\n关注层面\n典型用途\n示例结果\n\n\n\n\ntypeof()\n查看对象在R内部的存储类型\n底层实现\n了解对象在内存中的数据类型\ntypeof(2) → \"double\"\n\n\nmode()\nS语言遗留函数，表示对象的存储模式\n历史兼容层\n较少使用，主要用于兼容旧代码\nmode(2) → \"numeric\"\n\n\nclass()\n查看对象的抽象类别\n面向对象系统\n决定函数调用的方法（S3/S4）\nclass(2) → \"numeric\"",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型与数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#查看类型的函数-typeofmode-与-class-的区别",
+    "href": "lecture4.html#查看类型的函数-typeofmode-与-class-的区别",
+    "title": "5  R的数据类型",
+    "section": "5.4 查看类型的函数 typeof()、mode() 与 class() 的区别",
+    "text": "5.4 查看类型的函数 typeof()、mode() 与 class() 的区别\n在 R 中，一个对象往往同时具有 底层存储类型（type） 和 抽象类别（class）。\ntypeof()、mode() 和 class() 三个函数分别从不同角度描述对象。\n\n\n\n\n\n\n\n\n\n\n函数\n主要功能\n关注层面\n典型用途\n示例结果\n\n\n\n\ntypeof()\n查看对象在R内部的存储类型\n底层实现\n了解对象在内存中的数据类型\ntypeof(2) → \"double\"\n\n\nmode()\nS语言遗留函数，表示对象的存储模式\n历史兼容层\n较少使用，主要用于兼容旧代码\nmode(2) → \"numeric\"\n\n\nclass()\n查看对象的抽象类别\n面向对象系统\n决定函数调用的方法（S3/S4）\nclass(2) → \"numeric\"",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#复数型",
+    "href": "lecture4.html#复数型",
+    "title": "5  R的数据类型",
+    "section": "5.6 复数型",
+    "text": "5.6 复数型\n复数型是 R 语言中用于表示复数的数据类型。复数通常表示为 \\(z = a + bi\\) 的形式，其中 \\(a\\) 是实部，\\(b\\) 是虚部，\\(i\\) 是虚数单位（\\(i^2 = -1\\)）。\n在 R 中，复数必须显式定义。如果只输入实数，R 会将其视为数值型，除非通过特定函数或格式明确指定其为复数。\n我们可以使用 complex() 函数来创建复数，或者直接使用虚数单位 i（注意：直接输入时，虚数单位 i 必须紧跟在数字后面，如 2i）。\n\n\nCode\n# 方法一：使用 complex 函数构造 \nx &lt;- 1 \ny &lt;- 1 \nz &lt;- complex(real = x, imaginary = y)\nz \n\n\n[1] 1+1i\n\n\nCode\n# 查看类型 \ntypeof(z)\n\n\n[1] \"complex\"\n\n\nCode\n# 方法二：直接赋值（注意 'i' 的写法）\nz2 &lt;- 3 + 2i \nz2 \n\n\n[1] 3+2i",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#逻辑型",
+    "href": "lecture4.html#逻辑型",
+    "title": "5  R的数据类型",
+    "section": "5.7 逻辑型",
+    "text": "5.7 逻辑型\n逻辑型是 R 语言中最基础的数据类型之一，主要用于表示真值。它只有两个有效取值：TRUE（真）和 FALSE（假）。此外，还有一个特殊的逻辑值 NA，用于表示缺失值。\n在 R 语言中，逻辑型变量在底层实际上是作为32位整数存储的。虽然我们看到的是 TRUE 和 FALSE，但在内存中它们分别对应整数 1 和 0。我们可以通过 typeof() 和 class() 函数来验证这一点。\n\n\nCode\n# 定义逻辑变量\nx &lt;- TRUE\ny &lt;- NA\n \n# 查看底层存储类型\ntypeof(x)\n\n\n[1] \"logical\"\n\n\nCode\n# 查看 NA 的类型 \n# 注意：R 中的 NA 默认是逻辑型 NA，但也存在 NA_integer_ 等其他类型\ntypeof(y)\n\n\n[1] \"logical\"\n\n\nCode\n# 验证逻辑值与数值的关系 \nas.numeric(TRUE)\n\n\n[1] 1\n\n\nCode\nas.numeric(FALSE)\n\n\n[1] 0\n\n\n从上面的代码可以看出： * typeof(x) 返回 \"logical\"，表明其官方类型。 * as.numeric(TRUE) 返回 1，as.numeric(FALSE) 返回 0。这意味着在数学运算中，R 会自动将逻辑值强制转换为数值进行计算。\n逻辑运算是对逻辑值进行操作的核心方式，主要包括“与”、“或”、“非”三种基本运算。R 语言提供了两套运算符：\n\n单目运算符 (&, |)：向量化运算，对向量的每一个元素进行比较。\n双目运算符 (&&, ||)：非向量化运算，仅比较向量的第一个元素，常用于 if 条件判断。\n\n\n\nCode\na &lt;- TRUE\nb &lt;- FALSE \n \n# 1. 逻辑与：只有两者都为 TRUE 时才返回 TRUE\na & b  \n\n\n[1] FALSE\n\n\nCode\n# 2. 逻辑或：只要有一个为 TRUE 就返回 TRUE\na | b  \n\n\n[1] TRUE\n\n\nCode\n# 3. 逻辑非：取反\n!b     \n\n\n[1] TRUE",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#字符型",
+    "href": "lecture4.html#字符型",
+    "title": "5  R的数据类型",
+    "section": "5.8 字符型",
+    "text": "5.8 字符型\n字符型用于存储文本数据（字符串）。在 R 中，字符型数据需要用双引号 \"\" 或单引号 '' 括起来。即便内容是数字，只要加上引号，它就被视为字符型。\nR 中的字符型向量存储的是字符串。typeof() 返回 \"character\"，这表示底层的 C 语言类型是指向字符数组的指针（在 R 内部通过 CHARSXP 和 STRING 指针管理）。\n\n\nCode\nx &lt;- \"1\"\n \n# 查看底层存储类型 \ntypeof(x)\n\n\n[1] \"character\"\n\n\nCode\n# 查看面向对象的类 \nclass(x)\n\n\n[1] \"character\"\n\n\nCode\n# 查看长度（向量中元素的个数）\nlength(x)\n\n\n[1] 1\n\n\nCode\n# 查看字符串的实际字符数 \nnchar(x)\n\n\n[1] 1\n\n\n注意区别： * length(x) 返回的是向量中元素的个数（这里 x 只有一个元素 “1”，所以返回 1）。 * nchar(x) 返回的是字符串内容本身的长度（“1” 只有一个字符，所以返回 1）。\nR 提供了丰富的函数来处理字符型数据，主要包括拼接、截取、查找和替换。\n\n5.8.1 字符串拼接\n使用 paste() 或 paste0() 函数。paste() 默认以空格分隔，paste0() 则无分隔符，效率更高。\n\n\nCode\nid &lt;- \"001\"\nname &lt;- \"R Language\"\n \n# paste 自动转换类型并拼接 \npaste(\"ID:\", id, \"Name:\", name)\n\n\n[1] \"ID: 001 Name: R Language\"\n\n\nCode\n# paste0 紧密拼接 \npaste0(id, \"_\", name)\n\n\n[1] \"001_R Language\"\n\n\n\n\n5.8.2 字符串截取与长度\n使用 substr() 或 substring() 提取部分字符串。\n\n\nCode\ntext &lt;- \"Data Science\"\n \n# 从第 1 位到第 4 位截取 \nsubstr(text, start = 1, stop = 4)\n\n\n[1] \"Data\"\n\n\n\n\n5.8.3 \n在字符串中，某些特殊字符需要使用反斜杠 \\ 进行转义。\n\n\nCode\n# \\n 换行符 \ncat(\"Line 1\\nLine 2\")\n\n\nLine 1\nLine 2\n\n\nCode\n# \\\" 输出双引号本身 \ncat(\"He said, \\\"Hello World\\\".\")\n\n\nHe said, \"Hello World\".\n\n\nCode\n# \\t 制表符 \ncat(\"Col1\\tCol2\")\n\n\nCol1    Col2\n\n\n\n\n5.8.4 类型转换\n字符型与其他类型（如数值型、逻辑型）之间经常需要相互转换。\n强制转换为字符型 使用 as.character() 函数。\n\n\nCode\n# 数值转字符 \nnum_val &lt;- 123.45 \nas.character(num_val)\n\n\n[1] \"123.45\"\n\n\nCode\n# 逻辑转字符 \nas.character(TRUE) # 结果为 \"TRUE\"\n\n\n[1] \"TRUE\"",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#因子型",
+    "href": "lecture4.html#因子型",
+    "title": "5  R的数据类型",
+    "section": "5.9 因子型",
+    "text": "5.9 因子型\n因子型是 R 语言中特有的一种数据类型，用于处理分类数据（Categorical Data）。它本质上是一个带有属性（水平和类）的整数向量。因子在统计建模（如线性回归、方差分析）和数据可视化中非常重要，因为它能明确区分“名义变量”（无顺序，如性别）和“有序变量”（有顺序，如等级）。\n\n5.9.1 底层存储机制\n虽然因子打印出来像字符，但 typeof() 揭示了它的真面目：它在底层是使用整数存储的。每个整数对应一个“水平”标签。\n\n\nCode\n# Creating a vector \nx &lt;- c(\"female\", \"male\", \"male\", \"female\")\nprint(x)\n\n\n[1] \"female\" \"male\"   \"male\"   \"female\"\n\n\nCode\n# Converting the vector x into a factor \n# named gender \ngender &lt;- factor(x, levels = c(\"male\", \"female\"))\nprint(gender)\n\n\n[1] female male   male   female\nLevels: male female\n\n\nCode\n# 查看底层存储类型：整数 \ntypeof(gender)\n\n\n[1] \"integer\"\n\n\nCode\n# 查看面向对象的类 \nclass(gender)\n\n\n[1] \"factor\"\n\n\nCode\n# 查看因子的水平 \nlevels(gender)\n\n\n[1] \"male\"   \"female\"\n\n\n代码解析： * typeof(gender) 返回 \"integer\"，说明因子底层存储的是整数索引。 * levels(gender) 返回 c(\"male\", \"female\")。在这个例子中，底层的整数映射关系为：1 -&gt; “male”，2 -&gt; “female”。 * 打印 gender 时显示的 Levels 列表清晰地展示了所有可能的取值。\n因子的核心在于水平的控制 ,即levels 属性。它不仅定义了允许的取值，还定义了顺序。\n\n\n5.9.2 自定义水平顺序\n默认情况下，水平按字母顺序排列。但在实际分析中，我们经常需要自定义顺序（例如：设置基准组）。\n\n\nCode\n# 默认情况：按字母顺序，Female 在前 \nfactor(c(\"High\", \"Low\", \"Medium\"))\n\n\n[1] High   Low    Medium\nLevels: High Low Medium\n\n\nCode\n# 强制指定顺序：Low &lt; Medium &lt; High \n# 这里的 levels 参数决定了整数映射：Low=1, Medium=2, High=3 \nfactor(c(\"High\", \"Low\", \"Medium\"), \n       levels = c(\"Low\", \"Medium\", \"High\"))\n\n\n[1] High   Low    Medium\nLevels: Low Medium High\n\n\n\n5.9.2.1 包含未观测值\n因子可以包含数据中尚未出现的水平，这在处理训练集和测试集不一致时非常有用。\n\n\nCode\n# 数据中只有 \"male\" 和 \"female\"，但我们预设 \"unknown\" 也是一个有效水平 \ngender_full &lt;- factor(c(\"male\", \"female\"), levels = c(\"male\", \"female\", \"unknown\"))\nprint(gender_full)\n\n\n[1] male   female\nLevels: male female unknown\n\n\n\n\n\n5.9.3 有序因子\n对于像“低、中、高”这样有内在顺序的分类数据，应使用 ordered = TRUE。这允许在因子上进行比较运算。\n\n\nCode\nstatus &lt;- factor(c(\"low\", \"high\", \"medium\", \"high\"), \n                 levels = c(\"low\", \"medium\", \"high\"), \n                 ordered = TRUE)\nprint(status)\n\n\n[1] low    high   medium high  \nLevels: low &lt; medium &lt; high\n\n\nCode\n# 有序因子支持比较运算 \nstatus[1] &lt; status[2] # low &lt; high 返回 TRUE \n\n\n[1] TRUE\n\n\n无序因子不支持比较\ngender[1] &lt; gender[2] # 会报错 \n##作业：综合判断与解释\n请根据下面代码，填写表格并补充解释。\n\n\nCode\nobj1 &lt;- 25.6\nobj2 &lt;- 25L\nobj3 &lt;- \"25.6\"\nobj4 &lt;- factor(c(\"A\", \"B\", \"A\"))\nobj5 &lt;- FALSE\nobj6 &lt;- 1 + 4i\n\n\n请完成下表：\n\n\n\n对象\n值\ntypeof()\nclass()\n所属数据类型\n你的解释\n\n\n\n\nobj1\n\n\n\n\n\n\n\nobj2\n\n\n\n\n\n\n\nobj3\n\n\n\n\n\n\n\nobj4\n\n\n\n\n\n\n\nobj5\n\n\n\n\n\n\n\nobj6",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#r语言基础数据类型总结",
+    "href": "lecture4.html#r语言基础数据类型总结",
+    "title": "5  R的数据类型",
+    "section": "",
+    "text": "数据类型\nR表示方式\ntypeof()结果\n典型取值示例\n主要用途\n\n\n\n\n数值型 (numeric)\n普通数字\ndouble\n1 3.14 -5\n存储连续数值，最常见的数据类型\n\n\n整数型 (integer)\n数字后加 L\ninteger\n1L 10L\n存储整数，常用于索引或计数\n\n\n复数型 (complex)\na + bi 或 complex()\ncomplex\n3+2i\n表示复数，常见于数学和信号处理\n\n\n逻辑型 (logical)\nTRUE / FALSE\nlogical\nTRUE FALSE NA\n条件判断、逻辑运算\n\n\n字符型 (character)\n用引号 \" \" 或 ' '\ncharacter\n\"R\" \"data\"\n存储文本数据\n\n\n因子型 (factor)\nfactor()函数\ninteger（底层）\nfactor(c(\"male\",\"female\"))\n表示分类变量",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#数据类型与数据结构的区别",
+    "href": "lecture5.html#数据类型与数据结构的区别",
+    "title": "6  R的数据结构",
+    "section": "",
+    "text": "数据类型决定“数据是什么”，数据结构决定“数据如何组织”。\n\n\n\n5 是一个 数值型（numeric）\n\"R\" 是一个 字符型（character）\n\n\n\n\n多个数值\n多个变量\n一整张数据表\n\n\n\n\n\n\n概念\n作用\n类比\n\n\n\n\n数据类型\n描述单个数据的性质\n砖头的材料\n\n\n数据结构\n描述数据如何组织在一起\n房子的结构\n\n\n\n\n\n数值型数据可以组成 向量\n多个向量可以组成 数据框\n\n\n\n数据类型是基础，数据结构是数据的组织形式。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#r-中常见的数据结构",
+    "href": "lecture5.html#r-中常见的数据结构",
+    "title": "6  R的数据结构",
+    "section": "6.2 R 中常见的数据结构",
+    "text": "6.2 R 中常见的数据结构\nR 中最重要的五种数据结构包括：\n\n向量（vector）\n矩阵（matrix）\n数组（array）\n列表（list）\n数据框（data frame）\n\n其中：\n\n向量是最基础的数据结构\n其他结构通常都是向量的扩展",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#向量vector",
+    "href": "lecture5.html#向量vector",
+    "title": "6  R的数据结构",
+    "section": "6.3 向量（Vector）",
+    "text": "6.3 向量（Vector）\n向量是 R 中最基本的数据结构。\n向量的特点：\n\n由 相同数据类型 的元素组成\n元素按 顺序排列\n\n可以使用 c() 函数创建向量。\n\n\nCode\nx &lt;- c(1, 2, 3, 4, 5)\nx\n\n\n[1] 1 2 3 4 5\n\n\n查看向量信息：\n\n\nCode\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\nlength(x)\n\n\n[1] 5\n\n\n向量也可以是其他类型：\n\n\nCode\ny &lt;- c(\"A\", \"B\", \"C\")\nz &lt;- c(TRUE, FALSE, TRUE)\n\n\n注意：\n\n向量中的元素必须是同一种数据类型。\n\n\n6.3.1 向量化运算：R语言的核心思想\n在 R 语言中，向量化运算（Vectorized Operations） 是一个非常重要的概念。\n很多人认为：\n\n向量化运算是 R 语言的灵魂。\n\n这是因为 R 的设计初衷就是 用于统计计算和数据分析，而这些任务通常需要对 一整组数据同时进行计算。\n\n向量化运算指的是：\n\n一次运算同时作用于整个向量，而不是逐个元素计算。\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\n\nx + 1\n\n\n[1] 2 3 4 5\n\n\n输出结果：\n2 3 4 5\n在这里：\n\n1 自动作用于向量中的每一个元素\n不需要使用循环\n\n\n\n\n6.3.2 向量化运算的优势\n向量化运算具有三个重要优点：\n\n\n\n优点\n解释\n\n\n\n\n代码更简洁\n不需要循环\n\n\n计算更快\nR 内部使用 C 语言优化\n\n\n更符合数学表达\n表达方式更直观\n\n\n\n例如：\n\n\n6.3.3 使用循环\n\n\nCode\nx &lt;- c(1,2,3,4)\ny &lt;- numeric(length(x))\n\nfor(i in 1:length(x)){\n  y[i] &lt;- x[i] + 1\n}\n\ny\n\n\n[1] 2 3 4 5\n\n\n使用向量化\n\n\nCode\nx &lt;- c(1,2,3,4)\n\nx + 1\n\n\n[1] 2 3 4 5\n\n\n可以看到：\n\n向量化代码更加简单。\n\n\n\n\n6.3.4 向量之间的运算\nR 可以直接对 两个向量进行运算。\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- c(4,5,6)\n\nx + y\n\n\n[1] 5 7 9\n\n\n结果：\n5 7 9\n这相当于：\n(1+4, 2+5, 3+6)\n同样可以进行：\n\n\nCode\nx - y\n\n\n[1] -3 -3 -3\n\n\nCode\nx * y\n\n\n[1]  4 10 18\n\n\nCode\nx / y\n\n\n[1] 0.25 0.40 0.50\n\n\n\n\n\n6.3.5 向量与标量运算\nR 还支持 向量与单个数字运算。\n\n\nCode\nx &lt;- c(10,20,30)\n\nx * 2\n\n\n[1] 20 40 60\n\n\n结果：\n20 40 60\n这里的 2 会自动作用到向量的每个元素。\n\n\n\n6.3.6 逻辑向量运算\n向量化运算不仅适用于数值，还适用于 逻辑判断。\n\n\nCode\nx &lt;- c(3,7,2,9)\n\nx &gt; 5\n\n\n[1] FALSE  TRUE FALSE  TRUE\n\n\n结果：\nFALSE TRUE FALSE TRUE\n这在数据筛选中非常重要。\n例如：\n\n\nCode\nx[x &gt; 5]\n\n\n[1] 7 9\n\n\n结果：\n7 9\n\n\n\n6.3.7 常见的向量化函数\nR 中大量函数都是向量化函数，例如：\n\n\n\n函数\n作用\n\n\n\n\nsum()\n求和\n\n\nmean()\n求平均\n\n\nsqrt()\n开平方\n\n\nlog()\n对数\n\n\nabs()\n绝对值\n\n\n\n示例：\n\n\nCode\nx &lt;- c(1,4,9,16)\n\nsqrt(x)\n\n\n[1] 1 2 3 4\n\n\n输出：\n1 2 3 4\n\n\n\n6.3.8 向量长度不一致的情况\n当两个向量长度不一致时，R 会进行 循环回收（recycling）。\n\n\nCode\nx &lt;- c(1,2,3,4)\ny &lt;- c(10,20)\n\nx + y\n\n\n[1] 11 22 13 24\n\n\nR 会自动扩展 y：\n10 20 10 20\n结果：\n11 22 13 24\n如果长度不能整除，R 会给出警告。\n\n\n\n6.3.9 为什么说向量是 R 最重要的数据结构\n在 R 中：\n\n矩阵是 向量的二维形式\n数组是 多维向量\n数据框的每一列也是 向量\n\n因此可以说：\n\n向量是 R 所有数据结构的基础。\n\n理解向量化运算，就等于理解了 R 语言的计算方式。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#矩阵matrix",
+    "href": "lecture5.html#矩阵matrix",
+    "title": "6  R的数据结构",
+    "section": "6.6 矩阵（Matrix）",
+    "text": "6.6 矩阵（Matrix）\n矩阵是 二维数据结构。\n可以理解为：\n\n具有行和列的向量\n\n创建矩阵：\n\n\nCode\nm &lt;- matrix(1:6, nrow = 2, ncol = 3)\nm\n\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n\n矩阵结构：\n\n\nCode\ndim(m)\n\n\n[1] 2 3\n\n\n矩阵特点：\n\n所有元素 必须是同一种数据类型\n具有 行和列\n\n访问元素：\n\n\nCode\nm[1,2]\n\n\n[1] 3",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#数组array",
+    "href": "lecture5.html#数组array",
+    "title": "6  R的数据结构",
+    "section": "6.7 数组（Array）",
+    "text": "6.7 数组（Array）\n数组是 多维矩阵。\n例如：\n\n三维数据\n多个矩阵组合\n\n创建数组：\n\n\nCode\na &lt;- array(1:12, dim = c(2,3,2))\na\n\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    7    9   11\n[2,]    8   10   12\n\n\n数组特点：\n\n可以有 多个维度\n元素类型必须一致\n\n查看维度：\n\n\nCode\ndim(a)\n\n\n[1] 2 3 2",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#列表list",
+    "href": "lecture5.html#列表list",
+    "title": "6  R的数据结构",
+    "section": "6.8 列表（List）",
+    "text": "6.8 列表（List）\n列表是一种 非常灵活的数据结构。\n列表的特点：\n\n可以包含不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(80, 90, 85)\n)\n\nmy_list\n\n\n$name\n[1] \"Alice\"\n\n$age\n[1] 25\n\n$score\n[1] 80 90 85\n\n\n查看结构：\n\n\nCode\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 80 90 85\n\n\n列表常用于：\n\n存储复杂对象\n存储模型结果\n存储多种类型数据",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#数据框data-frame",
+    "href": "lecture5.html#数据框data-frame",
+    "title": "6  R的数据结构",
+    "section": "6.9 数据框（Data Frame）",
+    "text": "6.9 数据框（Data Frame）\n数据框是 R 中最常用的数据结构之一。\n可以理解为：\n\n类似 Excel 表格的数据结构\n\n特点：\n\n每一列是一个向量\n不同列可以是不同类型\n\n创建数据框：\n\n\nCode\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(85, 90, 88)\n)\n\ndf\n\n\n  id name score\n1  1    A    85\n2  2    B    90\n3  3    C    88\n\n\n查看结构：\n\n\nCode\nstr(df)\n\n\n'data.frame':   3 obs. of  3 variables:\n $ id   : int  1 2 3\n $ name : chr  \"A\" \"B\" \"C\"\n $ score: num  85 90 88\n\n\n数据框特点：\n\n列长度必须一致\n不同列可以有不同数据类型",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#r-数据结构之间的关系",
+    "href": "lecture5.html#r-数据结构之间的关系",
+    "title": "6  R的数据结构",
+    "section": "6.10 R 数据结构之间的关系",
+    "text": "6.10 R 数据结构之间的关系\n可以用下面的关系理解：\n\n\n\n数据结构\n维度\n数据类型要求\n\n\n\n\nvector\n一维\n相同类型\n\n\nmatrix\n二维\n相同类型\n\n\narray\n多维\n相同类型\n\n\nlist\n一维\n可不同类型\n\n\ndata frame\n二维\n每列相同，但列之间可不同",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#本章总结",
+    "href": "lecture5.html#本章总结",
+    "title": "6  R的数据结构",
+    "section": "6.11 本章总结",
+    "text": "6.11 本章总结\n在 R 中：\n\n数据类型 描述数据的性质\n数据结构 描述数据如何组织\n\n常见数据类型包括：\n\nnumeric\ninteger\nlogical\ncharacter\nfactor\ncomplex\n\n常见数据结构包括：\n\nvector\nmatrix\narray\nlist\ndata frame\n\n理解数据类型和数据结构，是学习 R 数据分析的重要基础。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#一个简单的数据分析示例",
+    "href": "lecture5.html#一个简单的数据分析示例",
+    "title": "6  R的数据结构",
+    "section": "6.4 一个简单的数据分析示例",
+    "text": "6.4 一个简单的数据分析示例\n假设我们有一组实验数据：\n\n\nCode\nyield &lt;- c(5.2, 6.1, 5.8, 6.5, 5.9)\n\n\n计算平均值：\n\n\nCode\nmean(yield)\n\n\n[1] 5.9\n\n\n计算标准化值：\n\n\nCode\nyield - mean(yield)\n\n\n[1] -0.7  0.2 -0.1  0.6  0.0",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#整个过程不需要循环",
+    "href": "lecture5.html#整个过程不需要循环",
+    "title": "6  R的数据结构",
+    "section": "6.5 整个过程不需要循环。",
+    "text": "6.5 整个过程不需要循环。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#r-的原子类型与列表类型",
+    "href": "lecture5.html#r-的原子类型与列表类型",
+    "title": "6  R的数据结构",
+    "section": "6.12 R 的原子类型与列表类型",
+    "text": "6.12 R 的原子类型与列表类型\n在 R 语言中，对象大体可以分为两类：\n\n原子类型（atomic types）\n列表类型（list）\n\n理解这两种类型，有助于理解 R 的数据结构。\n\n\n6.12.1 原子类型（Atomic Types）\n原子类型是 R 中最基本的数据类型。\n它们的特点是：\n\n一个对象中的所有元素必须是同一种类型。\n\nR 中常见的原子类型包括：\n\n\n\n类型\n示例\n\n\n\n\nnumeric\n3.14\n\n\ninteger\n3L\n\n\nlogical\nTRUE\n\n\ncharacter\n\"R\"\n\n\ncomplex\n2+3i\n\n\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\ntypeof(x)\n\n\n[1] \"double\"\n\n\n这里 x 是一个 数值型向量，所有元素类型相同。\n\n\n\n6.12.2 列表类型（List）\n列表是一种 更灵活的数据结构。\n它的特点是：\n\n列表中的元素可以是不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(90,85,88)\n)\n\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 90 85 88\n\n\n可以看到：\n\nname 是字符型\n\nage 是数值型\n\nscore 是数值向量\n\n\n\n\n6.12.3 原子类型与列表的区别\n\n\n\n特征\n原子类型\n列表\n\n\n\n\n元素类型\n必须相同\n可以不同\n\n\n常见形式\n向量、矩阵、数组\nlist\n\n\n用途\n数值计算\n存储复杂对象\n\n\n\n简单示例：\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- list(1,\"A\",TRUE)\n\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\ntypeof(y)\n\n\n[1] \"list\"\n\n\n结果：\n\nx 是原子向量\n\ny 是列表",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#矩阵运算练习",
+    "href": "lecture5.html#矩阵运算练习",
+    "title": "6  R的数据结构",
+    "section": "6.13 矩阵运算练习",
+    "text": "6.13 矩阵运算练习\n下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。\n\n\n6.13.1 练习1：创建矩阵\n使用 matrix() 函数创建一个 2×3 的矩阵：\n1 2 3\n4 5 6\n提示：\nmatrix()\n要求：\n\n创建矩阵 A\n查看矩阵内容\n查看矩阵维度\n\n\n\n\n6.13.2 练习2：矩阵加法\n创建两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n创建矩阵 A\n创建矩阵 B\n计算 A + B\n\n思考：\n矩阵加法需要满足什么条件？\n\n\n\n6.13.3 练习3：矩阵乘法\n给定两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n使用 %*% 计算矩阵乘法 A × B\n写出结果矩阵\n\n提示：\nA %*% B\n思考：\n矩阵乘法与普通乘法有什么不同？\n\n\n\n6.13.4 练习4：矩阵转置\n给定矩阵：\nA =\n1 2 3\n4 5 6\n要求：\n\n创建矩阵 A\n计算矩阵转置\n\n提示：\nt(A)\n\n\n\n6.13.5 练习5：矩阵行列式\n给定矩阵：\nA =\n2 1\n3 4\n要求：\n\n创建矩阵 A\n计算矩阵的行列式\n\n提示：\ndet(A)\n\n\n\n6.13.6 练习6：矩阵求逆\n给定矩阵：\nA =\n4 7\n2 6\n要求：\n\n创建矩阵 A\n计算矩阵的逆矩阵\n\n提示：\nsolve(A)\n思考：\n什么情况下矩阵不能求逆？\n\n\n\n6.13.7 练习7：验证逆矩阵\n使用上一题的矩阵 A。\n要求：\n\n计算 A × A^{-1}\n观察结果\n\n提示：\nA %*% solve(A)\n思考：\n结果应该接近什么矩阵？\n\n\n\n6.13.8 练习8：解线性方程组\n求解以下方程组：\n2x + y = 5\nx + 3y = 6\n步骤：\n\n写出系数矩阵 A\n写出常数向量 b\n使用 solve() 求解\n\n提示：\nsolve(A, b)\n\n\n\n6.13.9 练习9：矩阵元素提取\n给定矩阵：\nA =\n1 2 3\n4 5 6\n7 8 9\n要求：\n\n提取第2行\n提取第3列\n提取元素 5\n\n\n\n\n6.13.10 练习10：综合练习\n创建矩阵：\nA =\n1 2\n3 4\n\nB =\n2 0\n1 2\n完成以下计算：\n\nA + B 是否可以计算？\nA %*% B\nB %*% A\ndet(A)\nsolve(A)\n\n思考：\n为什么 A + B 可能无法计算？",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#思考题选做",
+    "href": "lecture5.html#思考题选做",
+    "title": "6  R的数据结构",
+    "section": "6.14 思考题（选做）",
+    "text": "6.14 思考题（选做）\n在 R 中：\nA * B\n与\nA %*% B\n有什么区别？\n请给出示例说明。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
   }
 ]
