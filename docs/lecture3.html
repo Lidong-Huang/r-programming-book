@@ -173,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R的数据类型</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">第五次课-矩阵、数组、列表与数据框</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">R的数据结构</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -283,17 +283,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#保持代码可复现" id="toc-保持代码可复现" class="nav-link" data-scroll-target="#保持代码可复现"><span class="header-section-number">4.8.2</span> 保持代码可复现</a></li>
   <li><a href="#函数必须带括号" id="toc-函数必须带括号" class="nav-link" data-scroll-target="#函数必须带括号"><span class="header-section-number">4.8.3</span> 函数必须带括号</a></li>
   </ul></li>
-  <li><a href="#ai-辅助-r-编程" id="toc-ai-辅助-r-编程" class="nav-link" data-scroll-target="#ai-辅助-r-编程"><span class="header-section-number">4.9</span> AI 辅助 R 编程</a></li>
-  <li><a href="#常见-ai-编程助手" id="toc-常见-ai-编程助手" class="nav-link" data-scroll-target="#常见-ai-编程助手"><span class="header-section-number">4.10</span> 常见 AI 编程助手</a>
+  <li><a href="#r-中的-与" id="toc-r-中的-与" class="nav-link" data-scroll-target="#r-中的-与"><span class="header-section-number">4.9</span> R 中的 <code>()</code>、<code>[]</code> 与 <code>{}</code></a>
   <ul class="collapse">
-  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt"><span class="header-section-number">4.10.1</span> ChatGPT</a></li>
-  <li><a href="#deepseek" id="toc-deepseek" class="nav-link" data-scroll-target="#deepseek"><span class="header-section-number">4.10.2</span> DeepSeek</a></li>
-  <li><a href="#通义千问qwen" id="toc-通义千问qwen" class="nav-link" data-scroll-target="#通义千问qwen"><span class="header-section-number">4.10.3</span> 通义千问（Qwen）</a></li>
-  <li><a href="#豆包doubao" id="toc-豆包doubao" class="nav-link" data-scroll-target="#豆包doubao"><span class="header-section-number">4.10.4</span> 豆包（Doubao）</a></li>
+  <li><a href="#函数调用与参数" id="toc-函数调用与参数" class="nav-link" data-scroll-target="#函数调用与参数"><span class="header-section-number">4.9.1</span> <code>()</code>：函数调用与参数</a></li>
+  <li><a href="#多个参数" id="toc-多个参数" class="nav-link" data-scroll-target="#多个参数"><span class="header-section-number">4.9.2</span> 多个参数</a></li>
+  <li><a href="#表达式分组" id="toc-表达式分组" class="nav-link" data-scroll-target="#表达式分组"><span class="header-section-number">4.9.3</span> 表达式分组</a></li>
+  <li><a href="#元素提取索引" id="toc-元素提取索引" class="nav-link" data-scroll-target="#元素提取索引"><span class="header-section-number">4.9.4</span> <code>[]</code>：元素提取（索引）</a></li>
+  <li><a href="#向量索引" id="toc-向量索引" class="nav-link" data-scroll-target="#向量索引"><span class="header-section-number">4.9.5</span> 向量索引</a></li>
+  <li><a href="#多个元素" id="toc-多个元素" class="nav-link" data-scroll-target="#多个元素"><span class="header-section-number">4.9.6</span> 多个元素</a></li>
+  <li><a href="#矩阵索引" id="toc-矩阵索引" class="nav-link" data-scroll-target="#矩阵索引"><span class="header-section-number">4.9.7</span> 矩阵索引</a></li>
+  <li><a href="#数据框索引" id="toc-数据框索引" class="nav-link" data-scroll-target="#数据框索引"><span class="header-section-number">4.9.8</span> 数据框索引</a></li>
+  <li><a href="#代码块function-block" id="toc-代码块function-block" class="nav-link" data-scroll-target="#代码块function-block"><span class="header-section-number">4.9.9</span> <code>{}</code>：代码块（function block）</a></li>
+  <li><a href="#函数中的代码块" id="toc-函数中的代码块" class="nav-link" data-scroll-target="#函数中的代码块"><span class="header-section-number">4.9.10</span> 函数中的代码块</a></li>
+  <li><a href="#条件语句中的代码块" id="toc-条件语句中的代码块" class="nav-link" data-scroll-target="#条件语句中的代码块"><span class="header-section-number">4.9.11</span> 条件语句中的代码块</a></li>
+  <li><a href="#循环中的代码块" id="toc-循环中的代码块" class="nav-link" data-scroll-target="#循环中的代码块"><span class="header-section-number">4.9.12</span> 循环中的代码块</a></li>
   </ul></li>
-  <li><a href="#ai-在-r-编程中的使用技巧" id="toc-ai-在-r-编程中的使用技巧" class="nav-link" data-scroll-target="#ai-在-r-编程中的使用技巧"><span class="header-section-number">4.11</span> AI 在 R 编程中的使用技巧</a></li>
-  <li><a href="#使用-ai-的注意事项" id="toc-使用-ai-的注意事项" class="nav-link" data-scroll-target="#使用-ai-的注意事项"><span class="header-section-number">4.12</span> 使用 AI 的注意事项</a></li>
-  <li><a href="#本章小结" id="toc-本章小结" class="nav-link" data-scroll-target="#本章小结"><span class="header-section-number">4.13</span> 本章小结</a></li>
+  <li><a href="#ai-辅助-r-编程" id="toc-ai-辅助-r-编程" class="nav-link" data-scroll-target="#ai-辅助-r-编程"><span class="header-section-number">4.10</span> AI 辅助 R 编程</a></li>
+  <li><a href="#常见-ai-编程助手" id="toc-常见-ai-编程助手" class="nav-link" data-scroll-target="#常见-ai-编程助手"><span class="header-section-number">4.11</span> 常见 AI 编程助手</a>
+  <ul class="collapse">
+  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt"><span class="header-section-number">4.11.1</span> ChatGPT</a></li>
+  <li><a href="#deepseek" id="toc-deepseek" class="nav-link" data-scroll-target="#deepseek"><span class="header-section-number">4.11.2</span> DeepSeek</a></li>
+  <li><a href="#通义千问qwen" id="toc-通义千问qwen" class="nav-link" data-scroll-target="#通义千问qwen"><span class="header-section-number">4.11.3</span> 通义千问（Qwen）</a></li>
+  <li><a href="#豆包doubao" id="toc-豆包doubao" class="nav-link" data-scroll-target="#豆包doubao"><span class="header-section-number">4.11.4</span> 豆包（Doubao）</a></li>
+  </ul></li>
+  <li><a href="#ai-在-r-编程中的使用技巧" id="toc-ai-在-r-编程中的使用技巧" class="nav-link" data-scroll-target="#ai-在-r-编程中的使用技巧"><span class="header-section-number">4.12</span> AI 在 R 编程中的使用技巧</a></li>
+  <li><a href="#使用-ai-的注意事项" id="toc-使用-ai-的注意事项" class="nav-link" data-scroll-target="#使用-ai-的注意事项"><span class="header-section-number">4.13</span> 使用 AI 的注意事项</a></li>
+  <li><a href="#本章小结" id="toc-本章小结" class="nav-link" data-scroll-target="#本章小结"><span class="header-section-number">4.14</span> 本章小结</a></li>
   </ul>
 </nav>
     </div>
@@ -838,16 +853,185 @@ data &lt;- read.csv("data.csv")</code></pre>
 <hr>
 </section>
 </section>
-<section id="ai-辅助-r-编程" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="ai-辅助-r-编程"><span class="header-section-number">4.9</span> AI 辅助 R 编程</h2>
+<section id="r-中的-与" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="r-中的-与"><span class="header-section-number">4.9</span> R 中的 <code>()</code>、<code>[]</code> 与 <code>{}</code></h2>
+<p>在 R 语言中，<code>()</code>、<code>[]</code> 和 <code>{}</code> 是三种非常常见的符号，它们分别用于 <strong>函数调用、参数传递、元素提取以及代码块控制</strong>。理解它们的作用，对于编写 R 程序非常重要。</p>
+<hr>
+<section id="函数调用与参数" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="函数调用与参数"><span class="header-section-number">4.9.1</span> <code>()</code>：函数调用与参数</h3>
+<p><code>()</code> 最常见的用途是 <strong>调用函数并传递参数</strong>。</p>
+<p>例如：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>这里：</p>
+<ul>
+<li><code>mean</code> 是函数名<br>
+</li>
+<li><code>()</code> 中放的是函数参数</li>
+</ul>
+<p>因此：</p>
+<blockquote class="blockquote">
+<p><code>()</code> 用于 <strong>函数调用和参数传递</strong>。</p>
+</blockquote>
+<hr>
+</section>
+<section id="多个参数" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="多个参数"><span class="header-section-number">4.9.2</span> 多个参数</h3>
+<p>函数通常可以有多个参数。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>这里：</p>
+<ul>
+<li><code>from</code>、<code>to</code>、<code>by</code> 都是函数参数</li>
+<li><code>()</code> 中定义了函数的输入信息</li>
+</ul>
+<hr>
+</section>
+<section id="表达式分组" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="表达式分组"><span class="header-section-number">4.9.3</span> 表达式分组</h3>
+<p><code>()</code> 还可以用于改变运算顺序。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>如果没有括号：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>计算顺序会不同。</p>
+<hr>
+</section>
+<section id="元素提取索引" class="level3" data-number="4.9.4">
+<h3 data-number="4.9.4" class="anchored" data-anchor-id="元素提取索引"><span class="header-section-number">4.9.4</span> <code>[]</code>：元素提取（索引）</h3>
+<p><code>[]</code> 用于 <strong>从对象中提取元素</strong>，也叫 <strong>索引（indexing）</strong>。</p>
+<hr>
+</section>
+<section id="向量索引" class="level3" data-number="4.9.5">
+<h3 data-number="4.9.5" class="anchored" data-anchor-id="向量索引"><span class="header-section-number">4.9.5</span> 向量索引</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>结果：</p>
+<pre><code>20</code></pre>
+<p>表示提取第 2 个元素。</p>
+<hr>
+</section>
+<section id="多个元素" class="level3" data-number="4.9.6">
+<h3 data-number="4.9.6" class="anchored" data-anchor-id="多个元素"><span class="header-section-number">4.9.6</span> 多个元素</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>结果：</p>
+<pre><code>10 30</code></pre>
+<hr>
+</section>
+<section id="矩阵索引" class="level3" data-number="4.9.7">
+<h3 data-number="4.9.7" class="anchored" data-anchor-id="矩阵索引"><span class="header-section-number">4.9.7</span> 矩阵索引</h3>
+<p>矩阵索引需要 <strong>行和列两个位置</strong>：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>A[<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>表示：</p>
+<pre><code>第2行，第3列</code></pre>
+<hr>
+</section>
+<section id="数据框索引" class="level3" data-number="4.9.8">
+<h3 data-number="4.9.8" class="anchored" data-anchor-id="数据框索引"><span class="header-section-number">4.9.8</span> 数据框索引</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">85</span>)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>表示：</p>
+<pre><code>第1行，第2列</code></pre>
+<hr>
+</section>
+<section id="代码块function-block" class="level3" data-number="4.9.9">
+<h3 data-number="4.9.9" class="anchored" data-anchor-id="代码块function-block"><span class="header-section-number">4.9.9</span> <code>{}</code>：代码块（function block）</h3>
+<p><code>{}</code> 用于表示 <strong>代码块（block）</strong>，也可以理解为 <strong>一组需要连续执行的语句</strong>。</p>
+<p>例如：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>R 会：</p>
+<ol type="1">
+<li>依次执行代码</li>
+<li>返回最后一条语句的结果</li>
+</ol>
+<hr>
+</section>
+<section id="函数中的代码块" class="level3" data-number="4.9.10">
+<h3 data-number="4.9.10" class="anchored" data-anchor-id="函数中的代码块"><span class="header-section-number">4.9.10</span> 函数中的代码块</h3>
+<p>在函数定义中，<code>{}</code> 表示 <strong>函数体（function body）</strong>。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  y <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>这里：</p>
+<ul>
+<li><code>function(x)</code> 定义函数参数<br>
+</li>
+<li><code>{}</code> 中的代码是函数执行的内容</li>
+</ul>
+<hr>
+</section>
+<section id="条件语句中的代码块" class="level3" data-number="4.9.11">
+<h3 data-number="4.9.11" class="anchored" data-anchor-id="条件语句中的代码块"><span class="header-section-number">4.9.11</span> 条件语句中的代码块</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&gt;</span> <span class="dv">3</span>){</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x 大于 3"</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>当条件满足时，<code>{}</code> 中的代码会被执行。</p>
+<hr>
+</section>
+<section id="循环中的代码块" class="level3" data-number="4.9.12">
+<h3 data-number="4.9.12" class="anchored" data-anchor-id="循环中的代码块"><span class="header-section-number">4.9.12</span> 循环中的代码块</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>{}</code> 表示循环体。</p>
+<hr>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>作用</th>
+<th>典型场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>()</code></td>
+<td>函数调用、参数传递、表达式分组</td>
+<td><code>mean(x)</code></td>
+</tr>
+<tr class="even">
+<td><code>[]</code></td>
+<td>元素提取（索引）</td>
+<td><code>x[2]</code></td>
+</tr>
+<tr class="odd">
+<td><code>{}</code></td>
+<td>代码块、函数体、控制结构</td>
+<td><code>if(){}</code></td>
+</tr>
+</tbody>
+</table>
+<p>简单记忆：</p>
+<ul>
+<li><code>()</code> → 函数与参数<br>
+</li>
+<li><code>[]</code> → 取数据<br>
+</li>
+<li><code>{}</code> → 一段代码</li>
+</ul>
+</section>
+</section>
+<section id="ai-辅助-r-编程" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="ai-辅助-r-编程"><span class="header-section-number">4.10</span> AI 辅助 R 编程</h2>
 <p>近年来，AI 工具已经成为 R 编程的重要辅助工具。</p>
 <p>合理使用 AI 可以显著提高学习效率。</p>
 <hr>
 </section>
-<section id="常见-ai-编程助手" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="常见-ai-编程助手"><span class="header-section-number">4.10</span> 常见 AI 编程助手</h2>
-<section id="chatgpt" class="level3" data-number="4.10.1">
-<h3 data-number="4.10.1" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">4.10.1</span> ChatGPT</h3>
+<section id="常见-ai-编程助手" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="常见-ai-编程助手"><span class="header-section-number">4.11</span> 常见 AI 编程助手</h2>
+<section id="chatgpt" class="level3" data-number="4.11.1">
+<h3 data-number="4.11.1" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">4.11.1</span> ChatGPT</h3>
 <p>优势：</p>
 <ul>
 <li>解释代码逻辑能力强</li>
@@ -862,8 +1046,8 @@ data &lt;- read.csv("data.csv")</code></pre>
 </ul>
 <hr>
 </section>
-<section id="deepseek" class="level3" data-number="4.10.2">
-<h3 data-number="4.10.2" class="anchored" data-anchor-id="deepseek"><span class="header-section-number">4.10.2</span> DeepSeek</h3>
+<section id="deepseek" class="level3" data-number="4.11.2">
+<h3 data-number="4.11.2" class="anchored" data-anchor-id="deepseek"><span class="header-section-number">4.11.2</span> DeepSeek</h3>
 <p>DeepSeek 在代码生成方面表现非常强。</p>
 <p>优势：</p>
 <ul>
@@ -879,8 +1063,8 @@ data &lt;- read.csv("data.csv")</code></pre>
 </ul>
 <hr>
 </section>
-<section id="通义千问qwen" class="level3" data-number="4.10.3">
-<h3 data-number="4.10.3" class="anchored" data-anchor-id="通义千问qwen"><span class="header-section-number">4.10.3</span> 通义千问（Qwen）</h3>
+<section id="通义千问qwen" class="level3" data-number="4.11.3">
+<h3 data-number="4.11.3" class="anchored" data-anchor-id="通义千问qwen"><span class="header-section-number">4.11.3</span> 通义千问（Qwen）</h3>
 <p>阿里推出的大模型，在国内使用非常稳定。</p>
 <p>优势：</p>
 <ul>
@@ -896,8 +1080,8 @@ data &lt;- read.csv("data.csv")</code></pre>
 </ul>
 <hr>
 </section>
-<section id="豆包doubao" class="level3" data-number="4.10.4">
-<h3 data-number="4.10.4" class="anchored" data-anchor-id="豆包doubao"><span class="header-section-number">4.10.4</span> 豆包（Doubao）</h3>
+<section id="豆包doubao" class="level3" data-number="4.11.4">
+<h3 data-number="4.11.4" class="anchored" data-anchor-id="豆包doubao"><span class="header-section-number">4.11.4</span> 豆包（Doubao）</h3>
 <p>字节跳动推出的 AI 模型。</p>
 <p>优势：</p>
 <ul>
@@ -914,8 +1098,8 @@ data &lt;- read.csv("data.csv")</code></pre>
 <hr>
 </section>
 </section>
-<section id="ai-在-r-编程中的使用技巧" class="level2" data-number="4.11">
-<h2 data-number="4.11" class="anchored" data-anchor-id="ai-在-r-编程中的使用技巧"><span class="header-section-number">4.11</span> AI 在 R 编程中的使用技巧</h2>
+<section id="ai-在-r-编程中的使用技巧" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="ai-在-r-编程中的使用技巧"><span class="header-section-number">4.12</span> AI 在 R 编程中的使用技巧</h2>
 <p>推荐使用方式：</p>
 <ol type="1">
 <li>描述清楚任务<br>
@@ -931,15 +1115,15 @@ x 变量为 temperature，
 y 变量为 yield，
 并添加线性回归拟合线。</code></pre>
 <p>AI 会生成类似代码：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(temperature, yield)) <span class="sc">+</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(temperature, yield)) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="使用-ai-的注意事项" class="level2" data-number="4.12">
-<h2 data-number="4.12" class="anchored" data-anchor-id="使用-ai-的注意事项"><span class="header-section-number">4.12</span> 使用 AI 的注意事项</h2>
+<section id="使用-ai-的注意事项" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="使用-ai-的注意事项"><span class="header-section-number">4.13</span> 使用 AI 的注意事项</h2>
 <p>AI 可以辅助编程，但不能完全替代学习。</p>
 <p>建议：</p>
 <ul>
@@ -951,8 +1135,8 @@ y 变量为 yield，
 </ul>
 <hr>
 </section>
-<section id="本章小结" class="level2" data-number="4.13">
-<h2 data-number="4.13" class="anchored" data-anchor-id="本章小结"><span class="header-section-number">4.13</span> 本章小结</h2>
+<section id="本章小结" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="本章小结"><span class="header-section-number">4.14</span> 本章小结</h2>
 <ul>
 <li>R 编程常见错误包括符号、大小写和变量顺序问题<br>
 </li>
@@ -1378,8 +1562,8 @@ y 变量为 yield，
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lecture4.html" class="pagination-link" aria-label="第四次课-向量">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lecture4.html" class="pagination-link" aria-label="R的数据类型">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R的数据类型</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
