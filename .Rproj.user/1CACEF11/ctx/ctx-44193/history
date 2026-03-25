@@ -1,0 +1,57 @@
+setwd("E:/hld/课件/R语言编程基础/quarto_book_from_lectures")
+lectures <- paste0("lecture", 1:14, ".Rmd")
+strip_yaml_keep_title <- function(text) {
+if (length(text) == 0) return(list(title = NA_character_, body = ""))
+if (!grepl("^\\s*---\\s*$", text[1])) return(list(title = NA_character_, body = paste(text, collapse="\n")))
+end_idx <- which(text[-1] == "---")[1] + 1
+if (is.na(end_idx)) return(list(title = NA_character_, body = paste(text, collapse="\n")))
+yaml <- text[2:(end_idx-1)]
+title_line <- yaml[grepl("^\\s*title\\s*:", yaml)]
+title <- NA_character_
+if (length(title_line) > 0) {
+title <- sub("^\\s*title\\s*:\\s*", "", title_line[1])
+title <- gsub('^["\']|["\']$', "", trimws(title))
+}
+body <- if (end_idx < length(text)) paste(text[(end_idx+1):length(text)], collapse="\n") else ""
+list(title = title, body = body)
+}
+strip_setup_chunk <- function(body) {
+gsub("```\\{r\\s+setup[^}]*\\}[\\s\\S]*?```\\s*", "", body, perl = TRUE)
+}
+for (f in lectures) {
+if (!file.exists(f)) next
+x <- readLines(f, warn = FALSE, encoding = "UTF-8")
+parts <- strip_yaml_keep_title(x)
+title <- parts$title
+body  <- strip_setup_chunk(parts$body)
+lec_no <- sub("lecture([0-9]+)\\.Rmd", "\\1", f)
+if (is.na(title) || title == "") title <- paste("Lecture", lec_no)
+out <- paste0("---\n",
+"title: \"", title, "\"\n",
+"---\n\n",
+trimws(body))
+out_file <- sub("\\.Rmd$", ".qmd", f)
+writeLines(strsplit(out, "\n", fixed = TRUE)[[1]], out_file, useBytes = TRUE)
+message("Wrote: ", out_file)
+}
+message("\n下一步：把生成的 lecture*.qmd 加到 _quarto.yml 的 chapters 里，然后运行 quarto render")
+install.packages("lobstr")
+install.packages("corrr")
+install.packages("mapdata")
+install.packages("mapchina")
+library(ggplot2)
+library(viridis)
+ggdiamonds = ggplot(diamonds, aes(x, depth)) +
+stat_density_2d(aes(fill = stat(nlevel)), geom = "polygon", n = 200, bins = 50,contour = TRUE) +
+facet_wrap(clarity~.) +
+scale_fill_viridis_c(option = "A")
+# library(rayshader)
+# plot_gg(ggdiamonds,multicore=TRUE,width=5,height=5,scale=250,windowsize=c(1400,866),
+#         zoom = 0.55, phi = 30)
+ggdiamonds
+#_abc <- 1
+quarto render
+library(ggplot2)
+library(purrr)
+library(purrr)
+install.packages("rlang", dependencies = TRUE)

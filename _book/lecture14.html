@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>15&nbsp; 第16次课 map – R 编程基础讲义（黄利东）</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lecture13.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+
+<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+
+<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+
+<script src="site_libs/echarts4r-4.8.0/echarts-en.min.js"></script>
+
+<script src="site_libs/echarts4r-4.8.0/ecStat.min.js"></script>
+
+<script src="site_libs/echarts4r-4.8.0/dataTool.min.js"></script>
+
+<script src="site_libs/echarts4r-binding-0.4.5/echarts4r.js"></script>
+
+<script src="site_libs/echarts-world-1.0.0/world.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture14.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R 编程基础讲义（黄利东）</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">前言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R 编程常见问题、开发习惯与 AI 辅助编程</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">第五次课-矩阵、数组、列表与数据框</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">第六次课-列表与数据框的操作</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">第八次课-控制流</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10次课—初级绘图函数plot</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">第11课 基本统计分析</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">第12课-R假设检验方法</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">第十三课 ggplot绘图</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture14.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<style type="text/css">
+.watch-out {
+  background-color: violet;
+  border: 3px solid black;
+  font-weight: bold;
+}
+</style>
+</div>
+<style>
+div.blue pre { background-color:yellow; }
+div.blue pre.r { background-color:violet; }
+body{ /* Normal  */
+      font-size: 35px;
+      color: DarkBlue;
+  }
+code.r{
+  font-size: 30px;
+  
+}
+pre {
+  font-size: 20px
+}
+</style>
+<div class="blue">
+<section id="中国地图" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="中国地图"><span class="header-section-number">15.1</span> 中国地图</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(maps)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mapdata)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">map</span>(<span class="st">"china"</span>, <span class="at">col =</span> <span class="st">"blue"</span>,  <span class="at">panel.first =</span> <span class="fu">grid</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mapchina)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(sf)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(china)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 13 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 115.4248 ymin: 39.44473 xmax: 116.8805 ymax: 41.05936
+Geodetic CRS:  WGS 84
+# A tibble: 6 × 14
+  Code_County Code_Perfecture Code_Province Name_Province Name_Perfecture
+  &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;          
+1 110101      1101            11            北京市        &lt;NA&gt;           
+2 110102      1101            11            北京市        &lt;NA&gt;           
+3 110114      1101            11            北京市        &lt;NA&gt;           
+4 110115      1101            11            北京市        &lt;NA&gt;           
+5 110111      1101            11            北京市        &lt;NA&gt;           
+6 110116      1101            11            北京市        &lt;NA&gt;           
+# ℹ 9 more variables: Name_County &lt;chr&gt;, Pinyin &lt;chr&gt;, Pop_2000 &lt;dbl&gt;,
+#   Pop_2010 &lt;dbl&gt;, Pop_2017 &lt;dbl&gt;, Pop_2018 &lt;dbl&gt;, Area &lt;dbl&gt;, Density &lt;dbl&gt;,
+#   geometry &lt;MULTIPOLYGON [°]&gt;</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> js <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fu">filter</span>(Code_Province <span class="sc">==</span> <span class="dv">32</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(js) <span class="sc">+</span>      <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">rank</span>(Density))) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"GnBu"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>         <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>         <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="地图-图层合作" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="地图-图层合作"><span class="header-section-number">15.2</span> 地图 图层合作</h2>
+<p>“This is a quick and dirty way to get map data (from the maps package) on to your plot. This is a good place to start if you need some crude reference lines, but you’ll typically want something more sophisticated for communication graphics.”</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(maps)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(us.cities)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> big_citi <span class="ot">&lt;-</span> <span class="fu">subset</span>(us.cities,pop <span class="sc">&gt;</span> <span class="dv">500000</span>)  <span class="do">##人口大于50万的城市</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qplot</span>(long,lat,<span class="at">data=</span>big_citi) <span class="sc">+</span> <span class="fu">borders</span>(<span class="st">"state"</span>,<span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps1.0-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> tx_city <span class="ot">&lt;-</span> <span class="fu">subset</span>(us.cities,country.etc<span class="sc">==</span><span class="st">"TX"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(tx_city,<span class="fu">aes</span>(long,lat)) <span class="sc">+</span> <span class="fu">borders</span>(<span class="st">"county"</span>,<span class="st">"texas"</span>,<span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"black"</span>,<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps1.0-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="leaflet-标记" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="leaflet-标记"><span class="header-section-number">15.3</span> leaflet 标记</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(leaflet)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(magrittr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Make data with several positions</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> data_red <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LONG=</span><span class="dv">42</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">LAT=</span><span class="dv">23</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">PLACE=</span><span class="fu">paste</span>(<span class="st">"Red_place_"</span>,<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data_blue <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LONG=</span><span class="dv">42</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">LAT=</span><span class="dv">23</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">PLACE=</span><span class="fu">paste</span>(<span class="st">"Blue_place_"</span>,<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Initialize the leaflet map:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">setView</span>(<span class="at">lng=</span><span class="dv">42</span>, <span class="at">lat=</span><span class="dv">23</span>, <span class="at">zoom=</span><span class="dv">6</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Add two tiles</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addProviderTiles</span>(<span class="st">"Esri.WorldImagery"</span>, <span class="at">group=</span><span class="st">"background 1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addTiles</span>(<span class="at">options =</span> <span class="fu">providerTileOptions</span>(<span class="at">noWrap =</span> <span class="cn">TRUE</span>), <span class="at">group=</span><span class="st">"background 2"</span>) <span class="sc">%&gt;%</span> <span class="co">#If you happen to have a custom map tile URL template to use, you can provide it as an argument to addTiles()</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Add 2 marker groups</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addCircleMarkers</span>(<span class="at">data=</span>data_red, <span class="at">lng=</span><span class="sc">~</span>LONG , <span class="at">lat=</span><span class="sc">~</span>LAT, <span class="at">radius=</span><span class="dv">8</span> , <span class="at">color=</span><span class="st">"black"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">fillColor=</span><span class="st">"red"</span>, <span class="at">stroke =</span> <span class="cn">TRUE</span>, <span class="at">fillOpacity =</span> <span class="fl">0.8</span>, <span class="at">group=</span><span class="st">"Red"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addCircleMarkers</span>(<span class="at">data=</span>data_blue, <span class="at">lng=</span><span class="sc">~</span>LONG , <span class="at">lat=</span><span class="sc">~</span>LAT, <span class="at">radius=</span><span class="dv">8</span> , <span class="at">color=</span><span class="st">"black"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">fillColor=</span><span class="st">"blue"</span>, <span class="at">stroke =</span> <span class="cn">TRUE</span>, <span class="at">fillOpacity =</span> <span class="fl">0.8</span>, <span class="at">group=</span><span class="st">"Blue"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Add the control widget</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addLayersControl</span>(<span class="at">overlayGroups =</span> <span class="fu">c</span>(<span class="st">"Red"</span>,<span class="st">"Blue"</span>) , <span class="at">baseGroups =</span> <span class="fu">c</span>(<span class="st">"background 1"</span>,<span class="st">"background 2"</span>), </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">options =</span> <span class="fu">layersControlOptions</span>(<span class="at">collapsed =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> m  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-a50e91c4f017dbe45172" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a50e91c4f017dbe45172">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[23,42],6,[]],"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"background 1",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"background 2",{"errorTileUrl":"","noWrap":true,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[21.80134869169081,23.67641545706039,24.2338374485754,22.87650168271974,24.36688895819663,23.10697780434614,23.24911708535928,22.29987567293274,23.95243159704413,23.66076158359158],[42.31358854721062,42.22110936275409,42.40470206213031,40.49097846593097,42.32938133908776,41.68115291312097,40.97727479336307,41.98152724800173,40.50264311613584,42.66910615042889],8,null,"Red",{"interactive":true,"className":"","stroke":true,"color":"black","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.8},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[24.38601406237639,22.85504488119735,24.91558330810869,23.65298273584889,23.01514775403789,22.93489278901602,23.58870376552271,21.89068447798525,21.86847266964696,21.88678824184766],[42.46011525313995,42.3432975213846,42.29809390260922,42.56134014435371,42.28257470907148,43.95242348144934,41.97799330699456,41.2795930022986,42.4839971345487,40.25735933802108],8,null,"Blue",{"interactive":true,"className":"","stroke":true,"color":"black","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":0.8},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[["background 1","background 2"],["Red","Blue"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}],"limits":{"lat":[21.80134869169081,24.91558330810869],"lng":[40.25735933802108,43.95242348144934]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="网页交互式地图" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="网页交互式地图"><span class="header-section-number">15.4</span> 网页交互式地图</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(echarts4r)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> cns <span class="ot">&lt;-</span> countrycode<span class="sc">::</span>codelist<span class="sc">$</span>country.name.en</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> cns <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">country =</span> cns,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">value =</span> <span class="fu">runif</span>(<span class="fu">length</span>(cns), <span class="dv">1</span>, <span class="dv">200</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> )</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> cns <span class="sc">|&gt;</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">e_charts</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">e_map</span>(value) <span class="sc">|&gt;</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">e_visual_map</span>(value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-ee7879890347ced09464" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-ee7879890347ced09464">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"map","map":"world","name":"value","data":[{"value":168.6322915407363,"name":"Afghanistan"},{"value":102.8774152251426,"name":"Albania"},{"value":8.438041226472706,"name":"Algeria"},{"value":186.6049093881156,"name":"American Samoa"},{"value":95.01066663279198,"name":"Andorra"},{"value":191.5200112571474,"name":"Angola"},{"value":31.98248095531017,"name":"Anguilla"},{"value":112.8527546834666,"name":"Antarctica"},{"value":110.8533254847862,"name":"Antigua & Barbuda"},{"value":104.7344282364938,"name":"Argentina"},{"value":100.4466760265641,"name":"Armenia"},{"value":90.76107693649828,"name":"Aruba"},{"value":21.58126023062505,"name":"Australia"},{"value":31.73536615562625,"name":"Austria"},{"value":46.09717763378285,"name":"Austria-Hungary"},{"value":20.65094149066135,"name":"Azerbaijan"},{"value":99.57251875754446,"name":"Baden"},{"value":126.784962200094,"name":"Bahamas"},{"value":107.9474720912986,"name":"Bahrain"},{"value":89.92371321748942,"name":"Bangladesh"},{"value":19.89680117834359,"name":"Barbados"},{"value":123.2081968123093,"name":"Bavaria"},{"value":37.90722834062763,"name":"Belarus"},{"value":126.3945462470874,"name":"Belgium"},{"value":93.06076471810229,"name":"Belize"},{"value":196.0369691960514,"name":"Benin"},{"value":186.6722621575464,"name":"Bermuda"},{"value":95.30580218927935,"name":"Bhutan"},{"value":118.2512063521426,"name":"Bolivia"},{"value":54.3325419453904,"name":"Bosnia & Herzegovina"},{"value":93.10501857777126,"name":"Botswana"},{"value":184.6191359097138,"name":"Bouvet Island"},{"value":179.8815032676794,"name":"Brazil"},{"value":128.1833161946852,"name":"British Indian Ocean Territory"},{"value":186.2950694961473,"name":"British Virgin Islands"},{"value":20.45641289930791,"name":"Brunei"},{"value":187.2187944517937,"name":"Brunswick"},{"value":34.37468424020335,"name":"Bulgaria"},{"value":178.1877090288326,"name":"Burkina Faso"},{"value":145.4092934690416,"name":"Burundi"},{"value":170.3245472824201,"name":"Cambodia"},{"value":88.0663488144055,"name":"Cameroon"},{"value":49.1058251557406,"name":"Canada"},{"value":184.342418765882,"name":"Cape Verde"},{"value":187.8540837848559,"name":"Caribbean Netherlands"},{"value":149.0501677393913,"name":"Cayman Islands"},{"value":121.5407398100942,"name":"Central African Republic"},{"value":39.41564680682495,"name":"Chad"},{"value":61.08169724023901,"name":"Channel Islands"},{"value":67.52414074307308,"name":"Chile"},{"value":167.876472434029,"name":"China"},{"value":33.20761300367303,"name":"Christmas Island"},{"value":199.784975920571,"name":"Cocos (Keeling) Islands"},{"value":127.1229845986236,"name":"Colombia"},{"value":27.94415900530294,"name":"Comoros"},{"value":165.6135540164541,"name":"Congo - Brazzaville"},{"value":150.7928342020605,"name":"Congo - Kinshasa"},{"value":149.7775417687371,"name":"Cook Islands"},{"value":111.8150727958418,"name":"Costa Rica"},{"value":163.6379704813007,"name":"Croatia"},{"value":83.61436123307794,"name":"Cuba"},{"value":199.6177070618141,"name":"Curaçao"},{"value":40.27331938338466,"name":"Cyprus"},{"value":151.197755998699,"name":"Czechia"},{"value":124.0110488962382,"name":"Czechoslovakia"},{"value":170.8750523789786,"name":"Côte d’Ivoire"},{"value":187.679476658348,"name":"Denmark"},{"value":139.2855487847701,"name":"Djibouti"},{"value":63.06634936016053,"name":"Dominica"},{"value":6.651978857815266,"name":"Dominican Republic"},{"value":66.81519337370992,"name":"Ecuador"},{"value":199.7688906674739,"name":"Egypt"},{"value":112.3182371230796,"name":"El Salvador"},{"value":167.603654051898,"name":"Equatorial Guinea"},{"value":166.1010164523032,"name":"Eritrea"},{"value":135.2831537204329,"name":"Estonia"},{"value":177.6802081828937,"name":"Eswatini"},{"value":4.943798129912466,"name":"Ethiopia"},{"value":3.238193718716502,"name":"Falkland Islands"},{"value":55.01406078995205,"name":"Faroe Islands"},{"value":40.33366433414631,"name":"Fiji"},{"value":185.9776783422567,"name":"Finland"},{"value":9.448747543618083,"name":"France"},{"value":10.56897382345051,"name":"French Guiana"},{"value":122.2724526284728,"name":"French Polynesia"},{"value":35.41011062287726,"name":"French Southern Territories"},{"value":97.64349907496944,"name":"Gabon"},{"value":115.593902283581,"name":"Gambia"},{"value":163.4509345402475,"name":"Georgia"},{"value":140.8888959777541,"name":"German Democratic Republic"},{"value":160.8862916931976,"name":"Germany"},{"value":148.077434154693,"name":"Ghana"},{"value":168.9806517320685,"name":"Gibraltar"},{"value":146.6199486784171,"name":"Greece"},{"value":11.6857589755673,"name":"Greenland"},{"value":102.7222363455221,"name":"Grenada"},{"value":55.89464258775115,"name":"Guadeloupe"},{"value":135.0146256627049,"name":"Guam"},{"value":45.40130844013765,"name":"Guatemala"},{"value":190.7293302819598,"name":"Guernsey"},{"value":3.23513965937309,"name":"Guinea"},{"value":155.0663232158404,"name":"Guinea-Bissau"},{"value":54.53983017103747,"name":"Guyana"},{"value":6.871306281303987,"name":"Haiti"},{"value":66.86314597423188,"name":"Hamburg"},{"value":79.07452567224391,"name":"Hanover"},{"value":76.10633027018048,"name":"Heard & McDonald Islands"},{"value":70.84493370191194,"name":"Hesse Electoral"},{"value":145.8076130950358,"name":"Hesse Grand Ducal"},{"value":24.95249495375901,"name":"Hesse-Darmstadt"},{"value":101.8591140001081,"name":"Hesse-Kassel"},{"value":113.1812478979118,"name":"Honduras"},{"value":118.7559078328777,"name":"Hong Kong SAR China"},{"value":146.5006311228499,"name":"Hungary"},{"value":118.7469426640309,"name":"Iceland"},{"value":105.7895029028878,"name":"India"},{"value":177.834244112717,"name":"Indonesia"},{"value":33.70843657269143,"name":"Iran"},{"value":170.7665558261797,"name":"Iraq"},{"value":36.55669475765899,"name":"Ireland"},{"value":71.66848129476421,"name":"Isle of Man"},{"value":57.97059905854985,"name":"Israel"},{"value":165.125895868754,"name":"Italy"},{"value":190.0800835061818,"name":"Jamaica"},{"value":59.14528948161751,"name":"Japan"},{"value":18.67303234827705,"name":"Jersey"},{"value":108.8095281685237,"name":"Jordan"},{"value":14.01405075774528,"name":"Kazakhstan"},{"value":128.6034249807708,"name":"Kenya"},{"value":89.61914994684048,"name":"Kiribati"},{"value":69.08509899163619,"name":"Kosovo"},{"value":133.7586268344894,"name":"Kuwait"},{"value":42.1869166106917,"name":"Kyrgyzstan"},{"value":128.009571377188,"name":"Laos"},{"value":139.2768472060561,"name":"Latvia"},{"value":16.38022399577312,"name":"Lebanon"},{"value":155.1336779312696,"name":"Lesotho"},{"value":3.732787683140486,"name":"Liberia"},{"value":135.0780070661567,"name":"Libya"},{"value":56.38741231756285,"name":"Liechtenstein"},{"value":4.629500604001805,"name":"Lithuania"},{"value":27.67352394084446,"name":"Luxembourg"},{"value":100.608093684772,"name":"Macao SAR China"},{"value":100.1633283561096,"name":"Madagascar"},{"value":64.5868704544846,"name":"Malawi"},{"value":71.1047856179066,"name":"Malaysia"},{"value":181.2451659929939,"name":"Maldives"},{"value":64.8745884206146,"name":"Mali"},{"value":50.62765433173627,"name":"Malta"},{"value":41.25055559165776,"name":"Marshall Islands"},{"value":61.3722348192241,"name":"Martinique"},{"value":103.5796147519723,"name":"Mauritania"},{"value":71.22612404660322,"name":"Mauritius"},{"value":111.3071130185854,"name":"Mayotte"},{"value":197.4569800228346,"name":"Mecklenburg Schwerin"},{"value":133.0603730976582,"name":"Mexico"},{"value":160.120408577146,"name":"Micronesia (Federated States of)"},{"value":66.85690251598135,"name":"Modena"},{"value":20.84987790766172,"name":"Moldova"},{"value":199.8700463578571,"name":"Monaco"},{"value":163.8184301056899,"name":"Mongolia"},{"value":80.46376284910366,"name":"Montenegro"},{"value":144.4128682790324,"name":"Montserrat"},{"value":27.10169176617637,"name":"Morocco"},{"value":94.38189838710241,"name":"Mozambique"},{"value":46.35556041356176,"name":"Myanmar (Burma)"},{"value":117.5105213685893,"name":"Namibia"},{"value":70.72145620384254,"name":"Nassau"},{"value":78.12514179944992,"name":"Nauru"},{"value":177.4838448392693,"name":"Nepal"},{"value":95.64499487425201,"name":"Netherlands"},{"value":145.6187474520411,"name":"Netherlands Antilles"},{"value":140.8717462634668,"name":"New Caledonia"},{"value":198.9420462287962,"name":"New Zealand"},{"value":187.5073417376261,"name":"Nicaragua"},{"value":17.66915491060354,"name":"Niger"},{"value":194.0232251395937,"name":"Nigeria"},{"value":135.3546675906982,"name":"Niue"},{"value":113.7154689251911,"name":"Norfolk Island"},{"value":163.5699137237389,"name":"North Korea"},{"value":29.39193274429999,"name":"North Macedonia"},{"value":147.2009131924715,"name":"Northern Mariana Islands"},{"value":167.2620080187917,"name":"Norway"},{"value":51.2399988132529,"name":"Oldenburg"},{"value":137.5722349761054,"name":"Oman"},{"value":140.811279270798,"name":"Orange Free State"},{"value":90.49413630389608,"name":"Pakistan"},{"value":168.0973535056692,"name":"Palau"},{"value":122.9840426638257,"name":"Palestinian Territories"},{"value":156.868625498144,"name":"Panama"},{"value":49.96571051795036,"name":"Papua New Guinea"},{"value":157.6498914081603,"name":"Paraguay"},{"value":87.05733644263819,"name":"Parma"},{"value":144.7010457324795,"name":"Peru"},{"value":150.5314439279027,"name":"Philippines"},{"value":1.958270089700818,"name":"Piedmont-Sardinia"},{"value":183.8082234999165,"name":"Pitcairn Islands"},{"value":140.6331684202887,"name":"Poland"},{"value":99.90105960262008,"name":"Portugal"},{"value":143.6343091602903,"name":"Prussia"},{"value":73.76156686153263,"name":"Puerto Rico"},{"value":41.28675672411919,"name":"Qatar"},{"value":94.49951745662838,"name":"Republic of Vietnam"},{"value":79.40422299643978,"name":"Romania"},{"value":55.50201551709324,"name":"Russia"},{"value":72.12372837378643,"name":"Rwanda"},{"value":55.17111134948209,"name":"Réunion"},{"value":107.2642182037234,"name":"Saint Martin (French part)"},{"value":199.6387888051104,"name":"Samoa"},{"value":90.46819975762628,"name":"San Marino"},{"value":198.5342572813388,"name":"Sardinia"},{"value":71.37629948602989,"name":"Saudi Arabia"},{"value":196.931204212131,"name":"Saxe-Weimar-Eisenach"},{"value":171.5120401054155,"name":"Saxony"},{"value":192.2122537582181,"name":"Senegal"},{"value":144.332212154055,"name":"Serbia"},{"value":60.72059451160021,"name":"Serbia and Montenegro"},{"value":160.1199533524923,"name":"Seychelles"},{"value":47.36675550066866,"name":"Sierra Leone"},{"value":104.6875504294876,"name":"Singapore"},{"value":88.45477104559541,"name":"Sint Maarten"},{"value":174.0264160037041,"name":"Slovakia"},{"value":5.841037721373141,"name":"Slovenia"},{"value":93.3816737276502,"name":"Solomon Islands"},{"value":55.53982381266542,"name":"Somalia"},{"value":81.17740507889539,"name":"Somaliland"},{"value":119.1502330652438,"name":"South Africa"},{"value":78.32556704431772,"name":"South Georgia & South Sandwich Islands"},{"value":157.0691574485973,"name":"South Korea"},{"value":79.91126551339403,"name":"South Sudan"},{"value":198.4126551698428,"name":"Spain"},{"value":77.98064719303511,"name":"Sri Lanka"},{"value":154.4370609181933,"name":"St. Barthélemy"},{"value":160.8790817223489,"name":"St. Helena"},{"value":114.0188027417753,"name":"St. Kitts & Nevis"},{"value":5.530386487022042,"name":"St. Lucia"},{"value":100.5887270611711,"name":"St. Pierre & Miquelon"},{"value":132.6601185004693,"name":"St. Vincent & Grenadines"},{"value":185.978031077655,"name":"Stateless"},{"value":87.09466949757189,"name":"Sudan"},{"value":137.4301884358283,"name":"Suriname"},{"value":56.60856267833151,"name":"Svalbard & Jan Mayen"},{"value":58.24119770503603,"name":"Sweden"},{"value":80.40609656530432,"name":"Switzerland"},{"value":9.718638124642894,"name":"Syria"},{"value":103.2270114962012,"name":"São Tomé & Príncipe"},{"value":88.62277938378975,"name":"Taiwan"},{"value":56.82053547841497,"name":"Tajikistan"},{"value":114.6463897200301,"name":"Tanzania"},{"value":146.5418716964778,"name":"Thailand"},{"value":63.54324673837982,"name":"Tibet"},{"value":29.49784621573053,"name":"Timor-Leste"},{"value":145.5470260086004,"name":"Togo"},{"value":94.19396983506158,"name":"Tokelau"},{"value":69.2594153303653,"name":"Tonga"},{"value":64.21165464958176,"name":"Trinidad & Tobago"},{"value":187.1195767442696,"name":"Tunisia"},{"value":127.2246114059817,"name":"Turkey"},{"value":3.235131226712838,"name":"Turkmenistan"},{"value":137.827996912878,"name":"Turks & Caicos Islands"},{"value":16.11924636596814,"name":"Tuscany"},{"value":6.237801197217777,"name":"Tuvalu"},{"value":127.4357461293694,"name":"Two Sicilies"},{"value":9.125826788600534,"name":"U.S. Virgin Islands"},{"value":165.8556748742703,"name":"Uganda"},{"value":107.9626793283969,"name":"Ukraine"},{"value":188.583888088353,"name":"United Arab Emirates"},{"value":17.05028239171952,"name":"United Arab Republic"},{"value":74.50321159302257,"name":"United Kingdom"},{"value":108.1336340010166,"name":"United Province CA"},{"value":132.6738509486895,"name":"United States"},{"value":112.4145466284826,"name":"United States Minor Outlying Islands (the)"},{"value":108.5531430952251,"name":"Unknown"},{"value":93.3549424726516,"name":"Uruguay"},{"value":72.91327877016738,"name":"Uzbekistan"},{"value":105.7739100337494,"name":"Vanuatu"},{"value":184.5045882281847,"name":"Vatican City"},{"value":16.66422630939633,"name":"Venezuela"},{"value":124.347827060381,"name":"Vietnam"},{"value":79.5627224445343,"name":"Wallis & Futuna"},{"value":116.5789254512638,"name":"Western Sahara"},{"value":44.82274723425508,"name":"Wuerttemburg"},{"value":104.4545817417093,"name":"Würtemberg"},{"value":89.44613552745432,"name":"Yemen"},{"value":186.7124271499924,"name":"Yemen Arab Republic"},{"value":44.22278898698278,"name":"Yemen People's Republic"},{"value":35.27616634010337,"name":"Yugoslavia"},{"value":106.3916109225247,"name":"Zambia"},{"value":72.42330673756078,"name":"Zanzibar"},{"value":25.03651700750925,"name":"Zimbabwe"},{"value":74.89762963098474,"name":"Åland Islands"}]}],"visualMap":[{"calculable":true,"type":"continuous","min":1.958270089700818,"max":199.8700463578571}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="地统计分析" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="地统计分析"><span class="header-section-number">15.5</span> 地统计分析</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(sp)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gstat)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(meuse)<span class="co">#Meuse河流域表层土壤重金属的采样数据</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">coordinates</span>(meuse) <span class="ot">=</span> <span class="er">~</span>x<span class="sc">+</span>y<span class="co">#构建坐标</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">data</span>(meuse.grid)<span class="co">#网格</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">coordinates</span>(meuse.grid) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>,<span class="st">"y"</span>)<span class="co">#网格编码</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> meuse.grid <span class="ot">&lt;-</span> <span class="fu">as</span>(meuse.grid,<span class="st">"SpatialPixelsDataFrame"</span>)<span class="co">#空间数据转dataframe</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(<span class="fu">variogram</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>,meuse,<span class="at">alpha=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">45</span>,<span class="dv">90</span>,<span class="dv">135</span>)),<span class="at">type=</span><span class="st">"l"</span>) <span class="co">#各向异性判断， 0 北 90 东</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> v1 <span class="ot">&lt;-</span> <span class="fu">variogram</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>, meuse, <span class="at">width=</span><span class="dv">90</span>, <span class="at">cutoff=</span><span class="dv">1300</span>)<span class="co">#变异函数与自变量的关系，平均数不变模型</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> v <span class="ot">&lt;-</span> <span class="fu">fit.variogram</span>(<span class="fu">variogram</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>,meuse), <span class="fu">vgm</span>(<span class="st">"Sph"</span>))<span class="co">#球形模型拟合</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(v1,v)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> sk.fit <span class="ot">&lt;-</span> <span class="fu">krige</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>,meuse,meuse.grid,v,<span class="at">beta=</span><span class="fl">5.9</span>)<span class="co">#简单克里格插值</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[using simple kriging]</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(sk.fit)<span class="co">#插值结果地图展示</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/maps3-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>来个电影放松下<a href="https://www.bilibili.com/video/BV1xX4y1V7wd/?spm_id_from=333.788.recommend_more_video.-1" class="uri">https://www.bilibili.com/video/BV1xX4y1V7wd/?spm_id_from=333.788.recommend_more_video.-1</a></p>
+</section>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lecture13.html" class="pagination-link" aria-label="第十三课 ggplot绘图">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">第十三课 ggplot绘图</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

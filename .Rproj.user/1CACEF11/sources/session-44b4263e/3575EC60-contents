@@ -1,0 +1,55 @@
+setwd("C:/Users/l/Desktop")
+list.files()
+mean(c(1,2,3))
+typeof()
+iris[,1][47]
+length()
+class(seq(1, 10, 2))
+iris[,1][1]
+x <- 2
+typeof(x)
+
+y <- 1L
+typeof(y)
+
+# 方法一：使用 complex 函数构造 
+x <- 1 
+y <- 1 
+z <- complex(real = x, 
+             imaginary = y)
+z^2 
+
+a <- 1
+b <- 0 
+
+
+a & b  
+
+a==b
+
+id <- "001"
+name <- "R Language"
+nchar(name)
+# paste 自动转换类型并拼接 
+paste("ID:", id, "Name:", name)
+
+x <- seq(1, 10, 2)
+length(x)
+
+text <- "Data Science"
+
+# 从第 1 位到第 4 位截取 
+substr(text, start =2, stop = 4)
+
+
+
+factor(c("High", "Low", "Medium"), 
+       levels = c("Low", "Medium", "High"))
+
+obj1 <- 25.6 # "double", "numeric"
+obj2 <- 25L
+obj3 <- "25.6"
+obj4 <- factor(c("A", "B", "A"))
+obj5 <- FALSE
+obj6 <- 1 + 4i
+class(obj1)

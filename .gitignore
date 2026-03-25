@@ -1,14 +1,11 @@
-.Rproj.user
+# 忽略源文件
+*.qmd
+*.Rproj
 .Rhistory
-.RData
-.Ruserdata
 
-/.quarto/
-**/*.quarto_ipynb
-# 忽略所有文件
-/*
+# 只忽略项目根目录下的源图片目录
+/images/
 
-# 但排除以下文件/文件夹（不忽略它们）
+# 保留输出目录
 !/docs/
-!.gitignore
-!_quarto.yml
+!/docs/**

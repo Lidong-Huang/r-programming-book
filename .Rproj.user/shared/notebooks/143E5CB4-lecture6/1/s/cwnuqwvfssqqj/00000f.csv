@@ -1,0 +1,4 @@
+"0","library(purrr)"
+"2","错误: package or namespace load failed for ‘purrr’ in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]):
+ 载入了命名空间‘rlang’ 1.1.4，但需要的是>= 1.1.7
+"

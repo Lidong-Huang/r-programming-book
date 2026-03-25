@@ -1,0 +1,702 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "",
+    "text": "1 前言\n本电子书为课程《R语言编程基础》课程配套电子讲义，系统介绍 R 语言的基础语法、数据处理方法、统计分析思想以及可视化技术。课程面向本科生与研究生，旨在帮助学生建立数据思维，提升科学研究与工程实践中的数据分析能力。",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#r语言的发展历史",
+    "href": "index.html#r语言的发展历史",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "1.1 R语言的发展历史",
+    "text": "1.1 R语言的发展历史\nR 语言起源于 20 世纪 90 年代，由新西兰奥克兰大学的 Ross Ihaka 和 Robert Gentleman 开发，最初作为统计语言 S 的开源替代版本。2000 年 R 1.0.0 正式发布，标志着其成为一个稳定的统计计算平台。\n随着 CRAN（Comprehensive R Archive Network）的建立，R 逐步形成了全球性的开源生态系统。目前，R 拥有数万扩展包，涵盖：\n\n统计建模\n机器学习\n数据可视化\n空间分析\n生物信息学\n环境科学\n金融分析\n文献计量\n高性能计算\n\nR 已成为学术界与科研领域最重要的数据分析工具之一，在统计学、生态学、农业科学、医学、社会科学等领域具有广泛应用。\n\n1.1.1 起源阶段（1970s–1990s）：从 S 语言到 R 的诞生\n\n1970年代：S语言\n\n在 Bell Labs 由 John Chambers 等人开发\n目标：为统计分析提供一个交互式编程环境\n奠定了数据对象化和函数式编程的思想\n\n1993年：R语言诞生\n\n在 University of Auckland\n由 Ross Ihaka 和 Robert Gentleman 开发\n本质：S语言的开源实现（受 S 启发但独立开发）\n取名 “R” 来自两位作者名字首字母\n\n1995年：开源发布\n\n采用 GPL 许可证，推动全球协作\n\n\n\n\n1.1.2 CRAN与社区形成（1997–2005）：生态系统奠基\n\n1997年：CRAN 建立\n\nCRAN（Comprehensive R Archive Network）\n形成全球镜像网络\n开始支持第三方包\n\n2000年：R 1.0.0 发布\n\n标志 R 成为稳定版本\n基本语法和核心功能成熟\n\n统计学界广泛采用\n\n生物统计\n计量经济学\n生态学\n环境科学\n\n\n这一阶段，R 逐渐成为统计学研究的标准工具。\n\n\n1.1.3 数据科学时代（2006–2015）：R 的爆发\n\n2009年：RStudio（现 Posit）成立\n\n提供现代 IDE\n推动企业应用\n\nHadley Wickham 生态体系\n\n代表性包：\n\nggplot2（图形语法革命）\ndplyr\ntidyr\ntidyverse\n\n\n2012年前后：数据科学兴起\n\nR 成为数据分析主力语言之一\nKaggle 竞赛广泛使用 R\n\n\n这一阶段，R 从“统计软件”升级为“数据科学语言”。\n\n\n1.1.4 大数据与跨界融合（2016–2022）：工具链扩展\n\nShiny（交互式应用）\n\n可构建在线分析系统\n\n大数据接口与工程化\n\nSparkR\n数据库连接（DBI）\n云部署支持\n\n可复现科研报告\n\nR Markdown\n\n与 Python 融合\n\nreticulate 包\n双语言协同\n\n\n\n\n1.1.5 现代阶段（2023–至今）：平台化与AI融合\n当前 R 呈现出几个特点：\n\n更强调可复现科学\n更强调数据工程能力\n企业级部署增强\n与 AI/机器学习结合（tidymodels）\n\n代表生态：\n\ntidymodels\nQuarto（R Markdown 升级版）\n云端 RStudio Server\nDocker 部署",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#r语言发展的核心逻辑",
+    "href": "index.html#r语言发展的核心逻辑",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "1.2 R语言发展的核心逻辑",
+    "text": "1.2 R语言发展的核心逻辑\n可以概括为四次跃迁：\n\n\n\n阶段\n核心定位\n\n\n\n\nS时代\n统计计算工具\n\n\nCRAN时代\n开源社区生态\n\n\ntidyverse时代\n数据科学语言\n\n\n现代阶段\n可复现 + 系统化科研平台",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#r语言在大学生编程能力培养中的重要性",
+    "href": "index.html#r语言在大学生编程能力培养中的重要性",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "1.3 R语言在大学生编程能力培养中的重要性",
+    "text": "1.3 R语言在大学生编程能力培养中的重要性\n在数字化与数据驱动的时代背景下，编程能力已成为大学生的重要核心能力之一。R 语言在教学中的价值主要体现在以下方面：\n\n1.3.1 培养数据思维\nR 强调数据结构、数据清洗与数据转换过程，能够帮助学生理解：\n\n数据框（data frame）结构\n向量化计算思想\n函数式编程思维\n可重复科研（Reproducible Research）\n\n\n\n1.3.2 提升科研能力\nR 在统计建模与可视化方面具有天然优势，能够支持：\n\n回归分析\n多元统计分析\n时间序列分析\n空间统计分析\n科学绘图与论文图件制作\n\n对于从事科研的学生而言，R 是重要的科研工具。\n\n\n1.3.3 强化跨学科能力\nR 与 Python、SQL、GIS、LaTeX 等工具具有良好的兼容性，能够帮助学生构建完整的数据分析流程，提高跨学科整合能力。",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#主讲人介绍",
+    "href": "index.html#主讲人介绍",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "1.4 主讲人介绍",
+    "text": "1.4 主讲人介绍\n黄利东\n内蒙古农业大学资源与环境学院副教授，硕士研究生导师。长期从事土壤养分循环、农业面源污染防治与农业可持续发展研究。\n主要研究方向包括：\n\n土壤磷循环与界面反应机制\n盐碱环境下养分迁移转化\n地球化学模型构建与数值模拟\n农业面源污染控制与绿色技术\n\n近年来主持与参与多项科研项目，发表60多篇科技论文 ，以R语言开发了10多项可运行APP，授权软件著作权4件，在Bilibili讲授了独立开发的统计分析程序、温室气体仪器数据处理程序以及地球化学形态分析程序的使用说明，总点击率近10万。长期承担《R语言编程基础》《植物营养研究方法》《田间试验与生物统计》等课程教学工作。\n在教学实践中，注重将数据分析工具与专业问题相结合，强调“数据驱动思维”与“可重复科研”的理念，致力于提升学生的科研素养与技术能力。",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#课程目标",
+    "href": "index.html#课程目标",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "1.5 课程目标",
+    "text": "1.5 课程目标\n通过本课程的学习，学生应能够：\n\n掌握 R 语言基本语法与数据结构\n熟练进行数据整理与可视化分析\n独立完成统计分析报告\n构建可重复的科研数据流程\n将 R 应用于本专业研究问题",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html",
+    "href": "lecture1.html",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "",
+    "text": "2.1 本章学习目标\n完成本章后，你将能够：",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html#本章学习目标",
+    "href": "lecture1.html#本章学习目标",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "",
+    "text": "正确理解 R 与 RStudio 的区别\n从官方网站下载 R\n正确安装 R\n下载并安装 RStudio（Posit Desktop）\n在 Windows 系统上安装 Rtools\n解决常见安装问题",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html#r-与-rstudio-的关系必须先理解",
+    "href": "lecture1.html#r-与-rstudio-的关系必须先理解",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "2.2 R 与 RStudio 的关系（必须先理解）",
+    "text": "2.2 R 与 RStudio 的关系（必须先理解）\n在开始安装之前，必须澄清一个核心概念。\n\n2.2.1 R 是什么？\nR 是：\n\n一种统计计算语言\n\n一个完整的计算系统\n\n真正执行代码的“核心引擎”\n\nR 负责进行所有的数据计算与统计分析。\n\n\n\n2.2.2 RStudio 是什么？\nRStudio（现称 Posit Desktop）是：\n\n一个开发环境（IDE）\n一个图形界面工具\n帮助我们更方便编写与运行 R 代码\n\n\n\n\n2.2.3 重要结论\n\n必须先安装 R，再安装 RStudio。\n如果没有安装 R，RStudio 将无法运行。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html#windows-系统安装-r详细步骤",
+    "href": "lecture1.html#windows-系统安装-r详细步骤",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "2.3 Windows 系统安装 R（详细步骤）",
+    "text": "2.3 Windows 系统安装 R（详细步骤）\n\n2.3.1 进入官方网站\n打开浏览器访问：https://cran.r-project.org\n\n\n\n图2.1 R下载页面\n\n\n\n\n\n2.3.2 选择系统版本\n点击：\n👉 Download R for Windows\n\n\n\n2.3.3 进入 Windows 下载页面\n点击：\n👉 install R for the first time\n\n\n\n图2.2 R下载页面\n\n\n\n\n\n2.3.4 下载最新版 R\n点击：\n👉 Download R-4.5.2 for Windows (87 megabytes, 64 bit)(2026-3-2)\n\n\n\n2.3.5 开始安装\n双击下载的安装程序。\n安装过程中注意：\n\n语言选择：English 或 Chinese 均可\n安装路径：建议使用默认路径\n\n建议路径：\n⚠ 不建议：\n\n安装在中文路径\n安装在 OneDrive 同步目录\n\n\n\n\n2.3.6 组件选择\n保持默认勾选即可。\n如出现：\n“Add R to system PATH”\n建议勾选。\n\n\n\n2.3.7 安装完成验证\n安装完成后：\n\n打开开始菜单\n运行 “R”\n\n\n\n\n图2.3 开始菜单搜索R\n\n\n若出现控制台界面（图2.4），说明安装成功。\n\n\n\n图2.4 R启动界面",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html#macos-安装-r",
+    "href": "lecture1.html#macos-安装-r",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "2.4 macOS 安装 R",
+    "text": "2.4 macOS 安装 R\n\n2.4.1 进入 CRAN\n访问：https://cran.r-project.org\n点击：\n👉 Download R for macOS\n\n\n\n2.4.2 下载 pkg 文件\n下载最新版 .pkg 文件。\n\n\n\n2.4.3 双击安装\n\n按提示安装\n输入管理员密码\n使用默认路径\n\n\n\n\n2.4.4 安装 RStudio（Posit Desktop）\n\n\n2.4.5 进入官网\n在浏览器中访问：https://posit.co/download/rstudio-desktop/\n该页面为 RStudio（现称 Posit Desktop）的官方下载页面（图2.5）。\n\n\n\n图2.5 RStudio下载页面\n\n\n\n\n\n2.4.6 选择版本\n在页面中选择：\n\nWindows 10/11 RStudio-2026.01.1-403.exe\nmacOS 14/15/26 RStudio-2026.01.1-403.dmg\n\n\n\n\n2.4.7 下载对应系统版本\n根据你的操作系统选择下载：\n\nWindows\nmacOS\n\n下载完成后会得到对应的安装文件（.exe 或 .dmg）。\n\n\n\n2.4.8 安装步骤\n双击下载的安装文件，按照提示完成安装。\n建议：\n\n保持默认安装路径\n不需要修改高级设置\n直接点击 “Next” 直到完成\n\n\n\n\n2.4.9 首次启动验证\n安装完成后启动 RStudio。\n在左上角的 Console（控制台） 窗口中，如果显示类似图2.6：\n\n\n\n图2.6 Rstudio的启动页面",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html#常见错误与问题排查重点",
+    "href": "lecture1.html#常见错误与问题排查重点",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "2.5 常见错误与问题排查（重点）",
+    "text": "2.5 常见错误与问题排查（重点）\n\n2.5.1 RStudio 无法启动（最常见问题）\n\n2.5.1.1 情况 1：双击无反应\n可能原因：\n\n未安装 R\nR 安装损坏\n系统 PATH 未正确设置\n权限问题\n\n解决方法：\n\n确认是否已成功安装 R\n在开始菜单搜索 “R x64” 是否可以正常打开。\n若 R 无法打开，请重新安装 R。\n右键 RStudio → “以管理员身份运行” 尝试启动。\n若仍失败，卸载 RStudio 后重新安装。\n\n\n\n\n2.5.1.2 情况 2：提示 “R not found”\n原因：\n\n先安装了 RStudio，后安装 R\nR 安装路径异常\n\n解决：\n\n卸载 RStudio\n确认 R 可正常运行\n重新安装 RStudio\n\n\n\n\n2.5.1.3 情况 3：启动后闪退\n可能原因：\n\n系统环境冲突\n杀毒软件拦截\n安装在中文路径或特殊目录\n\n解决建议：\n\n卸载并重新安装\n使用默认路径安装\n关闭杀毒软件后测试\n\n\n\n\n\n2.5.2 安装后没有桌面快捷方式\n这是 Windows 用户常见问题。\n\n2.5.2.1 解决方法：\n\n打开：\n\nC:Files\n\n或\nC:Files\n\n\n找到：\n\nrstudio.exe\n\n右键 → “发送到” → “桌面快捷方式”\n\n\n\n\n\n2.5.3 点击图标提示权限错误\n解决：\n\n右键图标 → 属性\n取消“以管理员身份运行”勾选\n或改为始终以管理员运行（若权限限制）\n\n\n\n\n2.5.4 RStudio 打开但 Console 不显示 R 版本\n说明 RStudio 没有找到 R。\n检查：\n\nR 是否安装在默认路径：\n\nC:Files\n\n\n是否安装 64 位版本\n是否重启过电脑\n\n\n\n\n2.5.5 安装后界面是英文或乱码\n可在 RStudio 中设置：\nTools → Global Options → Appearance\n修改：\n\n字体（建议使用 Consolas / JetBrains Mono）\n编码（UTF-8）",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1.html#本节小结",
+    "href": "lecture1.html#本节小结",
+    "title": "2  R语言与RStudio的下载与安装",
+    "section": "2.6 本节小结",
+    "text": "2.6 本节小结\n\n必须先安装 R，再安装 RStudio\nRStudio 无法启动通常是 R 未正确安装\n建议使用默认安装路径\n若无桌面图标，可手动创建快捷方式\nWindows 用户建议安装 Rtools",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2.html",
+    "href": "lecture2.html",
+    "title": "RStudio 的界面与包的安装",
+    "section": "",
+    "text": "3.1 本讲学习目标\n完成本讲后，你将能够：",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RStudio 的界面与包的安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2.html#本讲学习目标",
+    "href": "lecture2.html#本讲学习目标",
+    "title": "RStudio 的界面与包的安装",
+    "section": "",
+    "text": "理解 RStudio 四个核心功能区域的作用\n掌握脚本编写与代码运行的基本操作\n理解 Project 的重要性\n区分“安装包”与“加载包”的区别\n独立完成常用 R 包的安装与加载\n能够排查常见的包安装错误",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RStudio 的界面与包的安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2.html#rstudio-是什么",
+    "href": "lecture2.html#rstudio-是什么",
+    "title": "RStudio 的界面与包的安装",
+    "section": "3.2 RStudio 是什么",
+    "text": "3.2 RStudio 是什么\nRStudio（现称 Posit Desktop）是 R 的集成开发环境（IDE）。\nR 负责计算，RStudio 负责提供操作界面。\n通过 RStudio，你可以：\n\n编写 R 脚本\n运行代码并查看结果\n管理文件与项目\n安装与加载扩展包\n生成报告与图形",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RStudio 的界面与包的安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2.html#rstudio-主界面结构",
+    "href": "lecture2.html#rstudio-主界面结构",
+    "title": "RStudio 的界面与包的安装",
+    "section": "3.3 RStudio 主界面结构",
+    "text": "3.3 RStudio 主界面结构\nRStudio 默认由四个窗格组成（图3.1）。\n\n\n\n图3.1 Rstudio的窗口\n\n\n\n3.3.1 Source（脚本编辑区）\n脚本用于编写：\n\n.R 脚本\n.qmd 或 .Rmd 文档\n函数与分析代码\n\n推荐做法：\n\n所有代码写在脚本中\n使用 Ctrl + Enter 运行当前行\n使用 Ctrl + S 保存文件\n\n\n\n\n图3.2 Rstudio的 脚本区域截图\n\n\n\n脚本区的功能介绍\n\n3.3.1.1 Show in New Window\nShow in New Window 用于将当前文档或预览内容在独立窗口中打开。\n常见用途：\n\n将图形或报告在新窗口查看\n在双屏显示时单独查看输出\n避免编辑区被输出内容占用\n\n\n\n\n3.3.1.2 Save\nSave 用于保存当前脚本文件。\n快捷键：\n\nWindows：Ctrl + S\nmacOS：Cmd + S\n\n良好习惯：\n\n写几行代码就保存一次\n运行前先保存\n修改后立即保存\n\n未保存的脚本在关闭 RStudio 时可能丢失修改内容。\n\n\n\n3.3.1.3 Source on Save\nSource on Save 表示“保存时自动运行脚本”。\n开启后：\n\n每次点击 Save\nRStudio 会自动执行整个脚本\n\n适合场景：\n\n开发函数脚本\n自动刷新数据对象\n编写教学示例\n\n注意：\n\n若脚本包含耗时计算，不建议开启\n若脚本有错误，会在保存时立即报错\n\n\n\n\n3.3.1.4 Find\nFind 用于在当前文件中查找关键词。\n快捷键：\n\nCtrl + F（当前文件）\nCtrl + Shift + F（全项目查找）\n\n常见用途：\n\n查找变量名\n查找函数调用位置\n批量修改代码\n\n建议：\n\n大型项目一定要掌握全局查找功能\n\n\n\n\n3.3.1.5 Code Tools\nCode Tools 提供代码辅助与编辑功能。\n常见功能包括：\n\n自动补全（Tab 键）\n自动缩进\n代码折叠\n格式化代码\n\n示例：\n输入：\n\n\nCode\n#mean()  \n\n\n\n\n3.3.1.6 Compile Report\nCompile Report 用于将 R Markdown 或 Quarto 文档编译为报告。\n在 .qmd 文件中，它通常对应工具栏上的 Render 按钮。\n常见输出格式包括：\n\nHTML\nPDF\nWord\n\nCompile Report 的作用\n\n执行文档中的所有代码块\n重新生成完整报告\n输出最终文件（如 .html、.pdf）\n\n当你点击 Render 时，Quarto 会：\n\n从文档第一行开始运行\n执行所有代码块\n生成最终排版好的报告文件\n\n\n\n\n3.3.1.7 与普通 Run 的区别\n\nRun 只运行当前代码块或选中代码\nCompile Report 会运行整个文档\n\n因此：\n\n调试阶段使用 Run\n最终生成报告使用 Compile Report\n\n\n\n\n3.3.1.8 Run\nRun 用于执行当前行或选中代码。\n快捷键：\n\nWindows：Ctrl + Enter\nmacOS：Cmd + Enter\n\n\n适用场景\n\n测试一段代码\n分步运行程序\n调试函数逻辑\n\n示例：\n\n\nCode\nx &lt;- 10\nx + 5\n\n\n[1] 15\n\n\n\n\n3.3.1.9 Re-run\nRe-run 表示重新运行最近执行的代码。\n它会重复刚刚执行的命令。\n适用场景\n\n修改少量参数后快速测试\n\n重新验证刚才的计算结果\n\n重复执行最近一次操作\n\n注意事项\n\nRe-run 只重复上一条命令\n\n不会重新运行整个脚本\n\n不会清空当前环境\n\n\n\n\n3.3.1.10 Source\nSource 用于执行整个脚本文件。\n点击 Source 后，RStudio 会：\n\n从第一行运行到最后一行\n\n依次在 Console 中执行所有代码\n\n等价命令为：\n\n\nCode\n# source(\"your_script.R\")\n\n\n\n\n\n3.3.2 Console（控制台）\n\n\n\n图3.3 Rstudio console\n\n\n用于：\n\n执行代码\n显示输出结果\n显示错误与警告信息\n\n示例：\n\n\nCode\n1 + 1\n\n\n[1] 2\n\n\nCode\nsqrt(25)\n\n\n[1] 5\n\n\nConsole 的运行机制\nConsole 本质上是一个 R 会话（R session） 的交互界面。\n其运行机制可以理解为以下过程：\n\n用户在 Console 中输入代码\n\n代码被发送给 R 解释器\n\nR 逐行解析并执行代码\n\n执行结果返回并显示在 Console 中\n\nR 采用的是 解释执行机制，而不是一次性编译运行。因此：\n\n每一行代码都是即时执行的\n\n代码的执行顺序非常重要\n\n后续代码依赖前面代码是否成功运行\n\n例如：\n\n\nCode\nx &lt;- 10\nx + 5\n\n\n[1] 15\n\n\n如果没有先运行 x &lt;- 10，第二行将会报错。\n\n会话（Session）的概念\nConsole 中的所有对象都存在于当前的 R 会话中。\n其主要特点包括：\n\n关闭 RStudio 或重启 R 会话后，对象会消失\n\n不同会话之间互不影响\n\n当前环境是“临时的”，不是永久保存的\n\n重启 R 会话的方法：\n\n菜单：Session → Restart R\n\n快捷键：Ctrl + Shift + F10\n\n重启后，当前环境会被完全清空。\n\nConsole 与脚本的关系\nConsole 是代码的 执行窗口，脚本是代码的 存储窗口。\n推荐的基本原则是：\n\n代码应写在脚本中\n\n通过 Run 或 Source 将代码发送到 Console 执行\n\n不要只在 Console 中临时输入代码\n\n原因在于：\n\nConsole 中输入的代码不会自动保存\n\n分析过程的复现必须依赖脚本文件\n\n\nConsole 报错信息的含义\nConsole 中常见的信息类型主要有三类：\n\nError：代码无法执行\n\nWarning：代码执行成功，但存在潜在问题\n\nMessage：普通提示信息\n\n示例错误：\n\n\nCode\n#y + 1\n\n\n如果对象 y 不存在，Console 会返回错误提示。\n学会阅读并理解错误信息，是学习 R 语言的关键能力之一。\n\n提示符（Prompt）的含义\nConsole 左侧常见的提示符包括：\n\n&gt; 表示可以输入新的命令\n\n+ 表示上一条命令尚未完成\n\n例如：\n\n\nCode\n# &gt; if (TRUE) {\n# +\n\n\n当出现 + 时，说明代码结构尚未闭合，需要补充相应的内容（如 }）。\n\n\n3.3.2.1 Console 的内涵与学习意义\nConsole 不仅是代码执行窗口，更是理解 R 语言逻辑的核心场所。\n它体现了：\n\n顺序执行的逻辑结构\n\n对象之间的依赖关系\n\n数据在内存中的存在方式\n\n交互式计算的思想\n\n通过 Console，可以直观理解：\n\n什么是变量\n\n函数如何返回结果\n\n对象如何被创建、覆盖与更新\n\n因此，Console 是学习 R 语言的起点，也是调试程序与理解分析过程的关键窗口。\n\n\n\n3.3.3 Environment 面板\nEnvironment（环境）面板用于显示当前 R 会话中的对象。\n它反映的是当前内存中存在的变量、数据框、模型对象等内容。\n例如：\n\n\nCode\nx &lt;- 1:5\ndf &lt;- data.frame(a = 1:3, b = c(\"A\",\"B\",\"C\"))\n\n\n运行后，Environment 中会显示：\n\nx\n\ndf\n\n\n3.3.3.1 Environment 的核心特点\n\n显示当前会话中的所有对象\n\n可以查看对象结构\n\n可以点击数据框进行预览\n\n可以手动删除对象\n\n删除某个对象：\n\n\nCode\nrm(x)\n\n\n清空全部对象：\n\n\nCode\nrm(list = ls())\n\n\n\n\n3.3.3.2 学习建议\n\n不要依赖手动点击删除对象\n\n养成通过脚本重建环境的习惯\n\n定期重启 R 会话测试代码完整性\n\n\n\n\n\n3.3.4 History 面板\nHistory（历史）面板用于记录在 Console 中执行过的命令。\n\n3.3.4.1 History 的特点\n\n自动记录当前会话中输入的命令\n\n可双击重新执行\n\n可选中多条命令发送到脚本\n\n\n\n3.3.4.2 使用场景\n\n回溯刚刚执行的代码\n\n找回误删命令\n\n将临时测试代码保存到脚本\n\n将历史命令写入脚本：\n\n选中命令\n\n点击 “To Source”\n\n保存历史记录：\n\n\nCode\n# savehistory(\"my_history.Rhistory\")\n\n\n读取历史记录：\n\n\nCode\n# loadhistory(\"my_history.Rhistory\")\n\n\n\n\n\n\n3.3.5 Connections 面板\nConnections（连接）面板用于管理外部数据源连接。\n常见连接类型包括：\n\n数据库（MySQL、PostgreSQL 等）\n\nSpark\n\n云存储\n\n远程服务器\n\n当建立数据库连接时，例如：\n\n\nCode\n# 示例（需安装 DBI 包）\n# library(DBI)\n# con &lt;- dbConnect(...)\n\n\n连接成功后，会在 Connections 面板中显示。\n\n3.3.5.1 Connections 的作用\n\n可视化数据库结构\n\n浏览表结构\n\n快速预览数据\n\n管理连接状态\n\n断开连接示例：\n\n\nCode\n# dbDisconnect(con)\n\n\n\n\n\n\n3.3.6 三个面板的区别\n\n\n\n面板\n功能核心\n主要用途\n\n\n\n\nEnvironment\n当前会话对象管理\n查看与管理变量\n\n\nHistory\n命令历史记录\n回溯与复用命令\n\n\nConnections\n外部数据源连接管理\n数据库与远程连接\n\n\n\n\n\n\n3.3.7 Files 面板\nFiles 面板用于浏览和管理当前工作目录中的文件。\n它的核心作用是：\n\n查看当前项目文件结构\n\n新建文件夹\n\n删除或重命名文件\n\n设置工作目录\n\n\n3.3.7.1 常见操作\n进入子文件夹：\n\n双击文件夹名称\n\n返回上级目录：\n\n点击“..”\n\n设置当前目录为工作目录：\n\nMore → Set As Working Directory\n\n查看当前工作目录：\n\n\nCode\ngetwd()\n\n\n[1] \"E:/hld/课件/R语言编程基础/quarto_book_from_lectures\"\n\n\nFiles 面板本质上是对当前项目目录的可视化管理工具。\n\n\n\n\n3.3.8 Plots 面板\nPlots 面板用于显示图形输出结果。\n当运行绘图代码时，例如：\n\n\nCode\nplot(1:10)\n\n\n\n\n\n\n\n\n\n生成的图形会自动显示在 Plots 面板中。\n\n3.3.8.1 Plots 的常见功能\n\n切换上一张或下一张图\n\n导出图像（Export）\n\n放大图形（Zoom）\n\n保存为 PNG / PDF\n\n建议：\n\n分析结束后及时导出高质量图片\n\n使用脚本保存图形以保证可复现\n\n\n\n\n\n3.3.9 Packages 面板\nPackages 面板用于管理已安装的 R 包。\n主要功能包括：\n\n查看已安装的包\n\n勾选加载包（等价于 library()）\n\n安装新包\n\n更新包\n\n例如加载包：\n\n\nCode\n#library(ggplot2)\n\n\n在 Packages 面板中勾选 ggplot2，效果与上面代码相同。\n建议：\n\n优先使用代码加载包\n\n保证脚本完整可复现\n\n\n\n\n3.3.10 Help 面板\nHelp 面板用于查看函数帮助文档。\n例如：\n\n\nCode\n?mean\n\n\n或：\n\n\nCode\nhelp(mean)\n\n\nHelp 面板会显示：\n\n函数说明\n\n参数解释\n\n使用示例\n\n学习建议：\n\n遇到不熟悉的函数先查看帮助\n\n重点阅读 Arguments 和 Examples 部分\n\n\n\n\n3.3.11 Viewer 面板\nViewer 面板用于显示网页内容和交互式结果。\n常见用途包括：\n\n显示 HTML 报告\n\n显示 Shiny 应用\n\n预览 Quarto 渲染结果\n\n显示交互式图形\n\n例如运行 Shiny 应用时，界面会显示在 Viewer 中。\nViewer 是 RStudio 内部的“浏览器窗口”。\n\n\n\n3.3.12 Presentation 面板\nPresentation 面板用于展示基于 R Markdown 或 Quarto 制作的演示文稿。\n功能包括：\n\n播放幻灯片\n\n切换页面\n\n全屏展示\n\n适用于：\n\n教学展示\n\n会议汇报\n\n课程演示\n\n现代教学中更推荐使用 Quarto 生成 revealjs 幻灯片。\n\n\n\n3.3.13 右下角窗口功能总结\n\n\n\n面板\n核心功能\n主要用途\n\n\n\n\nFiles\n文件管理\n浏览与管理项目文件\n\n\nPlots\n图形管理\n查看与导出图像\n\n\nPackages\n包管理\n安装与加载扩展包\n\n\nHelp\n文档查询\n查阅函数说明\n\n\nViewer\n网页预览\n显示 HTML 与交互内容\n\n\nPresentation\n演示播放\n播放幻灯片",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RStudio 的界面与包的安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2.html#什么是-r-包",
+    "href": "lecture2.html#什么是-r-包",
+    "title": "RStudio 的界面与包的安装",
+    "section": "3.4 什么是 R 包",
+    "text": "3.4 什么是 R 包\nR 之所以功能强大，是因为其拥有庞大的扩展包生态系统。\n所谓“包（Package）”，是指一组已经封装好的函数、数据和文档的集合，用于实现特定功能。\n可以理解为：\n\nR 是核心系统\n\n包是扩展模块\n\n例如：\n\nggplot2 用于绘图\n\ndplyr 用于数据处理\n\nsf 用于空间数据分析\n\nshiny 用于交互式应用开发\n\nCRAN（Comprehensive R Archive Network）是 R 官方包仓库：\nhttps://cran.r-project.org/\n国内镜像可参考：\nhttps://mirrors.tuna.tsinghua.edu.cn/CRAN/\n\n\n3.4.1 选择 CRAN 镜像\n为了提高下载速度，建议选择合适的镜像。\n方法一：首次安装时选择镜像\n\n\nCode\n#chooseCRANmirror()\n\n\n方法二：设置默认镜像\n\n\nCode\noptions(repos = c(CRAN = \"https://cloud.r-project.org\"))\n\n\n或使用国内镜像：\n\n\nCode\n# options(repos = c(CRAN = \"https://mirrors.tuna.tsinghua.edu.cn/CRAN/\"))\n\n\n\n\n\n3.4.2 包的安装方式\n\n3.4.2.1 联机在线安装（最常用）\n\n\nCode\n# install.packages(\"MASS\")\n\n\n一次安装多个包：\n\n\nCode\n# install.packages(c(\"ggplot2\",\"dplyr\",\"readxl\"))\n\n\n\n\n3.4.2.2 使用界面安装\n\nRStudio → Packages → Install\n\n输入包名 → Install\n\n\n\n\n3.4.2.3 离线安装（本地安装）\n适用于：\n\n无网络环境\n\n非 CRAN 注册包\n\n\n\nCode\n# install.packages(\"包文件路径/package.tar.gz\", repos = NULL, type = \"source\")\n\n\nWindows 下也可安装 .zip 文件。\n\n\n\n3.4.2.4 从 GitHub 安装外源包\n有些包尚未发布到 CRAN，可从 GitHub 安装。\n首先安装 remotes 包：\n\n\nCode\n# install.packages(\"remotes\")\n\n\n然后安装 GitHub 包：\n\n\nCode\n# remotes::install_github(\"用户名/仓库名\")\n\n\n例如：\n\n\nCode\n# remotes::install_github(\"tidyverse/ggplot2\")\n\n\n注意：\n\nWindows 用户可能需要安装 Rtools\n\n安装过程中可能涉及编译\n\n\n\n\n\n3.4.3 包的删除与更新\n删除已安装的包：\n\n\nCode\n# remove.packages(\"MASS\")\n\n\n更新所有包：\n\n\nCode\n# update.packages()\n\n\n\n\n\n3.4.4 查看包路径与已安装包\n查看当前包安装路径：\n\n\nCode\n.libPaths()\n\n\n[1] \"C:/Users/l/AppData/Local/R/win-library/4.4\"\n[2] \"C:/Program Files/R/R-4.4.1/library\"        \n\n\n查看已安装包：\n\n\nCode\n# installed.packages()\n\n\n查看某个包的帮助文档：\n\n\nCode\nhelp(package = \"MASS\")\n\n\n\n\n\n3.4.5 加载包的方法\n加载包：\n\n\nCode\n#library(ggplot2)\n\n\n或：\n\n\nCode\n#require(ggplot2)\n\n\n区别：\n\nlibrary() 加载失败会报错\n\nrequire() 加载失败返回 FALSE\n\n也可以在 RStudio 右下角 Packages 面板中勾选加载。\n\n\n\n3.4.6 包的使用示例\n\n\nCode\nlibrary(vcd)\nmosaic(Titanic, shade = TRUE, legend = TRUE)\n\n\n\n\n\n\n\n\n\n思考：\n\n在图中哪一类人群存活率较高？\n\n性别是否对生存率产生影响？\n\n\n\n\n3.4.7 常见问题与建议\n\n安装失败时优先检查镜像\n\nWindows 用户如提示编译错误，需安装 Rtools\n\n加载包失败时检查拼写是否正确\n\n尽量在脚本中写明 library()，保证代码可复现",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>RStudio 的界面与包的安装</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html",
+    "href": "lecture3.html",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "",
+    "text": "4.1 本节学习提纲",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#r-编程中最常见的问题",
+    "href": "lecture3.html#r-编程中最常见的问题",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.2 R 编程中最常见的问题",
+    "text": "4.2 R 编程中最常见的问题\nR 初学者最容易出现的问题通常不是统计方法，而是一些基础编程习惯问题。\n\n4.2.1 中文符号问题\n在 R 中必须使用 英文符号，否则会导致语法错误。\n常见错误包括：\n\n中文括号 （）\n中文逗号 ，\n中文引号 “ ”\n\n正确示例：\n\n\nCode\nmean(c(1,2,3))\n\n\n[1] 2\n\n\n错误示例（中文符号）：\nmean（c(1，2，3））\n\n\n\n4.2.2 R 区分大小写\nR 是 大小写敏感语言。\n例如：\n\n\nCode\nmean(1:10)\n\n\n[1] 5.5\n\n\n与\nMean(1:10)\n含义不同，第二个会报错。\n\n\n\n4.2.3 变量必须先创建\nR 按顺序执行代码，因此变量必须先创建。\n\n\nCode\nx &lt;- 10\nx + 5\n\n\n[1] 15\n\n\n如果直接运行：\nx + 5\n会产生错误，因为对象 x 尚未创建。\n\n\n\n4.2.4 示例：简单统计分析\n\n\nCode\nattach(mtcars)\n\nlm.fit &lt;- aov(mpg ~ factor(cyl))\nsummary(lm.fit)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nfactor(cyl)  2  824.8   412.4    39.7 4.98e-09 ***\nResiduals   29  301.3    10.4                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\ndetach(mtcars)\n\n\n注意：\nattach() 在现代 R 编程中已不推荐使用，建议使用 data= 参数。\n推荐写法：\n\n\nCode\nlm.fit &lt;- aov(mpg ~ factor(cyl), data = mtcars)\nsummary(lm.fit)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nfactor(cyl)  2  824.8   412.4    39.7 4.98e-09 ***\nResiduals   29  301.3    10.4                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#熟悉赋值符号",
+    "href": "lecture3.html#熟悉赋值符号",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.3 熟悉赋值符号",
+    "text": "4.3 熟悉赋值符号\nR 中最常见的赋值符号是：\n&lt;-\n例如：\n\n\nCode\nlmfit &lt;- lm(mpg ~ wt, data = mtcars)\nlmfit\n\n\n\nCall:\nlm(formula = mpg ~ wt, data = mtcars)\n\nCoefficients:\n(Intercept)           wt  \n     37.285       -5.344  \n\n\n虽然 = 也可以赋值，但在 R 编程规范中，通常推荐使用 &lt;-。&lt;- 是 R 语言传统的赋值符号，来源于早期的 S 语言。\n对象 &lt;- 值\n即“把右边的值赋给左边的对象”。在 R 中，&lt;- 会被解释器识别为 赋值运算符（assignment operator）。\n当 R 解析表达式时，会按照“从右向左”的顺序执行赋值操作。\n例如：\n\n\nCode\nx &lt;- 3\n\n\n执行过程可以理解为：\n\n创建对象 x\n将值 3 存入对象 x\n返回赋值结果\n\n因此，赋值语句在 R 中本身也是一个表达式。\n= 最初并不是用于对象赋值，而是用于 函数参数传递。\n参数名 = 参数值",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#rstudio-的功能和优势",
+    "href": "lecture3.html#rstudio-的功能和优势",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.5 RStudio 的功能和优势",
+    "text": "4.5 RStudio 的功能和优势\nRStudio 是最常用的 R 开发环境。\n主要优势包括：\n\n4.5.1 四个工作区域\nRStudio 默认包含四个区域：\n\nSource（代码编辑区）\n\nConsole（代码执行区）\n\nEnvironment / History\n\nFiles / Plots / Packages / Help\n\n这种布局使得代码开发、调试和结果查看非常高效。\n\n\n\n4.5.2 自动补全\nRStudio 提供强大的代码补全功能。\n常用操作：\n\nTab 自动补全\n\nUp / Down 选择候选项\n\nEnter 接受补全\n\nEsc 取消补全\n\n示例：\n输入：\nmea\n按 Tab 可自动补全为：\nmean()\n\n\n\n4.5.3 代码高亮\nRStudio 会自动区分：\n\n函数\n变量\n字符串\n注释\n\n这可以显著提高代码可读性。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#rstudio-常用快捷键",
+    "href": "lecture3.html#rstudio-常用快捷键",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.6 RStudio 常用快捷键",
+    "text": "4.6 RStudio 常用快捷键\n熟练掌握快捷键可以显著提高编程效率。\n常见快捷键：\n\nCtrl + L 清空 Console\n\nCtrl + Enter 运行当前代码行\n\nCtrl + Shift + Enter 运行整段代码\n\nCtrl + Shift + C 注释 / 取消注释\n\nCtrl + F 查找\n\nCtrl + Shift + F 全局查找\n\nEsc 中断当前运行\n\nRStudio 中查看完整快捷键：\nTools → Keyboard Shortcuts",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#工作路径设置",
+    "href": "lecture3.html#工作路径设置",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.7 工作路径设置",
+    "text": "4.7 工作路径设置\n工作路径（Working Directory）是 R 读取和保存文件的默认位置。\n\n4.7.1 获取当前工作路径\ngetwd()\n\n\n\n4.7.2 设置工作路径\nsetwd(\"C:/Users/username/Desktop\")\n注意：\nR 使用 / 作为路径分隔符。\n\n\n\n4.7.3 查看当前目录文件\nlist.files()\n\n\n\n4.7.4 推荐方式：使用 Project\n现代 R 开发推荐使用 RStudio Project。\n优点：\n\n自动管理工作路径\n\n保持项目结构清晰\n\n便于复现分析流程",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#代码编辑的良好习惯",
+    "href": "lecture3.html#代码编辑的良好习惯",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.8 代码编辑的良好习惯",
+    "text": "4.8 代码编辑的良好习惯\n良好的代码习惯对于科研和项目开发非常重要。\n\n4.8.1 使用注释\n使用 # 添加说明。\n #读取数据\ndata &lt;- read.csv(\"data.csv\")\n\n\n\n4.8.2 保持代码可复现\n推荐原则：\n\n所有分析写入脚本\n不依赖手动操作\n不依赖 Environment 中已有变量\n\n\n\n\n4.8.3 函数必须带括号\n例如：\ngetwd()\n而不是：\ngetwd",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#ai-辅助-r-编程",
+    "href": "lecture3.html#ai-辅助-r-编程",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.9 AI 辅助 R 编程",
+    "text": "4.9 AI 辅助 R 编程\n近年来，AI 工具已经成为 R 编程的重要辅助工具。\n合理使用 AI 可以显著提高学习效率。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#常见-ai-编程助手",
+    "href": "lecture3.html#常见-ai-编程助手",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.10 常见 AI 编程助手",
+    "text": "4.10 常见 AI 编程助手\n\n4.10.1 ChatGPT\n优势：\n\n解释代码逻辑能力强\n适合学习算法和统计方法\n代码解释非常清晰\n\n适合用途：\n\n学习 R 编程\n理解统计模型\n生成示例代码\n\n\n\n\n4.10.2 DeepSeek\nDeepSeek 在代码生成方面表现非常强。\n优势：\n\n编程推理能力强\n复杂代码生成能力好\n对数学和统计问题支持较好\n\n适合用途：\n\n数据分析代码生成\n算法实现\nR 与 Python 混合分析\n\n\n\n\n4.10.3 通义千问（Qwen）\n阿里推出的大模型，在国内使用非常稳定。\n优势：\n\n中文理解能力强\n编程回答较稳定\n与国内生态兼容性好\n\n适合用途：\n\nR 代码解释\n数据处理脚本\n教学辅助\n\n\n\n\n4.10.4 豆包（Doubao）\n字节跳动推出的 AI 模型。\n优势：\n\n响应速度快\n中文语义理解好\n对办公与数据分析支持较好\n\n适合用途：\n\n数据处理\n简单 R 脚本生成\n数据可视化代码",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#ai-在-r-编程中的使用技巧",
+    "href": "lecture3.html#ai-在-r-编程中的使用技巧",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.11 AI 在 R 编程中的使用技巧",
+    "text": "4.11 AI 在 R 编程中的使用技巧\n推荐使用方式：\n\n描述清楚任务\n\n提供数据结构示例\n\n要求生成完整代码\n\n示例提示词：\n请用 R 语言使用 ggplot2 绘制散点图，\n数据框名称为 df，\nx 变量为 temperature，\ny 变量为 yield，\n并添加线性回归拟合线。\nAI 会生成类似代码：\nlibrary(ggplot2)\n \nggplot(df, aes(temperature, yield)) +\n geom_point() +\n geom_smooth(method = \"lm\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#使用-ai-的注意事项",
+    "href": "lecture3.html#使用-ai-的注意事项",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.12 使用 AI 的注意事项",
+    "text": "4.12 使用 AI 的注意事项\nAI 可以辅助编程，但不能完全替代学习。\n建议：\n\n理解代码含义\n\n检查 AI 输出结果\n\n不要直接复制未验证代码",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#本章小结",
+    "href": "lecture3.html#本章小结",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.13 本章小结",
+    "text": "4.13 本章小结\n\nR 编程常见错误包括符号、大小写和变量顺序问题\n\nRStudio 提供强大的开发环境\n\n熟练掌握快捷键可以提高效率\n\n使用 Project 管理项目结构\n\nAI 工具可以显著提升学习与编程效率\n\n合理结合 AI 与自身理解是未来数据分析的重要能力",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html",
+    "href": "lecture4.html",
+    "title": "5  第四次课-向量",
+    "section": "",
+    "text": "6 关于网络ppt内容的再次申名",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>第四次课-向量</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#whichwhich.minwhich.max函数",
+    "href": "lecture4.html#whichwhich.minwhich.max函数",
+    "title": "5  第四次课-向量",
+    "section": "11.1 which()、which.min()、which.max()函数",
+    "text": "11.1 which()、which.min()、which.max()函数\n\n\nCode\nx &lt;- c(2.1, 4.2, 3.3, 5.4)#直接创建\nwhich(x&gt;2)\n\n\n[1] 1 2 3 4\n\n\nCode\nwhich.min(x)\n\n\n[1] 1\n\n\nCode\nwhich.max(x)\n\n\n[1] 4\n\n\nCode\ny &lt;- which(x==10)\ny\n\n\ninteger(0)\n\n\nCode\ntypeof(y)\n\n\n[1] \"integer\"\n\n\nCode\nlength(y)\n\n\n[1] 0\n\n\nCode\nseq_along(y)\n\n\ninteger(0)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>第四次课-向量</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html",
+    "href": "lecture5.html",
+    "title": "6  第五次课-矩阵、数组、列表与数据框",
+    "section": "",
+    "text": "7 回顾——向量及向量索引\n\n\n\n8 向量合并及匹配\n\n\nCode\n&gt; vec.1 &lt;- 1:5\n&gt; vec.2 &lt;- 8:16\n&gt; vec.3 &lt;- c(vec.1,vec.2)\n&gt; vec.3\n\n\n [1]  1  2  3  4  5  8  9 10 11 12 13 14 15 16\n\n\nCode\n&gt; match(8,vec.3)\n\n\n[1] 6\n\n\nCode\n&gt; match(c(8,10),vec.3)\n\n\n[1] 6 8\n\n\nCode\n&gt; 8%in%vec.3\n\n\n[1] TRUE\n\n\nCode\n&gt; vec.3%in%8\n\n\n [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE\n\n\nCode\n&gt; 7%in%vec.3\n\n\n[1] FALSE\n\n\n\n\n9 矩阵\n\n矩阵是一个二维数组，只是每个元素都拥有相同的模式（数值型、字符型或逻辑型）。可通 过函数matrix()创建矩阵\nmatrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,dimnames = NULL)\n\n参数说明：\n\ndata 向量，矩阵的数据\nnrow 行数\nncol 列数\nbyrow 逻辑值，为 FALSE 按列排列，为 TRUE 按行排列\ndimname 设置行和列的名称\n\n\n\nCode\nmatrix(1:20, nrow=5, ncol=4)\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    6   11   16\n[2,]    2    7   12   17\n[3,]    3    8   13   18\n[4,]    4    9   14   19\n[5,]    5   10   15   20\n\n\nCode\nmatrix(1:20, nrow=5, ncol=4,byrow = T)\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    2    3    4\n[2,]    5    6    7    8\n[3,]    9   10   11   12\n[4,]   13   14   15   16\n[5,]   17   18   19   20\n\n\n\n\n10 矩阵与向量的关系\n\n向量的赋予维度(dim)属性便可转化为矩阵或数组\n矩阵和数组更侧重于数学计算的便利性\n\n\n\nCode\nx &lt;- 1:9\ndim(x) &lt;- c(3,3)\nx\n\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\nCode\ndim(x) &lt;-NULL\nx\n\n\n[1] 1 2 3 4 5 6 7 8 9\n\n\n\n\n11 矩阵索引-元素位置索引\n-矩阵的索引从行列两个方向入手，见下面的例子\n\n\nCode\ny &lt;- matrix(1:20, nrow=5, ncol=4)#矩阵存储在y中\ny[2,]#索引亦然是用方括号，二维矩阵的索引在方括号中用逗号隔开，逗号左边是行，右边是列\n\n\n[1]  2  7 12 17\n\n\nCode\ny[,2]#能猜到这是哪一部分么？\n\n\n[1]  6  7  8  9 10\n\n\nCode\ny[2,2]#行列对应单元数据\n\n\n[1] 7\n\n\nCode\nz &lt;-y[2,]#上面的代码相当于先拿出第2行，再选出第2个元素\nz[2]\n\n\n[1] 7\n\n\nCode\ny[c(1,2),c(2,3)]#多重选择 \n\n\n     [,1] [,2]\n[1,]    6   11\n[2,]    7   12\n\n\nCode\ny[-1,]#不选第一行\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    2    7   12   17\n[2,]    3    8   13   18\n[3,]    4    9   14   19\n[4,]    5   10   15   20\n\n\n\n\n12 矩阵其他索引方式\n-逻辑索引\n-向量化索引/按列从上到下，从左到右\n\n\nCode\ny &lt;- matrix(11:30, nrow=5, ncol=4)\ny\n\n\n     [,1] [,2] [,3] [,4]\n[1,]   11   16   21   26\n[2,]   12   17   22   27\n[3,]   13   18   23   28\n[4,]   14   19   24   29\n[5,]   15   20   25   30\n\n\nCode\ny[T,c(F,T)]#思考为什么啊\n\n\n     [,1] [,2]\n[1,]   16   26\n[2,]   17   27\n[3,]   18   28\n[4,]   19   29\n[5,]   20   30\n\n\nCode\ny[1:5]\n\n\n[1] 11 12 13 14 15\n\n\n\n\n13 矩阵运算1\n-A + B是矩阵加法， A - B是矩阵减法\n-A %*% B是矩阵乘法。\n-x*A若x是标量，A是矩阵，作矩阵数乘。\n-如果x是向量，A是矩阵， 则x %*% A表示行向量x左乘矩阵A，\n-A%*%x表示列向量x右乘矩阵A。\n\n\nCode\nset.seed(110)\nA &lt;- matrix(rnorm(12), nrow=3, ncol=4)\nA\n\n\n          [,1]      [,2]        [,3]      [,4]\n[1,] 0.2911952 1.4778760 -0.04460784 0.2256401\n[2,] 1.3888632 0.4387201  1.48441337 1.4199606\n[3,] 0.6490100 0.5223182 -1.59101108 0.9697612\n\n\nCode\nB &lt;- matrix(rnorm(12,-1,2), 3)#注意生成方式的区别\nB\n\n\n          [,1]       [,2]       [,3]       [,4]\n[1,]  2.808512 -0.5875462  2.1154084 -4.0074773\n[2,] -2.400824 -4.0926231 -4.9218862  0.6770989\n[3,]  2.556057  0.2923954 -0.2222837 -2.6654285\n\n\nCode\nA+B\n\n\n          [,1]       [,2]      [,3]      [,4]\n[1,]  3.099707  0.8903298  2.070801 -3.781837\n[2,] -1.011961 -3.6539030 -3.437473  2.097060\n[3,]  3.205067  0.8147136 -1.813295 -1.695667\n\n\nCode\nA-B\n\n\n          [,1]      [,2]      [,3]      [,4]\n[1,] -2.517317 2.0654221 -2.160016 4.2331174\n[2,]  3.789687 4.5313433  6.406300 0.7428617\n[3,] -1.907047 0.2299227 -1.368727 3.6351897\n\n\nCode\nA*B\n\n\n           [,1]       [,2]        [,3]       [,4]\n[1,]  0.8178254 -0.8683204 -0.09436379 -0.9042476\n[2,] -3.3344159 -1.7955161 -7.30611374  0.9614538\n[3,]  1.6589066  0.1527234  0.35365578 -2.5848292\n\n\nCode\n#A %*% B，出错误，为什么？\nA %*% t(B)#t()是矩阵转置的意思\n\n\n          [,1]       [,2]       [,3]\n[1,] -1.049106  -6.375162  0.5849238\n[2,]  1.092552 -11.474592 -0.4364713\n[3,] -5.736068   4.791590 -0.4195434\n\n\nCode\n2*A\n\n\n          [,1]      [,2]        [,3]      [,4]\n[1,] 0.5823905 2.9557519 -0.08921567 0.4512802\n[2,] 2.7777263 0.8774402  2.96882675 2.8399212\n[3,] 1.2980201 1.0446363 -3.18202216 1.9395224\n\n\n\n\n14 矩阵运算2\n\n\nCode\nset.seed(110)\nC &lt;- matrix(rnorm(16), nrow=4, ncol=4)\nD &lt;- round(C)#四舍五入\nD\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    0    0   -2    2\n[2,]    1    1    0   -1\n[3,]    1    0    1    2\n[4,]    1    1    1    0\n\n\nCode\ndet(D)\n\n\n[1] 4\n\n\nCode\nE &lt;- solve(D)\nD%*%E\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n\nCode\nE%*%D\n\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n\nCode\nG &lt;- 1:4# F不用是因为F代表FALSE\nsolve(D,G)\n\n\n[1] -0.25  3.50  0.75  1.25\n\n\n\n\n15 矩阵操作\n\n\nCode\nset.seed(110)\nC &lt;- matrix(rnorm(16), nrow=4, ncol=4)\nD &lt;- round(C)#四舍五入\ndiag(D)\n\n\n[1] 0 1 1 0\n\n\nCode\neigen(D)\n\n\neigen() decomposition\n$values\n[1]  1.7429256+1.0941392i  1.7429256-1.0941392i -0.7429256+0.6265678i\n[4] -0.7429256-0.6265678i\n\n$vectors\n                      [,1]                  [,2]                   [,3]\n[1,]  0.1820599-0.3539865i  0.1820599+0.3539865i -0.74407160+0.0000000i\n[2,]  0.1365193-0.3963668i  0.1365193+0.3963668i  0.55236372+0.1391179i\n[3,] -0.7053579+0.0000000i -0.7053579+0.0000000i  0.02942912+0.1294845i\n[4,] -0.3530442-0.2088866i -0.3530442+0.2088866i  0.30582402-0.1036212i\n                       [,4]\n[1,] -0.74407160+0.0000000i\n[2,]  0.55236372-0.1391179i\n[3,]  0.02942912-0.1294845i\n[4,]  0.30582402+0.1036212i\n\n\nCode\ndim(D)\n\n\n[1] 4 4\n\n\nCode\nnrow(D)\n\n\n[1] 4\n\n\nCode\nncol(D)\n\n\n[1] 4\n\n\nCode\ncolnames(D) &lt;- LETTERS[1:4]\nrownames(D) &lt;- letters[1:4]\nD\n\n\n  A B  C  D\na 0 0 -2  2\nb 1 1  0 -1\nc 1 0  1  2\nd 1 1  1  0\n\n\n\n\n16 创建数组\n\n\nCode\ny &lt;- array(1:24, c(4, 3, 2))# 4行，3列，2页\ny\n\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    5    9\n[2,]    2    6   10\n[3,]    3    7   11\n[4,]    4    8   12\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]   13   17   21\n[2,]   14   18   22\n[3,]   15   19   23\n[4,]   16   20   24\n\n\n\n\n17 列表\nR中列表是存储不同数据类型的结构形式\n列表通过以下的list()形式创建\n列表是可以嵌套列表的\n\n\nCode\nl1 &lt;- list(\n  1:3, \n  \"a\", \n  c(TRUE, FALSE, TRUE), \n  c(2.3, 5.9)\n)\nl1\n\n\n[[1]]\n[1] 1 2 3\n\n[[2]]\n[1] \"a\"\n\n[[3]]\n[1]  TRUE FALSE  TRUE\n\n[[4]]\n[1] 2.3 5.9\n\n\nCode\ntypeof(l1)\n\n\n[1] \"list\"\n\n\n\n\n18 列表数据占用的内存空间\n列表是通过参考reference”与数据建立映射关系，以达到节约内存的目的\n\n\nCode\nlobstr::obj_size(iris)\n\n\n7.20 kB\n\n\nCode\nl2 &lt;- list(iris, iris, iris, iris)\nlobstr::obj_size(l2)\n\n\n7.28 kB\n\n\n\n\n19 列表的转换\n\n\nCode\nlist(1:3)\n\n\n[[1]]\n[1] 1 2 3\n\n\nCode\nas.list(1:3)\n\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 2\n\n[[3]]\n[1] 3\n\n\n\n\n20 列表的索引\n列表可以通过三种符号索引 [[, [, and $.\n\n编号索引[[, [\n名称索引[[, [\n美元索引$\n\n\n\nCode\nx &lt;- list(ntype=1:3, ctype=\"a\", ltype=c(T,F,F),ftype=\n            factor(letters[1:3]))\n\nx[[1]]\n\n\n[1] 1 2 3\n\n\nCode\nx[1]\n\n\n$ntype\n[1] 1 2 3\n\n\nCode\nx[\"ntype\"]\n\n\n$ntype\n[1] 1 2 3\n\n\nCode\nx[[\"ntype\"]]\n\n\n[1] 1 2 3\n\n\nCode\nx$ntype\n\n\n[1] 1 2 3\n\n\nCode\n# x[[1:4]]\nx[1:4]\n\n\n$ntype\n[1] 1 2 3\n\n$ctype\n[1] \"a\"\n\n$ltype\n[1]  TRUE FALSE FALSE\n\n$ftype\n[1] a b c\nLevels: a b c\n\n\n\n\n21 数据框\n数据框是一种特殊类型的列表，是元素等长的列表\n数据框可以直接通过data.frame()创建\n数据框是R主要工作的数据结构\n\n\nCode\nName &lt;- c(\"Jon\", \"Bill\", \"Maria\", \"Ben\", \"Tina\")\nAge &lt;- c(23, 41, 32, 58, 26)\ndf &lt;- data.frame(Name, Age)\ndf\n\n\n   Name Age\n1   Jon  23\n2  Bill  41\n3 Maria  32\n4   Ben  58\n5  Tina  26\n\n\n\n\n22 R内置的数据框数据\n可以用data()函数查看R内置的数据集\nairquality #纽约1973年5-9月每日空气质量\nanscombe #四组x-y数据，虽有相似的统计量，但实际数据差别较大\nattenu #多个观测站对加利福尼亚23次地震的观测数据\nattitude #30个部门在七个方面的调查结果，调查结果是同一部门35个职员赞成的百分比\nbeaver1 #一只海狸每10分钟的体温数据，共114条数据\nbeaver2 #另一只海狸每10分钟的体温数据，共100条数据\nBOD #随水质的提高，生化反应对氧的需求（mg/l）随时间（天）的变化\ncars #1920年代汽车速度对刹车距离的影响\nchickwts #不同饮食种类对小鸡生长速度的影响\nesoph #法国的一个食管癌病例对照研究\nfaithful #一个间歇泉的爆发时间和持续时间\nFormaldehyde #两种方法测定甲醛浓度时分光光度计的读数\nFreeny #每季度收入和其他四因素的记录\ndating from #配对的病例对照数据，用于条件logistic回归\nInsectSprays #使用不同杀虫剂时昆虫数目\niris #3种鸢尾花形态数据\nLifeCycleSavings #50个国家的存款率\nlongley #强共线性的宏观经济数据\nmorley #光速测量试验数据\nmtcars #32辆汽车在11个指标上的数据\nOrchardSprays #使用拉丁方设计研究不同喷雾剂对蜜蜂的影响\nPlantGrowth #三种处理方式对植物产量的影响\npressure #温度和气压\nPuromycin #两种细胞中辅因子浓度对酶促反应的影响\nquakes #1000次地震观测数据（震级&gt;4）\nrandu #在VMS1.5中使用FORTRAN中的RANDU三个一组生成随机数字，共400组。\nrock #48块石头的形态数据\nsleep #两药物的催眠效果\nstackloss #化工厂将氨转为硝酸的数据\nswiss #瑞士生育率和社会经济指标\nToothGrowth #VC剂量和摄入方式对豚鼠牙齿的影响\ntrees #树木形态指标\nUSArrests #美国50个州的四个犯罪率指标\nUSJudgeRatings #43名律师的12个评价指标\nwarpbreaks #织布机异常数据\nwomen #15名女性的身高和体重\n\n\n23 Exercise and Homework\n\n请在mtcars数据中筛选出气缸数为4的汽车性能数据\n请把mtcars数据集中的数据行进行随机打乱",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>第五次课-矩阵、数组、列表与数据框</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6.html",
+    "href": "lecture6.html",
+    "title": "7  第六次课-列表与数据框的操作",
+    "section": "",
+    "text": "8 do.call 函数（列表的操作）\ndo.call () executes any function by its name’s when a list of the corresponding argument is passed\n\n\nCode\nlist1 &lt;- list(c(1, 2, 3), c(7, 5, 10), c(9, 9, 2))\n#sum(list1) error\ndo.call(sum, list1)\n\n\n[1] 48\n\n\nCode\ndo.call(sum, list1[1:2])\n\n\n[1] 28\n\n\nCode\n#do.call(mean,list1)\ndf1 &lt;- data.frame(team=c('A', 'B', 'C'),\n                  points=c(22, 27, 38))\n\ndf2 &lt;- data.frame(team=c('D', 'E', 'F'),\n                  points=c(22, 14, 20))\n\ndf3 &lt;- data.frame(team=c('G', 'H', 'I'),\n                  points=c(11, 15, 18))\n\n#place three data frames into list\ndf_list &lt;- list(df1, df2, df3)\ndo.call(rbind, df_list)\n\n\n  team points\n1    A     22\n2    B     27\n3    C     38\n4    D     22\n5    E     14\n6    F     20\n7    G     11\n8    H     15\n9    I     18\n\n\n\n\n9 apply家族函数（单一数据结构的贯穿式操作）\n– apply(x, MARGIN, FUN, …)\nx：数组或矩阵\nMARGIN：取一个介于1到2之间的值或范围，以定义该函数的应用位置：\n-MARGIN = 1：对行执行操作  \n\n-MARGIN = 2：对列执行操作  \n\n-MARGIN =             c（1,2）该操作在行和列上执行  \n-FUN：告诉应用哪个功能。可以应用平均值，中位数，和，最小值，最大值甚至用户定义的函数等内置函数\n–lapply(X, FUN)\nArguments: -X: A vector or an object -FUN: Function applied to each element of x\n– sapply(X, FUN, …, simplify = TRUE, USE.NAMES = TRUE)\n– tapply(X, INDEX, FUN = NULL) Arguments:\n– mapply(FUN, …, MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)\n直接上代码解释\n\n\nCode\nX&lt;-matrix(rnorm(30), nrow=5, ncol=6)\napply(X,1 ,sum)#row sum\n\n\n[1] -3.456891  2.655526  2.733971 -4.403573 -6.107480\n\n\nCode\napply(X, 2, sort)\n\n\n            [,1]       [,2]       [,3]       [,4]        [,5]       [,6]\n[1,] -2.00161739 -0.8486434 -0.4284221 -2.3434501 -2.95456575 -1.4618917\n[2,] -1.78527753 -0.6123609 -0.4118980 -0.6795858 -2.32923867  0.2606219\n[3,] -0.41744562 -0.3978942  0.1231112 -0.3626495 -0.01025455  0.4173114\n[4,] -0.41536052 -0.2665900  0.5455353  0.1452693  1.07324075  0.4457367\n[5,] -0.06991438  0.4198843  0.8892432  1.6974732  1.49599646  1.7051893\n\n\nCode\napply(X, 2, is.vector)\n\n\n[1] TRUE TRUE TRUE TRUE TRUE TRUE\n\n\nCode\nA&lt;-matrix(1:9, 3,3)\nB&lt;-matrix(4:15, 4,3)\nC&lt;-matrix(8:10, 3,2)\nMyList&lt;-list(A,B,C) # display the list\nlapply(MyList,\"[\", , 2)# [,2]\n\n\n[[1]]\n[1] 4 5 6\n\n[[2]]\n[1]  8  9 10 11\n\n[[3]]\n[1]  8  9 10\n\n\nCode\nlapply(MyList,\"[\", 1, )# [1,]\n\n\n[[1]]\n[1] 1 4 7\n\n[[2]]\n[1]  4  8 12\n\n[[3]]\n[1] 8 8\n\n\nCode\nsapply(MyList,\"[\", 2,1)# 向量化结果\n\n\n[1] 2 5 9\n\n\nCode\nmovies &lt;- c(\"SPYDERMAN\",\"BATMAN\",\"VERTIGO\",\"CHINATOWN\")\nlapply(movies, tolower)\n\n\n[[1]]\n[1] \"spyderman\"\n\n[[2]]\n[1] \"batman\"\n\n[[3]]\n[1] \"vertigo\"\n\n[[4]]\n[1] \"chinatown\"\n\n\nCode\nsapply(cars, min)\n\n\nspeed  dist \n    4     2 \n\n\nCode\ntapply(iris$Sepal.Width, iris$Species, median)\n\n\n    setosa versicolor  virginica \n       3.4        2.8        3.0 \n\n\nCode\nA = list(c(1, 2, 3, 4)) \nB = list(c(2, 5, 1, 6)) \nmapply(sum, A, B) \n\n\n[1] 24\n\n\nCode\nmapply(rep,1:4,4:1)\n\n\n[[1]]\n[1] 1 1 1 1\n\n[[2]]\n[1] 2 2 2\n\n[[3]]\n[1] 3 3\n\n[[4]]\n[1] 4\n\n\n\n\n10 sweep函数（两个数据结构的对应操作）\n数据标准化为例：\n\\(x_{std}=\\frac{x-\\bar{x}}{x_{sd}}\\)\n\n\nCode\ndf &lt;- iris[,1:4]\ncol.mean &lt;- apply(df,2,mean)\ncol.sd &lt;- apply(df,2,sd)\ndf.mean.sub &lt;- sweep(df,2,col.mean,\"-\")\ndf.std &lt;- sweep(df.mean.sub,2,col.sd,\"/\")\napply(df.std,2,sum)\n\n\n Sepal.Length   Sepal.Width  Petal.Length   Petal.Width \n-6.721013e-14  3.053113e-14 -4.267420e-15 -4.572731e-15 \n\n\nCode\n.Machine$double.eps\n\n\n[1] 2.220446e-16\n\n\nCode\n#the smallest positive floating-point number\n\n\n\n\n11 aggregate 函数(分类汇总)\n\n\nCode\naggregate(mtcars[,1],list(mtcars$am,mtcars$cyl),mean)\n\n\n  Group.1 Group.2        x\n1       0       4 22.90000\n2       1       4 28.07500\n3       0       6 19.12500\n4       1       6 20.56667\n5       0       8 15.05000\n6       1       8 15.40000\n\n\nCode\naggregate(mpg~am*cyl,data = mtcars,mean)\n\n\n  am cyl      mpg\n1  0   4 22.90000\n2  1   4 28.07500\n3  0   6 19.12500\n4  1   6 20.56667\n5  0   8 15.05000\n6  1   8 15.40000\n\n\nCode\naggregate(. ~ Species, data = iris, mean)\n\n\n     Species Sepal.Length Sepal.Width Petal.Length Petal.Width\n1     setosa        5.006       3.428        1.462       0.246\n2 versicolor        5.936       2.770        4.260       1.326\n3  virginica        6.588       2.974        5.552       2.026\n\n\nCode\nag &lt;- aggregate(len ~ ., data = ToothGrowth, mean)\nxtabs(len ~ ., data = ag)\n\n\n    dose\nsupp   0.5     1     2\n  OJ 13.23 22.70 26.06\n  VC  7.98 16.77 26.14\n\n\n\n\n12 map函数家族\nThe map() function from the purrr package in R can be used to apply some function to each element in a vector or list and return a list as a result.\n\n\nCode\nlibrary(purrr)\ndata &lt;- list(1L,\n             \"a\",\n             FALSE)\n map(data, typeof)\n\n\n[[1]]\n[1] \"integer\"\n\n[[2]]\n[1] \"character\"\n\n[[3]]\n[1] \"logical\"\n\n\nCode\nlist.A &lt;- list(c(1, 2, 3),\n             c(4, 5, 6),\n             c(7, 8, NA))\nmap(list.A, sum,na.rm=TRUE)\n\n\n[[1]]\n[1] 6\n\n[[2]]\n[1] 15\n\n[[3]]\n[1] 15\n\n\nCode\nmap(iris[,1:4],mean)\n\n\n$Sepal.Length\n[1] 5.843333\n\n$Sepal.Width\n[1] 3.057333\n\n$Petal.Length\n[1] 3.758\n\n$Petal.Width\n[1] 1.199333\n\n\nCode\nmap(1:3,rnorm,n=5)\n\n\n[[1]]\n[1] 0.29811547 1.21280095 1.52122509 0.52441100 0.08133417\n\n[[2]]\n[1] 1.347185 2.173182 2.878086 2.970963 1.282356\n\n[[3]]\n[1] 4.784489 3.040801 1.222285 3.191057 4.598429\n\n\nCode\nmap(1:3,function(x) rnorm(5, x))\n\n\n[[1]]\n[1] 0.9433756 1.4623194 1.1820422 2.4885166 1.7044858\n\n[[2]]\n[1] -0.09607104  2.06543592  3.04116434  0.11490913  2.69262492\n\n[[3]]\n[1] 4.157248 2.742471 2.838181 4.137362 1.517793\n\n\nCode\nmap(1:3,~rnorm(5, .x))\n\n\n[[1]]\n[1] -0.007284035  0.368815929  0.462815277  2.187358026  1.049484745\n\n[[2]]\n[1] 3.304000 3.279781 2.280639 2.852728 3.120705\n\n[[3]]\n[1] 2.992780 3.148045 4.635949 2.523132 2.146801\n\n\nCode\nl2 &lt;- list(\n  list(num = 1:3,     letters[1:3]),\n  list(num = 101:103, letters[4:6]),\n  list()\n)\nmap(l2,c(2, 2)) \n\n\n[[1]]\n[1] \"b\"\n\n[[2]]\n[1] \"e\"\n\n[[3]]\nNULL\n\n\n\n\n13 R数据变形的有力工具\n\n\n\n图6-1：reshape包中melt和cast函数的用法示意图",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>第六次课-列表与数据框的操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html",
+    "href": "lecture7.html",
+    "title": "8  第7次课—R读取与写入文件，Excel操作技巧",
+    "section": "",
+    "text": "9 R读取csv文件\n-逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值），其文件以纯文本形式存储表格数据（数字和文本）\n-CSV是一种通用的、相对简单的文件格式，最广泛的应用是在程序之间转移表格数据\n-Excel处理后的数据可以另存为CSV文件（见图7-1）\n-R可以非常容易地读取CSV文件\n\n\n\n图7-1：Excel文件另存为csv文件\n\n\n\n\n10 R导出与读取csv文档\n-首先制定你想要读入的csv文档位置，一般而言我们需要把某个项目的全部文件都放在同一文件夹中进行处理。然后，你让R访问这个文件夹就可以实现文件交互操作。\n-ctrl+shift+H 快捷键组合可以制定工作路径（你想利用R访问文件的文件夹地址）\n-我已在R设定好我刚才存放csv文件的位置，你也需要这样做！\n\n\nCode\n# setwd(\"C:/Users/LidongHuang/Desktop\")#ctrl+shift+H\n# library(ggplot2)\n# write.csv(diamonds,\"dm.csv\",row.names = F)\n# \n# dms &lt;- read.csv(\"dm.csv\")#通过read.csv函数读入文件，双引号的字符串是你的文件名，必须和你保存的文件名一致，此处建议通过复制操作实现\n# class(dms)#\"data.frame\" 数据框是R存储数据的核心，相当于Excel的一个sheet\n\n\n\n\n11 学习Excel\n-Excel是最常用的数据处理工具\n-Excel的功能非常强大\n-R做数据处理离不开Excel\n-学好Excel对R有很大的帮助\n\n\n12 求特征数\nR数据集iris各数值变量的特征数\n\n\nCode\napply(iris[,1:4], 2, mean)\n\n\nSepal.Length  Sepal.Width Petal.Length  Petal.Width \n    5.843333     3.057333     3.758000     1.199333 \n\n\nCode\napply(iris[,1:4], 2, sd)\n\n\nSepal.Length  Sepal.Width Petal.Length  Petal.Width \n   0.8280661    0.4358663    1.7652982    0.7622377 \n\n\n\n\n13 Excel 怎么求平均值和标准差？\n\nread.csv() 从硬盘导入csv文件至R空间，存为data.frame格式\nwrite.csv() 导出r数据至硬盘中，存为csv格式\n\n\n\n14 Excel 使用小技巧\n-冻结窗格\n\n\n\n图7-2：冻结窗口示意\n\n\n-快速到底/到头\n利用快捷键，Ctrl+end; 把鼠标移动到单元格【下边框】上,鼠标变成十字箭头性状时,双击\n-快速填充\n拖拽填充柄\n\n\n\n图7-3：填充柄\n\n\n\n\n15 筛选和排序\n-筛选\n-排序\n\n\n16 分组汇总： EXCEL和R的比较\n-不同品种下，iris四个变量的平均值和标准差\n\nR的实现办法见下面代码\n\n\n\nCode\naggregate(Sepal.Length~Species,data=iris,mean)\n\n\n     Species Sepal.Length\n1     setosa        5.006\n2 versicolor        5.936\n3  virginica        6.588\n\n\nCode\naggregate(iris[,1:4],list(iris$Species),mean)\n\n\n     Group.1 Sepal.Length Sepal.Width Petal.Length Petal.Width\n1     setosa        5.006       3.428        1.462       0.246\n2 versicolor        5.936       2.770        4.260       1.326\n3  virginica        6.588       2.974        5.552       2.026\n\n\nCode\nlibrary(rstatix)\niris %&gt;%\n  group_by(Species) %&gt;%\n  get_summary_stats(\n    Sepal.Length,Sepal.Width,\n    Petal.Length,Petal.Width,\n    type = \"mean_sd\")\n\n\n# A tibble: 12 × 5\n   Species    variable         n  mean    sd\n   &lt;fct&gt;      &lt;fct&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 setosa     Sepal.Length    50 5.01  0.352\n 2 setosa     Sepal.Width     50 3.43  0.379\n 3 setosa     Petal.Length    50 1.46  0.174\n 4 setosa     Petal.Width     50 0.246 0.105\n 5 versicolor Sepal.Length    50 5.94  0.516\n 6 versicolor Sepal.Width     50 2.77  0.314\n 7 versicolor Petal.Length    50 4.26  0.47 \n 8 versicolor Petal.Width     50 1.33  0.198\n 9 virginica  Sepal.Length    50 6.59  0.636\n10 virginica  Sepal.Width     50 2.97  0.322\n11 virginica  Petal.Length    50 5.55  0.552\n12 virginica  Petal.Width     50 2.03  0.275\n\n\n\n\n17 Excel利用数据透视表实现\n类似操作如下\n\n\n\n图7-4：数据透视表\n\n\n\n\n18 Excel是非常强大的\nCTRL+E\n\n\n19 练习\n\n请大家把iris数据导出到电脑中\n求前四列的平均值",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>第7次课—R读取与写入文件，Excel操作技巧</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8.html",
+    "href": "lecture8.html",
+    "title": "9  第八次课-控制流",
+    "section": "",
+    "text": "10 条件判断与选择：\n\n\nif (condition) true_action\nif (condition) true_action else false_action\n\n如果condition为真，执行true_action，否则执行false_action\n\n\nCode\nx &lt;- 85# mark of test\nif (x &gt; 90) {\n    \"A\"\n  } else if (x &gt; 80) {\n    \"B\"\n  } else if (x &gt; 50) {\n    \"C\"\n  } else {\n    \"F\"\n  }\n\n\n[1] \"B\"\n\n\n\n\n11 向量化的条件判断\n基于向量的条件判断可以用ifelse()\n\n\nCode\nx &lt;- 1:10\nifelse(x %% 2 == 0, \"even\", \"odd\")\n\n\n [1] \"odd\"  \"even\" \"odd\"  \"even\" \"odd\"  \"even\" \"odd\"  \"even\" \"odd\"  \"even\"\n\n\n\n\n12 向量化的条件判断2\n基于向量的条件判断也可以用dplyr::case_when()\n\n\nCode\nx &lt;- 85# mark of test\ndplyr::case_when(\nx &gt; 90~ \"A\",\nx &gt; 80~ \"B\",\nx &gt; 60~ \"C\",\nis.na(x)~ \"缺考\",\nT~\"F\"\n)\n\n\n[1] \"B\"\n\n\n\n\n13 switch结构：\nswitch结构主要用于多条件判断,但不适用于数值型数据的比较判断，主要用于字符型数据\n\n\nCode\nx &lt;- \"a\"\n switch(x,\n    a = \"option 1\",\n    b = \"option 2\",\n    c = \"option 3\",\n    stop(\"Invalid `x` value\")\n  )\n\n\n[1] \"option 1\"\n\n\n\n\n14 for循环：\nfor循环是在向量的基础上执行迭代运算，基本用法如：for (item in vector) perform_action\n\n\nCode\nfor (i in 1:3) {\n  print(i)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\nCode\nfor (i in 1:10) {\n  if (i &lt; 3) \n    next#跳过本条循环，进入下次\n\n  print(i)\n  \n  if (i &gt;= 5)\n    break# 结束循环\n}\n\n\n[1] 3\n[1] 4\n[1] 5\n\n\n\n\n15 for循环的注意事项：\n\n如果要产生新数据，记得提前分配数据收集结构\n\n\n\nCode\nmeans &lt;- c(1, 50, 20)\nout &lt;- as.list(1:length(means))\n# out &lt;- vector(\"list\", length(means))\nfor (i in 1:length(means)) {\n  out[[i]] &lt;- rnorm(10, means[[i]])\n}\n\n\n\nseq_along(x) 在循环中更严谨\n\n\n\nCode\nmeans &lt;- c()\nout &lt;- vector(\"list\", length(means))\nfor (i in seq_along(means)) {\n  out[[i]] &lt;- rnorm(10, means[[i]])\n}\n\n\n\n\n16 其他循环函数：\n\nwhile(condition) action: 执行 action while condition 为真\nrepeat(action): 多次重复 action (直到遇到break的条件)\n\n\n\nCode\ni &lt;- 0\nwhile (i&lt;5) \n{\n  print(\"I'm happy\")\n  i=i+1\n}\n\n\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n\n\nCode\ni &lt;- 0\nrepeat {\n  print(\"Hi\")\n  i &lt;- i + 1\n  if (i &gt; 4)\n    break\n}\n\n\n[1] \"Hi\"\n[1] \"Hi\"\n[1] \"Hi\"\n[1] \"Hi\"\n[1] \"Hi\"",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>第八次课-控制流</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9.html",
+    "href": "lecture9.html",
+    "title": "10  第九课 自定义函数",
+    "section": "",
+    "text": "11  R中函数的组成",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>第九课 自定义函数</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9.html#section",
+    "href": "lecture9.html#section",
+    "title": "10  第九课 自定义函数",
+    "section": "15.1 ",
+    "text": "15.1 \n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nf2 &lt;- function(x) {#求负对数运算\n  if(is.character(x)) stop(\"字符型不对数\")\n  if(!is.numeric(x))  stop(\"非数字不对数\")\n  if(x&lt;0)             stop(\"负数不对数\")\n  -log(x)\n}\n\nf2(2L)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] -0.6931472\n```\n\n\n:::\n\n```{.r .cell-code}\n# f2(NA)\nf3 &lt;- function(x) {#求负对数运算\n   -try(log(x))\n  print(paste(\"log 10=\",log(10),sep = \"\"))\n}\nf3(-2)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"log 10=2.30258509299405\"\n```\n\n\n:::\n\n```{.r .cell-code}\nf3(2)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"log 10=2.30258509299405\"\n```\n\n\n:::\n:::",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>第九课 自定义函数</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9.html#管道函数",
+    "href": "lecture9.html#管道函数",
+    "title": "10  第九课 自定义函数",
+    "section": "16.1  管道函数",
+    "text": "16.1  管道函数\nx %&gt;% f() is equivalent to f(x); x %&gt;% f(y) is equivalent to f(x, y)\n\n\n\nCode\nlibrary(magrittr)\n\nx %&gt;%\n  deviation() %&gt;%\n  square() %&gt;%\n  mean() %&gt;%\n  sqrt()",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>第九课 自定义函数</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10.html",
+    "href": "lecture10.html",
+    "title": "11  第10次课—初级绘图函数plot",
+    "section": "",
+    "text": "12 plot函数简单用法: Generic X-Y Plotting\n以R语言自带的mtcars数据集为例\n\n\nCode\nplot(mtcars$wt)#当只有一个参数时，索引与值\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg)\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars)#也就是所谓的图集\n\n\n\n\n\n\n\n\n\n\n\n13 （一）修改图形主体部分\n修改类型\n增加一个type参数，即可修改图形的类型了\n\n\n\n图9-1：plot绘图类型\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,type = \"p\")#点图\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,type = \"l\")#折线图\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,type = \"b\")#点折线图\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,type = \"o\")#连点图\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,type = \"h\")#垂直图\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,type = \"s\")#阶梯图\n\n\n\n\n\n\n\n\n\n\n\n14 （二）修改图像元素大小\ncex : 修改点图中点的大小 lwd ：修改线图中线的粗细\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,cex=1)\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,cex=2)\n\n\n\n\n\n\n\n\n\n\n\n15 （三）修改图形元素的形状\npch： 修改点的类型\nlty ：修改线条的类型\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,pch=1)\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,pch=2)\n\n\n\n\n\n\n\n\n\n\n\n\n图9-2：plot绘图所用的点类型\n\n\n\n\n\n图9-3：plot绘图所用的线类型\n\n\n\n\n16 （四）修改图形元素的颜色\ncol： 设置颜色\n-col： 取值可以是颜色名称如”blue”，RGB值如rgb(0,0,1)，颜色代码如”#0000FF”\n-运行colours()可以获取颜色的名称，总共有657种 \n-运行rainbow(n)可以获得n种彩虹色\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,cex=3,pch=1,col=rainbow(10))\n\n\n\n\n\n\n\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,cex=3,pch=1,col=as.factor(mtcars$vs))#根据发动机排列类型标记颜色\n\n\n\n\n\n\n\n\n\n\n\n17 （五）设置图形标题\nmain：设置主标题\nsub：设置次标题\nxlab：设置x轴标题\nylab：设置y轴标题\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,\n     cex=3,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\"\n     )\n\n\n\n\n\n\n\n\n\n\n\n18 （六）修改文字大小\ncex.axis : 坐标轴刻度文字大小\ncex.lab: 坐标轴标题文字大小\ncex.main ： 主标题文字大小\ncex.sub ：次标题文字大小\n\n\n19 （七）修改文字字体\nfont.axis : 设置坐标刻度字体，1常规字体，2加粗字体，3斜体字，4斜体加粗\nfont.lab：设置坐标轴标题字体，取值同font.axis\nfont.main ：设置主标题字体，取值同font.axis\nfont.sub ：设置次标题字体，取值同font.axis\nfamily：设置字体样式系列，family = ‘serif’，family = ‘sans’，family = ‘mono’\n\n\n20 （八）添加标题和禁用标题\nann = FALSE : 设置之后即可不显示原标题\ntitle() : 使用title()函数可以为图形另外设置标题，其参数与plot()函数中设置标题的参数相同\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,\n     cex=3,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\",\n     ann=F\n     )\n\nplot(mtcars$wt, mtcars$mpg,\n     cex=3,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\",\n     ann=F\n     )\ntitle(xlab = \"Weight\",\n      col.lab = \"orange\",\n      cex.lab = 1.5, font.lab = 3)\n\n\n\n\n\n\n\n\n\n\n\n21 （九）隐藏框架线及坐标轴\nfram.plot = FALSE ： 隐藏框架线\nxaxt = “n” ： 隐藏X轴，会留下框架\nyaxt = “n” ： 隐藏Y轴，会留下框架\naxes=FALSE：隐藏所有坐标轴及框架线\n\n\n22 （十）设置坐标轴取值范围\nxlim: 设置x轴取值范围\nylim： 设置y轴取值范围\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,\n     cex=1,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\",\n     ylim=c(0,35),\n     xlim=c(0,6)\n     )\n\n\n\n\n\n\n\n\n\n\n\n23 （十一）修改图形整体尺寸大小\n通过par()函数进行调节\nno.readonly = TRUE : 设置画板的参数为可修改状态\npin: 以英寸表示的图形尺寸（宽和高）\nmai: 以数值向量表示的边界大小，顺序为“下、左、上、右”，单位为英寸\nmar: 以数值向量表示的边界大小，顺序为“下、左、上、右”，单位为英分。默认（5,4,4,2）+ 0.1\n\n\nCode\nopar &lt;- par(no.readonly = TRUE)\npar(pin = c(3,5), mar = c(5,8,2,6))\n\nplot(mtcars$wt, mtcars$mpg,\n     cex=1,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\",\n     ylim=c(0,35),\n     xlim=c(0,6)\n     )\n\n\n\n\n\n\n\n\n\nCode\npar(opar)\n\n\n\n\n24 （十二）给图形添加参考线\n通过abline()函数添加\n参数\nv : 垂直参考线的位点\nh : 水平参考线的位点\nlty: 参考线的样式\ncol：参考线的颜色\n\n\nCode\nplot(mtcars$wt, mtcars$mpg,\n     cex=1,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\",\n     ylim=c(0,35),\n     xlim=c(0,6)\n     )\nabline(v = seq(0,6,1), h = seq(0,35,5), lty = 3, col = \"blue\")\n\n\n\n\n\n\n\n\n\n\n\n25 （十三）添加文本\ntext()向绘图区域内部添加文本\ntext(x, y , labels , pos , cex , col )\nx: 标注位点的横坐标\ny : 标注位点的纵坐标\nlabels: 所要添加的标注内容\npos: 标注所在相对位置，1，2，3，4 分别代表下，左，上，右\ncex: 字体大小\ncol: 字体颜色\nmtext()向图形四个边界之一添加文本\nlabels : 所要添加的标注内容\nside : 1,2,3,4分别代表下，左，上，右四个边界\nline : 相对边界线的偏移距离\nlas : 标注文字的方向，0，1，垂直或水平\n\n\n26 （十四）组合多个图形\n使用par()中的mfrow与mfcol参数组合图形\n\n\nCode\nattach(mtcars)\nopar &lt;- par(no.readonly = TRUE)\npar(mfrow = c(2,2))\nplot(wt, mpg,\n     cex=1,pch=1,col=rainbow(10),\n     xlab = \"Weight\",\n     ylab=\"Miles per gallon\",\n     ylim=c(0,35),\n     xlim=c(0,6)\n     )\nabline(v = seq(0,6,1), h = seq(0,35,5), lty = 3, col = \"blue\")\nhist(mpg)#频率图\nplot(am,mpg)#散点图\nplot(as.factor(am),mpg)#箱线图\n\n\n\n\n\n\n\n\n\nCode\npar(opar)\ndetach(mtcars)\n\n\n\n\n27 （十五）精细调整各图形的比例\n使用函数layout()组合图形\nmat : 一个矩阵，设置图形的总体布局\nwidths: 向量，设置图形矩阵中每列相对宽度\nheights: 向量，设置图形矩阵中每行的相对高度\n\n\nCode\nattach(mtcars)\nlayout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))\nplot(wt~mpg)\nhist(mpg)\nplot(as.factor(am),mpg)\n\n\n\n\n\n\n\n\n\nCode\ndetach(mtcars)\n\n\n\n\n28 （十六）par()中fig参数设置图形位置,叠加图形\nfig\n整个画布大可以理解为fig = c(0,1,0,1), 向量中的4个数依次代表：x轴起始位置0，x轴结束位置1，y轴起始位置0，y轴结束位置1\n把图形摆放在画面由半部分，设置fig = c(0.5,1,0,1)\n把图放在右上四分之一的位置，设置fig = c(0.5,1,0.5,1)\n\n\nCode\nattach(mtcars)\nopar &lt;- par(no.readonly=TRUE)\npar(fig=c(0, 0.8, 0, 0.8))\nplot(wt, mpg,\nxlab=\"Miles Per Gallon\",\nylab=\"Car Weight\")\npar(fig=c(0, 0.8, 0.55, 1), new=TRUE)#new 表示在原有图形上加图\nboxplot(wt, horizontal=TRUE, axes=FALSE)\npar(fig=c(0.65, 1, 0, 0.8), new=TRUE)\nboxplot(mpg, axes=FALSE)\nmtext(\"Enhanced Scatterplot\", side=3, outer=TRUE, line=-3)\n\n\n\n\n\n\n\n\n\nCode\npar(opar)\ndetach(mtcars)\n\n\n\n\n29 （十七）以鸢尾花数据集为例子，讲解最简单的线性模型和多图形绘制\n\n按品种分类，分别拟合花萼长度与花萼宽度的关系\n\n\n\nCode\n# species 1\nsp1 &lt;- iris[iris$Species==\"setosa\",]\nlm.fit1 &lt;- lm(Sepal.Length~Sepal.Width,data=sp1)\nsummary(lm.fit1)\n\n\n\nCall:\nlm(formula = Sepal.Length ~ Sepal.Width, data = sp1)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-0.52476 -0.16286  0.02166  0.13833  0.44428 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   2.6390     0.3100   8.513 3.74e-11 ***\nSepal.Width   0.6905     0.0899   7.681 6.71e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.2385 on 48 degrees of freedom\nMultiple R-squared:  0.5514,    Adjusted R-squared:  0.542 \nF-statistic: 58.99 on 1 and 48 DF,  p-value: 6.71e-10\n\n\nCode\nplot(sp1$Sepal.Width,sp1$Sepal.Length)\nabline(lm.fit1)\n\n\n\n\n\n\n\n\n\nCode\n# species 2\nunique(iris$Species)\n\n\n[1] setosa     versicolor virginica \nLevels: setosa versicolor virginica\n\n\nCode\nsp2 &lt;- iris[iris$Species==\"versicolor\",]\nlm.fit2 &lt;- lm(Sepal.Length~Sepal.Width,data=sp2)\nsummary(lm.fit2)\n\n\n\nCall:\nlm(formula = Sepal.Length ~ Sepal.Width, data = sp2)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-0.73497 -0.28556 -0.07544  0.43666  0.83805 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   3.5397     0.5629   6.289 9.07e-08 ***\nSepal.Width   0.8651     0.2019   4.284 8.77e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.4436 on 48 degrees of freedom\nMultiple R-squared:  0.2766,    Adjusted R-squared:  0.2615 \nF-statistic: 18.35 on 1 and 48 DF,  p-value: 8.772e-05\n\n\nCode\nplot(sp2$Sepal.Width,sp2$Sepal.Length)\nabline(lm.fit2)\n\n\n\n\n\n\n\n\n\nCode\n# species 3\nunique(iris$Species)\n\n\n[1] setosa     versicolor virginica \nLevels: setosa versicolor virginica\n\n\nCode\nsp3 &lt;- iris[iris$Species==\"virginica\",]\nlm.fit3 &lt;- lm(Sepal.Length~Sepal.Width,data=sp3)\nsummary(lm.fit3)\n\n\n\nCall:\nlm(formula = Sepal.Length ~ Sepal.Width, data = sp3)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.26067 -0.36921 -0.03606  0.19841  1.44917 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   3.9068     0.7571   5.161 4.66e-06 ***\nSepal.Width   0.9015     0.2531   3.562 0.000843 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.5714 on 48 degrees of freedom\nMultiple R-squared:  0.2091,    Adjusted R-squared:  0.1926 \nF-statistic: 12.69 on 1 and 48 DF,  p-value: 0.0008435\n\n\nCode\nplot(sp3$Sepal.Width,sp3$Sepal.Length)\nabline(lm.fit3)\n\n\n\n\n\n\n\n\n\nCode\n###############################\nnames(iris)\n\n\n[1] \"Sepal.Length\" \"Sepal.Width\"  \"Petal.Length\" \"Petal.Width\"  \"Species\"     \n\n\nCode\nlibrary(dplyr)\nlms &lt;- iris %&gt;%\n  group_by(Species) %&gt;%\n  do(broom::tidy(lm(Sepal.Length ~ Sepal.Width, .)))\nlms\n\n\n# A tibble: 6 × 6\n# Groups:   Species [3]\n  Species    term        estimate std.error statistic  p.value\n  &lt;fct&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 setosa     (Intercept)    2.64     0.310       8.51 3.74e-11\n2 setosa     Sepal.Width    0.690    0.0899      7.68 6.71e-10\n3 versicolor (Intercept)    3.54     0.563       6.29 9.07e- 8\n4 versicolor Sepal.Width    0.865    0.202       4.28 8.77e- 5\n5 virginica  (Intercept)    3.91     0.757       5.16 4.66e- 6\n6 virginica  Sepal.Width    0.902    0.253       3.56 8.43e- 4\n\n\n\n通过par(mfrow函数)把花萼长度与花萼宽度的关系图放到一起\n\n\n\nCode\npar(mfrow=c(1,3))# one row, three cols\nplot(sp1$Sepal.Width,sp1$Sepal.Length)\nabline(lm.fit1)\nplot(sp2$Sepal.Width,sp2$Sepal.Length)\nabline(lm.fit2)\nplot(sp3$Sepal.Width,sp3$Sepal.Length)\nabline(lm.fit3)\n\n\n\n\n\n\n\n\n\n\n通过layout(mat函数)集中展现图形\n\n\n\nCode\nlayout(matrix(c(1,2,3,4), 2, 2, byrow = TRUE))\nplot(iris$Sepal.Width,iris$Sepal.Length)\nabline(lm(iris$Sepal.Length~iris$Sepal.Width))\nplot(sp1$Sepal.Width,sp1$Sepal.Length)\nabline(lm.fit1)\nplot(sp2$Sepal.Width,sp2$Sepal.Length)\nabline(lm.fit2)\nplot(sp3$Sepal.Width,sp3$Sepal.Length)\nabline(lm.fit3)\n\n\n\n\n\n\n\n\n\nCode\nlayout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE))\nplot(iris$Sepal.Width,iris$Sepal.Length)\nabline(lm(iris$Sepal.Length~iris$Sepal.Width))\nplot(sp1$Sepal.Width,sp1$Sepal.Length)\nabline(lm.fit1)\nplot(sp2$Sepal.Width,sp2$Sepal.Length)\nabline(lm.fit2)\nplot(sp3$Sepal.Width,sp3$Sepal.Length)\nabline(lm.fit3)\n\n\n\n\n\n\n\n\n\n\n多窗口展示图形可以用函数dev.new()，然后绘图函数如plot()，关闭图形窗口，可以用graphics.off()\n课堂练习：生成二维随机正态数，分别绘制数值散点图和边缘分布\n\n\n\nCode\nset.seed(123)\nx=rnorm(500)\nset.seed(110)\ny=rnorm(500)\nopar &lt;- par(no.readonly=TRUE)\npar(fig=c(0, 0.8, 0, 0.8))\nplot(x,y)\npar(fig=c(0, 0.8, 0.55, 1), new=TRUE)\nplot(density(x),axes=F,frame.plot=F, xlab=\"\", ylab=\"\",main=\"\")\npar(fig=c(0.65, 1, 0, 0.8), new=TRUE)\nplot(density(y)$y,density(y)$x,axes=F,frame.plot=F, xlab=\"\", ylab=\"\",main=\"\",type = \"l\")\n\n\n\n\n\n\n\n\n\nCode\npar(opar)",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10次课—初级绘图函数plot</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#正态分布函数及使用方法",
+    "href": "lecture11.html#正态分布函数及使用方法",
+    "title": "12  第11课 基本统计分析",
+    "section": "12.1  正态分布函数及使用方法",
+    "text": "12.1  正态分布函数及使用方法\n\n随机数生成：rnorm()；\n密度函数：dnorm()；\n累积分布函数：pnorm()；\n分位数函数：qnorm()\n\n\n\n  \n\n::: {.cell}\n\n```{.r .cell-code}\nrnorm(10,0,1)#generate standard random normal number  \n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n [1]  2.1853829 -0.5423828 -0.7524032 -1.0074439 -0.5002176  1.8360306\n [7] -0.4571698  1.0129190  0.4286696  0.6567001\n```\n\n\n:::\n\n```{.r .cell-code}\ndnorm(10,0,1)# probability density function\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 7.694599e-23\n```\n\n\n:::\n\n```{.r .cell-code}\npnorm(-1.96)# cumulative density function \n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 0.0249979\n```\n\n\n:::\n\n```{.r .cell-code}\npnorm(1.96)-pnorm(-1.96)# significance level alpha\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 0.9500042\n```\n\n\n:::\n\n```{.r .cell-code}\nqnorm(0.025)#quantile function\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] -1.959964\n```\n\n\n:::\n\n```{.r .cell-code}\nqnorm(0.975)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 1.959964\n```\n\n\n:::\n\n```{.r .cell-code}\npnorm(qnorm(0.975))\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 0.975\n```\n\n\n:::\n\n```{.r .cell-code}\nqnorm(pnorm(1.96))# mutual inverse function\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 1.96\n```\n\n\n:::\n\n```{.r .cell-code}\nplot(x=seq(-5,5,0.01),y=dnorm(seq(-5,5,0.01)),type=\"l\",col=\"red\")\npoints(density(rnorm(100)),pch=4,cex = 0.8)\n```\n\n::: {.cell-output-display}\n![](lecture11_files/figure-html/ex0-1.png){width=672}\n:::\n:::",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第11课 基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#描述性统计",
+    "href": "lecture11.html#描述性统计",
+    "title": "12  第11课 基本统计分析",
+    "section": "12.2 描述性统计",
+    "text": "12.2 描述性统计\n在描述性统计量的计算方面， R有很多方法，这里仅展示基础包的函数\n\n\nCode\n&gt; summary(mtcars[,1:3])\n\n\n      mpg             cyl             disp      \n Min.   :10.40   Min.   :4.000   Min.   : 71.1  \n 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8  \n Median :19.20   Median :6.000   Median :196.3  \n Mean   :20.09   Mean   :6.188   Mean   :230.7  \n 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0  \n Max.   :33.90   Max.   :8.000   Max.   :472.0  \n\n\n\\(~\\) aggregate()仅允许在每次调用中使用平均数、标准差这样的单返回值函数。它无法一次返回若干个统计量。\nby(data, INDICES, FUN, …, simplify =TRUE)函数用于将data中的数据，按照INDICES里面的内容拆分成若干个小的data frame，并且在每一小块data frame上应用FUN函数。\n\\(~\\)\n\n\nCode\n&gt; by(mtcars, mtcars$am,summary)\n\n\nmtcars$am: 0\n      mpg             cyl             disp             hp       \n Min.   :10.40   Min.   :4.000   Min.   :120.1   Min.   : 62.0  \n 1st Qu.:14.95   1st Qu.:6.000   1st Qu.:196.3   1st Qu.:116.5  \n Median :17.30   Median :8.000   Median :275.8   Median :175.0  \n Mean   :17.15   Mean   :6.947   Mean   :290.4   Mean   :160.3  \n 3rd Qu.:19.20   3rd Qu.:8.000   3rd Qu.:360.0   3rd Qu.:192.5  \n Max.   :24.40   Max.   :8.000   Max.   :472.0   Max.   :245.0  \n      drat             wt             qsec             vs               am   \n Min.   :2.760   Min.   :2.465   Min.   :15.41   Min.   :0.0000   Min.   :0  \n 1st Qu.:3.070   1st Qu.:3.438   1st Qu.:17.18   1st Qu.:0.0000   1st Qu.:0  \n Median :3.150   Median :3.520   Median :17.82   Median :0.0000   Median :0  \n Mean   :3.286   Mean   :3.769   Mean   :18.18   Mean   :0.3684   Mean   :0  \n 3rd Qu.:3.695   3rd Qu.:3.842   3rd Qu.:19.17   3rd Qu.:1.0000   3rd Qu.:0  \n Max.   :3.920   Max.   :5.424   Max.   :22.90   Max.   :1.0000   Max.   :0  \n      gear            carb      \n Min.   :3.000   Min.   :1.000  \n 1st Qu.:3.000   1st Qu.:2.000  \n Median :3.000   Median :3.000  \n Mean   :3.211   Mean   :2.737  \n 3rd Qu.:3.000   3rd Qu.:4.000  \n Max.   :4.000   Max.   :4.000  \n------------------------------------------------------------ \nmtcars$am: 1\n      mpg             cyl             disp             hp             drat     \n Min.   :15.00   Min.   :4.000   Min.   : 71.1   Min.   : 52.0   Min.   :3.54  \n 1st Qu.:21.00   1st Qu.:4.000   1st Qu.: 79.0   1st Qu.: 66.0   1st Qu.:3.85  \n Median :22.80   Median :4.000   Median :120.3   Median :109.0   Median :4.08  \n Mean   :24.39   Mean   :5.077   Mean   :143.5   Mean   :126.8   Mean   :4.05  \n 3rd Qu.:30.40   3rd Qu.:6.000   3rd Qu.:160.0   3rd Qu.:113.0   3rd Qu.:4.22  \n Max.   :33.90   Max.   :8.000   Max.   :351.0   Max.   :335.0   Max.   :4.93  \n       wt             qsec             vs               am         gear      \n Min.   :1.513   Min.   :14.50   Min.   :0.0000   Min.   :1   Min.   :4.000  \n 1st Qu.:1.935   1st Qu.:16.46   1st Qu.:0.0000   1st Qu.:1   1st Qu.:4.000  \n Median :2.320   Median :17.02   Median :1.0000   Median :1   Median :4.000  \n Mean   :2.411   Mean   :17.36   Mean   :0.5385   Mean   :1   Mean   :4.385  \n 3rd Qu.:2.780   3rd Qu.:18.61   3rd Qu.:1.0000   3rd Qu.:1   3rd Qu.:5.000  \n Max.   :3.570   Max.   :19.90   Max.   :1.0000   Max.   :1   Max.   :5.000  \n      carb      \n Min.   :1.000  \n 1st Qu.:1.000  \n Median :2.000  \n Mean   :2.923  \n 3rd Qu.:4.000  \n Max.   :8.000  \n\n\n\\(~\\)\n使用psych包中的describeBy()分组计算概述统计量",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第11课 基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#频数表和列联表",
+    "href": "lecture11.html#频数表和列联表",
+    "title": "12  第11课 基本统计分析",
+    "section": "12.3 频数表和列联表",
+    "text": "12.3 频数表和列联表\n\\(~\\)\n\n\nCode\n&gt; table(am=mtcars$am)\n\n\nam\n 0  1 \n19 13 \n\n\nCode\n&gt; xtabs(~vs+am,data=mtcars)\n\n\n   am\nvs   0  1\n  0 12  6\n  1  7  7\n\n\n\\(~\\) –独立性检验 chisq.test()\n\\(~\\) – Fisher精确检验 fisher.test()\n\\(~\\)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第11课 基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#相关",
+    "href": "lecture11.html#相关",
+    "title": "12  第11课 基本统计分析",
+    "section": "12.4 相关",
+    "text": "12.4 相关\n\\(~\\)\nR可以计算多种相关系数，包括Pearson相关系数、Spearman相关系数、 Kendall相关系数、偏 相关系数\n\\(~\\)\n\n\nCode\n&gt; x &lt;- rnorm(10)\n&gt; y &lt;- rnorm(10)\n&gt; cor(x,y)\n\n\n[1] -0.2625478\n\n\nCode\n&gt; cor(iris[,1:4])\n\n\n             Sepal.Length Sepal.Width Petal.Length Petal.Width\nSepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411\nSepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259\nPetal.Length    0.8717538  -0.4284401    1.0000000   0.9628654\nPetal.Width     0.8179411  -0.3661259    0.9628654   1.0000000\n\n\nCode\n&gt; library(tidyverse)  \n&gt; library(corrr)\n&gt; iris[,1:4] %&gt;% correlate() %&gt;% \n+   network_plot()",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第11课 基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#概率密度曲线的绘制",
+    "href": "lecture11.html#概率密度曲线的绘制",
+    "title": "12  第11课 基本统计分析",
+    "section": "12.5 概率密度曲线的绘制",
+    "text": "12.5 概率密度曲线的绘制\n\\(~\\)\n对于已知参数的分布，可以利用参数绘制密度曲线，对于未知参数的经验分布，可以利用核密度函数进行近似计算\n\\(~\\)\n\n\nCode\n&gt; x &lt;- seq(-2,6,length.out=100)\n&gt; y &lt;- dnorm(x,mean=2,sd=1)\n&gt; plot(x,y,type = \"l\")\n\n\n\n\n\n\n\n\n\nCode\n&gt; xx &lt;- faithful$eruptions#Faithful火山的272次爆发持续时间和间歇时间\n&gt; plot(density(xx))\n\n\n\n\n\n\n\n\n\nCode\n&gt; #高斯混合模型的数据\n&gt; n &lt;- 1000\n&gt; mean_s &lt;- c(1, 7)\n&gt; y &lt;- sample(c(\"head\", \"tail\"), size = n, replace = TRUE, prob = c(0.25, 0.75))\n&gt; x &lt;- rnorm(n, mean = mean_s[1])\n&gt; tails &lt;- y %in% c(\"tail\")\n&gt; x[tails] &lt;- rnorm(sum(tails), mean = mean_s[2])\n&gt; plot(density(x))",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第11课 基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#蒙特卡洛计算复杂函数的定积分",
+    "href": "lecture11.html#蒙特卡洛计算复杂函数的定积分",
+    "title": "12  第11课 基本统计分析",
+    "section": "12.6 蒙特卡洛计算复杂函数的定积分",
+    "text": "12.6 蒙特卡洛计算复杂函数的定积分\n\\(~\\)\n复杂函数的定积分非常难求，但我们知道定积分其实就是面积，设面积为\\(A_0\\) ， 。我们可以画一个矩形(面积为\\(A\\))，正好包围在这个积分曲线的边界，然后在矩形区域内产生一些随机数，其数量为 \\(n\\) ，再计算落在积分区域内的随机数，其数量为 \\(n_0\\) ，则产生的随机数在积分区域内的比率为\\(n_0/n\\) ，这与积分区域与总区域面积的比值 \\(A_0/A\\)应该是近似相等的，我们利用的就是这个关系，即\\(n_0/n \\approx A_0/A\\) 最后即得所求定积分。\n下面编程计算函数\\(y=e^{\\frac{-t^2}{2}}\\) 这是标准正态密度函数的一部分。\n\\(~\\)\n\n\nCode\n&gt; n &lt;- 10000# sample numbers\n&gt; a &lt;- -5# lower boundary\n&gt; b &lt;- 2# upper boundary\n&gt; \n&gt; ft &lt;- function(t) exp(-0.5*t^2)# function to be calculated\n&gt; \n&gt; x &lt;- runif(n,a,b)\n&gt; y &lt;- runif(n)\n&gt; sum(ft(x)&gt;=y)/n*(b-a)*1#(b-a)*1 represents area of rectangle\n\n\n[1] 2.429\n\n\nCode\n&gt; integrate(ft,a,b)# r reuslts\n\n\n2.449601 with absolute error &lt; 4.7e-05\n\n\nCode\n&gt; sqrt(2*pi)*(pnorm(b)-pnorm(a))# because it is parts of normal pdf\n\n\n[1] 2.449601\n\n\nCode\n&gt; xx &lt;- sort(x)\n&gt; plot(xx,y,pch=16,col=c((y&lt;=ft(xx))+1))\n&gt; lines(xx,ft(xx),col=\"blue\",lwd=2)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第11课 基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html",
+    "href": "lecture12.html",
+    "title": "13  第12课-R假设检验方法",
+    "section": "",
+    "text": "14 假设检验的概念\n科幻故事：在人类的持续探索之下，终于在KIC8462852恒星处发现外太空文明，外星人也捕捉到人类探测器的信号和地球的坐标，2252年外星人回访地球，由于其携带大量共生生物，致使地球人发生大面积感染，且致死率极高。别无选择，人类迅速打造了一艘”诺亚方舟“，准备移居其他星球，以躲避这次灾难。方舟将尽可能多地携带健康人，以提高人类基因遗传成功的概率。就在方舟启程之刻，突然有3名无法辨别来源的同类人（或外星人）敲打舱门，要求一起逃离地球，问题：请你判断来的人是地球人还是外星人？",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#补充信息",
+    "href": "lecture12.html#补充信息",
+    "title": "13  第12课-R假设检验方法",
+    "section": "14.1 补充信息",
+    "text": "14.1 补充信息\n地球人的身高\\(h_e \\sim N(\\mu_e,\\sigma_e)\\)平均身高\\(\\mu_e=1.70 m,\\sigma_e= 0.1 m\\);外星人的信息掌握甚少。已知方舟外的3个智慧生物的平均身高\\(\\bar{h}=1.85 m\\)。请依据以上信息回答问题（做出结论）。像这样根据部分样本的信息（\\(\\bar{h}\\)）来推断样本属于哪一个总体的问题，属于假设检验(Hypothesis Testing)。\n\n(1)提出原假设\\(H_0\\)和备择假设\\(H_A\\)\n本例中，\\(H_0\\) 来者是地球人；\\(H_A\\) 来者是外星人\n(2)原假设正确的情况下，计算样本统计量\n本例中，\\(H_0\\) 来者是地球人（假设是正确的），按照这个假设 可以进一步获取地球人\\(h\\)的分布信息",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#身高分布",
+    "href": "lecture12.html#身高分布",
+    "title": "13  第12课-R假设检验方法",
+    "section": "14.2 身高分布",
+    "text": "14.2 身高分布",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#门外三个人的位置",
+    "href": "lecture12.html#门外三个人的位置",
+    "title": "13  第12课-R假设检验方法",
+    "section": "14.3 门外三个人的“位置”",
+    "text": "14.3 门外三个人的“位置”",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#做出统计推断",
+    "href": "lecture12.html#做出统计推断",
+    "title": "13  第12课-R假设检验方法",
+    "section": "14.4 (3)做出统计推断",
+    "text": "14.4 (3)做出统计推断\n计算蓝色区域的概率，以表征门外人平均身高\\(\\bar{h} \\ge 1.85\\)的概率（包括更极端的情况）\n\n\nCode\npnorm(1.85,1.7,0.1/sqrt(3))#黄色区域面积\n\n\n[1] 0.9953126\n\n\nCode\n1-pnorm(1.85,1.7,0.1/sqrt(3))#蓝色区域面积\n\n\n[1] 0.004687384\n\n\n结论：门外不可能是地球人",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#常见统计方法的假设",
+    "href": "lecture12.html#常见统计方法的假设",
+    "title": "13  第12课-R假设检验方法",
+    "section": "16.1 常见统计方法的假设",
+    "text": "16.1 常见统计方法的假设\n请查看此视频的前1分钟",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#t检验",
+    "href": "lecture12.html#t检验",
+    "title": "13  第12课-R假设检验方法",
+    "section": "16.2 T检验",
+    "text": "16.2 T检验\n\n请检验花萼长和花瓣长之间是否有显著性差异？\n\n\nCode\nt.test(iris$Sepal.Length,iris$Petal.Length)\n\n\n\n    Welch Two Sample t-test\n\ndata:  iris$Sepal.Length and iris$Petal.Length\nt = 13.098, df = 211.54, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 1.771500 2.399166\nsample estimates:\nmean of x mean of y \n 5.843333  3.758000",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#方差分析anova-one-way",
+    "href": "lecture12.html#方差分析anova-one-way",
+    "title": "13  第12课-R假设检验方法",
+    "section": "16.3 方差分析(ANOVA-one way)",
+    "text": "16.3 方差分析(ANOVA-one way)\n请比较不同品种花萼长(或花瓣长)之间是否有显著性差异？\n\n\nCode\naov.fit &lt;- aov(Sepal.Length~Species,data = iris)\nsummary(aov.fit)\n\n\n             Df Sum Sq Mean Sq F value Pr(&gt;F)    \nSpecies       2  63.21  31.606   119.3 &lt;2e-16 ***\nResiduals   147  38.96   0.265                   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#多重比较posthoc",
+    "href": "lecture12.html#多重比较posthoc",
+    "title": "13  第12课-R假设检验方法",
+    "section": "16.4 多重比较(posthoc)",
+    "text": "16.4 多重比较(posthoc)\n哪些花种之间有显著性差异？\n\n\n  \n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(agricolae)\nlsd &lt;- LSD.test(aov.fit,\"Species\")\nlsd$groups\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n           Sepal.Length groups\nvirginica         6.588      a\nversicolor        5.936      b\nsetosa            5.006      c\n```\n\n\n:::\n\n```{.r .cell-code}\ntuckey &lt;- HSD.test(aov.fit,\"Species\")\ntuckey$groups\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n           Sepal.Length groups\nvirginica         6.588      a\nversicolor        5.936      b\nsetosa            5.006      c\n```\n\n\n:::\n\n```{.r .cell-code}\nlsd.01 &lt;- LSD.test(aov.fit,\"Species\",alpha = 0.01)\nlsd.01$groups\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n           Sepal.Length groups\nvirginica         6.588      a\nversicolor        5.936      b\nsetosa            5.006      c\n```\n\n\n:::\n\n```{.r .cell-code}\ntuckey.01 &lt;- HSD.test(aov.fit,\"Species\",alpha = 0.01)\ntuckey.01$groups\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n           Sepal.Length groups\nvirginica         6.588      a\nversicolor        5.936      b\nsetosa            5.006      c\n```\n\n\n:::\n:::",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#我们错过了什么",
+    "href": "lecture12.html#我们错过了什么",
+    "title": "13  第12课-R假设检验方法",
+    "section": "16.5 我们错过了什么？",
+    "text": "16.5 我们错过了什么？\n请继续观看完视频",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>第12课-R假设检验方法</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#ggplot的作者和原理",
+    "href": "lecture13.html#ggplot的作者和原理",
+    "title": "14  第十三课 ggplot绘图",
+    "section": "14.1 ggplot的作者和原理",
+    "text": "14.1 ggplot的作者和原理\nggplot2的作者Hadley Wickham\n\n点击此处查看这本书的精要讲解\nHadely对ggplot2的图形总结：“一张图就是从数据到几何对象(geometric object, 缩写为geom, 包括点、线、条形等)的图形属性(aesthetic attributes, 缩写为aes, 包括颜色、形状、大小等)的一个映射(mapping)。此外,图形中还可能包含数据的统计变换(statistical transformation, 缩写为stats), 最后绘制在某个特定的坐标系(coordinate system, 缩写为coord)中, 而分面(facet,指将绘图窗口划分为若干个子窗口)则可以用来生成数据中不同子集的图形。”",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>第十三课 ggplot绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#ggplot的特点",
+    "href": "lecture13.html#ggplot的特点",
+    "title": "14  第十三课 ggplot绘图",
+    "section": "14.2 ggplot的特点",
+    "text": "14.2 ggplot的特点\n\n采用图层设计方式，图层之间的叠加用+，后面的图层在前面图层上方。\n将表征数据和图形细节分开，能快速将图形表现出来。\n扩展包丰富，有专门调整颜色、字体和主题等的辅助包。\n\n\n\nCode\n&gt; library(ggplot2)\n&gt; ggplot(mtcars,aes(x=wt, y=mpg))+geom_point()",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>第十三课 ggplot绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#ggplot基本语法",
+    "href": "lecture13.html#ggplot基本语法",
+    "title": "14  第十三课 ggplot绘图",
+    "section": "14.3 ggplot基本语法",
+    "text": "14.3 ggplot基本语法\n数据(变量)映射到几何对象(geom，包括点、线、面等)的图形属性(aes，包括颜色、形状、大小等)。此外还包括数据的统计变换(stats)、绘制特定坐标系(coord)、形成分面(facet)等过程\n\nPlot = data + Aesthetics + Geometry\n在ggplot()函数中制定数据集data\n在aes()函数中制定图形属性的映射变量，aes()函数必须嵌套在ggplot()中，或嵌套在geom_xxx()函数中\n在geom_xxx()函数中制定数据绘图类型\n\n – geom_point（）绘制散点图\n – geom_bar（）绘制条形图\n – geom_line（）绘制线图\n – geom_histogram（）绘制直方图\n – geom_boxplot（） 绘制箱式图\n – geom_density（）绘制概率密度函数\n – geom函数约有40种\n\n其他函数可以以图层的方式对图形进行修饰\n\n\n\nCode\n&gt; ggplot(mtcars, aes(x=wt, y=mpg, color=cyl, size=cyl)) +\n+       geom_point() \n\n\n\n\n\n\n\n\n\nCode\n&gt; #可以把上面的图分解\n&gt; p &lt;-ggplot(mtcars, aes(x=wt, y=mpg, color=cyl, size=cyl))\n&gt; p#只生成底图和框架\n\n\n\n\n\n\n\n\n\nCode\n&gt; p+geom_point()#加散点图图层\n\n\n\n\n\n\n\n\n\nCode\n&gt; #其实geom_point()只是图层包装函数，背后隐藏的是layer()\n&gt; p+layer(\n+   mapping = NULL, \n+   data = NULL,\n+   geom = \"point\", \n+   stat = \"identity\",\n+   position = \"identity\"\n+ )\n\n\n\n\n\n\n\n\n\nlayer()图层组成\n\n1.映射（mapping）：绘图中图形属性与数据中的对应关系,在aes() 函数中指定，未制定的话从ggplot()函数继承\n2.数据（data）：需要可视化的数据集，多数据集以图层形式叠加\n3.几何对象（geom）：如bar条形图，point散点图\n4.统计变换（stats）：对数据进行统计变换的方式。To keep the data as is, use the “identity” stat.\n5.位置（position）：图形位置的形式，jittering（扰动，避免重合）， stacking（堆积），dodging（并列 ）等\n\nggplot 其他图形调整组成\n\n标度（scale）：变量以什么形状、颜色映射到图形上\n分面（facet）：将数据拆开，进行分层画图\n主题（theme）：主题设定，与数据无关的图层可以通过这个函数实现\n注释(annotate):对图形增加文字类的注释",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>第十三课 ggplot绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#ggplot实战",
+    "href": "lecture13.html#ggplot实战",
+    "title": "14  第十三课 ggplot绘图",
+    "section": "14.4 ggplot实战",
+    "text": "14.4 ggplot实战\n\nScatterplot 以mtcars数据集为例，绘制wt（横轴）和mpg（纵轴）的散点图，以am变量为颜色选项\n\n\n\n选中单击查看\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n&gt; ggplot(mtcars, aes(x=wt, y=mpg, color=am))+geom_point() \n```\n\n::: {.cell-output-display}\n![](lecture13_files/figure-html/lect13.3-1.png){width=672}\n:::\n:::\n\n\n\n 在上面的代码中，颜色用as.factor(am)会有何不同？\n比较以下两种绘图颜色的差别及原因\n\n\nCode\n&gt; ggplot(mtcars, aes(x=wt, y=mpg, color=\"blue\"))+geom_point()\n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(mtcars, aes(x=wt, y=mpg ),color=\"blue\")+geom_point()\n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(mtcars, aes(x=wt, y=mpg ))+geom_point(color=\"blue\")\n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(mtcars, aes(x=wt, y=mpg ))+geom_point(aes(color=\"blue\"))\n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(mtcars, aes(x=wt, y=mpg ))+geom_point(aes(color=\"blue\"))+scale_colour_identity()\n\n\n\n\n\n\n\n\n\n\nboxplot\n\n\n\nCode\n&gt; ggplot(data=iris,aes(x=Species, y=Sepal.Length)) + geom_boxplot(aes(fill=Species)) \n\n\n\n\n\n\n\n\n\n\nHistogram\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Sepal.Width)) + geom_histogram(binwidth=0.2, color=\"black\", aes(fill=Species)) \n\n\n\n\n\n\n\n\n\n\nBarplot\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Species)) + geom_bar() \n\n\n\n\n\n\n\n\n\n\nlineplot\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Sepal.Length,y=Sepal.Width,group=Species,color=Species)) + geom_line(aes(linetype=Species)) \n\n\n\n\n\n\n\n\n\n\n图形修饰\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Sepal.Length,y=Sepal.Width,group=Species,color=Species)) +  geom_line(aes(linetype=Species), size = 1.2) +\n+   geom_point(aes(shape=Species), size = 3) +        \n+   scale_shape_manual(values=c(6, 5, 4)) +               \n+   scale_linetype_manual(values=c(\"dotdash\", \"solid\", \"dotted\")) +\n+   xlab(\"Sepal Length\") + ylab(\"Sepal Width\") + ggtitle(\"Line plot of sepal length and width\")\n\n\n\n\n\n\n\n\n\n\n分面功能\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Sepal.Length,y=Sepal.Width,color=Species)) +  \n+   geom_point(aes(shape=Species), size = 3) +\n+   facet_wrap(~Species)\n\n\n\n\n\n\n\n\n\nggplot()的两个分面函数facet_wrap() 和facet_grid()\n这两个函数的区别：",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>第十三课 ggplot绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#ggplot统计功能与绘图",
+    "href": "lecture13.html#ggplot统计功能与绘图",
+    "title": "14  第十三课 ggplot绘图",
+    "section": "14.5 ggplot统计功能与绘图",
+    "text": "14.5 ggplot统计功能与绘图\n\n描述统计图 stat_summary()\n\nstat_summary() operates on unique x or y;stat_summary_bin() operates on binned x or y. They are more flexible versions of stat_bin(): instead of just counting, they can compute any aggregate.\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Species,y=Sepal.Width,color=Species)) +  \n+   geom_point(size = 3) \n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Species,y=Sepal.Width,color=Species)) +  \n+   geom_point(position=\"jitter\", size = 3) \n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Species,y=Sepal.Width,color=Species)) +  \n+   geom_point(position=\"jitter\", size = 3)+\n+   stat_summary(\n+     fun.y=\"mean\",\n+     geom='errorbar', \n+     aes(ymin=..y.., ymax=..y..), \n+     width=0.6, \n+     size=1.5,\n+     colour=\"grey25\"\n+   ) \n\n\n\n\n\n\n\n\n\n\n直方图 geom_histogram()\n\nVisualise the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin. Histograms (geom_histogram) display the count with bars\n\n\nCode\n&gt;  ggplot(data=iris, aes(x=Sepal.Width))+ geom_histogram(binwidth=0.2, color=\"black\", fill=\"blue\", aes(y=..density..))#两个.. 是ggplot的标识符，不是ggplot自定义的，而是需要计算的变量\n\n\n\n\n\n\n\n\n\n\n分布密度函数 geom_density()\n\nComputes and draws kernel density estimate, which is a smoothed version of the histogram.\n\n\nCode\n&gt;  ggplot(data=iris, aes(x=Sepal.Width, fill=Species))+ geom_density(stat=\"density\", alpha=I(0.2))\n\n\n\n\n\n\n\n\n\n\n散点+平滑 geom_smooth()\n\nAids the eye in seeing patterns in the presence of overplotting. geom_smooth() and stat_smooth() are effectively aliases: they both use the same arguments. Use stat_smooth() if you want to display the results with a non-standard geom.\n\n\nCode\n&gt;  ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +   geom_point(aes(shape=Species), size=1.5) +geom_smooth(method=\"lm\")\n\n\n\n\n\n\n\n\n\nCode\n&gt; ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +   geom_point(aes(shape=Species), size=1.5) +geom_smooth(method=\"loess\")",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>第十三课 ggplot绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#期末考核问题",
+    "href": "lecture13.html#期末考核问题",
+    "title": "14  第十三课 ggplot绘图",
+    "section": "14.6 期末考核问题",
+    "text": "14.6 期末考核问题\n\n(1)R语言 最早始于哪一年？ 1993-1995\n(2)R语言为什么命名为R语言？ R 是新西兰的罗斯.伊哈卡 (Ross Ihaka)和罗伯特.金特尔曼（Robert Gentleman）基于S语言开发，二人名字都有R，所以命名为R语言\n(3)R语言是基于什么语言开发的？\n见上一条\n(4)R语言的两大基本功能是？ 统计计算与图形输出\n(5)Rstudio和R的关系是？ Rstudio是R的一个IDE，由于比较好用功能强大，所以用R语言的都一般都会装这个\n(6)以tidyverse包为例，列举R两种安装包的方式（截图和语言描述都可以）？ 代码安装和Rstudio安装\n(7)R语言有哪些数据类型？ 双整型（double）、整型（integer）、字符型（character）、逻辑型（logical）、复数类型（complex）\n(8)R语言的数据结构类型有哪些？ 向量（Atomic Vectors）、列表（List）、矩阵（Matrix）、数组（Array）、数据框（data.frame）\n(9)R中的向量是什么？ 同一类型数据的集合\n(10)各列举三条R语言的优势和劣势 优点：免费 灵活 新 缺点：需要编程；经常出错不稳定；学习成本高\n(11)实际操作–rivers是R自带的北美河流长度信息，请以rivers为例，求出哪一个河流（序号）最长（把代码和结果粘贴下边，不要截图！！）？\n\n\n\nCode\nwhich.max(rivers)\n\n\n[1] 68\n\n\n\n(12)实际操作–以mtcars为例，除am、cyl和vs之外求所有变量的平均值（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nnames(mtcars)\n\n\n [1] \"mpg\"  \"cyl\"  \"disp\" \"hp\"   \"drat\" \"wt\"   \"qsec\" \"vs\"   \"am\"   \"gear\"\n[11] \"carb\"\n\n\nCode\napply(mtcars[,-c(2,8,9)], 2, mean)\n\n\n       mpg       disp         hp       drat         wt       qsec       gear \n 20.090625 230.721875 146.687500   3.596563   3.217250  17.848750   3.687500 \n      carb \n  2.812500 \n\n\n\n(13)实际操作–以mtcars为例，分别用plot和ggplot函数绘制mpg与disp关系的散点图（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nattach(mtcars)\nplot(mpg,disp)\n\n\n\n\n\n\n\n\n\nCode\nlibrary(ggplot2)\n  ggplot(mtcars,aes(mpg,disp))+geom_point()\n\n\n\n\n\n\n\n\n\n\n(14)实际操作–随机生成100个均值为1，标准差为2的正态随机数（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nrnorm(100,1,2)\n\n\n  [1]  2.49183789  1.81698961  0.30225875  1.98697079 -0.38402306  3.04875797\n  [7]  1.93505818  0.17999401 -1.90105234 -3.04019401  1.84518295  3.75974609\n [13] -2.18006325  1.50510887  2.71582122  0.84283330  1.03801013  2.47122348\n [19] -0.56118693 -2.24826445  1.39543979  2.10796821 -0.07375914  0.10104502\n [25]  0.64886667  0.83587412  3.35983908  0.54466061  0.71195695  1.60723440\n [31]  3.57589337  1.45149110  2.30322898 -0.09533813  2.35845314  2.66576101\n [37]  0.77453109  0.56394828  2.10650219  0.38219137  5.53436476  3.89867444\n [43] -1.58773326  1.53911196  2.02610577  1.49279300 -0.92958443  2.58063955\n [49] -0.09660387  1.76472667  2.78553587  0.32508191  0.78655318  7.11995696\n [55]  3.84842247 -1.05824742  0.73200059 -0.43087531  3.40990135 -0.86895235\n [61]  3.10329620 -1.57420518  3.11530842 -1.67423090 -0.67089933  2.09780125\n [67]  1.04705733  4.69953276 -1.58004481 -2.06722387  1.52463924  0.58153900\n [73]  0.04508273  1.94025384  0.63153560 -0.23991889 -0.40962754  3.14381772\n [79]  0.26711478  4.61308050 -0.89643837  1.18786232 -1.02165982 -0.76963224\n [85]  4.02261000  1.98206016 -1.31771707 -0.70561281  3.85780585  1.14029502\n [91]  0.23262251 -0.08748209 -2.63832583  2.53213923  0.39427288  0.73720374\n [97]  2.05919747  0.28752121  4.99334849 -0.12164105\n\n\n\n(15)实际操作–利用ggplot并以mtcars数据集为例，演示如何生成箱式图（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nggplot(mtcars,aes(as.factor(am),mpg))+geom_boxplot()\n\n\n\n\n\n\n\n\n\n\n(16)实际操作–利用for循环实现从1开始到100的累加运算（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nj=0\nfor (i in 1:100) {\n  j=j+i\n}\nj\n\n\n[1] 5050\n\n\n\n(17)实际操作–利用t检验检验mtcars中手动挡和自动挡的车mpg是否有显著性差异（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nt.test(mpg~am,data=mtcars)\n\n\n\n    Welch Two Sample t-test\n\ndata:  mpg by am\nt = -3.7671, df = 18.332, p-value = 0.001374\nalternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0\n95 percent confidence interval:\n -11.280194  -3.209684\nsample estimates:\nmean in group 0 mean in group 1 \n       17.14737        24.39231 \n\n\n\n(18)实际操作–以diamonds数据为例，按照color和clarity分类计算平均价格（把代码和结果粘贴下边，不要截图！！）\n\n\n\nCode\nlibrary(tidyverse)\ndiamonds %&gt;% group_by(color,clarity) %&gt;% summarise(mean(price))\n\n\n# A tibble: 56 × 3\n# Groups:   color [7]\n   color clarity `mean(price)`\n   &lt;ord&gt; &lt;ord&gt;           &lt;dbl&gt;\n 1 D     I1              3863.\n 2 D     SI2             3931.\n 3 D     SI1             2976.\n 4 D     VS2             2587.\n 5 D     VS1             3030.\n 6 D     VVS2            3351.\n 7 D     VVS1            2948.\n 8 D     IF              8307.\n 9 E     I1              3488.\n10 E     SI2             4174.\n# ℹ 46 more rows\n\n\n\n(19)实际操作–利用R求下面矩阵行列式的值，并计算该矩阵的逆\n\n\\[\n\\begin{bmatrix}\n6~~2 \\\\\n2~~5\\\\\n\\end{bmatrix}\n\\]\n\n\nCode\nA &lt;- matrix(c(6,2,2,5),nrow = 2)\ndet(A)\n\n\n[1] 26\n\n\nCode\nsolve(A)\n\n\n            [,1]        [,2]\n[1,]  0.19230769 -0.07692308\n[2,] -0.07692308  0.23076923\n\n\n（把代码和结果粘贴下边，不要截图！！）\n\n(20)实际操作–利用R求下面矩阵的单位特征向量和特征根,并验证两个特征值对应的特征向量是正交的\n\n\\[\n\\begin{bmatrix}\n6~~ 2 \\\\\n2~~ 5\\\\\n\\end{bmatrix}\n\\]\n（把代码和结果粘贴下边，不要截图！！）\n\n\nCode\nev &lt;- eigen(A)\nvct &lt;- ev$vectors\nvct%*%t(vct)\n\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\n\nCode\nt(vct)%*%vct\n\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\n\n各种图形的参考https://www.r-graph-gallery.com/",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>第十三课 ggplot绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture14.html#中国地图",
+    "href": "lecture14.html#中国地图",
+    "title": "15  第16次课 map",
+    "section": "15.1 中国地图",
+    "text": "15.1 中国地图\n\n\nCode\n&gt; library(maps)\n&gt; library(mapdata)\n&gt; map(\"china\", col = \"blue\",  panel.first = grid())\n\n\n\n\n\n\n\n\n\nCode\n&gt; library(mapchina)\n&gt; library(dplyr)\n&gt; library(ggplot2)\n&gt; library(sf)\n&gt; head(china)\n\n\nSimple feature collection with 6 features and 13 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 115.4248 ymin: 39.44473 xmax: 116.8805 ymax: 41.05936\nGeodetic CRS:  WGS 84\n# A tibble: 6 × 14\n  Code_County Code_Perfecture Code_Province Name_Province Name_Perfecture\n  &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;          \n1 110101      1101            11            北京市        &lt;NA&gt;           \n2 110102      1101            11            北京市        &lt;NA&gt;           \n3 110114      1101            11            北京市        &lt;NA&gt;           \n4 110115      1101            11            北京市        &lt;NA&gt;           \n5 110111      1101            11            北京市        &lt;NA&gt;           \n6 110116      1101            11            北京市        &lt;NA&gt;           \n# ℹ 9 more variables: Name_County &lt;chr&gt;, Pinyin &lt;chr&gt;, Pop_2000 &lt;dbl&gt;,\n#   Pop_2010 &lt;dbl&gt;, Pop_2017 &lt;dbl&gt;, Pop_2018 &lt;dbl&gt;, Area &lt;dbl&gt;, Density &lt;dbl&gt;,\n#   geometry &lt;MULTIPOLYGON [°]&gt;\n\n\nCode\n&gt; js &lt;- china %&gt;%\n+ filter(Code_Province == 32)\n&gt; ggplot(js) +      geom_sf(aes(fill = rank(Density))) +\n+ scale_fill_distiller(palette = \"GnBu\", direction = 1) +\n+         theme_bw() +\n+         theme(legend.position = \"bottom\")",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>第16次课 map</span>"
+    ]
+  },
+  {
+    "objectID": "lecture14.html#地图-图层合作",
+    "href": "lecture14.html#地图-图层合作",
+    "title": "15  第16次课 map",
+    "section": "15.2 地图 图层合作",
+    "text": "15.2 地图 图层合作\n“This is a quick and dirty way to get map data (from the maps package) on to your plot. This is a good place to start if you need some crude reference lines, but you’ll typically want something more sophisticated for communication graphics.”\n\n\nCode\n&gt; library(maps)\n&gt; library(ggplot2)\n&gt; data(us.cities)\n&gt; big_citi &lt;- subset(us.cities,pop &gt; 500000)  ##人口大于50万的城市\n&gt; qplot(long,lat,data=big_citi) + borders(\"state\",size=0.5)\n\n\n\n\n\n\n\n\n\nCode\n&gt; tx_city &lt;- subset(us.cities,country.etc==\"TX\")\n&gt; ggplot(tx_city,aes(long,lat)) + borders(\"county\",\"texas\",colour=\"grey70\") + geom_point(colour = \"black\",alpha=0.5)",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>第16次课 map</span>"
+    ]
+  },
+  {
+    "objectID": "lecture14.html#leaflet-标记",
+    "href": "lecture14.html#leaflet-标记",
+    "title": "15  第16次课 map",
+    "section": "15.3 leaflet 标记",
+    "text": "15.3 leaflet 标记\n\n\nCode\n&gt; library(leaflet)\n&gt; library(magrittr)\n&gt; # Make data with several positions\n&gt; data_red &lt;- data.frame(LONG=42+rnorm(10), LAT=23+rnorm(10), PLACE=paste(\"Red_place_\",seq(1,10)))\n&gt; data_blue &lt;- data.frame(LONG=42+rnorm(10), LAT=23+rnorm(10), PLACE=paste(\"Blue_place_\",seq(1,10)))\n&gt; \n&gt; # Initialize the leaflet map:\n&gt; m &lt;- leaflet() %&gt;% \n+   setView(lng=42, lat=23, zoom=6 ) %&gt;%\n+ \n+   # Add two tiles\n+   addProviderTiles(\"Esri.WorldImagery\", group=\"background 1\") %&gt;%\n+   addTiles(options = providerTileOptions(noWrap = TRUE), group=\"background 2\") %&gt;% #If you happen to have a custom map tile URL template to use, you can provide it as an argument to addTiles()\n+ \n+   # Add 2 marker groups\n+   addCircleMarkers(data=data_red, lng=~LONG , lat=~LAT, radius=8 , color=\"black\",\n+                    fillColor=\"red\", stroke = TRUE, fillOpacity = 0.8, group=\"Red\") %&gt;%\n+   addCircleMarkers(data=data_blue, lng=~LONG , lat=~LAT, radius=8 , color=\"black\",\n+                    fillColor=\"blue\", stroke = TRUE, fillOpacity = 0.8, group=\"Blue\") %&gt;%\n+ \n+   # Add the control widget\n+   addLayersControl(overlayGroups = c(\"Red\",\"Blue\") , baseGroups = c(\"background 1\",\"background 2\"), \n+                    options = layersControlOptions(collapsed = FALSE))\n&gt; \n&gt; m",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>第16次课 map</span>"
+    ]
+  },
+  {
+    "objectID": "lecture14.html#网页交互式地图",
+    "href": "lecture14.html#网页交互式地图",
+    "title": "15  第16次课 map",
+    "section": "15.4 网页交互式地图",
+    "text": "15.4 网页交互式地图\n\n\nCode\n&gt; library(echarts4r)\n&gt; \n&gt; cns &lt;- countrycode::codelist$country.name.en\n&gt; cns &lt;- data.frame(\n+   country = cns,\n+   value = runif(length(cns), 1, 200)\n+ )\n&gt; \n&gt; cns |&gt; \n+   e_charts(country) |&gt; \n+   e_map(value) |&gt; \n+   e_visual_map(value)",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>第16次课 map</span>"
+    ]
+  },
+  {
+    "objectID": "lecture14.html#地统计分析",
+    "href": "lecture14.html#地统计分析",
+    "title": "15  第16次课 map",
+    "section": "15.5 地统计分析",
+    "text": "15.5 地统计分析\n\n\nCode\n&gt; library(sp)\n&gt; library(gstat)\n&gt; data(meuse)#Meuse河流域表层土壤重金属的采样数据\n&gt; coordinates(meuse) = ~x+y#构建坐标\n&gt; \n&gt; data(meuse.grid)#网格\n&gt; coordinates(meuse.grid) &lt;- c(\"x\",\"y\")#网格编码\n&gt; meuse.grid &lt;- as(meuse.grid,\"SpatialPixelsDataFrame\")#空间数据转dataframe\n&gt; \n&gt; plot(variogram(log(zinc)~1,meuse,alpha=c(0,45,90,135)),type=\"l\") #各向异性判断， 0 北 90 东\n\n\n\n\n\n\n\n\n\nCode\n&gt; v1 &lt;- variogram(log(zinc)~1, meuse, width=90, cutoff=1300)#变异函数与自变量的关系，平均数不变模型\n&gt; v &lt;- fit.variogram(variogram(log(zinc)~1,meuse), vgm(\"Sph\"))#球形模型拟合\n&gt; plot(v1,v)\n\n\n\n\n\n\n\n\n\nCode\n&gt; sk.fit &lt;- krige(log(zinc)~1,meuse,meuse.grid,v,beta=5.9)#简单克里格插值\n\n\n[using simple kriging]\n\n\nCode\n&gt; plot(sk.fit)#插值结果地图展示\n\n\n\n\n\n\n\n\n\n来个电影放松下https://www.bilibili.com/video/BV1xX4y1V7wd/?spm_id_from=333.788.recommend_more_video.-1",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>第16次课 map</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#变量variable",
+    "href": "lecture3.html#变量variable",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "4.4 变量（Variable）",
+    "text": "4.4 变量（Variable）\n在 R 语言中，变量（variable）是一个用于存储数据或对象的名称。\n变量本质上是一个对象（object）的标识符，通过变量名可以访问和操作存储在内存中的数据。变量只是一个名字标签，用来指向数据或引用数据。\n简单来说：\n\n变量 = 数据的名字\n\n当我们创建变量时，R 会在内存中存储数据，并用变量名指向该数据。\n\n\n4.4.1 创建变量\n在 R 中，变量通常通过赋值运算符 &lt;- 创建。\n例如：\n\n\nCode\nx &lt;- 10\n\n\n这条语句的含义是：\n\n在内存中创建一个对象\n将数值 10 存储在该对象中\n用变量名 x 指向这个对象\n\n此时，变量 x 就代表数值 10。\n我们可以查看变量：\n\n\nCode\nx\n\n\n[1] 10\n\n\n\n\n\n4.4.2 变量可以存储不同类型的数据\n变量不仅可以存储数字，还可以存储多种类型的数据。\n\n4.4.2.1 数值变量\n\n\nCode\na &lt;- 5\n\n\n\n\n4.4.2.2 字符变量\n\n\nCode\nname &lt;- \"R language\"\n\n\n\n\n4.4.2.3 向量变量\n\n\nCode\nv &lt;- c(1, 2, 3, 4, 5)\n\n\n\n\n4.4.2.4 数据框变量\n\n\nCode\ndf &lt;- data.frame(x = 1:3, y = c(\"A\", \"B\", \"C\"))\n\n\n因此，在 R 中变量实际上是对象的名称。\n\n\n\n\n4.4.3 变量存储在内存中\n当变量被创建时，数据会存储在 R 会话（session）的内存中。\n例如：\n\n\nCode\nx &lt;- 100\n\n\n此时：\n\n数据 100 被存入内存\n变量 x 指向该数据\n\n可以在 RStudio 的 Environment 面板 中看到变量 x。\n\n\n\n4.4.4 覆盖变量\n变量的值可以被重新赋值。\n例如：\n\n\nCode\nx &lt;- 10\nx &lt;- 20\n\n\n第二条语句会覆盖原来的值。\n最终：\n\n\nCode\nx\n\n\n[1] 20\n\n\n结果为：\n20\n\n\n\n4.4.5 变量命名规则\n变量名称可以包含：\n\n字母\n数字\n下划线 _\n\n但不能使用保留关键字。\n例如：\n\n\nCode\n##_abc &lt;- 1\n\n\n某些关键字不能直接作为变量名，例如：\nif &lt;- 10\n如果必须使用，可以加反引号：\n`if` &lt;- 10\n但不建议这样做。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#本节学习提纲",
+    "href": "lecture3.html#本节学习提纲",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "",
+    "text": "学习模块\n主要内容\n学习重点\n学习难点\n\n\n\n\nR 编程基础\n常见语法问题与编程习惯\n理解 R 的基本语法规则\n避免符号与大小写错误\n\n\n变量与赋值\n变量概念与赋值方式\n理解变量是对象的名称\n&lt;- 与 = 的区别\n\n\nRStudio 环境\nRStudio 工作界面与快捷操作\n熟悉基本工作流程\n理解各窗口之间的关系\n\n\n工作路径与项目\n工作路径与 Project 的使用\n使用相对路径管理数据\n建立规范项目结构\n\n\nAI 辅助编程\nAI 在 R 编程中的辅助作用\n合理使用 AI 提高效率\n判断与验证 AI 生成代码",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3.html#本节学习重点与难点",
+    "href": "lecture3.html#本节学习重点与难点",
+    "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
+    "section": "",
+    "text": "类型\n内容\n\n\n\n\n学习重点\nR 编程中常见的基础语法问题与规范\n\n\n学习重点\n变量的概念以及赋值方式（&lt;- 与 =）\n\n\n学习重点\nRStudio 的基本工作环境与常用操作\n\n\n学习重点\n工作路径与 Project 在数据分析中的作用\n\n\n学习重点\nAI 工具在 R 编程中的辅助应用\n\n\n\n\n\n\n类型\n内容\n\n\n\n\n学习难点\n理解变量与对象之间的关系\n\n\n学习难点\n区分 &lt;- 与 = 在不同场景下的使用\n\n\n学习难点\n理解代码执行顺序与变量依赖关系\n\n\n学习难点\n建立规范的数据分析项目结构\n\n\n学习难点\n判断与验证 AI 生成代码的正确性\n\n\n\n\n\n## R 编程中最常见的问题\n\nR 初学者最容易出现的问题通常不是统计方法，而是一些基础编程习惯问题。\n\n### 中文符号问题\n\n在 R 中必须使用 **英文符号**，否则会导致语法错误。\n\n常见错误包括：\n\n- 中文括号 `（）`\n- 中文逗号 `，`\n- 中文引号 `“ ”`\n\n正确示例：\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmean(c(1,2,3))\n\n[1] 2\n\n\n\nmean（c(1，2，3））\n\n\n4.1.1 R 区分大小写\nR 是 大小写敏感语言。\n例如：\n\n\nCode\nmean(1:10)\n\n\n[1] 5.5\n\n\n与\nMean(1:10)\n含义不同，第二个会报错。\n\n\n\n4.1.2 变量必须先创建\nR 按顺序执行代码，因此变量必须先创建。\n\n\nCode\nx &lt;- 10\nx + 5\n\n\n[1] 15\n\n\n如果直接运行：\nx + 5\n会产生错误，因为对象 x 尚未创建。\n\n\n\n4.1.3 示例：简单统计分析\n\n\nCode\nattach(mtcars)\n\nlm.fit &lt;- aov(mpg ~ factor(cyl))\nsummary(lm.fit)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nfactor(cyl)  2  824.8   412.4    39.7 4.98e-09 ***\nResiduals   29  301.3    10.4                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\ndetach(mtcars)\n\n\n注意：\nattach() 在现代 R 编程中已不推荐使用，建议使用 data= 参数。\n推荐写法：\n\n\nCode\nlm.fit &lt;- aov(mpg ~ factor(cyl), data = mtcars)\nsummary(lm.fit)\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nfactor(cyl)  2  824.8   412.4    39.7 4.98e-09 ***\nResiduals   29  301.3    10.4                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  }
+]

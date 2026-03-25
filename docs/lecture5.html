@@ -282,12 +282,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#练习4矩阵转置" id="toc-练习4矩阵转置" class="nav-link" data-scroll-target="#练习4矩阵转置"><span class="header-section-number">6.13.4</span> 练习4：矩阵转置</a></li>
   <li><a href="#练习5矩阵行列式" id="toc-练习5矩阵行列式" class="nav-link" data-scroll-target="#练习5矩阵行列式"><span class="header-section-number">6.13.5</span> 练习5：矩阵行列式</a></li>
   <li><a href="#练习6矩阵求逆" id="toc-练习6矩阵求逆" class="nav-link" data-scroll-target="#练习6矩阵求逆"><span class="header-section-number">6.13.6</span> 练习6：矩阵求逆</a></li>
-  <li><a href="#练习7验证逆矩阵" id="toc-练习7验证逆矩阵" class="nav-link" data-scroll-target="#练习7验证逆矩阵"><span class="header-section-number">6.13.7</span> 练习7：验证逆矩阵</a></li>
-  <li><a href="#练习8解线性方程组" id="toc-练习8解线性方程组" class="nav-link" data-scroll-target="#练习8解线性方程组"><span class="header-section-number">6.13.8</span> 练习8：解线性方程组</a></li>
-  <li><a href="#练习9矩阵元素提取" id="toc-练习9矩阵元素提取" class="nav-link" data-scroll-target="#练习9矩阵元素提取"><span class="header-section-number">6.13.9</span> 练习9：矩阵元素提取</a></li>
-  <li><a href="#练习10综合练习" id="toc-练习10综合练习" class="nav-link" data-scroll-target="#练习10综合练习"><span class="header-section-number">6.13.10</span> 练习10：综合练习</a></li>
+  <li><a href="#练习7解线性方程组" id="toc-练习7解线性方程组" class="nav-link" data-scroll-target="#练习7解线性方程组"><span class="header-section-number">6.13.7</span> 练习7：解线性方程组</a></li>
   </ul></li>
-  <li><a href="#思考题选做" id="toc-思考题选做" class="nav-link" data-scroll-target="#思考题选做"><span class="header-section-number">6.14</span> 思考题（选做）</a></li>
+  <li><a href="#矩阵的实际应用图像" id="toc-矩阵的实际应用图像" class="nav-link" data-scroll-target="#矩阵的实际应用图像"><span class="header-section-number">6.14</span> 矩阵的实际应用：图像</a>
+  <ul class="collapse">
+  <li><a href="#显示图片" id="toc-显示图片" class="nav-link" data-scroll-target="#显示图片"><span class="header-section-number">6.14.1</span> 显示图片</a></li>
+  <li><a href="#转换为矩阵灰度" id="toc-转换为矩阵灰度" class="nav-link" data-scroll-target="#转换为矩阵灰度"><span class="header-section-number">6.14.2</span> 转换为矩阵（灰度）</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1267,22 +1268,8 @@ B =
 <p>什么情况下矩阵不能求逆？</p>
 <hr>
 </section>
-<section id="练习7验证逆矩阵" class="level3" data-number="6.13.7">
-<h3 data-number="6.13.7" class="anchored" data-anchor-id="练习7验证逆矩阵"><span class="header-section-number">6.13.7</span> 练习7：验证逆矩阵</h3>
-<p>使用上一题的矩阵 <code>A</code>。</p>
-<p>要求：</p>
-<ol type="1">
-<li>计算 <code>A × A^{-1}</code></li>
-<li>观察结果</li>
-</ol>
-<p>提示：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>A <span class="sc">%*%</span> <span class="fu">solve</span>(A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>思考：</p>
-<p>结果应该接近什么矩阵？</p>
-<hr>
-</section>
-<section id="练习8解线性方程组" class="level3" data-number="6.13.8">
-<h3 data-number="6.13.8" class="anchored" data-anchor-id="练习8解线性方程组"><span class="header-section-number">6.13.8</span> 练习8：解线性方程组</h3>
+<section id="练习7解线性方程组" class="level3" data-number="6.13.7">
+<h3 data-number="6.13.7" class="anchored" data-anchor-id="练习7解线性方程组"><span class="header-section-number">6.13.7</span> 练习7：解线性方程组</h3>
 <p>求解以下方程组：</p>
 <pre><code>2x + y = 5
 x + 3y = 6</code></pre>
@@ -1293,57 +1280,73 @@ x + 3y = 6</code></pre>
 <li>使用 <code>solve()</code> 求解</li>
 </ol>
 <p>提示：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A, b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="练习9矩阵元素提取" class="level3" data-number="6.13.9">
-<h3 data-number="6.13.9" class="anchored" data-anchor-id="练习9矩阵元素提取"><span class="header-section-number">6.13.9</span> 练习9：矩阵元素提取</h3>
-<p>给定矩阵：</p>
-<pre><code>A =
-1 2 3
-4 5 6
-7 8 9</code></pre>
-<p>要求：</p>
-<ol type="1">
-<li>提取第2行</li>
-<li>提取第3列</li>
-<li>提取元素 <code>5</code></li>
-</ol>
-<hr>
-</section>
-<section id="练习10综合练习" class="level3" data-number="6.13.10">
-<h3 data-number="6.13.10" class="anchored" data-anchor-id="练习10综合练习"><span class="header-section-number">6.13.10</span> 练习10：综合练习</h3>
-<p>创建矩阵：</p>
-<pre><code>A =
-1 2
-3 4
-
-B =
-2 0
-1 2</code></pre>
-<p>完成以下计算：</p>
-<ol type="1">
-<li><code>A + B</code> 是否可以计算？</li>
-<li><code>A %*% B</code></li>
-<li><code>B %*% A</code></li>
-<li><code>det(A)</code></li>
-<li><code>solve(A)</code></li>
-</ol>
-<p>思考：</p>
-<p>为什么 <code>A + B</code> 可能无法计算？</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A, b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 </section>
-<section id="思考题选做" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="思考题选做"><span class="header-section-number">6.14</span> 思考题（选做）</h2>
-<p>在 R 中：</p>
-<pre><code>A * B</code></pre>
-<p>与</p>
-<pre><code>A %*% B</code></pre>
-<p>有什么区别？</p>
-<p>请给出示例说明。</p>
+<section id="矩阵的实际应用图像" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="矩阵的实际应用图像"><span class="header-section-number">6.14</span> 矩阵的实际应用：图像</h2>
+<p>一张图片本质上是一个矩阵。</p>
+<p>每一个像素，对应矩阵中的一个数值。以鸢尾花为例 <img src="images/iris.png" class="img-fluid" style="width:50.0%" alt="鸢尾花"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(<span class="st">"images/iris.png"</span>)</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(img)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 859 840   4</code></pre>
+</div>
+</div>
+<p>图片的维度通常为：</p>
+<ul>
+<li>高度</li>
+<li>宽度</li>
+<li>颜色通道（RGB）</li>
+</ul>
+<hr>
+<section id="显示图片" class="level3" data-number="6.14.1">
+<h3 data-number="6.14.1" class="anchored" data-anchor-id="显示图片"><span class="header-section-number">6.14.1</span> 显示图片</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">type =</span> <span class="st">"n"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rasterImage</span>(img, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture5_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="转换为矩阵灰度" class="level3" data-number="6.14.2">
+<h3 data-number="6.14.2" class="anchored" data-anchor-id="转换为矩阵灰度"><span class="header-section-number">6.14.2</span> 转换为矩阵（灰度）</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>gray <span class="ot">&lt;-</span> img[,,<span class="dv">1</span>]</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(gray)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture5_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这说明：</p>
+<blockquote class="blockquote">
+<p>矩阵不仅是数学结构，也是图像数据的本质表示方式。</p>
+</blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

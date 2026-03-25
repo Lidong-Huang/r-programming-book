@@ -924,7 +924,7 @@
     "href": "lecture5.html#矩阵运算练习",
     "title": "6  R的数据结构",
     "section": "6.13 矩阵运算练习",
-    "text": "6.13 矩阵运算练习\n下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。\n\n\n6.13.1 练习1：创建矩阵\n使用 matrix() 函数创建一个 2×3 的矩阵：\n1 2 3\n4 5 6\n提示：\nmatrix()\n要求：\n\n创建矩阵 A\n查看矩阵内容\n查看矩阵维度\n\n\n\n\n6.13.2 练习2：矩阵加法\n创建两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n创建矩阵 A\n创建矩阵 B\n计算 A + B\n\n思考：\n矩阵加法需要满足什么条件？\n\n\n\n6.13.3 练习3：矩阵乘法\n给定两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n使用 %*% 计算矩阵乘法 A × B\n写出结果矩阵\n\n提示：\nA %*% B\n思考：\n矩阵乘法与普通乘法有什么不同？\n\n\n\n6.13.4 练习4：矩阵转置\n给定矩阵：\nA =\n1 2 3\n4 5 6\n要求：\n\n创建矩阵 A\n计算矩阵转置\n\n提示：\nt(A)\n\n\n\n6.13.5 练习5：矩阵行列式\n给定矩阵：\nA =\n2 1\n3 4\n要求：\n\n创建矩阵 A\n计算矩阵的行列式\n\n提示：\ndet(A)\n\n\n\n6.13.6 练习6：矩阵求逆\n给定矩阵：\nA =\n4 7\n2 6\n要求：\n\n创建矩阵 A\n计算矩阵的逆矩阵\n\n提示：\nsolve(A)\n思考：\n什么情况下矩阵不能求逆？\n\n\n\n6.13.7 练习7：验证逆矩阵\n使用上一题的矩阵 A。\n要求：\n\n计算 A × A^{-1}\n观察结果\n\n提示：\nA %*% solve(A)\n思考：\n结果应该接近什么矩阵？\n\n\n\n6.13.8 练习8：解线性方程组\n求解以下方程组：\n2x + y = 5\nx + 3y = 6\n步骤：\n\n写出系数矩阵 A\n写出常数向量 b\n使用 solve() 求解\n\n提示：\nsolve(A, b)\n\n\n\n6.13.9 练习9：矩阵元素提取\n给定矩阵：\nA =\n1 2 3\n4 5 6\n7 8 9\n要求：\n\n提取第2行\n提取第3列\n提取元素 5\n\n\n\n\n6.13.10 练习10：综合练习\n创建矩阵：\nA =\n1 2\n3 4\n\nB =\n2 0\n1 2\n完成以下计算：\n\nA + B 是否可以计算？\nA %*% B\nB %*% A\ndet(A)\nsolve(A)\n\n思考：\n为什么 A + B 可能无法计算？",
+    "text": "6.13 矩阵运算练习\n下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。\n\n\n6.13.1 练习1：创建矩阵\n使用 matrix() 函数创建一个 2×3 的矩阵：\n1 2 3\n4 5 6\n提示：\nmatrix()\n要求：\n\n创建矩阵 A\n查看矩阵内容\n查看矩阵维度\n\n\n\n\n6.13.2 练习2：矩阵加法\n创建两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n创建矩阵 A\n创建矩阵 B\n计算 A + B\n\n思考：\n矩阵加法需要满足什么条件？\n\n\n\n6.13.3 练习3：矩阵乘法\n给定两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n使用 %*% 计算矩阵乘法 A × B\n写出结果矩阵\n\n提示：\nA %*% B\n思考：\n矩阵乘法与普通乘法有什么不同？\n\n\n\n6.13.4 练习4：矩阵转置\n给定矩阵：\nA =\n1 2 3\n4 5 6\n要求：\n\n创建矩阵 A\n计算矩阵转置\n\n提示：\nt(A)\n\n\n\n6.13.5 练习5：矩阵行列式\n给定矩阵：\nA =\n2 1\n3 4\n要求：\n\n创建矩阵 A\n计算矩阵的行列式\n\n提示：\ndet(A)\n\n\n\n6.13.6 练习6：矩阵求逆\n给定矩阵：\nA =\n4 7\n2 6\n要求：\n\n创建矩阵 A\n计算矩阵的逆矩阵\n\n提示：\nsolve(A)\n思考：\n什么情况下矩阵不能求逆？\n\n\n\n6.13.7 练习7：解线性方程组\n求解以下方程组：\n2x + y = 5\nx + 3y = 6\n步骤：\n\n写出系数矩阵 A\n写出常数向量 b\n使用 solve() 求解\n\n提示：\nsolve(A, b)",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -987,6 +987,16 @@
     "text": "4.13 总结\n\n\n\n符号\n作用\n典型场景\n\n\n\n\n()\n函数调用、参数传递、表达式分组\nmean(x)\n\n\n[]\n元素提取（索引）\nx[2]\n\n\n{}\n代码块、函数体、控制结构\nif(){}\n\n\n\n简单记忆：\n\n() → 函数与参数\n\n[] → 取数据\n\n{} → 一段代码",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#矩阵的实际应用图像",
+    "href": "lecture5.html#矩阵的实际应用图像",
+    "title": "6  R的数据结构",
+    "section": "6.14 矩阵的实际应用：图像",
+    "text": "6.14 矩阵的实际应用：图像\n一张图片本质上是一个矩阵。\n每一个像素，对应矩阵中的一个数值。以鸢尾花为例 \n\n\nCode\nlibrary(png)\nimg &lt;- readPNG(\"images/iris.png\")\ndim(img)\n\n\n[1] 859 840   4\n\n\n图片的维度通常为：\n\n高度\n宽度\n颜色通道（RGB）\n\n\n\n6.14.1 显示图片\n\n\nCode\nplot(1:2, type = \"n\", xlab = \"\", ylab = \"\", axes = FALSE)\nrasterImage(img, 1, 1, 2, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n6.14.2 转换为矩阵（灰度）\n\n\nCode\ngray &lt;- img[,,1]\nimage(gray)\n\n\n\n\n\n\n\n\n\n这说明：\n\n矩阵不仅是数学结构，也是图像数据的本质表示方式。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
   }
 ]
