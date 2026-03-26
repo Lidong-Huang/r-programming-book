@@ -162,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">第八次课-控制流</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R中的控制流</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -311,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="使用绝对路径" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="使用绝对路径"><span class="header-section-number">7.2.3</span> 使用绝对路径</h3>
 <p>你的文件放在某个文件夹下，可以使用<strong>CTRL + SHIFT +H </strong>快捷键到指定目录（文件夹）地址：</p>
-<p><a href="data/iris.csv">下载 iris 数据</a></p>
+<p>👉<a href="data/iris.csv">下载 iris 数据</a></p>
 <pre><code>iris_data &lt;- read.csv("iris.csv")</code></pre>
 <p>查看当前工作路径：</p>
 <pre><code>getwd()</code></pre>
@@ -338,7 +338,7 @@ head(iris_data)</code></pre>
 <p>保留字符串而不是自动转因子</p>
 <pre><code>data1 &lt;- read.csv("iris.csv", stringsAsFactors = FALSE)</code></pre>
 <p>指定文件编码</p>
-<p>如果文件中有中文，可能需要指定编码,如<a href="data/soil_data.csv">下载土壤 数据</a> ：</p>
+<p>如果文件中有中文，可能需要指定编码,如👉<a href="data/soil_data.csv">下载土壤数据</a> ：</p>
 <pre><code>data2 &lt;- read.csv("soil_data.csv", fileEncoding = "UTF-8")</code></pre>
 <p>通常 CSV 文件第一行是变量名，因此一般使用默认的 <code>header = TRUE</code>。</p>
 <hr>
@@ -398,7 +398,7 @@ write.csv(iris, "iris_export.csv", row.names = FALSE)</code></pre>
 </ul>
 <p>有些文本文件不是逗号分隔，而是分号或制表符分隔。</p>
 <p>这时 <code>read.csv()</code> 可能不适用，需要改用其他函数，例如：</p>
-<pre><code>read.table("data/example.txt", sep = "\t", header = TRUE)</code></pre>
+<pre><code>read.table("example.txt", sep = "\t", header = TRUE)</code></pre>
 <hr>
 </section>
 <section id="小结csv-文件部分" class="level3" data-number="7.2.9">

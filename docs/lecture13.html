@@ -202,19 +202,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">第四次课-向量</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R的数据类型</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">第五次课-矩阵、数组、列表与数据框</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">R的数据结构</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">第六次课-列表与数据框的操作</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R 中 CSV 与 Excel 文件的读取和写出</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -226,7 +226,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">第八次课-控制流</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R中的控制流</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -830,23 +830,23 @@ pre {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1]  2.18960765 -0.57215771 -2.24344542  1.45091501  0.52214909 -0.89850760
-  [7]  4.11575858  0.46290432 -3.29204955  1.40309710 -0.10557889  3.10645914
- [13]  2.14907337  0.03473895  0.20239346 -0.72368643  3.53427347  2.20656032
- [19] -0.72018432 -0.12215643  1.48075878  1.78930608 -0.28393758  1.44311510
- [25]  0.26178979  1.56729185  2.40353585  0.15907148 -1.35510049  2.21183169
- [31]  1.22966999 -0.03508726 -1.25409555  1.31072411  1.98108291 -0.30820037
- [37]  7.03935765  3.76046353  3.83711890  2.20622844  1.44454727  3.34560658
- [43]  3.79854426  3.50001663  1.28338931  1.98354592 -2.51205854 -1.73706377
- [49]  1.50657775 -5.69231323  1.27306874  0.26938087  4.20367569  0.35222978
- [55] -2.99663975  6.19375189  3.79712124  3.92473755 -3.57059135  0.15738421
- [61]  1.22434797  0.56460867 -0.21865164 -1.32430151  2.68174658  3.49536157
- [67]  0.27279291 -2.77652210 -1.14325569  2.52583493  3.94230035  2.90286697
- [73] -1.57889139  1.09008388  4.60957434 -0.20411337  1.99445420  2.70231206
- [79]  0.17998357  2.90953293  1.27495603  1.58240973 -1.18363130  1.69945562
- [85]  3.86500732  2.36380517  5.13392929  2.02610523  1.17759488 -0.87857798
- [91]  1.32264579  0.48869637  2.93427014  3.75198052  1.63249946  0.12431975
- [97]  2.58469336  0.65913714 -0.46615430  2.59740712</code></pre>
+<pre><code>  [1] -1.51355902 -3.13787562  1.30172574  0.08022105  2.41540191  2.94333229
+  [7] -2.72151874  0.28065361  3.41109601 -2.84395122  1.72653659  1.13944946
+ [13]  3.78799283  2.21042767  2.18050789  0.18480235  0.42542488  0.94018301
+ [19]  2.51317071  0.77500146  1.09633460  2.76498322  1.71583033  4.94828553
+ [25]  1.00796965  3.99325136 -2.18340188 -1.91962144  0.47352357  2.05415639
+ [31]  1.55867866  0.22574864 -1.04407633  1.62485302  3.76851677 -0.08148145
+ [37]  2.87044795  3.49704233  1.97488204  2.60084970  1.08041448  3.09252128
+ [43]  2.89667444  0.68910601 -0.73666330  5.57323162  0.13278833 -0.91889855
+ [49] -1.94614694 -0.90932450  1.28000575 -0.62773457 -1.38431170  2.19382397
+ [55]  2.39634897  0.46175119  1.33306770 -0.56837830  4.10533228  0.24798507
+ [61]  1.25247438  1.05524488  0.62502272  0.82400490  4.15413843  1.58655578
+ [67] -1.30864961  0.22545178 -1.78812768  1.54703410  1.63273692  4.78132639
+ [73]  1.66829347  0.44003352 -1.03403668  1.56948296 -1.43461934  0.35401605
+ [79]  4.28547530  2.78045558  2.60212629  2.29544178 -0.55520933  0.49020028
+ [85]  3.31300734  1.26264145 -0.89960383  2.36754388 -1.67411328 -2.08527446
+ [91]  3.65869142 -2.91007248 -3.85691335  2.16448048  3.90268930  3.07663416
+ [97] -0.94959862  0.10669550  0.93120800 -0.58127083</code></pre>
 </div>
 </div>
 <ul>
