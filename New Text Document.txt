@@ -1,6 +1,6 @@
 git status
 git add .
-git commit -m "object size" 
+git commit -m "picture added in matrix" 
 git push -f origin master
 
 

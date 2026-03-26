@@ -9,3 +9,7 @@
 # 保留输出目录
 !/docs/
 !/docs/**
+.Rproj.user
+
+/.quarto/
+**/*.quarto_ipynb

@@ -352,11 +352,11 @@
   {
     "objectID": "lecture6.html",
     "href": "lecture6.html",
-    "title": "7  第六次课-列表与数据框的操作",
+    "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
     "section": "",
-    "text": "8 do.call 函数（列表的操作）\ndo.call () executes any function by its name’s when a list of the corresponding argument is passed\n\n\nCode\nlist1 &lt;- list(c(1, 2, 3), c(7, 5, 10), c(9, 9, 2))\n#sum(list1) error\ndo.call(sum, list1)\n\n\n[1] 48\n\n\nCode\ndo.call(sum, list1[1:2])\n\n\n[1] 28\n\n\nCode\n#do.call(mean,list1)\ndf1 &lt;- data.frame(team=c('A', 'B', 'C'),\n                  points=c(22, 27, 38))\n\ndf2 &lt;- data.frame(team=c('D', 'E', 'F'),\n                  points=c(22, 14, 20))\n\ndf3 &lt;- data.frame(team=c('G', 'H', 'I'),\n                  points=c(11, 15, 18))\n\n#place three data frames into list\ndf_list &lt;- list(df1, df2, df3)\ndo.call(rbind, df_list)\n\n\n  team points\n1    A     22\n2    B     27\n3    C     38\n4    D     22\n5    E     14\n6    F     20\n7    G     11\n8    H     15\n9    I     18\n\n\n\n\n9 apply家族函数（单一数据结构的贯穿式操作）\n– apply(x, MARGIN, FUN, …)\nx：数组或矩阵\nMARGIN：取一个介于1到2之间的值或范围，以定义该函数的应用位置：\n-MARGIN = 1：对行执行操作  \n\n-MARGIN = 2：对列执行操作  \n\n-MARGIN =             c（1,2）该操作在行和列上执行  \n-FUN：告诉应用哪个功能。可以应用平均值，中位数，和，最小值，最大值甚至用户定义的函数等内置函数\n–lapply(X, FUN)\nArguments: -X: A vector or an object -FUN: Function applied to each element of x\n– sapply(X, FUN, …, simplify = TRUE, USE.NAMES = TRUE)\n– tapply(X, INDEX, FUN = NULL) Arguments:\n– mapply(FUN, …, MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)\n直接上代码解释\n\n\nCode\nX&lt;-matrix(rnorm(30), nrow=5, ncol=6)\napply(X,1 ,sum)#row sum\n\n\n[1] -2.371107  3.434113 -1.931315 -3.390450 -4.747841\n\n\nCode\napply(X, 2, sort)\n\n\n            [,1]       [,2]       [,3]        [,4]       [,5]        [,6]\n[1,] -0.77230220 -0.8359501 -1.1837118 -1.20079059 -2.0124956 -0.47894423\n[2,] -0.76556911 -0.4429546 -1.1255063 -1.06164295 -1.2062982 -0.12429692\n[3,] -0.04169066 -0.3378816 -0.9802672 -0.31580760 -1.1235364 -0.05862774\n[4,]  0.32529755  0.1281910 -0.1601093 -0.07660451 -1.0912453  0.11385060\n[5,]  1.85054280  1.0559509  1.1934856  1.45638848 -0.2283105  0.49423554\n\n\nCode\napply(X, 2, is.vector)\n\n\n[1] TRUE TRUE TRUE TRUE TRUE TRUE\n\n\nCode\nA&lt;-matrix(1:9, 3,3)\nB&lt;-matrix(4:15, 4,3)\nC&lt;-matrix(8:10, 3,2)\nMyList&lt;-list(A,B,C) # display the list\nlapply(MyList,\"[\", , 2)# [,2]\n\n\n[[1]]\n[1] 4 5 6\n\n[[2]]\n[1]  8  9 10 11\n\n[[3]]\n[1]  8  9 10\n\n\nCode\nlapply(MyList,\"[\", 1, )# [1,]\n\n\n[[1]]\n[1] 1 4 7\n\n[[2]]\n[1]  4  8 12\n\n[[3]]\n[1] 8 8\n\n\nCode\nsapply(MyList,\"[\", 2,1)# 向量化结果\n\n\n[1] 2 5 9\n\n\nCode\nmovies &lt;- c(\"SPYDERMAN\",\"BATMAN\",\"VERTIGO\",\"CHINATOWN\")\nlapply(movies, tolower)\n\n\n[[1]]\n[1] \"spyderman\"\n\n[[2]]\n[1] \"batman\"\n\n[[3]]\n[1] \"vertigo\"\n\n[[4]]\n[1] \"chinatown\"\n\n\nCode\nsapply(cars, min)\n\n\nspeed  dist \n    4     2 \n\n\nCode\ntapply(iris$Sepal.Width, iris$Species, median)\n\n\n    setosa versicolor  virginica \n       3.4        2.8        3.0 \n\n\nCode\nA = list(c(1, 2, 3, 4)) \nB = list(c(2, 5, 1, 6)) \nmapply(sum, A, B) \n\n\n[1] 24\n\n\nCode\nmapply(rep,1:4,4:1)\n\n\n[[1]]\n[1] 1 1 1 1\n\n[[2]]\n[1] 2 2 2\n\n[[3]]\n[1] 3 3\n\n[[4]]\n[1] 4\n\n\n\n\n10 sweep函数（两个数据结构的对应操作）\n数据标准化为例：\n\\(x_{std}=\\frac{x-\\bar{x}}{x_{sd}}\\)\n\n\nCode\ndf &lt;- iris[,1:4]\ncol.mean &lt;- apply(df,2,mean)\ncol.sd &lt;- apply(df,2,sd)\ndf.mean.sub &lt;- sweep(df,2,col.mean,\"-\")\ndf.std &lt;- sweep(df.mean.sub,2,col.sd,\"/\")\napply(df.std,2,sum)\n\n\n Sepal.Length   Sepal.Width  Petal.Length   Petal.Width \n-6.721013e-14  3.053113e-14 -4.267420e-15 -4.572731e-15 \n\n\nCode\n.Machine$double.eps\n\n\n[1] 2.220446e-16\n\n\nCode\n#the smallest positive floating-point number\n\n\n\n\n11 aggregate 函数(分类汇总)\n\n\nCode\naggregate(mtcars[,1],list(mtcars$am,mtcars$cyl),mean)\n\n\n  Group.1 Group.2        x\n1       0       4 22.90000\n2       1       4 28.07500\n3       0       6 19.12500\n4       1       6 20.56667\n5       0       8 15.05000\n6       1       8 15.40000\n\n\nCode\naggregate(mpg~am*cyl,data = mtcars,mean)\n\n\n  am cyl      mpg\n1  0   4 22.90000\n2  1   4 28.07500\n3  0   6 19.12500\n4  1   6 20.56667\n5  0   8 15.05000\n6  1   8 15.40000\n\n\nCode\naggregate(. ~ Species, data = iris, mean)\n\n\n     Species Sepal.Length Sepal.Width Petal.Length Petal.Width\n1     setosa        5.006       3.428        1.462       0.246\n2 versicolor        5.936       2.770        4.260       1.326\n3  virginica        6.588       2.974        5.552       2.026\n\n\nCode\nag &lt;- aggregate(len ~ ., data = ToothGrowth, mean)\nxtabs(len ~ ., data = ag)\n\n\n    dose\nsupp   0.5     1     2\n  OJ 13.23 22.70 26.06\n  VC  7.98 16.77 26.14\n\n\n\n\n12 map函数家族\nThe map() function from the purrr package in R can be used to apply some function to each element in a vector or list and return a list as a result.\n\n\nCode\nlibrary(purrr)\ndata &lt;- list(1L,\n             \"a\",\n             FALSE)\n map(data, typeof)\n\n\n[[1]]\n[1] \"integer\"\n\n[[2]]\n[1] \"character\"\n\n[[3]]\n[1] \"logical\"\n\n\nCode\nlist.A &lt;- list(c(1, 2, 3),\n             c(4, 5, 6),\n             c(7, 8, NA))\nmap(list.A, sum,na.rm=TRUE)\n\n\n[[1]]\n[1] 6\n\n[[2]]\n[1] 15\n\n[[3]]\n[1] 15\n\n\nCode\nmap(iris[,1:4],mean)\n\n\n$Sepal.Length\n[1] 5.843333\n\n$Sepal.Width\n[1] 3.057333\n\n$Petal.Length\n[1] 3.758\n\n$Petal.Width\n[1] 1.199333\n\n\nCode\nmap(1:3,rnorm,n=5)\n\n\n[[1]]\n[1] 2.8621688 0.5705823 1.9186709 1.0043850 1.5840106\n\n[[2]]\n[1] 0.6816606 1.4314753 0.1256303 1.8433423 0.6083949\n\n[[3]]\n[1] 2.716417 2.735687 3.567346 1.234519 1.698923\n\n\nCode\nmap(1:3,function(x) rnorm(5, x))\n\n\n[[1]]\n[1]  2.1963155  1.5492779  1.7521197  0.8813378 -1.0614615\n\n[[2]]\n[1] 0.2319628 1.7830269 2.0631636 1.2314301 2.7598050\n\n[[3]]\n[1] 3.011321 3.926830 2.660265 3.084080 3.720410\n\n\nCode\nmap(1:3,~rnorm(5, .x))\n\n\n[[1]]\n[1] -0.8053599  0.4174787 -0.5283062  2.9649473  1.6452803\n\n[[2]]\n[1] 2.459791 2.339766 2.543862 2.226095 4.001720\n\n[[3]]\n[1] 2.372331 3.305904 3.326281 2.604747 4.143392\n\n\nCode\nl2 &lt;- list(\n  list(num = 1:3,     letters[1:3]),\n  list(num = 101:103, letters[4:6]),\n  list()\n)\nmap(l2,c(2, 2)) \n\n\n[[1]]\n[1] \"b\"\n\n[[2]]\n[1] \"e\"\n\n[[3]]\nNULL\n\n\n\n\n13 R数据变形的有力工具\n\n\n\n图6-1：reshape包中melt和cast函数的用法示意图",
+    "text": "7.1 本章学习目标\n完成本章后，你将能够：",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>第六次课-列表与数据框的操作</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
     ]
   },
   {
@@ -997,6 +997,56 @@
     "text": "6.14 矩阵的实际应用：图像\n一张图片本质上是一个矩阵。\n每一个像素，对应矩阵中的一个数值。以鸢尾花为例 \n\n\nCode\nlibrary(png)\nimg &lt;- readPNG(\"images/iris.png\")\ndim(img)\n\n\n[1] 859 840   4\n\n\n图片的维度通常为：\n\n高度\n宽度\n颜色通道（RGB）\n\n\n\n6.14.1 显示图片\n\n\nCode\nplot(1:2, type = \"n\", xlab = \"\", ylab = \"\", axes = FALSE)\nrasterImage(img, 1, 1, 2, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n6.14.2 转换为矩阵（灰度）\n\n\nCode\ngray &lt;- img[,,1]\nimage(gray)\n\n\n\n\n\n\n\n\n\n这说明：\n\n矩阵不仅是数学结构，也是图像数据的本质表示方式。",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#本章学习目标",
+    "href": "lecture6.html#本章学习目标",
+    "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
+    "section": "",
+    "text": "理解 CSV 与 Excel 文件的基本特点\n\n掌握 CSV 文件的读取与写出方法\n\n掌握 Excel 文件在 R 中的读取方法\n\n能够处理文件读取中的常见问题",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#第一部分csv-文件的读取与写出",
+    "href": "lecture6.html#第一部分csv-文件的读取与写出",
+    "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
+    "section": "7.2 第一部分：CSV 文件的读取与写出",
+    "text": "7.2 第一部分：CSV 文件的读取与写出\n\n7.2.1 什么是 CSV 文件\nCSV 是 Comma-Separated Values 的缩写，表示“逗号分隔值”文件。\n它是一种最常见的文本数据格式，特点包括：\n\n文件体积较小\n\n跨平台兼容性强\n\n可以被 Excel、R、Python 等多种软件读取\n\n本质上是一个纯文本文件\n\n在数据分析中，CSV 是最基础、最常见的数据交换格式之一。\n\n\n\n7.2.2 为什么学习 CSV 文件\n在 R 中，CSV 文件非常重要，因为：\n\n很多原始数据会以 CSV 形式保存\n\nExcel 数据常常会先导出为 CSV 再导入 R\n\nCSV 文件便于共享与复现\n\n大多数数据分析项目都会接触 CSV 文件\n\n\n\n\n7.2.3 使用绝对路径\n你的文件放在某个文件夹下，可以使用CTRL + SHIFT +H 快捷键到指定目录（文件夹）地址：\n下载 iris 数据\niris_data &lt;- read.csv(\"iris.csv\")\n查看当前工作路径：\ngetwd()\n查看当前目录中的文件：\nlist.files()\n\n\n\n7.2.4 CSV 文件的读取\n在 R 中，最常用的读取函数是：\nread.csv(\"iris.csv\")\n示例：\niris_data &lt;- read.csv(\"iris.csv\")\nhead(iris_data)\n该函数会把 CSV 文件读入为一个 data.frame（数据框）。\n查看数据类型：\nclass(iris_data)\n查看数据结构：\nstr(iris_data)\n\n\n\n7.2.5 读取 CSV 时的常用参数\n保留字符串而不是自动转因子\ndata1 &lt;- read.csv(\"iris.csv\", stringsAsFactors = FALSE)\n指定文件编码\n如果文件中有中文，可能需要指定编码,如下载土壤 数据 ：\ndata2 &lt;- read.csv(\"soil_data.csv\", fileEncoding = \"UTF-8\")\n通常 CSV 文件第一行是变量名，因此一般使用默认的 header = TRUE。\n\n\n\n7.2.6 CSV 文件写出\nR 中可以使用 write.csv() 将数据导出为 CSV 文件。\n例如，将 iris 数据写出到 指定(Ctrl + Shift + H) 文件夹：\nwrite.csv(iris, \"iris_export.csv\", row.names = FALSE)\n参数说明：\n\n第一个参数：要导出的数据对象\n\n第二个参数：输出文件路径\n\nrow.names = FALSE：不导出行名\n\n如果不加 row.names = FALSE，导出的文件会多出一列行号。\n\n\n\n7.2.7 CSV 读写示例\n# 导出 iris 数据\nwrite.csv(iris, \"iris_export.csv\", row.names = FALSE)\n\n\n\n7.2.8 CSV 文件常见问题\n\n路径错误\n\n如果写成：\nread.csv(\"iris.csv\")\n但文件并不在当前工作目录中，就会报错。\n解决方法：\n\n检查当前工作路径\n\n检查文件是否确实存在\n\n推荐使用 Project 和相对路径\n\n\n\n中文乱码\n\n如果 CSV 中有中文，读入后可能乱码。\n解决方法：\n\n尝试指定 fileEncoding = \"UTF-8\"\n\n或尝试 fileEncoding = \"GBK\"\n\n\n\n分隔符问题\n\n有些文本文件不是逗号分隔，而是分号或制表符分隔。\n这时 read.csv() 可能不适用，需要改用其他函数，例如：\nread.table(\"data/example.txt\", sep = \"\\t\", header = TRUE)\n\n\n\n7.2.9 小结：CSV 文件部分\n\nread.csv() 用于读取 CSV 文件\n\nwrite.csv() 用于导出 CSV 文件\n\n推荐使用 Project 和相对路径\n\n中文文件要注意编码问题\n\nCSV 是 R 数据导入导出的基础格式",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#第二部分excel-文件的读取",
+    "href": "lecture6.html#第二部分excel-文件的读取",
+    "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
+    "section": "7.3 第二部分：Excel 文件的读取",
+    "text": "7.3 第二部分：Excel 文件的读取\n\n7.3.1 为什么要学习 Excel 文件读取\n虽然 CSV 很常见，但很多原始数据最初是保存在 Excel 文件中的，例如：\n\n实验记录表\n\n调查数据表\n\n监测数据表\n\n学生成绩表\n\n因此，在 R 中直接读取 Excel 文件也非常重要。\n\n\n\n7.3.2 Excel 文件的特点\nExcel 文件常见扩展名为：\n\n.xls\n.xlsx\n\n与 CSV 不同的是，Excel 文件：\n\n可以包含多个工作表（sheet）\n\n可以有格式、颜色、公式等内容\n\n不是纯文本文件\n\n因此，R 读取 Excel 需要额外的扩展包。\n\n\n\n7.3.3 读取 Excel 文件常用包\n最常用的包是 readxl。\n安装包：\n#| eval: false\ninstall.packages(\"readxl\")\n加载包：\nlibrary(readxl)\n\n\n\n7.3.4 读取 Excel 文件\n假设有一个文件：\nsoil_data.xlsx\n读取方式：\nlibrary(readxl)\nexcel_data &lt;- read_excel(\"soil_data.xlsx\")\nhead(excel_data)\n\n\n\n7.3.5 查看 Excel 文件中的工作表\n如果一个 Excel 文件中有多个 sheet，可以先查看 sheet 名称：\nexcel_sheets(\"soil_data.xlsx\")\n\n\n\n7.3.6 指定读取某个工作表\n可以按名称读取：\nsheet1_data &lt;- read_excel(\"soil_data.xlsx\", sheet = \"Sheet1\")\n也可以按位置读取：\nsheet2_data &lt;- read_excel(\"soil_data.xlsx\", sheet = 2)\n\n\n\n7.3.7 Excel 读取后的数据类型\nread_excel() 读取后的结果通常也是一个数据框（更准确地说是 tibble）。\n例如：\nclass(excel_data)\n查看结构：\nstr(excel_data)\n\n\n\n7.3.8 CSV 与 Excel 的比较\n\n\n\n文件类型\n优点\n适用场景\n\n\n\n\nCSV\n简单、通用、兼容性强\n数据交换、批量处理\n\n\nExcel\n支持多工作表、便于人工整理\n原始记录、实验表格\n\n\n\n在实际数据分析中：\n\n数据整理阶段常使用 Excel\n\n数据分析阶段常导出为 CSV 或直接读 Excel",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#本章小结",
+    "href": "lecture6.html#本章小结",
+    "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
+    "section": "7.4 本章小结",
+    "text": "7.4 本章小结\n\nCSV 是最常见的数据交换格式\n\nread.csv() 用于读取 CSV 文件\n\nwrite.csv() 用于导出 CSV 文件\n\nExcel 文件需要使用 readxl 包读取\n\nread_excel() 可以读取 .xls 和 .xlsx 文件\n\n推荐使用 Project 和相对路径管理数据文件\n\n文件读取中最常见的问题是路径错误与编码问题",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6.html#课堂练习",
+    "href": "lecture6.html#课堂练习",
+    "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
+    "section": "7.5 课堂练习",
+    "text": "7.5 课堂练习\n\n将 iris 数据导出为 CSV 文件\n\n使用 read.csv() 将该 CSV 文件重新读入\n\n读取一个 Excel 文件，并查看其中有哪些工作表\n\n尝试指定某一个 sheet 读入数据\n\n比较 read.csv() 与 read_excel() 读入数据后的结构差异",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
     ]
   }
 ]

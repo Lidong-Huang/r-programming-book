@@ -1,0 +1,163 @@
+---
+title: "第六次课-列表与数据框的操作"
+---
+
+```{css, echo=FALSE}
+.watch-out {
+  background-color: darkviolet;
+  border: 3px solid greenyellow;
+  font-weight: bold;
+}
+```
+<style>
+div.blue pre { background-color:yellow; }
+div.blue pre.r { background-color:lightblue; }
+
+body{ /* Normal  */
+      font-size: 35px;
+      color: DarkBlue;
+  }
+code.r{
+  font-size: 30px;
+  
+}
+pre {
+  font-size: 20px
+}
+</style>
+
+<div class = "blue">  
+
+
+# do.call 函数（列表的操作）
+  
+do.call () executes any function by its name's when a list of the corresponding argument is passed
+
+
+```{r list1, echo = TRUE,prompt=FALSE,background="badCode"}
+list1 <- list(c(1, 2, 3), c(7, 5, 10), c(9, 9, 2))
+#sum(list1) error
+do.call(sum, list1)
+do.call(sum, list1[1:2])
+#do.call(mean,list1)
+df1 <- data.frame(team=c('A', 'B', 'C'),
+                  points=c(22, 27, 38))
+
+df2 <- data.frame(team=c('D', 'E', 'F'),
+                  points=c(22, 14, 20))
+
+df3 <- data.frame(team=c('G', 'H', 'I'),
+                  points=c(11, 15, 18))
+
+#place three data frames into list
+df_list <- list(df1, df2, df3)
+do.call(rbind, df_list)
+```
+  
+# apply家族函数（单一数据结构的贯穿式操作） 
+-- apply(x, MARGIN, FUN, ...) 
+
+  x：数组或矩阵  
+  
+  MARGIN：取一个介于1到2之间的值或范围，以定义该函数的应用位置：  
+  
+    -MARGIN = 1：对行执行操作  
+    
+    -MARGIN = 2：对列执行操作  
+    
+    -MARGIN =             c（1,2）该操作在行和列上执行  
+    
+-FUN：告诉应用哪个功能。可以应用平均值，中位数，和，最小值，最大值甚至用户定义的函数等内置函数
+
+--lapply(X, FUN)  
+
+Arguments:
+-X: A vector or an object
+-FUN: Function applied to each element of x 
+
+-- sapply(X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE)    
+
+-- tapply(X, INDEX, FUN = NULL)
+Arguments:
+  
+-- mapply(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+  
+直接上代码解释 
+```{r list2, echo = TRUE,prompt=FALSE,background="badCode"}
+X<-matrix(rnorm(30), nrow=5, ncol=6)
+apply(X,1 ,sum)#row sum
+apply(X, 2, sort)
+apply(X, 2, is.vector)
+A<-matrix(1:9, 3,3)
+B<-matrix(4:15, 4,3)
+C<-matrix(8:10, 3,2)
+MyList<-list(A,B,C) # display the list
+lapply(MyList,"[", , 2)# [,2]
+lapply(MyList,"[", 1, )# [1,]
+sapply(MyList,"[", 2,1)# 向量化结果
+movies <- c("SPYDERMAN","BATMAN","VERTIGO","CHINATOWN")
+lapply(movies, tolower)
+
+sapply(cars, min)
+
+tapply(iris$Sepal.Width, iris$Species, median)
+A = list(c(1, 2, 3, 4)) 
+B = list(c(2, 5, 1, 6)) 
+mapply(sum, A, B) 
+mapply(rep,1:4,4:1)
+```
+  
+# sweep函数（两个数据结构的对应操作）  
+  
+数据标准化为例：  
+$x_{std}=\frac{x-\bar{x}}{x_{sd}}$  
+
+```{r sweep, echo = TRUE,prompt=FALSE,background="badCode"}
+df <- iris[,1:4]
+col.mean <- apply(df,2,mean)
+col.sd <- apply(df,2,sd)
+df.mean.sub <- sweep(df,2,col.mean,"-")
+df.std <- sweep(df.mean.sub,2,col.sd,"/")
+apply(df.std,2,sum)
+.Machine$double.eps
+#the smallest positive floating-point number
+```
+
+# aggregate 函数(分类汇总)
+
+
+```{r aggregate, echo = TRUE,prompt=FALSE,background="badCode"}
+aggregate(mtcars[,1],list(mtcars$am,mtcars$cyl),mean)
+aggregate(mpg~am*cyl,data = mtcars,mean)
+aggregate(. ~ Species, data = iris, mean)
+ag <- aggregate(len ~ ., data = ToothGrowth, mean)
+xtabs(len ~ ., data = ag)
+```
+
+# map函数家族   
+  
+The map() function from the purrr package in R can be used to apply some function to each element in a vector or list and return a list as a result.  
+  
+```{r map, echo = TRUE,prompt=FALSE,background="badCode"}
+library(purrr)
+data <- list(1L,
+             "a",
+             FALSE)
+ map(data, typeof)
+ 
+list.A <- list(c(1, 2, 3),
+             c(4, 5, 6),
+             c(7, 8, NA))
+map(list.A, sum,na.rm=TRUE)
+map(iris[,1:4],mean)
+map(1:3,rnorm,n=5)
+map(1:3,function(x) rnorm(5, x))
+map(1:3,~rnorm(5, .x))
+
+l2 <- list(
+  list(num = 1:3,     letters[1:3]),
+  list(num = 101:103, letters[4:6]),
+  list()
+)
+map(l2,c(2, 2)) 
+```
