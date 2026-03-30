@@ -624,7 +624,7 @@
     "href": "lecture6.html#本章小结",
     "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
     "section": "7.4 本章小结",
-    "text": "7.4 本章小结\n\nCSV 是最常见的数据交换格式\n\nread.csv() 用于读取 CSV 文件\n\nwrite.csv() 用于导出 CSV 文件\n\nExcel 文件需要使用 readxl 包读取\n\nread_excel() 可以读取 .xls 和 .xlsx 文件\n\n推荐使用 Project 和相对路径管理数据文件\n\n文件读取中最常见的问题是路径错误与编码问题",
+    "text": "7.4 本章小结\n\nCSV 是最常见的数据交换格式\n\nread.csv() 用于读取 CSV 文件\n\nwrite.csv() 用于导出 CSV 文件\n\nExcel 文件需要使用 readxl 包读取\n\nread_excel() 可以读取 .xls 和 .xlsx 文件\n\n推荐使用 Project 和相对路径管理数据文件\n\n文件读取中最常见的问题是路径错误与编码问题\n\n\n\n图7.1文件读取总结",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
     ]
@@ -633,8 +633,8 @@
     "objectID": "lecture6.html#课堂练习",
     "href": "lecture6.html#课堂练习",
     "title": "7  R 中 CSV 与 Excel 文件的读取和写出",
-    "section": "7.6 课堂练习",
-    "text": "7.6 课堂练习\n\n将 iris 数据导出为 CSV 文件\n\n使用 read.csv() 将该 CSV 文件重新读入\n\n读取一个 Excel 文件，并查看其中有哪些工作表\n\n尝试指定某一个 sheet 读入数据\n\n比较 read.csv() 与 read_excel() 读入数据后的结构差异",
+    "section": "7.5 课堂练习",
+    "text": "7.5 课堂练习\n\n将 iris 数据导出为 CSV 文件\n\n使用 read.csv() 将该 CSV 文件重新读入\n\n读取一个 Excel 文件，并查看其中有哪些工作表\n\n尝试指定某一个 sheet 读入数据\n\n比较 read.csv() 与 read_excel() 读入数据后的结构差异",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
     ]
