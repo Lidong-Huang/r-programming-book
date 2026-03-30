@@ -246,48 +246,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#数据类型与数据结构的区别" id="toc-数据类型与数据结构的区别" class="nav-link active" data-scroll-target="#数据类型与数据结构的区别"><span class="header-section-number">6.1</span> 数据类型与数据结构的区别(🐈)</a></li>
-  <li><a href="#r-中常见的数据结构" id="toc-r-中常见的数据结构" class="nav-link" data-scroll-target="#r-中常见的数据结构"><span class="header-section-number">6.2</span> R 中常见的数据结构</a></li>
-  <li><a href="#向量vector" id="toc-向量vector" class="nav-link" data-scroll-target="#向量vector"><span class="header-section-number">6.3</span> 向量（Vector）</a>
+  <li><a href="#本章学习目标" id="toc-本章学习目标" class="nav-link active" data-scroll-target="#本章学习目标"><span class="header-section-number">6.1</span> 本章学习目标(🐈)</a></li>
+  <li><a href="#数据类型与数据结构的区别" id="toc-数据类型与数据结构的区别" class="nav-link" data-scroll-target="#数据类型与数据结构的区别"><span class="header-section-number">6.2</span> 数据类型与数据结构的区别</a></li>
+  <li><a href="#r-中常见的数据结构" id="toc-r-中常见的数据结构" class="nav-link" data-scroll-target="#r-中常见的数据结构"><span class="header-section-number">6.3</span> R 中常见的数据结构</a></li>
+  <li><a href="#向量vector" id="toc-向量vector" class="nav-link" data-scroll-target="#向量vector"><span class="header-section-number">6.4</span> 向量（Vector）</a>
   <ul class="collapse">
-  <li><a href="#向量化运算r语言的核心思想" id="toc-向量化运算r语言的核心思想" class="nav-link" data-scroll-target="#向量化运算r语言的核心思想"><span class="header-section-number">6.3.1</span> 向量化运算：R语言的核心思想</a></li>
-  <li><a href="#向量化运算的优势" id="toc-向量化运算的优势" class="nav-link" data-scroll-target="#向量化运算的优势"><span class="header-section-number">6.3.2</span> 向量化运算的优势</a></li>
-  <li><a href="#使用循环" id="toc-使用循环" class="nav-link" data-scroll-target="#使用循环"><span class="header-section-number">6.3.3</span> 使用循环</a></li>
-  <li><a href="#向量之间的运算" id="toc-向量之间的运算" class="nav-link" data-scroll-target="#向量之间的运算"><span class="header-section-number">6.3.4</span> 向量之间的运算</a></li>
-  <li><a href="#向量与标量运算" id="toc-向量与标量运算" class="nav-link" data-scroll-target="#向量与标量运算"><span class="header-section-number">6.3.5</span> 向量与标量运算</a></li>
-  <li><a href="#逻辑向量运算" id="toc-逻辑向量运算" class="nav-link" data-scroll-target="#逻辑向量运算"><span class="header-section-number">6.3.6</span> 逻辑向量运算</a></li>
-  <li><a href="#常见的向量化函数" id="toc-常见的向量化函数" class="nav-link" data-scroll-target="#常见的向量化函数"><span class="header-section-number">6.3.7</span> 常见的向量化函数</a></li>
-  <li><a href="#向量长度不一致的情况" id="toc-向量长度不一致的情况" class="nav-link" data-scroll-target="#向量长度不一致的情况"><span class="header-section-number">6.3.8</span> 向量长度不一致的情况</a></li>
-  <li><a href="#为什么说向量是-r-最重要的数据结构" id="toc-为什么说向量是-r-最重要的数据结构" class="nav-link" data-scroll-target="#为什么说向量是-r-最重要的数据结构"><span class="header-section-number">6.3.9</span> 为什么说向量是 R 最重要的数据结构</a></li>
+  <li><a href="#向量化运算r语言的核心思想" id="toc-向量化运算r语言的核心思想" class="nav-link" data-scroll-target="#向量化运算r语言的核心思想"><span class="header-section-number">6.4.1</span> 向量化运算：R语言的核心思想</a></li>
+  <li><a href="#向量化运算的优势" id="toc-向量化运算的优势" class="nav-link" data-scroll-target="#向量化运算的优势"><span class="header-section-number">6.4.2</span> 向量化运算的优势</a></li>
+  <li><a href="#使用循环" id="toc-使用循环" class="nav-link" data-scroll-target="#使用循环"><span class="header-section-number">6.4.3</span> 使用循环</a></li>
+  <li><a href="#向量之间的运算" id="toc-向量之间的运算" class="nav-link" data-scroll-target="#向量之间的运算"><span class="header-section-number">6.4.4</span> 向量之间的运算</a></li>
+  <li><a href="#向量与标量运算" id="toc-向量与标量运算" class="nav-link" data-scroll-target="#向量与标量运算"><span class="header-section-number">6.4.5</span> 向量与标量运算</a></li>
+  <li><a href="#逻辑向量运算" id="toc-逻辑向量运算" class="nav-link" data-scroll-target="#逻辑向量运算"><span class="header-section-number">6.4.6</span> 逻辑向量运算</a></li>
+  <li><a href="#常见的向量化函数" id="toc-常见的向量化函数" class="nav-link" data-scroll-target="#常见的向量化函数"><span class="header-section-number">6.4.7</span> 常见的向量化函数</a></li>
+  <li><a href="#向量长度不一致的情况" id="toc-向量长度不一致的情况" class="nav-link" data-scroll-target="#向量长度不一致的情况"><span class="header-section-number">6.4.8</span> 向量长度不一致的情况</a></li>
+  <li><a href="#为什么说向量是-r-最重要的数据结构" id="toc-为什么说向量是-r-最重要的数据结构" class="nav-link" data-scroll-target="#为什么说向量是-r-最重要的数据结构"><span class="header-section-number">6.4.9</span> 为什么说向量是 R 最重要的数据结构</a></li>
   </ul></li>
-  <li><a href="#一个简单的数据分析示例" id="toc-一个简单的数据分析示例" class="nav-link" data-scroll-target="#一个简单的数据分析示例"><span class="header-section-number">6.4</span> 一个简单的数据分析示例</a></li>
-  <li><a href="#整个过程不需要循环" id="toc-整个过程不需要循环" class="nav-link" data-scroll-target="#整个过程不需要循环"><span class="header-section-number">6.5</span> 整个过程不需要循环。</a></li>
-  <li><a href="#矩阵matrix" id="toc-矩阵matrix" class="nav-link" data-scroll-target="#矩阵matrix"><span class="header-section-number">6.6</span> 矩阵（Matrix）</a></li>
-  <li><a href="#数组array" id="toc-数组array" class="nav-link" data-scroll-target="#数组array"><span class="header-section-number">6.7</span> 数组（Array）</a></li>
-  <li><a href="#列表list" id="toc-列表list" class="nav-link" data-scroll-target="#列表list"><span class="header-section-number">6.8</span> 列表（List）</a></li>
-  <li><a href="#数据框data-frame" id="toc-数据框data-frame" class="nav-link" data-scroll-target="#数据框data-frame"><span class="header-section-number">6.9</span> 数据框（Data Frame）</a></li>
-  <li><a href="#r-数据结构之间的关系" id="toc-r-数据结构之间的关系" class="nav-link" data-scroll-target="#r-数据结构之间的关系"><span class="header-section-number">6.10</span> R 数据结构之间的关系</a></li>
-  <li><a href="#本章总结" id="toc-本章总结" class="nav-link" data-scroll-target="#本章总结"><span class="header-section-number">6.11</span> 本章总结</a></li>
-  <li><a href="#r-的原子类型与列表类型" id="toc-r-的原子类型与列表类型" class="nav-link" data-scroll-target="#r-的原子类型与列表类型"><span class="header-section-number">6.12</span> R 的原子类型与列表类型</a>
+  <li><a href="#一个简单的数据分析示例" id="toc-一个简单的数据分析示例" class="nav-link" data-scroll-target="#一个简单的数据分析示例"><span class="header-section-number">6.5</span> 一个简单的数据分析示例</a></li>
+  <li><a href="#整个过程不需要循环" id="toc-整个过程不需要循环" class="nav-link" data-scroll-target="#整个过程不需要循环"><span class="header-section-number">6.6</span> 整个过程不需要循环。</a></li>
+  <li><a href="#矩阵matrix" id="toc-矩阵matrix" class="nav-link" data-scroll-target="#矩阵matrix"><span class="header-section-number">6.7</span> 矩阵（Matrix）</a></li>
+  <li><a href="#数组array" id="toc-数组array" class="nav-link" data-scroll-target="#数组array"><span class="header-section-number">6.8</span> 数组（Array）</a></li>
+  <li><a href="#列表list" id="toc-列表list" class="nav-link" data-scroll-target="#列表list"><span class="header-section-number">6.9</span> 列表（List）</a></li>
+  <li><a href="#数据框data-frame" id="toc-数据框data-frame" class="nav-link" data-scroll-target="#数据框data-frame"><span class="header-section-number">6.10</span> 数据框（Data Frame）</a></li>
+  <li><a href="#r-数据结构之间的关系" id="toc-r-数据结构之间的关系" class="nav-link" data-scroll-target="#r-数据结构之间的关系"><span class="header-section-number">6.11</span> R 数据结构之间的关系</a></li>
+  <li><a href="#本章总结" id="toc-本章总结" class="nav-link" data-scroll-target="#本章总结"><span class="header-section-number">6.12</span> 本章总结</a></li>
+  <li><a href="#r-的原子类型与列表类型" id="toc-r-的原子类型与列表类型" class="nav-link" data-scroll-target="#r-的原子类型与列表类型"><span class="header-section-number">6.13</span> R 的原子类型与列表类型</a>
   <ul class="collapse">
-  <li><a href="#原子类型atomic-types" id="toc-原子类型atomic-types" class="nav-link" data-scroll-target="#原子类型atomic-types"><span class="header-section-number">6.12.1</span> 原子类型（Atomic Types）</a></li>
-  <li><a href="#列表类型list" id="toc-列表类型list" class="nav-link" data-scroll-target="#列表类型list"><span class="header-section-number">6.12.2</span> 列表类型（List）</a></li>
-  <li><a href="#原子类型与列表的区别" id="toc-原子类型与列表的区别" class="nav-link" data-scroll-target="#原子类型与列表的区别"><span class="header-section-number">6.12.3</span> 原子类型与列表的区别</a></li>
+  <li><a href="#原子类型atomic-types" id="toc-原子类型atomic-types" class="nav-link" data-scroll-target="#原子类型atomic-types"><span class="header-section-number">6.13.1</span> 原子类型（Atomic Types）</a></li>
+  <li><a href="#列表类型list" id="toc-列表类型list" class="nav-link" data-scroll-target="#列表类型list"><span class="header-section-number">6.13.2</span> 列表类型（List）</a></li>
+  <li><a href="#原子类型与列表的区别" id="toc-原子类型与列表的区别" class="nav-link" data-scroll-target="#原子类型与列表的区别"><span class="header-section-number">6.13.3</span> 原子类型与列表的区别</a></li>
   </ul></li>
-  <li><a href="#练习" id="toc-练习" class="nav-link" data-scroll-target="#练习"><span class="header-section-number">6.13</span> 练习</a>
+  <li><a href="#练习" id="toc-练习" class="nav-link" data-scroll-target="#练习"><span class="header-section-number">6.14</span> 练习</a>
   <ul class="collapse">
-  <li><a href="#练习1创建矩阵" id="toc-练习1创建矩阵" class="nav-link" data-scroll-target="#练习1创建矩阵"><span class="header-section-number">6.13.1</span> 练习1：创建矩阵</a></li>
-  <li><a href="#练习2矩阵加法" id="toc-练习2矩阵加法" class="nav-link" data-scroll-target="#练习2矩阵加法"><span class="header-section-number">6.13.2</span> 练习2：矩阵加法</a></li>
-  <li><a href="#练习3矩阵乘法" id="toc-练习3矩阵乘法" class="nav-link" data-scroll-target="#练习3矩阵乘法"><span class="header-section-number">6.13.3</span> 练习3：矩阵乘法</a></li>
-  <li><a href="#练习4矩阵转置" id="toc-练习4矩阵转置" class="nav-link" data-scroll-target="#练习4矩阵转置"><span class="header-section-number">6.13.4</span> 练习4：矩阵转置</a></li>
-  <li><a href="#练习5矩阵行列式" id="toc-练习5矩阵行列式" class="nav-link" data-scroll-target="#练习5矩阵行列式"><span class="header-section-number">6.13.5</span> 练习5：矩阵行列式</a></li>
-  <li><a href="#练习6矩阵求逆" id="toc-练习6矩阵求逆" class="nav-link" data-scroll-target="#练习6矩阵求逆"><span class="header-section-number">6.13.6</span> 练习6：矩阵求逆</a></li>
-  <li><a href="#练习7解线性方程组" id="toc-练习7解线性方程组" class="nav-link" data-scroll-target="#练习7解线性方程组"><span class="header-section-number">6.13.7</span> 练习7：解线性方程组</a></li>
+  <li><a href="#练习1创建矩阵" id="toc-练习1创建矩阵" class="nav-link" data-scroll-target="#练习1创建矩阵"><span class="header-section-number">6.14.1</span> 练习1：创建矩阵</a></li>
+  <li><a href="#练习2矩阵加法" id="toc-练习2矩阵加法" class="nav-link" data-scroll-target="#练习2矩阵加法"><span class="header-section-number">6.14.2</span> 练习2：矩阵加法</a></li>
+  <li><a href="#练习3矩阵乘法" id="toc-练习3矩阵乘法" class="nav-link" data-scroll-target="#练习3矩阵乘法"><span class="header-section-number">6.14.3</span> 练习3：矩阵乘法</a></li>
+  <li><a href="#练习4矩阵转置" id="toc-练习4矩阵转置" class="nav-link" data-scroll-target="#练习4矩阵转置"><span class="header-section-number">6.14.4</span> 练习4：矩阵转置</a></li>
+  <li><a href="#练习5矩阵行列式" id="toc-练习5矩阵行列式" class="nav-link" data-scroll-target="#练习5矩阵行列式"><span class="header-section-number">6.14.5</span> 练习5：矩阵行列式</a></li>
+  <li><a href="#练习6矩阵求逆" id="toc-练习6矩阵求逆" class="nav-link" data-scroll-target="#练习6矩阵求逆"><span class="header-section-number">6.14.6</span> 练习6：矩阵求逆</a></li>
+  <li><a href="#练习7解线性方程组" id="toc-练习7解线性方程组" class="nav-link" data-scroll-target="#练习7解线性方程组"><span class="header-section-number">6.14.7</span> 练习7：解线性方程组</a></li>
   </ul></li>
-  <li><a href="#矩阵的实际应用图像" id="toc-矩阵的实际应用图像" class="nav-link" data-scroll-target="#矩阵的实际应用图像"><span class="header-section-number">6.14</span> 矩阵的实际应用：图像</a>
+  <li><a href="#矩阵的实际应用图像" id="toc-矩阵的实际应用图像" class="nav-link" data-scroll-target="#矩阵的实际应用图像"><span class="header-section-number">6.15</span> 矩阵的实际应用：图像</a>
   <ul class="collapse">
-  <li><a href="#显示图片" id="toc-显示图片" class="nav-link" data-scroll-target="#显示图片"><span class="header-section-number">6.14.1</span> 显示图片</a></li>
-  <li><a href="#转换为矩阵" id="toc-转换为矩阵" class="nav-link" data-scroll-target="#转换为矩阵"><span class="header-section-number">6.14.2</span> 转换为矩阵</a></li>
+  <li><a href="#显示图片" id="toc-显示图片" class="nav-link" data-scroll-target="#显示图片"><span class="header-section-number">6.15.1</span> 显示图片</a></li>
+  <li><a href="#转换为矩阵" id="toc-转换为矩阵" class="nav-link" data-scroll-target="#转换为矩阵"><span class="header-section-number">6.15.2</span> 转换为矩阵</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -314,8 +315,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="数据类型与数据结构的区别" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="数据类型与数据结构的区别"><span class="header-section-number">6.1</span> 数据类型与数据结构的区别(🐈)</h2>
+<section id="本章学习目标" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="本章学习目标"><span class="header-section-number">6.1</span> 本章学习目标(🐈)</h2>
+<ul>
+<li>理解数据类型与数据结构的区别，建立“数据是什么 vs 如何组织”的认知<br>
+</li>
+<li>掌握 R 中常见数据结构（vector、matrix、array、list、data frame）的基本特点<br>
+</li>
+<li>理解向量及其<strong>向量化运算</strong>在 R 计算中的核心作用<br>
+</li>
+<li>能根据数据分析需求选择合适的数据结构进行数据组织与处理</li>
+</ul>
+</section>
+<section id="数据类型与数据结构的区别" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="数据类型与数据结构的区别"><span class="header-section-number">6.2</span> 数据类型与数据结构的区别</h2>
 <p>在学习 R 编程时，很多初学者容易混淆 <strong>数据类型（data type）</strong> 和 <strong>数据结构（data structure）</strong>。<br>
 实际上，它们解决的是两个不同层次的问题。</p>
 <p>简单理解：</p>
@@ -368,8 +381,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <hr>
 </section>
-<section id="r-中常见的数据结构" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="r-中常见的数据结构"><span class="header-section-number">6.2</span> R 中常见的数据结构</h2>
+<section id="r-中常见的数据结构" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="r-中常见的数据结构"><span class="header-section-number">6.3</span> R 中常见的数据结构</h2>
 <p>R 中最重要的五种数据结构包括：</p>
 <ul>
 <li>向量（vector）</li>
@@ -385,8 +398,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 </section>
-<section id="向量vector" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="向量vector"><span class="header-section-number">6.3</span> 向量（Vector）</h2>
+<section id="向量vector" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="向量vector"><span class="header-section-number">6.4</span> 向量（Vector）</h2>
 <p>向量是 R 中最基本的数据结构。</p>
 <p>向量的特点：</p>
 <ul>
@@ -433,8 +446,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>向量中的元素必须是同一种数据类型。</strong></p>
 </blockquote>
-<section id="向量化运算r语言的核心思想" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="向量化运算r语言的核心思想"><span class="header-section-number">6.3.1</span> 向量化运算：R语言的核心思想</h3>
+<section id="向量化运算r语言的核心思想" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="向量化运算r语言的核心思想"><span class="header-section-number">6.4.1</span> 向量化运算：R语言的核心思想</h3>
 <p>在 R 语言中，<strong>向量化运算（Vectorized Operations）</strong> 是一个非常重要的概念。</p>
 <p>很多人认为：</p>
 <blockquote class="blockquote">
@@ -467,8 +480,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 </section>
-<section id="向量化运算的优势" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="向量化运算的优势"><span class="header-section-number">6.3.2</span> 向量化运算的优势</h3>
+<section id="向量化运算的优势" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="向量化运算的优势"><span class="header-section-number">6.4.2</span> 向量化运算的优势</h3>
 <p>向量化运算具有三个重要优点：</p>
 <table class="caption-top table">
 <thead>
@@ -494,8 +507,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>例如：</p>
 </section>
-<section id="使用循环" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="使用循环"><span class="header-section-number">6.3.3</span> 使用循环</h3>
+<section id="使用循环" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="使用循环"><span class="header-section-number">6.4.3</span> 使用循环</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -530,8 +543,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <hr>
 </section>
-<section id="向量之间的运算" class="level3" data-number="6.3.4">
-<h3 data-number="6.3.4" class="anchored" data-anchor-id="向量之间的运算"><span class="header-section-number">6.3.4</span> 向量之间的运算</h3>
+<section id="向量之间的运算" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="向量之间的运算"><span class="header-section-number">6.4.4</span> 向量之间的运算</h3>
 <p>R 可以直接对 <strong>两个向量进行运算</strong>。</p>
 <div class="cell">
 <details class="code-fold">
@@ -575,8 +588,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="向量与标量运算" class="level3" data-number="6.3.5">
-<h3 data-number="6.3.5" class="anchored" data-anchor-id="向量与标量运算"><span class="header-section-number">6.3.5</span> 向量与标量运算</h3>
+<section id="向量与标量运算" class="level3" data-number="6.4.5">
+<h3 data-number="6.4.5" class="anchored" data-anchor-id="向量与标量运算"><span class="header-section-number">6.4.5</span> 向量与标量运算</h3>
 <p>R 还支持 <strong>向量与单个数字运算</strong>。</p>
 <div class="cell">
 <details class="code-fold">
@@ -594,8 +607,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>这里的 <code>2</code> 会自动作用到向量的每个元素。</p>
 <hr>
 </section>
-<section id="逻辑向量运算" class="level3" data-number="6.3.6">
-<h3 data-number="6.3.6" class="anchored" data-anchor-id="逻辑向量运算"><span class="header-section-number">6.3.6</span> 逻辑向量运算</h3>
+<section id="逻辑向量运算" class="level3" data-number="6.4.6">
+<h3 data-number="6.4.6" class="anchored" data-anchor-id="逻辑向量运算"><span class="header-section-number">6.4.6</span> 逻辑向量运算</h3>
 <p>向量化运算不仅适用于数值，还适用于 <strong>逻辑判断</strong>。</p>
 <div class="cell">
 <details class="code-fold">
@@ -625,8 +638,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>7 9</code></pre>
 <hr>
 </section>
-<section id="常见的向量化函数" class="level3" data-number="6.3.7">
-<h3 data-number="6.3.7" class="anchored" data-anchor-id="常见的向量化函数"><span class="header-section-number">6.3.7</span> 常见的向量化函数</h3>
+<section id="常见的向量化函数" class="level3" data-number="6.4.7">
+<h3 data-number="6.4.7" class="anchored" data-anchor-id="常见的向量化函数"><span class="header-section-number">6.4.7</span> 常见的向量化函数</h3>
 <p>R 中大量函数都是向量化函数，例如：</p>
 <table class="caption-top table">
 <thead>
@@ -674,8 +687,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>1 2 3 4</code></pre>
 <hr>
 </section>
-<section id="向量长度不一致的情况" class="level3" data-number="6.3.8">
-<h3 data-number="6.3.8" class="anchored" data-anchor-id="向量长度不一致的情况"><span class="header-section-number">6.3.8</span> 向量长度不一致的情况</h3>
+<section id="向量长度不一致的情况" class="level3" data-number="6.4.8">
+<h3 data-number="6.4.8" class="anchored" data-anchor-id="向量长度不一致的情况"><span class="header-section-number">6.4.8</span> 向量长度不一致的情况</h3>
 <p>当两个向量长度不一致时，R 会进行 <strong>循环回收（recycling）</strong>。</p>
 <div class="cell">
 <details class="code-fold">
@@ -696,8 +709,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>如果长度不能整除，R 会给出警告。</p>
 <hr>
 </section>
-<section id="为什么说向量是-r-最重要的数据结构" class="level3" data-number="6.3.9">
-<h3 data-number="6.3.9" class="anchored" data-anchor-id="为什么说向量是-r-最重要的数据结构"><span class="header-section-number">6.3.9</span> 为什么说向量是 R 最重要的数据结构</h3>
+<section id="为什么说向量是-r-最重要的数据结构" class="level3" data-number="6.4.9">
+<h3 data-number="6.4.9" class="anchored" data-anchor-id="为什么说向量是-r-最重要的数据结构"><span class="header-section-number">6.4.9</span> 为什么说向量是 R 最重要的数据结构</h3>
 <p>在 R 中：</p>
 <ul>
 <li>矩阵是 <strong>向量的二维形式</strong></li>
@@ -712,8 +725,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="一个简单的数据分析示例" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="一个简单的数据分析示例"><span class="header-section-number">6.4</span> 一个简单的数据分析示例</h2>
+<section id="一个简单的数据分析示例" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="一个简单的数据分析示例"><span class="header-section-number">6.5</span> 一个简单的数据分析示例</h2>
 <p>假设我们有一组实验数据：</p>
 <div class="cell">
 <details class="code-fold">
@@ -742,11 +755,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="整个过程不需要循环" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="整个过程不需要循环"><span class="header-section-number">6.5</span> 整个过程不需要循环。</h2>
+<section id="整个过程不需要循环" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="整个过程不需要循环"><span class="header-section-number">6.6</span> 整个过程不需要循环。</h2>
 </section>
-<section id="矩阵matrix" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="矩阵matrix"><span class="header-section-number">6.6</span> 矩阵（Matrix）</h2>
+<section id="矩阵matrix" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="矩阵matrix"><span class="header-section-number">6.7</span> 矩阵（Matrix）</h2>
 <p>矩阵是 <strong>二维数据结构</strong>。</p>
 <p>可以理解为：</p>
 <blockquote class="blockquote">
@@ -792,8 +805,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="数组array" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="数组array"><span class="header-section-number">6.7</span> 数组（Array）</h2>
+<section id="数组array" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="数组array"><span class="header-section-number">6.8</span> 数组（Array）</h2>
 <p>数组是 <strong>多维矩阵</strong>。</p>
 <p>例如：</p>
 <ul>
@@ -838,8 +851,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="列表list" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="列表list"><span class="header-section-number">6.8</span> 列表（List）</h2>
+<section id="列表list" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="列表list"><span class="header-section-number">6.9</span> 列表（List）</h2>
 <p>列表是一种 <strong>非常灵活的数据结构</strong>。</p>
 <p>列表的特点：</p>
 <blockquote class="blockquote">
@@ -889,8 +902,8 @@ $score
 </ul>
 <hr>
 </section>
-<section id="数据框data-frame" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="数据框data-frame"><span class="header-section-number">6.9</span> 数据框（Data Frame）</h2>
+<section id="数据框data-frame" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="数据框data-frame"><span class="header-section-number">6.10</span> 数据框（Data Frame）</h2>
 <p>数据框是 R 中最常用的数据结构之一。</p>
 <p>可以理解为：</p>
 <blockquote class="blockquote">
@@ -940,8 +953,8 @@ $score
 </ul>
 <hr>
 </section>
-<section id="r-数据结构之间的关系" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="r-数据结构之间的关系"><span class="header-section-number">6.10</span> R 数据结构之间的关系</h2>
+<section id="r-数据结构之间的关系" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="r-数据结构之间的关系"><span class="header-section-number">6.11</span> R 数据结构之间的关系</h2>
 <p>可以用下面的关系理解：</p>
 <table class="caption-top table">
 <thead>
@@ -981,8 +994,8 @@ $score
 </table>
 <hr>
 </section>
-<section id="本章总结" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="本章总结"><span class="header-section-number">6.11</span> 本章总结</h2>
+<section id="本章总结" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="本章总结"><span class="header-section-number">6.12</span> 本章总结</h2>
 <p>在 R 中：</p>
 <ul>
 <li><strong>数据类型</strong> 描述数据的性质</li>
@@ -1007,8 +1020,8 @@ $score
 </ul>
 <p>理解数据类型和数据结构，是学习 R 数据分析的重要基础。</p>
 </section>
-<section id="r-的原子类型与列表类型" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="r-的原子类型与列表类型"><span class="header-section-number">6.12</span> R 的原子类型与列表类型</h2>
+<section id="r-的原子类型与列表类型" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="r-的原子类型与列表类型"><span class="header-section-number">6.13</span> R 的原子类型与列表类型</h2>
 <p>在 R 语言中，对象大体可以分为两类：</p>
 <ul>
 <li><strong>原子类型（atomic types）</strong></li>
@@ -1016,8 +1029,8 @@ $score
 </ul>
 <p>理解这两种类型，有助于理解 R 的数据结构。</p>
 <hr>
-<section id="原子类型atomic-types" class="level3" data-number="6.12.1">
-<h3 data-number="6.12.1" class="anchored" data-anchor-id="原子类型atomic-types"><span class="header-section-number">6.12.1</span> 原子类型（Atomic Types）</h3>
+<section id="原子类型atomic-types" class="level3" data-number="6.13.1">
+<h3 data-number="6.13.1" class="anchored" data-anchor-id="原子类型atomic-types"><span class="header-section-number">6.13.1</span> 原子类型（Atomic Types）</h3>
 <p>原子类型是 <strong>R 中最基本的数据类型</strong>。</p>
 <p>它们的特点是：</p>
 <blockquote class="blockquote">
@@ -1068,8 +1081,8 @@ $score
 <p>这里 <code>x</code> 是一个 <strong>数值型向量</strong>，所有元素类型相同。</p>
 <hr>
 </section>
-<section id="列表类型list" class="level3" data-number="6.12.2">
-<h3 data-number="6.12.2" class="anchored" data-anchor-id="列表类型list"><span class="header-section-number">6.12.2</span> 列表类型（List）</h3>
+<section id="列表类型list" class="level3" data-number="6.13.2">
+<h3 data-number="6.13.2" class="anchored" data-anchor-id="列表类型list"><span class="header-section-number">6.13.2</span> 列表类型（List）</h3>
 <p>列表是一种 <strong>更灵活的数据结构</strong>。</p>
 <p>它的特点是：</p>
 <blockquote class="blockquote">
@@ -1104,8 +1117,8 @@ $score
 </ul>
 <hr>
 </section>
-<section id="原子类型与列表的区别" class="level3" data-number="6.12.3">
-<h3 data-number="6.12.3" class="anchored" data-anchor-id="原子类型与列表的区别"><span class="header-section-number">6.12.3</span> 原子类型与列表的区别</h3>
+<section id="原子类型与列表的区别" class="level3" data-number="6.13.3">
+<h3 data-number="6.13.3" class="anchored" data-anchor-id="原子类型与列表的区别"><span class="header-section-number">6.13.3</span> 原子类型与列表的区别</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1167,12 +1180,12 @@ $score
 </div>
 </section>
 </section>
-<section id="练习" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="练习"><span class="header-section-number">6.13</span> 练习</h2>
+<section id="练习" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="练习"><span class="header-section-number">6.14</span> 练习</h2>
 <p>下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。</p>
 <hr>
-<section id="练习1创建矩阵" class="level3" data-number="6.13.1">
-<h3 data-number="6.13.1" class="anchored" data-anchor-id="练习1创建矩阵"><span class="header-section-number">6.13.1</span> 练习1：创建矩阵</h3>
+<section id="练习1创建矩阵" class="level3" data-number="6.14.1">
+<h3 data-number="6.14.1" class="anchored" data-anchor-id="练习1创建矩阵"><span class="header-section-number">6.14.1</span> 练习1：创建矩阵</h3>
 <p>使用 <code>matrix()</code> 函数创建一个 2×3 的矩阵：</p>
 <pre><code>1 2 3
 4 5 6</code></pre>
@@ -1186,8 +1199,8 @@ $score
 </ol>
 <hr>
 </section>
-<section id="练习2矩阵加法" class="level3" data-number="6.13.2">
-<h3 data-number="6.13.2" class="anchored" data-anchor-id="练习2矩阵加法"><span class="header-section-number">6.13.2</span> 练习2：矩阵加法</h3>
+<section id="练习2矩阵加法" class="level3" data-number="6.14.2">
+<h3 data-number="6.14.2" class="anchored" data-anchor-id="练习2矩阵加法"><span class="header-section-number">6.14.2</span> 练习2：矩阵加法</h3>
 <p>创建两个矩阵：</p>
 <pre><code>A =
 1 2
@@ -1206,8 +1219,8 @@ B =
 <p>矩阵加法需要满足什么条件？</p>
 <hr>
 </section>
-<section id="练习3矩阵乘法" class="level3" data-number="6.13.3">
-<h3 data-number="6.13.3" class="anchored" data-anchor-id="练习3矩阵乘法"><span class="header-section-number">6.13.3</span> 练习3：矩阵乘法</h3>
+<section id="练习3矩阵乘法" class="level3" data-number="6.14.3">
+<h3 data-number="6.14.3" class="anchored" data-anchor-id="练习3矩阵乘法"><span class="header-section-number">6.14.3</span> 练习3：矩阵乘法</h3>
 <p>给定两个矩阵：</p>
 <pre><code>A =
 1 2
@@ -1227,8 +1240,8 @@ B =
 <p>矩阵乘法与普通乘法有什么不同？</p>
 <hr>
 </section>
-<section id="练习4矩阵转置" class="level3" data-number="6.13.4">
-<h3 data-number="6.13.4" class="anchored" data-anchor-id="练习4矩阵转置"><span class="header-section-number">6.13.4</span> 练习4：矩阵转置</h3>
+<section id="练习4矩阵转置" class="level3" data-number="6.14.4">
+<h3 data-number="6.14.4" class="anchored" data-anchor-id="练习4矩阵转置"><span class="header-section-number">6.14.4</span> 练习4：矩阵转置</h3>
 <p>给定矩阵：</p>
 <pre><code>A =
 1 2 3
@@ -1242,8 +1255,8 @@ B =
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="练习5矩阵行列式" class="level3" data-number="6.13.5">
-<h3 data-number="6.13.5" class="anchored" data-anchor-id="练习5矩阵行列式"><span class="header-section-number">6.13.5</span> 练习5：矩阵行列式</h3>
+<section id="练习5矩阵行列式" class="level3" data-number="6.14.5">
+<h3 data-number="6.14.5" class="anchored" data-anchor-id="练习5矩阵行列式"><span class="header-section-number">6.14.5</span> 练习5：矩阵行列式</h3>
 <p>给定矩阵：</p>
 <pre><code>A =
 2 1
@@ -1257,8 +1270,8 @@ B =
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="练习6矩阵求逆" class="level3" data-number="6.13.6">
-<h3 data-number="6.13.6" class="anchored" data-anchor-id="练习6矩阵求逆"><span class="header-section-number">6.13.6</span> 练习6：矩阵求逆</h3>
+<section id="练习6矩阵求逆" class="level3" data-number="6.14.6">
+<h3 data-number="6.14.6" class="anchored" data-anchor-id="练习6矩阵求逆"><span class="header-section-number">6.14.6</span> 练习6：矩阵求逆</h3>
 <p>给定矩阵：</p>
 <pre><code>A =
 4 7
@@ -1274,8 +1287,8 @@ B =
 <p>什么情况下矩阵不能求逆？</p>
 <hr>
 </section>
-<section id="练习7解线性方程组" class="level3" data-number="6.13.7">
-<h3 data-number="6.13.7" class="anchored" data-anchor-id="练习7解线性方程组"><span class="header-section-number">6.13.7</span> 练习7：解线性方程组</h3>
+<section id="练习7解线性方程组" class="level3" data-number="6.14.7">
+<h3 data-number="6.14.7" class="anchored" data-anchor-id="练习7解线性方程组"><span class="header-section-number">6.14.7</span> 练习7：解线性方程组</h3>
 <p>求解以下方程组：</p>
 <pre><code>2x + y = 5
 x + 3y = 6</code></pre>
@@ -1290,8 +1303,8 @@ x + 3y = 6</code></pre>
 <hr>
 </section>
 </section>
-<section id="矩阵的实际应用图像" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="矩阵的实际应用图像"><span class="header-section-number">6.14</span> 矩阵的实际应用：图像</h2>
+<section id="矩阵的实际应用图像" class="level2" data-number="6.15">
+<h2 data-number="6.15" class="anchored" data-anchor-id="矩阵的实际应用图像"><span class="header-section-number">6.15</span> 矩阵的实际应用：图像</h2>
 <p>一张图片本质上是一个矩阵。</p>
 <p>每一个像素，对应矩阵中的一个数值。以鸢尾花为例 <img src="images/iris.png" class="img-fluid" style="width:50.0%" alt="鸢尾花"></p>
 <div class="cell">
@@ -1312,8 +1325,8 @@ x + 3y = 6</code></pre>
 <li>颜色通道（RGB）</li>
 </ul>
 <hr>
-<section id="显示图片" class="level3" data-number="6.14.1">
-<h3 data-number="6.14.1" class="anchored" data-anchor-id="显示图片"><span class="header-section-number">6.14.1</span> 显示图片</h3>
+<section id="显示图片" class="level3" data-number="6.15.1">
+<h3 data-number="6.15.1" class="anchored" data-anchor-id="显示图片"><span class="header-section-number">6.15.1</span> 显示图片</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1330,8 +1343,8 @@ x + 3y = 6</code></pre>
 </div>
 <hr>
 </section>
-<section id="转换为矩阵" class="level3" data-number="6.14.2">
-<h3 data-number="6.14.2" class="anchored" data-anchor-id="转换为矩阵"><span class="header-section-number">6.14.2</span> 转换为矩阵</h3>
+<section id="转换为矩阵" class="level3" data-number="6.15.2">
+<h3 data-number="6.15.2" class="anchored" data-anchor-id="转换为矩阵"><span class="header-section-number">6.15.2</span> 转换为矩阵</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
