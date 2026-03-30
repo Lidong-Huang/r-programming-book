@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rstudio的界面以及包的安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -241,8 +241,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#plot函数简单用法-generic-x-y-plotting" id="toc-plot函数简单用法-generic-x-y-plotting" class="nav-link active" data-scroll-target="#plot函数简单用法-generic-x-y-plotting"><span class="header-section-number">12</span> plot函数简单用法: Generic X-Y Plotting</a></li>
+  <li><a href="#一修改图形主体部分" id="toc-一修改图形主体部分" class="nav-link" data-scroll-target="#一修改图形主体部分"><span class="header-section-number">13</span> （一）修改图形主体部分</a></li>
+  <li><a href="#二修改图像元素大小" id="toc-二修改图像元素大小" class="nav-link" data-scroll-target="#二修改图像元素大小"><span class="header-section-number">14</span> （二）修改图像元素大小</a></li>
+  <li><a href="#三修改图形元素的形状" id="toc-三修改图形元素的形状" class="nav-link" data-scroll-target="#三修改图形元素的形状"><span class="header-section-number">15</span> （三）修改图形元素的形状</a></li>
+  <li><a href="#四修改图形元素的颜色" id="toc-四修改图形元素的颜色" class="nav-link" data-scroll-target="#四修改图形元素的颜色"><span class="header-section-number">16</span> （四）修改图形元素的颜色</a></li>
+  <li><a href="#五设置图形标题" id="toc-五设置图形标题" class="nav-link" data-scroll-target="#五设置图形标题"><span class="header-section-number">17</span> （五）设置图形标题</a></li>
+  <li><a href="#六修改文字大小" id="toc-六修改文字大小" class="nav-link" data-scroll-target="#六修改文字大小"><span class="header-section-number">18</span> （六）修改文字大小</a></li>
+  <li><a href="#七修改文字字体" id="toc-七修改文字字体" class="nav-link" data-scroll-target="#七修改文字字体"><span class="header-section-number">19</span> （七）修改文字字体</a></li>
+  <li><a href="#八添加标题和禁用标题" id="toc-八添加标题和禁用标题" class="nav-link" data-scroll-target="#八添加标题和禁用标题"><span class="header-section-number">20</span> （八）添加标题和禁用标题</a></li>
+  <li><a href="#九隐藏框架线及坐标轴" id="toc-九隐藏框架线及坐标轴" class="nav-link" data-scroll-target="#九隐藏框架线及坐标轴"><span class="header-section-number">21</span> （九）隐藏框架线及坐标轴</a></li>
+  <li><a href="#十设置坐标轴取值范围" id="toc-十设置坐标轴取值范围" class="nav-link" data-scroll-target="#十设置坐标轴取值范围"><span class="header-section-number">22</span> （十）设置坐标轴取值范围</a></li>
+  <li><a href="#十一修改图形整体尺寸大小" id="toc-十一修改图形整体尺寸大小" class="nav-link" data-scroll-target="#十一修改图形整体尺寸大小"><span class="header-section-number">23</span> （十一）修改图形整体尺寸大小</a></li>
+  <li><a href="#十二给图形添加参考线" id="toc-十二给图形添加参考线" class="nav-link" data-scroll-target="#十二给图形添加参考线"><span class="header-section-number">24</span> （十二）给图形添加参考线</a></li>
+  <li><a href="#十三添加文本" id="toc-十三添加文本" class="nav-link" data-scroll-target="#十三添加文本"><span class="header-section-number">25</span> （十三）添加文本</a></li>
+  <li><a href="#十四组合多个图形" id="toc-十四组合多个图形" class="nav-link" data-scroll-target="#十四组合多个图形"><span class="header-section-number">26</span> （十四）组合多个图形</a></li>
+  <li><a href="#十五精细调整各图形的比例" id="toc-十五精细调整各图形的比例" class="nav-link" data-scroll-target="#十五精细调整各图形的比例"><span class="header-section-number">27</span> （十五）精细调整各图形的比例</a></li>
+  <li><a href="#十六par中fig参数设置图形位置叠加图形" id="toc-十六par中fig参数设置图形位置叠加图形" class="nav-link" data-scroll-target="#十六par中fig参数设置图形位置叠加图形"><span class="header-section-number">28</span> （十六）par()中fig参数设置图形位置,叠加图形</a></li>
+  <li><a href="#十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制" id="toc-十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制" class="nav-link" data-scroll-target="#十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制"><span class="header-section-number">29</span> （十七）以鸢尾花数据集为例子，讲解最简单的线性模型和多图形绘制</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -266,31 +289,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<style type="text/css">
-.watch-out {
-  background-color: violet;
-  border: 3px solid black;
-  font-weight: bold;
-}
-</style>
-</div>
-<style>
-div.blue pre { background-color:yellow; }
-div.blue pre.r { background-color:#ADFF2F; }
-body{ /* Normal  */
-      font-size: 35px;
-      color: DarkBlue;
-  }
-code.r{
-  font-size: 30px;
-  
-}
-pre {
-  font-size: 30px
-}
-</style>
-<div class="blue">
 <section id="plot函数简单用法-generic-x-y-plotting" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> plot函数简单用法: Generic X-Y Plotting</h1>
 <p>以R语言自带的mtcars数据集为例</p>
@@ -794,234 +792,70 @@ pre {
 <ul>
 <li>按品种分类，分别拟合花萼长度与花萼宽度的关系</li>
 </ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># species 1</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sp1 <span class="ot">&lt;-</span> iris[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">"setosa"</span>,]</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>lm.fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length<span class="sc">~</span>Sepal.Width,<span class="at">data=</span>sp1)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Sepal.Length ~ Sepal.Width, data = sp1)
+<pre><code># species 1
+sp1 &lt;- iris[iris$Species=="setosa",]
+lm.fit1 &lt;- lm(Sepal.Length~Sepal.Width,data=sp1)
+summary(lm.fit1)
+plot(sp1$Sepal.Width,sp1$Sepal.Length)
+abline(lm.fit1)
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.52476 -0.16286  0.02166  0.13833  0.44428 
+# species 2
+unique(iris$Species)
+sp2 &lt;- iris[iris$Species=="versicolor",]
+lm.fit2 &lt;- lm(Sepal.Length~Sepal.Width,data=sp2)
+summary(lm.fit2)
+plot(sp2$Sepal.Width,sp2$Sepal.Length)
+abline(lm.fit2)
 
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   2.6390     0.3100   8.513 3.74e-11 ***
-Sepal.Width   0.6905     0.0899   7.681 6.71e-10 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+# species 3
+unique(iris$Species)
+sp3 &lt;- iris[iris$Species=="virginica",]
+lm.fit3 &lt;- lm(Sepal.Length~Sepal.Width,data=sp3)
+summary(lm.fit3)
+plot(sp3$Sepal.Width,sp3$Sepal.Length)
+abline(lm.fit3)
+###############################
+names(iris)
+library(dplyr)
+lms &lt;- iris %&gt;%
+  group_by(Species) %&gt;%
+  do(broom::tidy(lm(Sepal.Length ~ Sepal.Width, .)))
+lms
 
-Residual standard error: 0.2385 on 48 degrees of freedom
-Multiple R-squared:  0.5514,    Adjusted R-squared:  0.542 
-F-statistic: 58.99 on 1 and 48 DF,  p-value: 6.71e-10</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp1<span class="sc">$</span>Sepal.Width,sp1<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot15-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># species 2</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(iris<span class="sc">$</span>Species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] setosa     versicolor virginica 
-Levels: setosa versicolor virginica</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sp2 <span class="ot">&lt;-</span> iris[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">"versicolor"</span>,]</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>lm.fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length<span class="sc">~</span>Sepal.Width,<span class="at">data=</span>sp2)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Sepal.Length ~ Sepal.Width, data = sp2)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.73497 -0.28556 -0.07544  0.43666  0.83805 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   3.5397     0.5629   6.289 9.07e-08 ***
-Sepal.Width   0.8651     0.2019   4.284 8.77e-05 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.4436 on 48 degrees of freedom
-Multiple R-squared:  0.2766,    Adjusted R-squared:  0.2615 
-F-statistic: 18.35 on 1 and 48 DF,  p-value: 8.772e-05</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp2<span class="sc">$</span>Sepal.Width,sp2<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot15-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># species 3</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(iris<span class="sc">$</span>Species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] setosa     versicolor virginica 
-Levels: setosa versicolor virginica</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sp3 <span class="ot">&lt;-</span> iris[iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">"virginica"</span>,]</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>lm.fit3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length<span class="sc">~</span>Sepal.Width,<span class="at">data=</span>sp3)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Sepal.Length ~ Sepal.Width, data = sp3)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--1.26067 -0.36921 -0.03606  0.19841  1.44917 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   3.9068     0.7571   5.161 4.66e-06 ***
-Sepal.Width   0.9015     0.2531   3.562 0.000843 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.5714 on 48 degrees of freedom
-Multiple R-squared:  0.2091,    Adjusted R-squared:  0.1926 
-F-statistic: 12.69 on 1 and 48 DF,  p-value: 0.0008435</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp3<span class="sc">$</span>Sepal.Width,sp3<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot15-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">###############################</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>lms <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, .)))</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>lms</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-# Groups:   Species [3]
-  Species    term        estimate std.error statistic  p.value
-  &lt;fct&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 setosa     (Intercept)    2.64     0.310       8.51 3.74e-11
-2 setosa     Sepal.Width    0.690    0.0899      7.68 6.71e-10
-3 versicolor (Intercept)    3.54     0.563       6.29 9.07e- 8
-4 versicolor Sepal.Width    0.865    0.202       4.28 8.77e- 5
-5 virginica  (Intercept)    3.91     0.757       5.16 4.66e- 6
-6 virginica  Sepal.Width    0.902    0.253       3.56 8.43e- 4</code></pre>
-</div>
-</div>
+</code></pre>
 <ul>
 <li>通过par(mfrow函数)把花萼长度与花萼宽度的关系图放到一起</li>
 </ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))<span class="co"># one row, three cols</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp1<span class="sc">$</span>Sepal.Width,sp1<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit1)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp2<span class="sc">$</span>Sepal.Width,sp2<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit2)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp3<span class="sc">$</span>Sepal.Width,sp3<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<pre><code>par(mfrow=c(1,3))# one row, three cols
+plot(sp1$Sepal.Width,sp1$Sepal.Length)
+abline(lm.fit1)
+plot(sp2$Sepal.Width,sp2$Sepal.Length)
+abline(lm.fit2)
+plot(sp3$Sepal.Width,sp3$Sepal.Length)
+abline(lm.fit3)
+</code></pre>
 <ul>
 <li>通过layout(mat函数)集中展现图形</li>
 </ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Width,iris<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(iris<span class="sc">$</span>Sepal.Length<span class="sc">~</span>iris<span class="sc">$</span>Sepal.Width))</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp1<span class="sc">$</span>Sepal.Width,sp1<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit1)</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp2<span class="sc">$</span>Sepal.Width,sp2<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit2)</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp3<span class="sc">$</span>Sepal.Width,sp3<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Width,iris<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(iris<span class="sc">$</span>Sepal.Length<span class="sc">~</span>iris<span class="sc">$</span>Sepal.Width))</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp1<span class="sc">$</span>Sepal.Width,sp1<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit1)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp2<span class="sc">$</span>Sepal.Width,sp2<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit2)</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sp3<span class="sc">$</span>Sepal.Width,sp3<span class="sc">$</span>Sepal.Length)</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm.fit3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot17-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<pre><code>layout(matrix(c(1,2,3,4), 2, 2, byrow = TRUE))
+plot(iris$Sepal.Width,iris$Sepal.Length)
+abline(lm(iris$Sepal.Length~iris$Sepal.Width))
+plot(sp1$Sepal.Width,sp1$Sepal.Length)
+abline(lm.fit1)
+plot(sp2$Sepal.Width,sp2$Sepal.Length)
+abline(lm.fit2)
+plot(sp3$Sepal.Width,sp3$Sepal.Length)
+abline(lm.fit3)
+
+layout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE))
+plot(iris$Sepal.Width,iris$Sepal.Length)
+abline(lm(iris$Sepal.Length~iris$Sepal.Width))
+plot(sp1$Sepal.Width,sp1$Sepal.Length)
+abline(lm.fit1)
+plot(sp2$Sepal.Width,sp2$Sepal.Length)
+abline(lm.fit2)
+plot(sp3$Sepal.Width,sp3$Sepal.Length)
+abline(lm.fit3)</code></pre>
 <ul>
 <li><p>多窗口展示图形可以用函数dev.new()，然后绘图函数如plot()，关闭图形窗口，可以用graphics.off()</p>
 <p>课堂练习：生成二维随机正态数，分别绘制数值散点图和边缘分布</p></li>
@@ -1029,17 +863,17 @@ F-statistic: 12.69 on 1 and 48 DF,  p-value: 0.0008435</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">110</span>)</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly=</span><span class="cn">TRUE</span>)</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="dv">0</span>, <span class="fl">0.8</span>))</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="fl">0.55</span>, <span class="dv">1</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(x),<span class="at">axes=</span>F,<span class="at">frame.plot=</span>F, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">""</span>)</span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="fl">0.65</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.8</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y)<span class="sc">$</span>y,<span class="fu">density</span>(y)<span class="sc">$</span>x,<span class="at">axes=</span>F,<span class="at">frame.plot=</span>F, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">""</span>,<span class="at">type =</span> <span class="st">"l"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">110</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly=</span><span class="cn">TRUE</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="dv">0</span>, <span class="fl">0.8</span>))</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="fl">0.55</span>, <span class="dv">1</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(x),<span class="at">axes=</span>F,<span class="at">frame.plot=</span>F, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">""</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="fl">0.65</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.8</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y)<span class="sc">$</span>y,<span class="fu">density</span>(y)<span class="sc">$</span>x,<span class="at">axes=</span>F,<span class="at">frame.plot=</span>F, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">""</span>,<span class="at">type =</span> <span class="st">"l"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1050,15 +884,15 @@ F-statistic: 12.69 on 1 and 48 DF,  p-value: 0.0008435</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(opar)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(opar)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</section>
-</div>
+</section></main></div>
 
 
 
-</main> <!-- /main -->
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1471,7 +1305,7 @@ F-statistic: 12.69 on 1 and 48 DF,  p-value: 0.0008435</code></pre>
       </a>
   </div>
 </nav>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 

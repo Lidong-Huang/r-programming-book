@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RStudio 的界面与包的安装 – R 编程基础讲义（黄利东）</title>
+<title>3&nbsp; Rstudio的界面以及包的安装 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rstudio的界面以及包的安装</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rstudio的界面以及包的安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -282,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">RStudio 的界面与包的安装</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rstudio的界面以及包的安装</span></h1>
 </div>
 
 
@@ -357,8 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 <p>脚本区的功能介绍</p>
-<section id="show-in-new-window" class="level4" data-number="3.3.1.1">
-<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="show-in-new-window"><span class="header-section-number">3.3.1.1</span> Show in New Window</h4>
+<p>Show in New Window</p>
 <p>Show in New Window 用于将当前文档或预览内容在独立窗口中打开。</p>
 <p>常见用途：</p>
 <ul>
@@ -367,9 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>避免编辑区被输出内容占用</li>
 </ul>
 <hr>
-</section>
-<section id="save" class="level4" data-number="3.3.1.2">
-<h4 data-number="3.3.1.2" class="anchored" data-anchor-id="save"><span class="header-section-number">3.3.1.2</span> Save</h4>
+<p>Save</p>
 <p>Save 用于保存当前脚本文件。</p>
 <p>快捷键：</p>
 <ul>
@@ -384,9 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>未保存的脚本在关闭 RStudio 时可能丢失修改内容。</p>
 <hr>
-</section>
-<section id="source-on-save" class="level4" data-number="3.3.1.3">
-<h4 data-number="3.3.1.3" class="anchored" data-anchor-id="source-on-save"><span class="header-section-number">3.3.1.3</span> Source on Save</h4>
+<p>Source on Save</p>
 <p>Source on Save 表示“保存时自动运行脚本”。</p>
 <p>开启后：</p>
 <ul>
@@ -405,9 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>若脚本有错误，会在保存时立即报错</li>
 </ul>
 <hr>
-</section>
-<section id="find" class="level4" data-number="3.3.1.4">
-<h4 data-number="3.3.1.4" class="anchored" data-anchor-id="find"><span class="header-section-number">3.3.1.4</span> Find</h4>
+<p>Find</p>
 <p>Find 用于在当前文件中查找关键词。</p>
 <p>快捷键：</p>
 <ul>
@@ -425,9 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>大型项目一定要掌握全局查找功能</li>
 </ul>
 <hr>
-</section>
-<section id="code-tools" class="level4" data-number="3.3.1.5">
-<h4 data-number="3.3.1.5" class="anchored" data-anchor-id="code-tools"><span class="header-section-number">3.3.1.5</span> Code Tools</h4>
+<p>Code Tools</p>
 <p>Code Tools 提供代码辅助与编辑功能。</p>
 <p>常见功能包括：</p>
 <ul>
@@ -439,9 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>示例：</p>
 <p>输入：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="compile-report" class="level4" data-number="3.3.1.6">
-<h4 data-number="3.3.1.6" class="anchored" data-anchor-id="compile-report"><span class="header-section-number">3.3.1.6</span> Compile Report</h4>
+<p>Compile Report</p>
 <p>Compile Report 用于将 R Markdown 或 Quarto 文档编译为报告。</p>
 <p>在 <code>.qmd</code> 文件中，它通常对应工具栏上的 <strong>Render 按钮</strong>。</p>
 <p>常见输出格式包括：</p>
@@ -463,9 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>生成最终排版好的报告文件</li>
 </ol>
 <hr>
-</section>
-<section id="与普通-run-的区别" class="level4" data-number="3.3.1.7">
-<h4 data-number="3.3.1.7" class="anchored" data-anchor-id="与普通-run-的区别"><span class="header-section-number">3.3.1.7</span> 与普通 Run 的区别</h4>
+<p>与普通 Run 的区别</p>
 <ul>
 <li><strong>Run</strong> 只运行当前代码块或选中代码</li>
 <li><strong>Compile Report</strong> 会运行整个文档</li>
@@ -476,9 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>最终生成报告使用 Compile Report</li>
 </ul>
 <hr>
-</section>
-<section id="run" class="level4" data-number="3.3.1.8">
-<h4 data-number="3.3.1.8" class="anchored" data-anchor-id="run"><span class="header-section-number">3.3.1.8</span> Run</h4>
+<p>Run</p>
 <p>Run 用于执行当前行或选中代码。</p>
 <p>快捷键：</p>
 <ul>
@@ -503,9 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 15</code></pre>
 </div>
 </div>
-</section>
-<section id="re-run" class="level4" data-number="3.3.1.9">
-<h4 data-number="3.3.1.9" class="anchored" data-anchor-id="re-run"><span class="header-section-number">3.3.1.9</span> Re-run</h4>
+<p>Re-run</p>
 <p>Re-run 表示重新运行最近执行的代码。</p>
 <p>它会重复刚刚执行的命令。</p>
 <p>适用场景</p>
@@ -525,9 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>不会清空当前环境</li>
 </ul>
 <hr>
-</section>
-<section id="source" class="level4" data-number="3.3.1.10">
-<h4 data-number="3.3.1.10" class="anchored" data-anchor-id="source"><span class="header-section-number">3.3.1.10</span> Source</h4>
+<p>Source</p>
 <p>Source 用于执行整个脚本文件。</p>
 <p>点击 Source 后，RStudio 会：</p>
 <ul>
@@ -537,7 +518,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>等价命令为：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"your_script.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
 </section>
 <section id="console控制台" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="console控制台"><span class="header-section-number">3.3.2</span> Console（控制台）</h3>
@@ -572,6 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><em>Console</em> 的运行机制</p>
 <p>Console 本质上是一个 <strong>R 会话（R session）</strong> 的交互界面。</p>
+<p>当变量被创建时，数据会存储在 R <span data-bs-toggle="tooltip" title="会话是从打开 R 到关闭期间的运行环境"> 会话（session） </span> 的内存中。</p>
 <p>其运行机制可以理解为以下过程：</p>
 <ul>
 <li>用户在 Console 中输入代码<br>
@@ -664,8 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="sc">+</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>当出现 <code>+</code> 时，说明代码结构尚未闭合，需要补充相应的内容（如 <code>}</code>）。</p>
 <hr>
-<section id="console-的内涵与学习意义" class="level4" data-number="3.3.2.1">
-<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="console-的内涵与学习意义"><span class="header-section-number">3.3.2.1</span> Console 的内涵与学习意义</h4>
+<p>Console 的内涵与学习意义</p>
 <p>Console 不仅是代码执行窗口，更是理解 R 语言逻辑的核心场所。</p>
 <p>它体现了：</p>
 <ul>
@@ -687,7 +667,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>因此，Console 是学习 R 语言的起点，也是调试程序与理解分析过程的关键窗口。</p>
 </section>
-</section>
 <section id="environment-面板" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="environment-面板"><span class="header-section-number">3.3.3</span> Environment 面板</h3>
 <p>Environment（环境）面板用于显示当前 R 会话中的对象。</p>
@@ -706,8 +685,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>df</li>
 </ul>
-<section id="environment-的核心特点" class="level4" data-number="3.3.3.1">
-<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="environment-的核心特点"><span class="header-section-number">3.3.3.1</span> Environment 的核心特点</h4>
+<p>Environment 的核心特点</p>
 <ul>
 <li>显示当前会话中的所有对象<br>
 </li>
@@ -721,9 +699,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>清空全部对象：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="学习建议" class="level4" data-number="3.3.3.2">
-<h4 data-number="3.3.3.2" class="anchored" data-anchor-id="学习建议"><span class="header-section-number">3.3.3.2</span> 学习建议</h4>
+<p>学习建议</p>
 <ul>
 <li>不要依赖手动点击删除对象<br>
 </li>
@@ -733,12 +709,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 </section>
-</section>
 <section id="history-面板" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="history-面板"><span class="header-section-number">3.3.4</span> History 面板</h3>
 <p>History（历史）面板用于记录在 Console 中执行过的命令。</p>
-<section id="history-的特点" class="level4" data-number="3.3.4.1">
-<h4 data-number="3.3.4.1" class="anchored" data-anchor-id="history-的特点"><span class="header-section-number">3.3.4.1</span> History 的特点</h4>
+<p>History 的特点</p>
 <ul>
 <li>自动记录当前会话中输入的命令<br>
 </li>
@@ -746,9 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>可选中多条命令发送到脚本</li>
 </ul>
-</section>
-<section id="使用场景" class="level4" data-number="3.3.4.2">
-<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="使用场景"><span class="header-section-number">3.3.4.2</span> 使用场景</h4>
+<p>使用场景</p>
 <ul>
 <li>回溯刚刚执行的代码<br>
 </li>
@@ -768,7 +740,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">loadhistory</span>(<span class="st">"my_history.Rhistory"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-</section>
 <section id="connections-面板" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="connections-面板"><span class="header-section-number">3.3.5</span> Connections 面板</h3>
 <p>Connections（连接）面板用于管理外部数据源连接。</p>
@@ -787,8 +758,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(DBI)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>连接成功后，会在 Connections 面板中显示。</p>
-<section id="connections-的作用" class="level4" data-number="3.3.5.1">
-<h4 data-number="3.3.5.1" class="anchored" data-anchor-id="connections-的作用"><span class="header-section-number">3.3.5.1</span> Connections 的作用</h4>
+<p>Connections 的作用</p>
 <ul>
 <li>可视化数据库结构<br>
 </li>
@@ -801,7 +771,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>断开连接示例：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">dbDisconnect</span>(con)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
-</section>
 </section>
 <section id="三个面板的区别" class="level3" data-number="3.3.6">
 <h3 data-number="3.3.6" class="anchored" data-anchor-id="三个面板的区别"><span class="header-section-number">3.3.6</span> 三个面板的区别</h3>
@@ -846,8 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>设置工作目录</li>
 </ul>
-<section id="常见操作" class="level4" data-number="3.3.7.1">
-<h4 data-number="3.3.7.1" class="anchored" data-anchor-id="常见操作"><span class="header-section-number">3.3.7.1</span> 常见操作</h4>
+<p>常见操作</p>
 <p>进入子文件夹：</p>
 <ul>
 <li>双击文件夹名称</li>
@@ -864,7 +832,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Files 面板本质上是对当前项目目录的可视化管理工具。</p>
 <hr>
-</section>
 </section>
 <section id="plots-面板" class="level3" data-number="3.3.8">
 <h3 data-number="3.3.8" class="anchored" data-anchor-id="plots-面板"><span class="header-section-number">3.3.8</span> Plots 面板</h3>
@@ -884,8 +851,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>生成的图形会自动显示在 Plots 面板中。</p>
-<section id="plots-的常见功能" class="level4" data-number="3.3.8.1">
-<h4 data-number="3.3.8.1" class="anchored" data-anchor-id="plots-的常见功能"><span class="header-section-number">3.3.8.1</span> Plots 的常见功能</h4>
+<p>Plots 的常见功能</p>
 <ul>
 <li>切换上一张或下一张图<br>
 </li>
@@ -902,7 +868,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>使用脚本保存图形以保证可复现</li>
 </ul>
 <hr>
-</section>
 </section>
 <section id="packages-面板" class="level3" data-number="3.3.9">
 <h3 data-number="3.3.9" class="anchored" data-anchor-id="packages-面板"><span class="header-section-number">3.3.9</span> Packages 面板</h3>
@@ -1073,23 +1038,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="包的安装方式" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="包的安装方式"><span class="header-section-number">3.4.2</span> 包的安装方式</h3>
-<section id="联机在线安装最常用" class="level4" data-number="3.4.2.1">
-<h4 data-number="3.4.2.1" class="anchored" data-anchor-id="联机在线安装最常用"><span class="header-section-number">3.4.2.1</span> 联机在线安装（最常用）</h4>
+<p>联机在线安装（最常用）</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">"MASS"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>一次安装多个包：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"ggplot2"</span>,<span class="st">"dplyr"</span>,<span class="st">"readxl"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="使用界面安装" class="level4" data-number="3.4.2.2">
-<h4 data-number="3.4.2.2" class="anchored" data-anchor-id="使用界面安装"><span class="header-section-number">3.4.2.2</span> 使用界面安装</h4>
+<p>使用界面安装</p>
 <ul>
 <li>RStudio → Packages → Install<br>
 </li>
 <li>输入包名 → Install</li>
 </ul>
 <hr>
-</section>
-<section id="离线安装本地安装" class="level4" data-number="3.4.2.3">
-<h4 data-number="3.4.2.3" class="anchored" data-anchor-id="离线安装本地安装"><span class="header-section-number">3.4.2.3</span> 离线安装（本地安装）</h4>
+<p>离线安装（本地安装）</p>
 <p>适用于：</p>
 <ul>
 <li>无网络环境<br>
@@ -1099,9 +1059,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">"包文件路径/package.tar.gz"</span>, <span class="at">repos =</span> <span class="cn">NULL</span>, <span class="at">type =</span> <span class="st">"source"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Windows 下也可安装 <code>.zip</code> 文件。</p>
 <hr>
-</section>
-<section id="从-github-安装外源包" class="level4" data-number="3.4.2.4">
-<h4 data-number="3.4.2.4" class="anchored" data-anchor-id="从-github-安装外源包"><span class="header-section-number">3.4.2.4</span> 从 GitHub 安装外源包</h4>
+<p>从 GitHub 安装外源包</p>
 <p>有些包尚未发布到 CRAN，可从 GitHub 安装。</p>
 <p>首先安装 <code>remotes</code> 包：</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1116,7 +1074,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>安装过程中可能涉及编译</li>
 </ul>
 <hr>
-</section>
 </section>
 <section id="包的删除与更新" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="包的删除与更新"><span class="header-section-number">3.4.3</span> 包的删除与更新</h3>
@@ -1187,6 +1144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>尽量在脚本中写明 <code>library()</code>，保证代码可复现</li>
 </ul>
 <hr>
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; 第7次课—R读取与写入文件，Excel操作技巧 – R 编程基础讲义（黄利东）</title>
+<title>8&nbsp; 操作练习 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture7.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture7.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rstudio的界面以及包的安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -241,15 +241,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#课堂练习说明" id="toc-课堂练习说明" class="nav-link active" data-scroll-target="#课堂练习说明"><span class="header-section-number">8.1</span> 课堂练习说明</a></li>
+  <li><a href="#基础对象与数学运算" id="toc-基础对象与数学运算" class="nav-link" data-scroll-target="#基础对象与数学运算"><span class="header-section-number">8.2</span> 基础对象与数学运算</a></li>
+  <li><a href="#向量练习" id="toc-向量练习" class="nav-link" data-scroll-target="#向量练习"><span class="header-section-number">8.3</span> 向量练习</a></li>
+  <li><a href="#矩阵练习" id="toc-矩阵练习" class="nav-link" data-scroll-target="#矩阵练习"><span class="header-section-number">8.4</span> 矩阵练习</a></li>
+  <li><a href="#数据框练习" id="toc-数据框练习" class="nav-link" data-scroll-target="#数据框练习"><span class="header-section-number">8.5</span> 数据框练习</a></li>
+  <li><a href="#内置数据集练习" id="toc-内置数据集练习" class="nav-link" data-scroll-target="#内置数据集练习"><span class="header-section-number">8.6</span> 内置数据集练习</a></li>
+  <li><a href="#文件读取与写出练习" id="toc-文件读取与写出练习" class="nav-link" data-scroll-target="#文件读取与写出练习"><span class="header-section-number">8.7</span> 文件读取与写出练习</a></li>
+  <li><a href="#综合练习" id="toc-综合练习" class="nav-link" data-scroll-target="#综合练习"><span class="header-section-number">8.8</span> 综合练习</a></li>
+  <li><a href="#思考题" id="toc-思考题" class="nav-link" data-scroll-target="#思考题"><span class="header-section-number">8.9</span> 思考题</a></li>
+  <li><a href="#课后小任务" id="toc-课后小任务" class="nav-link" data-scroll-target="#课后小任务"><span class="header-section-number">8.10</span> 课后小任务</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></h1>
 </div>
 
 
@@ -266,202 +281,418 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<style type="text/css">
-.watch-out {
-  background-color: violet;
-  border: 3px solid black;
-  font-weight: bold;
-}
-</style>
-</div>
-<style>
-div.blue pre { background-color:yellow; }
-div.blue pre.r { background-color:violet; }
-body{ /* Normal  */
-      font-size: 35px;
-      color: DarkBlue;
-  }
-code.r{
-  font-size: 30px;
-  
-}
-pre {
-  font-size: 20px
-}
-</style>
-<div class="blue">
-<section id="r读取csv文件" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> R读取csv文件</h1>
-<p>-逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值），其文件以纯文本形式存储表格数据（数字和文本）</p>
-<p>-CSV是一种通用的、相对简单的文件格式，最广泛的应用是在程序之间转移表格数据</p>
-<p>-Excel处理后的数据可以另存为CSV文件（见图7-1）</p>
-<p>-R可以非常容易地读取CSV文件</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="E:/hld/课件/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/csv.gif" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>图7-1：Excel文件另存为csv文件</figcaption>
-</figure>
-</div>
+<section id="课堂练习说明" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="课堂练习说明"><span class="header-section-number">8.1</span> 课堂练习说明</h2>
+<p>本次练习主要围绕以下内容展开：</p>
+<ol type="1">
+<li>R 的基本数据结构<br>
+</li>
+<li>向量、矩阵、数据框的基本操作<br>
+</li>
+<li>内置数据集的查看与简单分析<br>
+</li>
+<li>文件读取与写出<br>
+</li>
+<li>基本数学运算与统计量计算</li>
+</ol>
+<p>请同学们边做边观察结果，注意区分对象类型、函数用途以及输出结果的含义。</p>
+<hr>
 </section>
-<section id="r导出与读取csv文档" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> R导出与读取csv文档</h1>
-<p>-首先制定你想要读入的csv文档位置，一般而言我们需要把某个项目的全部文件都放在同一文件夹中进行处理。然后，你让R访问这个文件夹就可以实现文件交互操作。</p>
-<p>-ctrl+shift+H 快捷键组合可以制定工作路径（你想利用R访问文件的文件夹地址）</p>
-<p>-我已在R设定好我刚才存放csv文件的位置，你也需要这样做！</p>
+<section id="基础对象与数学运算" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="基础对象与数学运算"><span class="header-section-number">8.2</span> 基础对象与数学运算</h2>
+<p>1：创建对象并进行运算</p>
+<p>请完成以下操作：</p>
+<pre><code>a &lt;- 12
+b &lt;- 5
+
+a + b
+a - b
+a * b
+a / b
+a^b
+a %% b</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>^</code> 表示什么运算？<br>
+</li>
+<li><code>%%</code> 表示什么运算？</li>
+</ol>
+<hr>
+<p>常用数学函数</p>
+<p>请运行下面代码，并说明每个函数的作用。</p>
+<pre><code>sqrt(81)
+log(10)
+exp(1)
+abs(-25)
+round(3.14159, 2)</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>sqrt()</code> 的含义是什么？<br>
+</li>
+<li><code>round(3.14159, 2)</code> 中的 <code>2</code> 表示什么？</li>
+</ol>
+<hr>
+</section>
+<section id="向量练习" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="向量练习"><span class="header-section-number">8.3</span> 向量练习</h2>
+<p>3：创建向量并进行计算</p>
+<pre><code>x &lt;- c(2, 4, 6, 8, 10)
+y &lt;- 1:5
+
+x
+y
+
+x + y
+x * y
+mean(x)
+sum(x)
+length(x)
+max(x)
+min(x)</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>c()</code> 的作用是什么？<br>
+</li>
+<li><code>1:5</code> 生成的是什么？<br>
+</li>
+<li><code>mean(x)</code> 和 <code>sum(x)</code> 有什么区别？</li>
+</ol>
+<hr>
+<p>向量筛选</p>
+<pre><code>x &lt;- c(3, 7, 2, 9, 12, 5)
+x &gt; 5
+x[x &gt; 5]
+x[x %% 2 == 0]</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>x &gt; 5</code> 返回的是什么类型？<br>
+</li>
+<li><code>x[x &gt; 5]</code> 的含义是什么？</li>
+</ol>
+<hr>
+</section>
+<section id="矩阵练习" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="矩阵练习"><span class="header-section-number">8.4</span> 矩阵练习</h2>
+<p>创建矩阵</p>
+<pre><code>m &lt;- matrix(1:12, nrow = 3, ncol = 4)
+m</code></pre>
+<p>请完成：</p>
+<pre><code>dim(m)
+nrow(m)
+ncol(m)
+m[1, 2]
+m[2, ]
+m[, 3]</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>matrix()</code> 的作用是什么？<br>
+</li>
+<li><code>m[1, 2]</code> 表示第几行第几列？<br>
+</li>
+<li><code>m[2, ]</code> 和 <code>m[, 3]</code> 分别表示什么？</li>
+</ol>
+<hr>
+<p>矩阵运算</p>
+<pre><code>m1 &lt;- matrix(1:4, nrow = 2)
+m2 &lt;- matrix(c(5, 6, 7, 8), nrow = 2)
+
+m1
+m2
+
+m1 + m2
+m1 * m2
+m1 %*% m2</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>*</code> 和 <code>%*%</code> 有什么区别？<br>
+</li>
+<li>哪一个是矩阵乘法？</li>
+</ol>
+<hr>
+</section>
+<section id="数据框练习" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="数据框练习"><span class="header-section-number">8.5</span> 数据框练习</h2>
+<p>创建数据框</p>
+<pre><code>student &lt;- data.frame(
+  name = c("张三", "李四", "王五"),
+  age = c(19, 20, 18),
+  score = c(85, 92, 78)
+)
+
+student</code></pre>
+<p>请完成：</p>
+<pre><code>class(student)
+names(student)
+student$score
+student[1, ]
+student[, "name"]
+student[student$score &gt; 80, ]</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li>数据框和矩阵有什么区别？<br>
+</li>
+<li><code>student$score</code> 的含义是什么？</li>
+</ol>
+<hr>
+</section>
+<section id="内置数据集练习" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="内置数据集练习"><span class="header-section-number">8.6</span> 内置数据集练习</h2>
+<p>认识内置数据集 <code>iris</code></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setwd("C:/Users/LidongHuang/Desktop")#ctrl+shift+H</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(ggplot2)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(diamonds,"dm.csv",row.names = F)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dms &lt;- read.csv("dm.csv")#通过read.csv函数读入文件，双引号的字符串是你的文件名，必须和你保存的文件名一致，此处建议通过复制操作实现</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># class(dms)#"data.frame" 数据框是R存储数据的核心，相当于Excel的一个sheet</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="学习excel" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> 学习Excel</h1>
-<p>-Excel是最常用的数据处理工具</p>
-<p>-Excel的功能非常强大</p>
-<p>-R做数据处理离不开Excel</p>
-<p>-学好Excel对R有很大的帮助</p>
-</section>
-<section id="求特征数" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> 求特征数</h1>
-<p>R数据集iris各数值变量的特征数</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">2</span>, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-    5.843333     3.057333     3.758000     1.199333 </code></pre>
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="dv">2</span>, sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
-   0.8280661    0.4358663    1.7652982    0.7622377 </code></pre>
+<pre><code>    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+145          6.7         3.3          5.7         2.5 virginica
+146          6.7         3.0          5.2         2.3 virginica
+147          6.3         2.5          5.0         1.9 virginica
+148          6.5         3.0          5.2         2.0 virginica
+149          6.2         3.4          5.4         2.3 virginica
+150          5.9         3.0          5.1         1.8 virginica</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150   5</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
+<p>请回答：</p>
+<ol type="1">
+<li><code>iris</code> 是什么类型的数据结构？<br>
+</li>
+<li>它有多少行、多少列？<br>
+</li>
+<li>最后一列 <code>Species</code> 表示什么？</li>
+</ol>
+<hr>
+<p>对 <code>iris</code> 做简单计算</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.843333</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8280661</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.9</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                </code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li><code>mean()</code> 和 <code>sd()</code> 分别表示什么？<br>
+</li>
+<li><code>summary()</code> 返回了哪些信息？</li>
+</ol>
+<hr>
+<p>按条件筛选 <code>iris</code></p>
+<pre><code>iris[iris$Species == "setosa", ]
+iris[iris$Sepal.Length &gt; 6, ]
+iris[iris$Species == "virginica" &amp; iris$Petal.Length &gt; 5, ]</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>==</code> 表示什么？<br>
+</li>
+<li><code>&amp;</code> 表示什么？<br>
+</li>
+<li>以上三行代码分别筛选了什么数据？</li>
+</ol>
+<hr>
 </section>
-<section id="excel-怎么求平均值和标准差" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Excel 怎么求平均值和标准差？</h1>
+<section id="文件读取与写出练习" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="文件读取与写出练习"><span class="header-section-number">8.7</span> 文件读取与写出练习</h2>
+<p>将内置数据集写出为 CSV 文件</p>
+<p>请先把 <code>iris</code> 数据写出到当前工作目录：</p>
+<pre><code>write.csv(iris, "iris.csv", row.names = FALSE)</code></pre>
+<p>然后读取回来：</p>
+<pre><code>iris2 &lt;- read.csv("iris.csv")
+head(iris2)
+class(iris2)</code></pre>
+<p>请思考：</p>
+<ol type="1">
+<li><code>write.csv()</code> 的作用是什么？<br>
+</li>
+<li><code>read.csv()</code> 的作用是什么？<br>
+</li>
+<li>为什么常常写 <code>row.names = FALSE</code>？</li>
+</ol>
+<hr>
+<p>查看当前工作路径</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "E:/hld/课件/R语言编程基础/quarto_book_from_lectures"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "_book"                           "_quarto.yml"                    
+ [3] "1111.html"                       "1111.qmd"                       
+ [5] "1111_files"                      "6次课.txt"                      
+ [7] "docs"                            "images"                         
+ [9] "index.html"                      "index.qmd"                      
+[11] "iris.csv"                        "lecture1.html"                  
+[13] "lecture1.qmd"                    "lecture10.qmd"                  
+[15] "lecture10_files"                 "lecture11.qmd"                  
+[17] "lecture12.qmd"                   "lecture13.qmd"                  
+[19] "lecture14.qmd"                   "lecture2.html"                  
+[21] "lecture2.qmd"                    "lecture2_files"                 
+[23] "lecture3.html"                   "lecture3.qmd"                   
+[25] "lecture4.html"                   "lecture4.qmd"                   
+[27] "lecture5.html"                   "lecture5.qmd"                   
+[29] "lecture5_files"                  "lecture6.html"                  
+[31] "lecture6.qmd"                    "lecture7.qmd"                   
+[33] "lecture7.rmarkdown"              "lecture8.qmd"                   
+[35] "lecture9.qmd"                    "New Text Document.txt"          
+[37] "quarto"                          "quarto_book_from_lectures.Rproj"
+[39] "README.txt"                      "R中的变量类型.txt"              
+[41] "site_libs"                       "styles.css"                     </code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li><code>getwd()</code> 返回什么？<br>
+</li>
+<li><code>list.files()</code> 返回什么？<br>
+</li>
+<li>你刚才写出的 <code>iris.csv</code> 是否在文件列表中？</li>
+</ol>
+<hr>
+</section>
+<section id="综合练习" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="综合练习"><span class="header-section-number">8.8</span> 综合练习</h2>
+<p>使用 <code>mtcars</code> 数据集</p>
+<pre><code>head(mtcars)
+dim(mtcars)
+names(mtcars)</code></pre>
+<p>请完成以下任务：</p>
+<ol type="1">
+<li>计算 <code>mpg</code> 的平均值<br>
+</li>
+<li>计算 <code>hp</code> 的最大值<br>
+</li>
+<li>提取 <code>wt</code> 大于 3 的行<br>
+</li>
+<li>计算 <code>mpg</code> 与 <code>hp</code> 的相关系数</li>
+</ol>
+<pre><code>mean(mtcars$mpg)
+max(mtcars$hp)
+mtcars[mtcars$wt &gt; 3, ]
+cor(mtcars$mpg, mtcars$hp)</code></pre>
+<hr>
+</section>
+<section id="思考题" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="思考题"><span class="header-section-number">8.9</span> 思考题</h2>
+<ol type="1">
+<li>向量、矩阵、数据框三者有什么区别？<br>
+</li>
+<li>为什么数据分析中最常用的数据结构是数据框？<br>
+</li>
+<li><code>read.csv()</code> 读入的数据通常是什么类型？<br>
+</li>
+<li>为什么要学会使用内置数据集？</li>
+</ol>
+<hr>
+</section>
+<section id="课后小任务" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="课后小任务"><span class="header-section-number">8.10</span> 课后小任务</h2>
+<p>请同学们任选一个内置数据集，例如：</p>
 <ul>
-<li><p>read.csv() 从硬盘导入csv文件至R空间，存为data.frame格式</p></li>
-<li><p>write.csv() 导出r数据至硬盘中，存为csv格式</p></li>
+<li><code>iris</code></li>
+<li><code>mtcars</code></li>
+<li><code>airquality</code></li>
 </ul>
-</section>
-<section id="excel-使用小技巧" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Excel 使用小技巧</h1>
-<p>-<strong>冻结窗格</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="H:/上课材料/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/freeze%20window.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>图7-2：冻结窗口示意</figcaption>
-</figure>
-</div>
-<p>-<strong>快速到底/到头</strong></p>
-<p>利用快捷键，Ctrl+end; 把鼠标移动到单元格【下边框】上,鼠标变成十字箭头性状时,双击</p>
-<p>-<strong>快速填充</strong></p>
-<p>拖拽填充柄</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="H:/上课材料/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/fill_handle.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>图7-3：填充柄</figcaption>
-</figure>
-</div>
-</section>
-<section id="筛选和排序" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> 筛选和排序</h1>
-<p>-筛选</p>
-<p>-排序</p>
-</section>
-<section id="分组汇总-excel和r的比较" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> 分组汇总： EXCEL和R的比较</h1>
-<p>-不同品种下，iris四个变量的平均值和标准差</p>
-<ul>
-<li>R的实现办法见下面代码</li>
-</ul>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Sepal.Length<span class="sc">~</span>Species,<span class="at">data=</span>iris,mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Species Sepal.Length
-1     setosa        5.006
-2 versicolor        5.936
-3  virginica        6.588</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="fu">list</span>(iris<span class="sc">$</span>Species),mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Group.1 Sepal.Length Sepal.Width Petal.Length Petal.Width
-1     setosa        5.006       3.428        1.462       0.246
-2 versicolor        5.936       2.770        4.260       1.326
-3  virginica        6.588       2.974        5.552       2.026</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_summary_stats</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    Sepal.Length,Sepal.Width,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    Petal.Length,Petal.Width,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"mean_sd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 5
-   Species    variable         n  mean    sd
-   &lt;fct&gt;      &lt;fct&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 setosa     Sepal.Length    50 5.01  0.352
- 2 setosa     Sepal.Width     50 3.43  0.379
- 3 setosa     Petal.Length    50 1.46  0.174
- 4 setosa     Petal.Width     50 0.246 0.105
- 5 versicolor Sepal.Length    50 5.94  0.516
- 6 versicolor Sepal.Width     50 2.77  0.314
- 7 versicolor Petal.Length    50 4.26  0.47 
- 8 versicolor Petal.Width     50 1.33  0.198
- 9 virginica  Sepal.Length    50 6.59  0.636
-10 virginica  Sepal.Width     50 2.97  0.322
-11 virginica  Petal.Length    50 5.55  0.552
-12 virginica  Petal.Width     50 2.03  0.275</code></pre>
-</div>
-</div>
-</section>
-<section id="excel利用数据透视表实现" class="level1" data-number="17">
-<h1 data-number="17"><span class="header-section-number">17</span> Excel利用数据透视表实现</h1>
-<p>类似操作如下</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="E:/hld\课件\R语言编程基础\R%20语言第二次2021年春夏\material%20figures/PivotTables.gif" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>图7-4：数据透视表</figcaption>
-</figure>
-</div>
-</section>
-<section id="excel是非常强大的" class="level1" data-number="18">
-<h1 data-number="18"><span class="header-section-number">18</span> Excel是非常强大的</h1>
-<p>CTRL+E</p>
-</section>
-<section id="练习" class="level1" data-number="19">
-<h1 data-number="19"><span class="header-section-number">19</span> 练习</h1>
-<ul>
-<li><p>请大家把iris数据导出到电脑中</p></li>
-<li><p>求前四列的平均值</p></li>
-</ul>
-</section>
-</div>
+<p>完成以下任务：</p>
+<ol type="1">
+<li>查看其前 6 行<br>
+</li>
+<li>查看数据维度<br>
+</li>
+<li>计算至少两个数值变量的均值<br>
+</li>
+<li>按一个条件筛选数据<br>
+</li>
+<li>将该数据集写出为 CSV 文件</li>
+</ol>
+<p>请将代码整理保存为一个 <code>.R</code> 文件，下节课检查。</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

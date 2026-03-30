@@ -1,6 +1,6 @@
 git status
 git add .
-git commit -m "picture added in matrix" 
+git commit -m "renew" 
 git push -f origin master
 
 

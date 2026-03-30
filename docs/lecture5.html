@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio 的界面与包的安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rstudio的界面以及包的安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">第7次课—R读取与写入文件，Excel操作技巧</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#矩阵的实际应用图像" id="toc-矩阵的实际应用图像" class="nav-link" data-scroll-target="#矩阵的实际应用图像"><span class="header-section-number">6.14</span> 矩阵的实际应用：图像</a>
   <ul class="collapse">
   <li><a href="#显示图片" id="toc-显示图片" class="nav-link" data-scroll-target="#显示图片"><span class="header-section-number">6.14.1</span> 显示图片</a></li>
-  <li><a href="#转换为矩阵灰度" id="toc-转换为矩阵灰度" class="nav-link" data-scroll-target="#转换为矩阵灰度"><span class="header-section-number">6.14.2</span> 转换为矩阵（灰度）</a></li>
+  <li><a href="#转换为矩阵" id="toc-转换为矩阵" class="nav-link" data-scroll-target="#转换为矩阵"><span class="header-section-number">6.14.2</span> 转换为矩阵</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1324,13 +1324,13 @@ x + 3y = 6</code></pre>
 </div>
 <hr>
 </section>
-<section id="转换为矩阵灰度" class="level3" data-number="6.14.2">
-<h3 data-number="6.14.2" class="anchored" data-anchor-id="转换为矩阵灰度"><span class="header-section-number">6.14.2</span> 转换为矩阵（灰度）</h3>
+<section id="转换为矩阵" class="level3" data-number="6.14.2">
+<h3 data-number="6.14.2" class="anchored" data-anchor-id="转换为矩阵"><span class="header-section-number">6.14.2</span> 转换为矩阵</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>gray <span class="ot">&lt;-</span> img[,,<span class="dv">1</span>]</span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(gray)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> img[,,<span class="dv">1</span>]</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(p,<span class="at">col =</span> <span class="fu">gray.colors</span>(<span class="dv">256</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
