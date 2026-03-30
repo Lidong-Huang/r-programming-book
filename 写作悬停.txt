@@ -1,0 +1,19 @@
+1 悬停技巧：
+
+当变量被创建时，数据会存储在 R 
+<span data-bs-toggle="tooltip" title="会话是从打开 R 到关闭期间的运行环境">
+会话（session）
+</span> 的内存中。
+
+
+以下java放在文档末尾
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
+
+2 插入图片
+
+![图1.1本次课程主要讲授内容](images/all_guide.png){width=60%}

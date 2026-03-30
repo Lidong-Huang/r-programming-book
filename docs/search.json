@@ -124,7 +124,7 @@
     "href": "lecture1.html#本节小结",
     "title": "2  R语言与RStudio的下载与安装",
     "section": "2.6 本节小结",
-    "text": "2.6 本节小结\n\n必须先安装 R，再安装 RStudio\nRStudio 无法启动通常是 R 未正确安装\n建议使用默认安装路径\n若无桌面图标，可手动创建快捷方式\nWindows 用户建议安装 Rtools",
+    "text": "2.6 本节小结\n\n必须先安装 R，再安装 RStudio\nRStudio 无法启动通常是 R 未正确安装\n建议使用默认安装路径\n若无桌面图标，可手动创建快捷方式\nWindows 用户建议安装 Rtools\n\n\n\n\n图2.7本次课程主要讲授内容",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
     ]
@@ -324,7 +324,7 @@
     "href": "lecture3.html#本章小结",
     "title": "4  R 编程常见问题、开发习惯与 AI 辅助编程",
     "section": "4.14 本章小结",
-    "text": "4.14 本章小结\n\nR 编程常见错误包括符号、大小写和变量顺序问题\n\nRStudio 提供强大的开发环境\n\n熟练掌握快捷键可以提高效率\n\n使用 Project 管理项目结构\n\nAI 工具可以显著提升学习与编程效率\n\n合理结合 AI 与自身理解是未来数据分析的重要能力",
+    "text": "4.14 本章小结\n\nR 编程常见错误包括符号、大小写和变量顺序问题\n\nRStudio 提供强大的开发环境\n\n熟练掌握快捷键可以提高效率\n\n使用 Project 管理项目结构\n\nAI 工具可以显著提升学习与编程效率\n\n合理结合 AI 与自身理解是未来数据分析的重要能力\n\n\n\n\n图4.1本次课程主要讲授内容",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>R 编程常见问题、开发习惯与 AI 辅助编程</span>"
     ]
@@ -334,7 +334,7 @@
     "href": "lecture4.html",
     "title": "5  R的数据类型",
     "section": "",
-    "text": "5.1 R语言基础数据类型总结(🐼)",
+    "text": "5.1 为什么要学习R的数据类型？(🐼)\n在现代科研中，数据就是研究对象。\n无论是\n最终都会变成 R中的对象（object）。\n因此学习R语言的第一步就是理解：\n简单来说：\n数据 → 数据类型 → 数据结构 → 分析",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -353,8 +353,8 @@
     "objectID": "lecture4.html#为什么要学习r的数据类型",
     "href": "lecture4.html#为什么要学习r的数据类型",
     "title": "5  R的数据类型",
-    "section": "5.2 为什么要学习R的数据类型？",
-    "text": "5.2 为什么要学习R的数据类型？\n在现代科研中，数据就是研究对象。\n无论是\n\n环境数据\n\n农业数据\n\n遥感数据\n\n实验数据\n\n最终都会变成 R中的对象（object）。\n因此学习R语言的第一步就是理解：\n\n数据在R中是如何被存储和组织的\n\n简单来说：\n数据 → 数据类型 → 数据结构 → 分析",
+    "section": "",
+    "text": "环境数据\n\n农业数据\n\n遥感数据\n\n实验数据\n\n\n\n\n数据在R中是如何被存储和组织的",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -363,8 +363,8 @@
     "objectID": "lecture4.html#r语言支持的数据类型",
     "href": "lecture4.html#r语言支持的数据类型",
     "title": "5  R的数据类型",
-    "section": "5.3 R语言支持的数据类型",
-    "text": "5.3 R语言支持的数据类型\nR的基础数据类型主要包括：\n\n数值型（numeric）\n复数型（complex）\n逻辑型（logical）\n字符型（character）\n因子型（factor）\n\n这些类型是 R语言一切数据结构的基础。",
+    "section": "5.2 R语言支持的数据类型",
+    "text": "5.2 R语言支持的数据类型\nR的基础数据类型主要包括：\n\n数值型（numeric）\n复数型（complex）\n逻辑型（logical）\n字符型（character）\n因子型（factor）\n\n这些类型是 R语言一切数据结构的基础。",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -373,8 +373,8 @@
     "objectID": "lecture4.html#查看类型的函数-typeofmode-与-class-的区别",
     "href": "lecture4.html#查看类型的函数-typeofmode-与-class-的区别",
     "title": "5  R的数据类型",
-    "section": "5.4 查看类型的函数 typeof()、mode() 与 class() 的区别",
-    "text": "5.4 查看类型的函数 typeof()、mode() 与 class() 的区别\n在 R 中，一个对象往往同时具有 底层存储类型（type） 和 抽象类别（class）。\ntypeof()、mode() 和 class() 三个函数分别从不同角度描述对象。\n\n\n\n\n\n\n\n\n\n\n函数\n主要功能\n关注层面\n典型用途\n示例结果\n\n\n\n\ntypeof()\n查看对象在R内部的存储类型\n底层实现\n了解对象在内存中的数据类型\ntypeof(2) → \"double\"\n\n\nmode()\nS语言遗留函数，表示对象的存储模式\n历史兼容层\n较少使用，主要用于兼容旧代码\nmode(2) → \"numeric\"\n\n\nclass()\n查看对象的抽象类别\n面向对象系统\n决定函数调用的方法（S3/S4）\nclass(2) → \"numeric\"",
+    "section": "5.3 查看类型的函数 typeof()、mode() 与 class() 的区别",
+    "text": "5.3 查看类型的函数 typeof()、mode() 与 class() 的区别\n在 R 中，一个对象往往同时具有 底层存储类型（type） 和 抽象类别（class）。\ntypeof()、mode() 和 class() 三个函数分别从不同角度描述对象。\n\n\n\n\n\n\n\n\n\n\n函数\n主要功能\n关注层面\n典型用途\n示例结果\n\n\n\n\ntypeof()\n查看对象在R内部的存储类型\n底层实现\n了解对象在内存中的数据类型\ntypeof(2) → \"double\"\n\n\nmode()\nS语言遗留函数，表示对象的存储模式\n历史兼容层\n较少使用，主要用于兼容旧代码\nmode(2) → \"numeric\"\n\n\nclass()\n查看对象的抽象类别\n面向对象系统\n决定函数调用的方法（S3/S4）\nclass(2) → \"numeric\"",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -383,8 +383,8 @@
     "objectID": "lecture4.html#数值型numeric",
     "href": "lecture4.html#数值型numeric",
     "title": "5  R的数据类型",
-    "section": "5.5 数值型（numeric）",
-    "text": "5.5 数值型（numeric）\n数值型是R中最常见的数据类型。\n例如：\n\n\nCode\nx &lt;- 2\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\nmode(x)\n\n\n[1] \"numeric\"\n\n\nCode\nclass(x)\n\n\n[1] \"numeric\"\n\n\nCode\ny &lt;- 1L\ntypeof(y)\n\n\n[1] \"integer\"\n\n\nCode\nclass(y)\n\n\n[1] \"integer\"\n\n\nL 是 integer literal suffix（整数常量后缀）。\n通常会看到：\n\nx &lt;- 1 的 typeof(x) 是 \"double\"\ny &lt;- 1L 的 typeof(y) 是 \"integer\"\n\n这说明：\n\n1 在 R 里默认按 双精度数值（double） 存储\n1L 才是 整数（integer）\n\n\n为什么 R 默认把 1 当作 double？\n这是因为 R 继承自 S 语言的统计计算体系。\n在统计分析中，大多数数值运算都需要浮点数，例如：\n\n均值\n方差\n回归\n概率计算\n\n因此 R 统一把普通数字当作 double。",
+    "section": "5.4 数值型（numeric）",
+    "text": "5.4 数值型（numeric）\n数值型是R中最常见的数据类型。\n例如：\n\n\nCode\nx &lt;- 2\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\nmode(x)\n\n\n[1] \"numeric\"\n\n\nCode\nclass(x)\n\n\n[1] \"numeric\"\n\n\nCode\ny &lt;- 1L\ntypeof(y)\n\n\n[1] \"integer\"\n\n\nCode\nclass(y)\n\n\n[1] \"integer\"\n\n\nL 是 integer literal suffix（整数常量后缀）。\n通常会看到：\n\nx &lt;- 1 的 typeof(x) 是 \"double\"\ny &lt;- 1L 的 typeof(y) 是 \"integer\"\n\n这说明：\n\n1 在 R 里默认按 双精度数值（double） 存储\n1L 才是 整数（integer）\n\n\n为什么 R 默认把 1 当作 double？\n这是因为 R 继承自 S 语言的统计计算体系。\n在统计分析中，大多数数值运算都需要浮点数，例如：\n\n均值\n方差\n回归\n概率计算\n\n因此 R 统一把普通数字当作 double。",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -393,8 +393,8 @@
     "objectID": "lecture4.html#复数型",
     "href": "lecture4.html#复数型",
     "title": "5  R的数据类型",
-    "section": "5.6 复数型",
-    "text": "5.6 复数型\n复数型是 R 语言中用于表示复数的数据类型。复数通常表示为 \\(z = a + bi\\) 的形式，其中 \\(a\\) 是实部，\\(b\\) 是虚部，\\(i\\) 是虚数单位（\\(i^2 = -1\\)）。\n在 R 中，复数必须显式定义。如果只输入实数，R 会将其视为数值型，除非通过特定函数或格式明确指定其为复数。\n我们可以使用 complex() 函数来创建复数，或者直接使用虚数单位 i（注意：直接输入时，虚数单位 i 必须紧跟在数字后面，如 2i）。\n\n\nCode\n# 方法一：使用 complex 函数构造 \nx &lt;- 1 \ny &lt;- 1 \nz &lt;- complex(real = x, imaginary = y)\nz \n\n\n[1] 1+1i\n\n\nCode\n# 查看类型 \ntypeof(z)\n\n\n[1] \"complex\"\n\n\nCode\n# 方法二：直接赋值（注意 'i' 的写法）\nz2 &lt;- 3 + 2i \nz2 \n\n\n[1] 3+2i",
+    "section": "5.5 复数型",
+    "text": "5.5 复数型\n复数型是 R 语言中用于表示复数的数据类型。复数通常表示为 \\(z = a + bi\\) 的形式，其中 \\(a\\) 是实部，\\(b\\) 是虚部，\\(i\\) 是虚数单位（\\(i^2 = -1\\)）。\n在 R 中，复数必须显式定义。如果只输入实数，R 会将其视为数值型，除非通过特定函数或格式明确指定其为复数。\n我们可以使用 complex() 函数来创建复数，或者直接使用虚数单位 i（注意：直接输入时，虚数单位 i 必须紧跟在数字后面，如 2i）。\n\n\nCode\n# 方法一：使用 complex 函数构造 \nx &lt;- 1 \ny &lt;- 1 \nz &lt;- complex(real = x, imaginary = y)\nz \n\n\n[1] 1+1i\n\n\nCode\n# 查看类型 \ntypeof(z)\n\n\n[1] \"complex\"\n\n\nCode\n# 方法二：直接赋值（注意 'i' 的写法）\nz2 &lt;- 3 + 2i \nz2 \n\n\n[1] 3+2i",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -403,8 +403,8 @@
     "objectID": "lecture4.html#逻辑型",
     "href": "lecture4.html#逻辑型",
     "title": "5  R的数据类型",
-    "section": "5.7 逻辑型",
-    "text": "5.7 逻辑型\n逻辑型是 R 语言中最基础的数据类型之一，主要用于表示真值。它只有两个有效取值：TRUE（真）和 FALSE（假）。此外，还有一个特殊的逻辑值 NA，用于表示缺失值。\n在 R 语言中，逻辑型变量在底层实际上是作为32位整数存储的。虽然我们看到的是 TRUE 和 FALSE，但在内存中它们分别对应整数 1 和 0。我们可以通过 typeof() 和 class() 函数来验证这一点。\n\n\nCode\n# 定义逻辑变量\nx &lt;- TRUE\ny &lt;- NA\n \n# 查看底层存储类型\ntypeof(x)\n\n\n[1] \"logical\"\n\n\nCode\n# 查看 NA 的类型 \n# 注意：R 中的 NA 默认是逻辑型 NA，但也存在 NA_integer_ 等其他类型\ntypeof(y)\n\n\n[1] \"logical\"\n\n\nCode\n# 验证逻辑值与数值的关系 \nas.numeric(TRUE)\n\n\n[1] 1\n\n\nCode\nas.numeric(FALSE)\n\n\n[1] 0\n\n\n从上面的代码可以看出： * typeof(x) 返回 \"logical\"，表明其官方类型。 * as.numeric(TRUE) 返回 1，as.numeric(FALSE) 返回 0。这意味着在数学运算中，R 会自动将逻辑值强制转换为数值进行计算。\n逻辑运算是对逻辑值进行操作的核心方式，主要包括“与”、“或”、“非”三种基本运算。R 语言提供了两套运算符：\n\n单目运算符 (&, |)：向量化运算，对向量的每一个元素进行比较。\n双目运算符 (&&, ||)：非向量化运算，仅比较向量的第一个元素，常用于 if 条件判断。\n\n\n\nCode\na &lt;- TRUE\nb &lt;- FALSE \n \n# 1. 逻辑与：只有两者都为 TRUE 时才返回 TRUE\na & b  \n\n\n[1] FALSE\n\n\nCode\n# 2. 逻辑或：只要有一个为 TRUE 就返回 TRUE\na | b  \n\n\n[1] TRUE\n\n\nCode\n# 3. 逻辑非：取反\n!b     \n\n\n[1] TRUE",
+    "section": "5.6 逻辑型",
+    "text": "5.6 逻辑型\n逻辑型是 R 语言中最基础的数据类型之一，主要用于表示真值。它只有两个有效取值：TRUE（真）和 FALSE（假）。此外，还有一个特殊的逻辑值 NA，用于表示缺失值。\n在 R 语言中，逻辑型变量在底层实际上是作为32位整数存储的。虽然我们看到的是 TRUE 和 FALSE，但在内存中它们分别对应整数 1 和 0。我们可以通过 typeof() 和 class() 函数来验证这一点。\n\n\nCode\n# 定义逻辑变量\nx &lt;- TRUE\ny &lt;- NA\n \n# 查看底层存储类型\ntypeof(x)\n\n\n[1] \"logical\"\n\n\nCode\n# 查看 NA 的类型 \n# 注意：R 中的 NA 默认是逻辑型 NA，但也存在 NA_integer_ 等其他类型\ntypeof(y)\n\n\n[1] \"logical\"\n\n\nCode\n# 验证逻辑值与数值的关系 \nas.numeric(TRUE)\n\n\n[1] 1\n\n\nCode\nas.numeric(FALSE)\n\n\n[1] 0\n\n\n从上面的代码可以看出： * typeof(x) 返回 \"logical\"，表明其官方类型。 * as.numeric(TRUE) 返回 1，as.numeric(FALSE) 返回 0。这意味着在数学运算中，R 会自动将逻辑值强制转换为数值进行计算。\n逻辑运算是对逻辑值进行操作的核心方式，主要包括“与”、“或”、“非”三种基本运算。R 语言提供了两套运算符：\n\n单目运算符 (&, |)：向量化运算，对向量的每一个元素进行比较。\n双目运算符 (&&, ||)：非向量化运算，仅比较向量的第一个元素，常用于 if 条件判断。\n\n\n\nCode\na &lt;- TRUE\nb &lt;- FALSE \n \n# 1. 逻辑与：只有两者都为 TRUE 时才返回 TRUE\na & b  \n\n\n[1] FALSE\n\n\nCode\n# 2. 逻辑或：只要有一个为 TRUE 就返回 TRUE\na | b  \n\n\n[1] TRUE\n\n\nCode\n# 3. 逻辑非：取反\n!b     \n\n\n[1] TRUE",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -413,8 +413,8 @@
     "objectID": "lecture4.html#字符型",
     "href": "lecture4.html#字符型",
     "title": "5  R的数据类型",
-    "section": "5.8 字符型",
-    "text": "5.8 字符型\n字符型用于存储文本数据（字符串）。在 R 中，字符型数据需要用双引号 \"\" 或单引号 '' 括起来。即便内容是数字，只要加上引号，它就被视为字符型。\nR 中的字符型向量存储的是字符串。typeof() 返回 \"character\"，这表示底层的 C 语言类型是指向字符数组的指针（在 R 内部通过 CHARSXP 和 STRING 指针管理）。\n\n\nCode\nx &lt;- \"1\"\n \n# 查看底层存储类型 \ntypeof(x)\n\n\n[1] \"character\"\n\n\nCode\n# 查看面向对象的类 \nclass(x)\n\n\n[1] \"character\"\n\n\nCode\n# 查看长度（向量中元素的个数）\nlength(x)\n\n\n[1] 1\n\n\nCode\n# 查看字符串的实际字符数 \nnchar(x)\n\n\n[1] 1\n\n\n注意区别： * length(x) 返回的是向量中元素的个数（这里 x 只有一个元素 “1”，所以返回 1）。 * nchar(x) 返回的是字符串内容本身的长度（“1” 只有一个字符，所以返回 1）。\nR 提供了丰富的函数来处理字符型数据，主要包括拼接、截取、查找和替换。\n\n5.8.1 字符串拼接\n使用 paste() 或 paste0() 函数。paste() 默认以空格分隔，paste0() 则无分隔符，效率更高。\n\n\nCode\nid &lt;- \"001\"\nname &lt;- \"R Language\"\n \n# paste 自动转换类型并拼接 \npaste(\"ID:\", id, \"Name:\", name)\n\n\n[1] \"ID: 001 Name: R Language\"\n\n\nCode\n# paste0 紧密拼接 \npaste0(id, \"_\", name)\n\n\n[1] \"001_R Language\"\n\n\n\n\n5.8.2 字符串截取与长度\n使用 substr() 或 substring() 提取部分字符串。\n\n\nCode\ntext &lt;- \"Data Science\"\n \n# 从第 1 位到第 4 位截取 \nsubstr(text, start = 1, stop = 4)\n\n\n[1] \"Data\"\n\n\n\n\n5.8.3 \n在字符串中，某些特殊字符需要使用反斜杠 \\ 进行转义。\n\n\nCode\n# \\n 换行符 \ncat(\"Line 1\\nLine 2\")\n\n\nLine 1\nLine 2\n\n\nCode\n# \\\" 输出双引号本身 \ncat(\"He said, \\\"Hello World\\\".\")\n\n\nHe said, \"Hello World\".\n\n\nCode\n# \\t 制表符 \ncat(\"Col1\\tCol2\")\n\n\nCol1    Col2\n\n\n\n\n5.8.4 类型转换\n字符型与其他类型（如数值型、逻辑型）之间经常需要相互转换。\n强制转换为字符型 使用 as.character() 函数。\n\n\nCode\n# 数值转字符 \nnum_val &lt;- 123.45 \nas.character(num_val)\n\n\n[1] \"123.45\"\n\n\nCode\n# 逻辑转字符 \nas.character(TRUE) # 结果为 \"TRUE\"\n\n\n[1] \"TRUE\"",
+    "section": "5.7 字符型",
+    "text": "5.7 字符型\n字符型用于存储文本数据（字符串）。在 R 中，字符型数据需要用双引号 \"\" 或单引号 '' 括起来。即便内容是数字，只要加上引号，它就被视为字符型。\nR 中的字符型向量存储的是字符串。typeof() 返回 \"character\"，这表示底层的 C 语言类型是指向字符数组的指针（在 R 内部通过 CHARSXP 和 STRING 指针管理）。\n\n\nCode\nx &lt;- \"1\"\n \n# 查看底层存储类型 \ntypeof(x)\n\n\n[1] \"character\"\n\n\nCode\n# 查看面向对象的类 \nclass(x)\n\n\n[1] \"character\"\n\n\nCode\n# 查看长度（向量中元素的个数）\nlength(x)\n\n\n[1] 1\n\n\nCode\n# 查看字符串的实际字符数 \nnchar(x)\n\n\n[1] 1\n\n\n注意区别： * length(x) 返回的是向量中元素的个数（这里 x 只有一个元素 “1”，所以返回 1）。 * nchar(x) 返回的是字符串内容本身的长度（“1” 只有一个字符，所以返回 1）。\nR 提供了丰富的函数来处理字符型数据，主要包括拼接、截取、查找和替换。\n\n5.7.1 字符串拼接\n使用 paste() 或 paste0() 函数。paste() 默认以空格分隔，paste0() 则无分隔符，效率更高。\n\n\nCode\nid &lt;- \"001\"\nname &lt;- \"R Language\"\n \n# paste 自动转换类型并拼接 \npaste(\"ID:\", id, \"Name:\", name)\n\n\n[1] \"ID: 001 Name: R Language\"\n\n\nCode\n# paste0 紧密拼接 \npaste0(id, \"_\", name)\n\n\n[1] \"001_R Language\"\n\n\n\n\n5.7.2 字符串截取与长度\n使用 substr() 或 substring() 提取部分字符串。\n\n\nCode\ntext &lt;- \"Data Science\"\n \n# 从第 1 位到第 4 位截取 \nsubstr(text, start = 1, stop = 4)\n\n\n[1] \"Data\"\n\n\n\n\n5.7.3 \n在字符串中，某些特殊字符需要使用反斜杠 \\ 进行转义。\n\n\nCode\n# \\n 换行符 \ncat(\"Line 1\\nLine 2\")\n\n\nLine 1\nLine 2\n\n\nCode\n# \\\" 输出双引号本身 \ncat(\"He said, \\\"Hello World\\\".\")\n\n\nHe said, \"Hello World\".\n\n\nCode\n# \\t 制表符 \ncat(\"Col1\\tCol2\")\n\n\nCol1    Col2\n\n\n\n\n5.7.4 类型转换\n字符型与其他类型（如数值型、逻辑型）之间经常需要相互转换。\n强制转换为字符型 使用 as.character() 函数。\n\n\nCode\n# 数值转字符 \nnum_val &lt;- 123.45 \nas.character(num_val)\n\n\n[1] \"123.45\"\n\n\nCode\n# 逻辑转字符 \nas.character(TRUE) # 结果为 \"TRUE\"\n\n\n[1] \"TRUE\"",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -423,8 +423,8 @@
     "objectID": "lecture4.html#因子型",
     "href": "lecture4.html#因子型",
     "title": "5  R的数据类型",
-    "section": "5.9 因子型",
-    "text": "5.9 因子型\n因子型是 R 语言中特有的一种数据类型，用于处理分类数据（Categorical Data）。它本质上是一个带有属性（水平和类）的整数向量。因子在统计建模（如线性回归、方差分析）和数据可视化中非常重要，因为它能明确区分“名义变量”（无顺序，如性别）和“有序变量”（有顺序，如等级）。\n\n5.9.1 底层存储机制\n虽然因子打印出来像字符，但 typeof() 揭示了它的真面目：它在底层是使用整数存储的。每个整数对应一个“水平”标签。\n\n\nCode\n# Creating a vector \nx &lt;- c(\"female\", \"male\", \"male\", \"female\")\nprint(x)\n\n\n[1] \"female\" \"male\"   \"male\"   \"female\"\n\n\nCode\n# Converting the vector x into a factor \n# named gender \ngender &lt;- factor(x, levels = c(\"male\", \"female\"))\nprint(gender)\n\n\n[1] female male   male   female\nLevels: male female\n\n\nCode\n# 查看底层存储类型：整数 \ntypeof(gender)\n\n\n[1] \"integer\"\n\n\nCode\n# 查看面向对象的类 \nclass(gender)\n\n\n[1] \"factor\"\n\n\nCode\n# 查看因子的水平 \nlevels(gender)\n\n\n[1] \"male\"   \"female\"\n\n\n代码解析： * typeof(gender) 返回 \"integer\"，说明因子底层存储的是整数索引。 * levels(gender) 返回 c(\"male\", \"female\")。在这个例子中，底层的整数映射关系为：1 -&gt; “male”，2 -&gt; “female”。 * 打印 gender 时显示的 Levels 列表清晰地展示了所有可能的取值。\n因子的核心在于水平的控制 ,即levels 属性。它不仅定义了允许的取值，还定义了顺序。\n\n\n5.9.2 自定义水平顺序\n默认情况下，水平按字母顺序排列。但在实际分析中，我们经常需要自定义顺序（例如：设置基准组）。\n\n\nCode\n# 默认情况：按字母顺序，Female 在前 \nfactor(c(\"High\", \"Low\", \"Medium\"))\n\n\n[1] High   Low    Medium\nLevels: High Low Medium\n\n\nCode\n# 强制指定顺序：Low &lt; Medium &lt; High \n# 这里的 levels 参数决定了整数映射：Low=1, Medium=2, High=3 \nfactor(c(\"High\", \"Low\", \"Medium\"), \n       levels = c(\"Low\", \"Medium\", \"High\"))\n\n\n[1] High   Low    Medium\nLevels: Low Medium High\n\n\n\n5.9.2.1 包含未观测值\n因子可以包含数据中尚未出现的水平，这在处理训练集和测试集不一致时非常有用。\n\n\nCode\n# 数据中只有 \"male\" 和 \"female\"，但我们预设 \"unknown\" 也是一个有效水平 \ngender_full &lt;- factor(c(\"male\", \"female\"), levels = c(\"male\", \"female\", \"unknown\"))\nprint(gender_full)\n\n\n[1] male   female\nLevels: male female unknown\n\n\n\n\n\n5.9.3 有序因子\n对于像“低、中、高”这样有内在顺序的分类数据，应使用 ordered = TRUE。这允许在因子上进行比较运算。\n\n\nCode\nstatus &lt;- factor(c(\"low\", \"high\", \"medium\", \"high\"), \n                 levels = c(\"low\", \"medium\", \"high\"), \n                 ordered = TRUE)\nprint(status)\n\n\n[1] low    high   medium high  \nLevels: low &lt; medium &lt; high\n\n\nCode\n# 有序因子支持比较运算 \nstatus[1] &lt; status[2] # low &lt; high 返回 TRUE \n\n\n[1] TRUE\n\n\n无序因子不支持比较\ngender[1] &lt; gender[2] # 会报错 \n##作业：综合判断与解释\n请根据下面代码，填写表格并补充解释。\n\n\nCode\nobj1 &lt;- 25.6\nobj2 &lt;- 25L\nobj3 &lt;- \"25.6\"\nobj4 &lt;- factor(c(\"A\", \"B\", \"A\"))\nobj5 &lt;- FALSE\nobj6 &lt;- 1 + 4i\n\n\n请完成下表：\n\n\n\n对象\n值\ntypeof()\nclass()\n所属数据类型\n你的解释\n\n\n\n\nobj1\n\n\n\n\n\n\n\nobj2\n\n\n\n\n\n\n\nobj3\n\n\n\n\n\n\n\nobj4\n\n\n\n\n\n\n\nobj5\n\n\n\n\n\n\n\nobj6",
+    "section": "5.8 因子型",
+    "text": "5.8 因子型\n因子型是 R 语言中特有的一种数据类型，用于处理分类数据（Categorical Data）。它本质上是一个带有属性（水平和类）的整数向量。因子在统计建模（如线性回归、方差分析）和数据可视化中非常重要，因为它能明确区分“名义变量”（无顺序，如性别）和“有序变量”（有顺序，如等级）。\n\n5.8.1 底层存储机制\n虽然因子打印出来像字符，但 typeof() 揭示了它的真面目：它在底层是使用整数存储的。每个整数对应一个“水平”标签。\n\n\nCode\n# Creating a vector \nx &lt;- c(\"female\", \"male\", \"male\", \"female\")\nprint(x)\n\n\n[1] \"female\" \"male\"   \"male\"   \"female\"\n\n\nCode\n# Converting the vector x into a factor \n# named gender \ngender &lt;- factor(x, levels = c(\"male\", \"female\"))\nprint(gender)\n\n\n[1] female male   male   female\nLevels: male female\n\n\nCode\n# 查看底层存储类型：整数 \ntypeof(gender)\n\n\n[1] \"integer\"\n\n\nCode\n# 查看面向对象的类 \nclass(gender)\n\n\n[1] \"factor\"\n\n\nCode\n# 查看因子的水平 \nlevels(gender)\n\n\n[1] \"male\"   \"female\"\n\n\n代码解析： * typeof(gender) 返回 \"integer\"，说明因子底层存储的是整数索引。 * levels(gender) 返回 c(\"male\", \"female\")。在这个例子中，底层的整数映射关系为：1 -&gt; “male”，2 -&gt; “female”。 * 打印 gender 时显示的 Levels 列表清晰地展示了所有可能的取值。\n因子的核心在于水平的控制 ,即levels 属性。它不仅定义了允许的取值，还定义了顺序。\n\n\n5.8.2 自定义水平顺序\n默认情况下，水平按字母顺序排列。但在实际分析中，我们经常需要自定义顺序（例如：设置基准组）。\n\n\nCode\n# 默认情况：按字母顺序，Female 在前 \nfactor(c(\"High\", \"Low\", \"Medium\"))\n\n\n[1] High   Low    Medium\nLevels: High Low Medium\n\n\nCode\n# 强制指定顺序：Low &lt; Medium &lt; High \n# 这里的 levels 参数决定了整数映射：Low=1, Medium=2, High=3 \nfactor(c(\"High\", \"Low\", \"Medium\"), \n       levels = c(\"Low\", \"Medium\", \"High\"))\n\n\n[1] High   Low    Medium\nLevels: Low Medium High\n\n\n\n5.8.2.1 包含未观测值\n因子可以包含数据中尚未出现的水平，这在处理训练集和测试集不一致时非常有用。\n\n\nCode\n# 数据中只有 \"male\" 和 \"female\"，但我们预设 \"unknown\" 也是一个有效水平 \ngender_full &lt;- factor(c(\"male\", \"female\"), levels = c(\"male\", \"female\", \"unknown\"))\nprint(gender_full)\n\n\n[1] male   female\nLevels: male female unknown\n\n\n\n\n\n5.8.3 有序因子\n对于像“低、中、高”这样有内在顺序的分类数据，应使用 ordered = TRUE。这允许在因子上进行比较运算。\n\n\nCode\nstatus &lt;- factor(c(\"low\", \"high\", \"medium\", \"high\"), \n                 levels = c(\"low\", \"medium\", \"high\"), \n                 ordered = TRUE)\nprint(status)\n\n\n[1] low    high   medium high  \nLevels: low &lt; medium &lt; high\n\n\nCode\n# 有序因子支持比较运算 \nstatus[1] &lt; status[2] # low &lt; high 返回 TRUE \n\n\n[1] TRUE\n\n\n无序因子不支持比较\ngender[1] &lt; gender[2] # 会报错",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
     ]
@@ -554,7 +554,7 @@
     "href": "lecture5.html#r-的原子类型与列表类型",
     "title": "6  R的数据结构",
     "section": "6.12 R 的原子类型与列表类型",
-    "text": "6.12 R 的原子类型与列表类型\n在 R 语言中，对象大体可以分为两类：\n\n原子类型（atomic types）\n列表类型（list）\n\n理解这两种类型，有助于理解 R 的数据结构。\n\n\n6.12.1 原子类型（Atomic Types）\n原子类型是 R 中最基本的数据类型。\n它们的特点是：\n\n一个对象中的所有元素必须是同一种类型。\n\nR 中常见的原子类型包括：\n\n\n\n类型\n示例\n\n\n\n\nnumeric\n3.14\n\n\ninteger\n3L\n\n\nlogical\nTRUE\n\n\ncharacter\n\"R\"\n\n\ncomplex\n2+3i\n\n\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\ntypeof(x)\n\n\n[1] \"double\"\n\n\n这里 x 是一个 数值型向量，所有元素类型相同。\n\n\n\n6.12.2 列表类型（List）\n列表是一种 更灵活的数据结构。\n它的特点是：\n\n列表中的元素可以是不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(90,85,88)\n)\n\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 90 85 88\n\n\n可以看到：\n\nname 是字符型\n\nage 是数值型\n\nscore 是数值向量\n\n\n\n\n6.12.3 原子类型与列表的区别\n\n\n\n特征\n原子类型\n列表\n\n\n\n\n元素类型\n必须相同\n可以不同\n\n\n常见形式\n向量、矩阵、数组\nlist\n\n\n用途\n数值计算\n存储复杂对象\n\n\n\n简单示例：\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- list(1,\"A\",TRUE)\n\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\ntypeof(y)\n\n\n[1] \"list\"\n\n\n结果：\n\nx 是原子向量\n\ny 是列表",
+    "text": "6.12 R 的原子类型与列表类型\n在 R 语言中，对象大体可以分为两类：\n\n原子类型（atomic types）\n列表类型（list）\n\n理解这两种类型，有助于理解 R 的数据结构。\n\n\n6.12.1 原子类型（Atomic Types）\n原子类型是 R 中最基本的数据类型。\n它们的特点是：\n\n一个对象中的所有元素必须是同一种类型。\n\nR 中常见的原子类型包括：\n\n\n\n类型\n示例\n\n\n\n\nnumeric\n3.14\n\n\ninteger\n3L\n\n\nlogical\nTRUE\n\n\ncharacter\n\"R\"\n\n\ncomplex\n2+3i\n\n\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\ntypeof(x)\n\n\n[1] \"double\"\n\n\n这里 x 是一个 数值型向量，所有元素类型相同。\n\n\n\n6.12.2 列表类型（List）\n列表是一种 更灵活的数据结构。\n它的特点是：\n\n列表中的元素可以是不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(90,85,88)\n)\n\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 90 85 88\n\n\n可以看到：\n\nname 是字符型\n\nage 是数值型\n\nscore 是数值向量\n\n\n\n\n6.12.3 原子类型与列表的区别\n\n\n\n特征\n原子类型\n列表\n\n\n\n\n元素类型\n必须相同\n可以不同\n\n\n常见形式\n向量、矩阵、数组\nlist\n\n\n用途\n数值计算\n存储复杂对象\n\n\n\n简单示例：\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- list(1,\"A\",TRUE)\n\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\ntypeof(y)\n\n\n[1] \"list\"\n\n\n结果：\n\nx 是原子向量\n\ny 是列表\n\n\n\n\n\n图6.1本次课程主要讲授内容",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -1177,6 +1177,56 @@
     "text": "7.5 总结\n\n\n\n图7.1文件读取总结",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>R 中 CSV 与 Excel 文件的读取和写出</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#课程纲要",
+    "href": "index.html#课程纲要",
+    "title": "R 编程基础讲义（黄利东）",
+    "section": "1.6 课程纲要",
+    "text": "1.6 课程纲要\n\n\n\n图1.1本次课程主要讲授内容",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>前言</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#r语言数据类型总结",
+    "href": "lecture4.html#r语言数据类型总结",
+    "title": "5  R的数据类型",
+    "section": "5.9 R语言数据类型总结",
+    "text": "5.9 R语言数据类型总结\n\n\n\n\n\n\n\n\n\n\n数据类型\nR表示方式\ntypeof()结果\n典型取值示例\n主要用途\n\n\n\n\n数值型 (numeric)\n普通数字\ndouble\n1 3.14 -5\n存储连续数值，最常见的数据类型\n\n\n整数型 (integer)\n数字后加 L\ninteger\n1L 10L\n存储整数，常用于索引或计数\n\n\n复数型 (complex)\na + bi 或 complex()\ncomplex\n3+2i\n表示复数，常见于数学和信号处理\n\n\n逻辑型 (logical)\nTRUE / FALSE\nlogical\nTRUE FALSE NA\n条件判断、逻辑运算\n\n\n字符型 (character)\n用引号 \" \" 或 ' '\ncharacter\n\"R\" \"data\"\n存储文本数据\n\n\n因子型 (factor)\nfactor()函数\ninteger（底层）\nfactor(c(\"male\",\"female\"))\n表示分类变量\n\n\n\n\n\n\n图5.1本次课程主要讲授内容",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#图5.1本次课程主要讲授内容",
+    "href": "lecture4.html#图5.1本次课程主要讲授内容",
+    "title": "5  R的数据类型",
+    "section": "5.10 ",
+    "text": "5.10",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4.html#作业综合判断与解释",
+    "href": "lecture4.html#作业综合判断与解释",
+    "title": "5  R的数据类型",
+    "section": "5.10 作业：综合判断与解释",
+    "text": "5.10 作业：综合判断与解释\n请根据下面代码，填写表格并补充解释。\n\n\nCode\nobj1 &lt;- 25.6\nobj2 &lt;- 25L\nobj3 &lt;- \"25.6\"\nobj4 &lt;- factor(c(\"A\", \"B\", \"A\"))\nobj5 &lt;- FALSE\nobj6 &lt;- 1 + 4i\n\n\n请完成下表：\n\n\n\n对象\n值\ntypeof()\nclass()\n所属数据类型\n你的解释\n\n\n\n\nobj1\n\n\n\n\n\n\n\nobj2\n\n\n\n\n\n\n\nobj3\n\n\n\n\n\n\n\nobj4\n\n\n\n\n\n\n\nobj5\n\n\n\n\n\n\n\nobj6",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>R的数据类型</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5.html#练习",
+    "href": "lecture5.html#练习",
+    "title": "6  R的数据结构",
+    "section": "6.13 练习",
+    "text": "6.13 练习\n下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。\n\n\n6.13.1 练习1：创建矩阵\n使用 matrix() 函数创建一个 2×3 的矩阵：\n1 2 3\n4 5 6\n提示：\nmatrix()\n要求：\n\n创建矩阵 A\n查看矩阵内容\n查看矩阵维度\n\n\n\n\n6.13.2 练习2：矩阵加法\n创建两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n创建矩阵 A\n创建矩阵 B\n计算 A + B\n\n思考：\n矩阵加法需要满足什么条件？\n\n\n\n6.13.3 练习3：矩阵乘法\n给定两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n使用 %*% 计算矩阵乘法 A × B\n写出结果矩阵\n\n提示：\nA %*% B\n思考：\n矩阵乘法与普通乘法有什么不同？\n\n\n\n6.13.4 练习4：矩阵转置\n给定矩阵：\nA =\n1 2 3\n4 5 6\n要求：\n\n创建矩阵 A\n计算矩阵转置\n\n提示：\nt(A)\n\n\n\n6.13.5 练习5：矩阵行列式\n给定矩阵：\nA =\n2 1\n3 4\n要求：\n\n创建矩阵 A\n计算矩阵的行列式\n\n提示：\ndet(A)\n\n\n\n6.13.6 练习6：矩阵求逆\n给定矩阵：\nA =\n4 7\n2 6\n要求：\n\n创建矩阵 A\n计算矩阵的逆矩阵\n\n提示：\nsolve(A)\n思考：\n什么情况下矩阵不能求逆？\n\n\n\n6.13.7 练习7：解线性方程组\n求解以下方程组：\n2x + y = 5\nx + 3y = 6\n步骤：\n\n写出系数矩阵 A\n写出常数向量 b\n使用 solve() 求解\n\n提示：\nsolve(A, b)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
   }
 ]
