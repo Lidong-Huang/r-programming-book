@@ -220,9 +220,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#csv-文件的读取" id="toc-csv-文件的读取" class="nav-link" data-scroll-target="#csv-文件的读取"><span class="header-section-number">7.2.4</span> CSV 文件的读取</a></li>
   <li><a href="#读取-csv-时的常用参数" id="toc-读取-csv-时的常用参数" class="nav-link" data-scroll-target="#读取-csv-时的常用参数"><span class="header-section-number">7.2.5</span> 读取 CSV 时的常用参数</a></li>
   <li><a href="#csv-文件写出" id="toc-csv-文件写出" class="nav-link" data-scroll-target="#csv-文件写出"><span class="header-section-number">7.2.6</span> CSV 文件写出</a></li>
-  <li><a href="#csv-读写示例" id="toc-csv-读写示例" class="nav-link" data-scroll-target="#csv-读写示例"><span class="header-section-number">7.2.7</span> CSV 读写示例</a></li>
-  <li><a href="#csv-文件常见问题" id="toc-csv-文件常见问题" class="nav-link" data-scroll-target="#csv-文件常见问题"><span class="header-section-number">7.2.8</span> CSV 文件常见问题</a></li>
-  <li><a href="#小结csv-文件部分" id="toc-小结csv-文件部分" class="nav-link" data-scroll-target="#小结csv-文件部分"><span class="header-section-number">7.2.9</span> 小结：CSV 文件部分</a></li>
+  <li><a href="#csv-文件操作常见问题" id="toc-csv-文件操作常见问题" class="nav-link" data-scroll-target="#csv-文件操作常见问题"><span class="header-section-number">7.2.7</span> CSV 文件操作常见问题</a></li>
+  <li><a href="#小结csv-文件部分" id="toc-小结csv-文件部分" class="nav-link" data-scroll-target="#小结csv-文件部分"><span class="header-section-number">7.2.8</span> 小结：CSV 文件部分</a></li>
   </ul></li>
   <li><a href="#第二部分excel-文件的读取" id="toc-第二部分excel-文件的读取" class="nav-link" data-scroll-target="#第二部分excel-文件的读取"><span class="header-section-number">7.3</span> 第二部分：Excel 文件的读取</a>
   <ul class="collapse">
@@ -236,7 +235,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#csv-与-excel-的比较" id="toc-csv-与-excel-的比较" class="nav-link" data-scroll-target="#csv-与-excel-的比较"><span class="header-section-number">7.3.8</span> CSV 与 Excel 的比较</a></li>
   </ul></li>
   <li><a href="#本章小结" id="toc-本章小结" class="nav-link" data-scroll-target="#本章小结"><span class="header-section-number">7.4</span> 本章小结</a></li>
-  <li><a href="#课堂练习" id="toc-课堂练习" class="nav-link" data-scroll-target="#课堂练习"><span class="header-section-number">7.5</span> 课堂练习</a></li>
+  <li><a href="#总结" id="toc-总结" class="nav-link" data-scroll-target="#总结"><span class="header-section-number">7.5</span> 总结</a></li>
+  <li><a href="#课堂练习" id="toc-课堂练习" class="nav-link" data-scroll-target="#课堂练习"><span class="header-section-number">7.6</span> 课堂练习</a></li>
   </ul>
 </nav>
     </div>
@@ -311,18 +311,17 @@ ul.task-list li input[type="checkbox"] {
 <section id="使用绝对路径" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="使用绝对路径"><span class="header-section-number">7.2.3</span> 使用绝对路径</h3>
 <p>你的文件放在某个文件夹下，可以使用<strong>CTRL + SHIFT +H </strong>快捷键到指定目录（文件夹）地址：</p>
-<p>👉<a href="data/iris.csv">下载 iris 数据</a></p>
-<pre><code>iris_data &lt;- read.csv("iris.csv")</code></pre>
 <p>查看当前工作路径：</p>
 <pre><code>getwd()</code></pre>
 <p>查看当前目录中的文件：</p>
 <pre><code>list.files()</code></pre>
+<p>👉<a href="data/iris.csv">下载 iris 数据</a></p>
+<pre><code>iris_data &lt;- read.csv("iris.csv")</code></pre>
 <hr>
 </section>
 <section id="csv-文件的读取" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="csv-文件的读取"><span class="header-section-number">7.2.4</span> CSV 文件的读取</h3>
-<p>在 R 中，最常用的读取函数是：</p>
-<pre><code>read.csv("iris.csv")</code></pre>
+<p>在 R 中，最常用的读取函数是 read.csv(), read.csv()是 R 语言中用于读取 CSV 文件的基础函数，该函数将逗号分隔的文本数据转换为数据框对象，默认参数设置中 header = TRUE 表示首行作为列名，sep = “,” 指定分隔符为逗号，stringsAsFactors = FALSE 避免自动将字符串转换为因子类型，典型用法如 df &lt;- read.csv(“data.csv”, na.strings = “NA”) 可通过 na.strings 参数指定缺失值标识符，该函数支持本地文件路径或网络 URL 作为数据源，是数据导入最常用的基础方法之一。</p>
 <p>示例：</p>
 <pre><code>iris_data &lt;- read.csv("iris.csv")
 head(iris_data)</code></pre>
@@ -359,14 +358,8 @@ head(iris_data)</code></pre>
 <p>如果不加 <code>row.names = FALSE</code>，导出的文件会多出一列行号。</p>
 <hr>
 </section>
-<section id="csv-读写示例" class="level3" data-number="7.2.7">
-<h3 data-number="7.2.7" class="anchored" data-anchor-id="csv-读写示例"><span class="header-section-number">7.2.7</span> CSV 读写示例</h3>
-<pre><code># 导出 iris 数据
-write.csv(iris, "iris_export.csv", row.names = FALSE)</code></pre>
-<hr>
-</section>
-<section id="csv-文件常见问题" class="level3" data-number="7.2.8">
-<h3 data-number="7.2.8" class="anchored" data-anchor-id="csv-文件常见问题"><span class="header-section-number">7.2.8</span> CSV 文件常见问题</h3>
+<section id="csv-文件操作常见问题" class="level3" data-number="7.2.7">
+<h3 data-number="7.2.7" class="anchored" data-anchor-id="csv-文件操作常见问题"><span class="header-section-number">7.2.7</span> CSV 文件操作常见问题</h3>
 <ul>
 <li>路径错误</li>
 </ul>
@@ -401,8 +394,8 @@ write.csv(iris, "iris_export.csv", row.names = FALSE)</code></pre>
 <pre><code>read.table("example.txt", sep = "\t", header = TRUE)</code></pre>
 <hr>
 </section>
-<section id="小结csv-文件部分" class="level3" data-number="7.2.9">
-<h3 data-number="7.2.9" class="anchored" data-anchor-id="小结csv-文件部分"><span class="header-section-number">7.2.9</span> 小结：CSV 文件部分</h3>
+<section id="小结csv-文件部分" class="level3" data-number="7.2.8">
+<h3 data-number="7.2.8" class="anchored" data-anchor-id="小结csv-文件部分"><span class="header-section-number">7.2.8</span> 小结：CSV 文件部分</h3>
 <ul>
 <li><code>read.csv()</code> 用于读取 CSV 文件<br>
 </li>
@@ -546,8 +539,18 @@ head(excel_data)</code></pre>
 </ul>
 <hr>
 </section>
-<section id="课堂练习" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="课堂练习"><span class="header-section-number">7.5</span> 课堂练习</h2>
+<section id="总结" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="总结"><span class="header-section-number">7.5</span> 总结</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/file_csv.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图7.1文件读取总结</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="课堂练习" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="课堂练习"><span class="header-section-number">7.6</span> 课堂练习</h2>
 <ol type="1">
 <li>将 <code>iris</code> 数据导出为 CSV 文件<br>
 </li>
