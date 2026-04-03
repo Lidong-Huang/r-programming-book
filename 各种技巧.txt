@@ -17,3 +17,13 @@ tooltipTriggerList.map(function (tooltipTriggerEl) {
 2 插入图片
 
 ![图1.1本次课程主要讲授内容](images/all_guide.png){width=60%}
+
+3 git推送
+git status
+git add .
+git commit -m "file manipulation" 
+git push -f origin master
+
+
+
+git remote add origin https://github.com/Lidong-Huang/r-programming-book.git

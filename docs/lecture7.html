@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; 操作练习 – R 编程基础讲义（黄利东）</title>
+<title>综合练习：数据框与列表操作 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture7.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture7.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">综合练习：数据框与列表操作</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R与RStudio的下载与安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">综合练习：数据框与列表操作</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,16 +246,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#课堂练习说明" id="toc-课堂练习说明" class="nav-link active" data-scroll-target="#课堂练习说明"><span class="header-section-number">8.1</span> 课堂练习说明</a></li>
-  <li><a href="#基础对象与数学运算" id="toc-基础对象与数学运算" class="nav-link" data-scroll-target="#基础对象与数学运算"><span class="header-section-number">8.2</span> 基础对象与数学运算</a></li>
-  <li><a href="#向量练习" id="toc-向量练习" class="nav-link" data-scroll-target="#向量练习"><span class="header-section-number">8.3</span> 向量练习</a></li>
-  <li><a href="#矩阵练习" id="toc-矩阵练习" class="nav-link" data-scroll-target="#矩阵练习"><span class="header-section-number">8.4</span> 矩阵练习</a></li>
-  <li><a href="#数据框练习" id="toc-数据框练习" class="nav-link" data-scroll-target="#数据框练习"><span class="header-section-number">8.5</span> 数据框练习</a></li>
-  <li><a href="#内置数据集练习" id="toc-内置数据集练习" class="nav-link" data-scroll-target="#内置数据集练习"><span class="header-section-number">8.6</span> 内置数据集练习</a></li>
-  <li><a href="#文件读取与写出练习" id="toc-文件读取与写出练习" class="nav-link" data-scroll-target="#文件读取与写出练习"><span class="header-section-number">8.7</span> 文件读取与写出练习</a></li>
-  <li><a href="#综合练习" id="toc-综合练习" class="nav-link" data-scroll-target="#综合练习"><span class="header-section-number">8.8</span> 综合练习</a></li>
-  <li><a href="#思考题" id="toc-思考题" class="nav-link" data-scroll-target="#思考题"><span class="header-section-number">8.9</span> 思考题</a></li>
-  <li><a href="#课后小任务" id="toc-课后小任务" class="nav-link" data-scroll-target="#课后小任务"><span class="header-section-number">8.10</span> 课后小任务</a></li>
+  <li><a href="#本章学习目标" id="toc-本章学习目标" class="nav-link active" data-scroll-target="#本章学习目标"><span class="header-section-number">8.1</span> 本章学习目标</a></li>
+  <li><a href="#综合练习说明" id="toc-综合练习说明" class="nav-link" data-scroll-target="#综合练习说明"><span class="header-section-number">8.2</span> 综合练习说明</a></li>
+  <li><a href="#创建土壤数据框" id="toc-创建土壤数据框" class="nav-link" data-scroll-target="#创建土壤数据框"><span class="header-section-number">8.3</span> 创建土壤数据框</a></li>
+  <li><a href="#数据框基本操作" id="toc-数据框基本操作" class="nav-link" data-scroll-target="#数据框基本操作"><span class="header-section-number">8.4</span> 数据框基本操作</a></li>
+  <li><a href="#新变量构建" id="toc-新变量构建" class="nav-link" data-scroll-target="#新变量构建"><span class="header-section-number">8.5</span> 新变量构建</a></li>
+  <li><a href="#常用统计函数" id="toc-常用统计函数" class="nav-link" data-scroll-target="#常用统计函数"><span class="header-section-number">8.6</span> 常用统计函数</a></li>
+  <li><a href="#分组统计重点" id="toc-分组统计重点" class="nav-link" data-scroll-target="#分组统计重点"><span class="header-section-number">8.7</span> 分组统计（重点）</a></li>
+  <li><a href="#创建列表list" id="toc-创建列表list" class="nav-link" data-scroll-target="#创建列表list"><span class="header-section-number">8.8</span> 创建列表（list）</a></li>
+  <li><a href="#访问列表元素重点" id="toc-访问列表元素重点" class="nav-link" data-scroll-target="#访问列表元素重点"><span class="header-section-number">8.9</span> 访问列表元素（重点）</a></li>
+  <li><a href="#请完成以下任务" id="toc-请完成以下任务" class="nav-link" data-scroll-target="#请完成以下任务"><span class="header-section-number">8.10</span> 请完成以下任务：</a></li>
+  <li><a href="#拓展思考" id="toc-拓展思考" class="nav-link" data-scroll-target="#拓展思考"><span class="header-section-number">8.11</span> 拓展思考</a></li>
+  <li><a href="#本章总结" id="toc-本章总结" class="nav-link" data-scroll-target="#本章总结"><span class="header-section-number">8.12</span> 本章总结</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></h1>
+<h1 class="title">综合练习：数据框与列表操作</h1>
 </div>
 
 
@@ -281,415 +283,374 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="课堂练习说明" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="课堂练习说明"><span class="header-section-number">8.1</span> 课堂练习说明</h2>
-<p>本次练习主要围绕以下内容展开：</p>
-<ol type="1">
-<li>R 的基本数据结构<br>
-</li>
-<li>向量、矩阵、数据框的基本操作<br>
-</li>
-<li>内置数据集的查看与简单分析<br>
-</li>
-<li>文件读取与写出<br>
-</li>
-<li>基本数学运算与统计量计算</li>
-</ol>
-<p>请同学们边做边观察结果，注意区分对象类型、函数用途以及输出结果的含义。</p>
-<hr>
-</section>
-<section id="基础对象与数学运算" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="基础对象与数学运算"><span class="header-section-number">8.2</span> 基础对象与数学运算</h2>
-<p>1：创建对象并进行运算</p>
-<p>请完成以下操作：</p>
-<pre><code>a &lt;- 12
-b &lt;- 5
-
-a + b
-a - b
-a * b
-a / b
-a^b
-a %% b</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>^</code> 表示什么运算？<br>
-</li>
-<li><code>%%</code> 表示什么运算？</li>
-</ol>
-<hr>
-<p>常用数学函数</p>
-<p>请运行下面代码，并说明每个函数的作用。</p>
-<pre><code>sqrt(81)
-log(10)
-exp(1)
-abs(-25)
-round(3.14159, 2)</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>sqrt()</code> 的含义是什么？<br>
-</li>
-<li><code>round(3.14159, 2)</code> 中的 <code>2</code> 表示什么？</li>
-</ol>
-<hr>
-</section>
-<section id="向量练习" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="向量练习"><span class="header-section-number">8.3</span> 向量练习</h2>
-<p>3：创建向量并进行计算</p>
-<pre><code>x &lt;- c(2, 4, 6, 8, 10)
-y &lt;- 1:5
-
-x
-y
-
-x + y
-x * y
-mean(x)
-sum(x)
-length(x)
-max(x)
-min(x)</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>c()</code> 的作用是什么？<br>
-</li>
-<li><code>1:5</code> 生成的是什么？<br>
-</li>
-<li><code>mean(x)</code> 和 <code>sum(x)</code> 有什么区别？</li>
-</ol>
-<hr>
-<p>向量筛选</p>
-<pre><code>x &lt;- c(3, 7, 2, 9, 12, 5)
-x &gt; 5
-x[x &gt; 5]
-x[x %% 2 == 0]</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>x &gt; 5</code> 返回的是什么类型？<br>
-</li>
-<li><code>x[x &gt; 5]</code> 的含义是什么？</li>
-</ol>
-<hr>
-</section>
-<section id="矩阵练习" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="矩阵练习"><span class="header-section-number">8.4</span> 矩阵练习</h2>
-<p>创建矩阵</p>
-<pre><code>m &lt;- matrix(1:12, nrow = 3, ncol = 4)
-m</code></pre>
-<p>请完成：</p>
-<pre><code>dim(m)
-nrow(m)
-ncol(m)
-m[1, 2]
-m[2, ]
-m[, 3]</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>matrix()</code> 的作用是什么？<br>
-</li>
-<li><code>m[1, 2]</code> 表示第几行第几列？<br>
-</li>
-<li><code>m[2, ]</code> 和 <code>m[, 3]</code> 分别表示什么？</li>
-</ol>
-<hr>
-<p>矩阵运算</p>
-<pre><code>m1 &lt;- matrix(1:4, nrow = 2)
-m2 &lt;- matrix(c(5, 6, 7, 8), nrow = 2)
-
-m1
-m2
-
-m1 + m2
-m1 * m2
-m1 %*% m2</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>*</code> 和 <code>%*%</code> 有什么区别？<br>
-</li>
-<li>哪一个是矩阵乘法？</li>
-</ol>
-<hr>
-</section>
-<section id="数据框练习" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="数据框练习"><span class="header-section-number">8.5</span> 数据框练习</h2>
-<p>创建数据框</p>
-<pre><code>student &lt;- data.frame(
-  name = c("张三", "李四", "王五"),
-  age = c(19, 20, 18),
-  score = c(85, 92, 78)
-)
-
-student</code></pre>
-<p>请完成：</p>
-<pre><code>class(student)
-names(student)
-student$score
-student[1, ]
-student[, "name"]
-student[student$score &gt; 80, ]</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li>数据框和矩阵有什么区别？<br>
-</li>
-<li><code>student$score</code> 的含义是什么？</li>
-</ol>
-<hr>
-</section>
-<section id="内置数据集练习" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="内置数据集练习"><span class="header-section-number">8.6</span> 内置数据集练习</h2>
-<p>认识内置数据集 <code>iris</code></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-145          6.7         3.3          5.7         2.5 virginica
-146          6.7         3.0          5.2         2.3 virginica
-147          6.3         2.5          5.0         1.9 virginica
-148          6.5         3.0          5.2         2.0 virginica
-149          6.2         3.4          5.4         2.3 virginica
-150          5.9         3.0          5.1         1.8 virginica</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 150   5</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     </code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "data.frame"</code></pre>
-</div>
-</div>
-<p>请回答：</p>
-<ol type="1">
-<li><code>iris</code> 是什么类型的数据结构？<br>
-</li>
-<li>它有多少行、多少列？<br>
-</li>
-<li>最后一列 <code>Species</code> 表示什么？</li>
-</ol>
-<hr>
-<p>对 <code>iris</code> 做简单计算</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.843333</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8280661</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.9</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(iris<span class="sc">$</span>Petal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
- Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
- 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
- Median :5.800   Median :3.000   Median :4.350   Median :1.300  
- Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
- 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
- Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
-       Species  
- setosa    :50  
- versicolor:50  
- virginica :50  
-                
-                
-                </code></pre>
-</div>
-</div>
-<p>请思考：</p>
-<ol type="1">
-<li><code>mean()</code> 和 <code>sd()</code> 分别表示什么？<br>
-</li>
-<li><code>summary()</code> 返回了哪些信息？</li>
-</ol>
-<hr>
-<p>按条件筛选 <code>iris</code></p>
-<pre><code>iris[iris$Species == "setosa", ]
-iris[iris$Sepal.Length &gt; 6, ]
-iris[iris$Species == "virginica" &amp; iris$Petal.Length &gt; 5, ]</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>==</code> 表示什么？<br>
-</li>
-<li><code>&amp;</code> 表示什么？<br>
-</li>
-<li>以上三行代码分别筛选了什么数据？</li>
-</ol>
-<hr>
-</section>
-<section id="文件读取与写出练习" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="文件读取与写出练习"><span class="header-section-number">8.7</span> 文件读取与写出练习</h2>
-<p>将内置数据集写出为 CSV 文件</p>
-<p>请先把 <code>iris</code> 数据写出到当前工作目录：</p>
-<pre><code>write.csv(iris, "iris.csv", row.names = FALSE)</code></pre>
-<p>然后读取回来：</p>
-<pre><code>iris2 &lt;- read.csv("iris.csv")
-head(iris2)
-class(iris2)</code></pre>
-<p>请思考：</p>
-<ol type="1">
-<li><code>write.csv()</code> 的作用是什么？<br>
-</li>
-<li><code>read.csv()</code> 的作用是什么？<br>
-</li>
-<li>为什么常常写 <code>row.names = FALSE</code>？</li>
-</ol>
-<hr>
-<p>查看当前工作路径</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "E:/hld/课件/R语言编程基础/quarto_book_from_lectures"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "_book"                           "_quarto.yml"                    
- [3] "1111.html"                       "1111.qmd"                       
- [5] "1111_files"                      "6次课.txt"                      
- [7] "docs"                            "images"                         
- [9] "index.html"                      "index.qmd"                      
-[11] "iris.csv"                        "lecture1.html"                  
-[13] "lecture1.qmd"                    "lecture10.qmd"                  
-[15] "lecture10_files"                 "lecture11.qmd"                  
-[17] "lecture12.qmd"                   "lecture13.qmd"                  
-[19] "lecture14.qmd"                   "lecture2.html"                  
-[21] "lecture2.qmd"                    "lecture2_files"                 
-[23] "lecture3.html"                   "lecture3.qmd"                   
-[25] "lecture4.html"                   "lecture4.qmd"                   
-[27] "lecture5.html"                   "lecture5.qmd"                   
-[29] "lecture5_files"                  "lecture6.html"                  
-[31] "lecture6.qmd"                    "lecture7.qmd"                   
-[33] "lecture7.rmarkdown"              "lecture8.qmd"                   
-[35] "lecture9.qmd"                    "New Text Document.txt"          
-[37] "quarto"                          "quarto_book_from_lectures.Rproj"
-[39] "README.txt"                      "R中的变量类型.txt"              
-[41] "site_libs"                       "styles.css"                     </code></pre>
-</div>
-</div>
-<p>请思考：</p>
-<ol type="1">
-<li><code>getwd()</code> 返回什么？<br>
-</li>
-<li><code>list.files()</code> 返回什么？<br>
-</li>
-<li>你刚才写出的 <code>iris.csv</code> 是否在文件列表中？</li>
-</ol>
-<hr>
-</section>
-<section id="综合练习" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="综合练习"><span class="header-section-number">8.8</span> 综合练习</h2>
-<p>使用 <code>mtcars</code> 数据集</p>
-<pre><code>head(mtcars)
-dim(mtcars)
-names(mtcars)</code></pre>
-<p>请完成以下任务：</p>
-<ol type="1">
-<li>计算 <code>mpg</code> 的平均值<br>
-</li>
-<li>计算 <code>hp</code> 的最大值<br>
-</li>
-<li>提取 <code>wt</code> 大于 3 的行<br>
-</li>
-<li>计算 <code>mpg</code> 与 <code>hp</code> 的相关系数</li>
-</ol>
-<pre><code>mean(mtcars$mpg)
-max(mtcars$hp)
-mtcars[mtcars$wt &gt; 3, ]
-cor(mtcars$mpg, mtcars$hp)</code></pre>
-<hr>
-</section>
-<section id="思考题" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="思考题"><span class="header-section-number">8.9</span> 思考题</h2>
-<ol type="1">
-<li>向量、矩阵、数据框三者有什么区别？<br>
-</li>
-<li>为什么数据分析中最常用的数据结构是数据框？<br>
-</li>
-<li><code>read.csv()</code> 读入的数据通常是什么类型？<br>
-</li>
-<li>为什么要学会使用内置数据集？</li>
-</ol>
-<hr>
-</section>
-<section id="课后小任务" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="课后小任务"><span class="header-section-number">8.10</span> 课后小任务</h2>
-<p>请同学们任选一个内置数据集，例如：</p>
+<section id="本章学习目标" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="本章学习目标"><span class="header-section-number">8.1</span> 本章学习目标</h2>
+<p>完成本练习后，你应掌握：</p>
 <ul>
-<li><code>iris</code></li>
-<li><code>mtcars</code></li>
-<li><code>airquality</code></li>
+<li>数据框的索引与筛选<br>
+</li>
+<li>列表的结构与访问方式<br>
+</li>
+<li>常用统计函数<br>
+</li>
+<li>分组统计思想（aggregate） - 数据结构之间的联系</li>
 </ul>
-<p>完成以下任务：</p>
+</section>
+<section id="综合练习说明" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="综合练习说明"><span class="header-section-number">8.2</span> 综合练习说明</h2>
+<p>本练习基于一个模拟的土壤数据集，重点掌握：</p>
+<ul>
+<li>数据框（data.frame）的基本操作<br>
+</li>
+<li>列表（list）的构建与访问<br>
+</li>
+<li>常用统计函数<br>
+</li>
+<li>分组统计（aggregate）</li>
+</ul>
+<hr>
+</section>
+<section id="创建土壤数据框" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="创建土壤数据框"><span class="header-section-number">8.3</span> 创建土壤数据框</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>soil <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"C"</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">depth =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pH =</span> <span class="fu">c</span>(<span class="fl">5.5</span>, <span class="fl">5.8</span>, <span class="fl">6.2</span>, <span class="fl">6.5</span>, <span class="fl">7.0</span>, <span class="fl">7.2</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">SOC =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">13</span>, <span class="dv">20</span>, <span class="dv">18</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">TN =</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">1.1</span>, <span class="fl">1.5</span>, <span class="fl">1.3</span>, <span class="fl">2.0</span>, <span class="fl">1.8</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>soil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  site depth  pH SOC  TN
+1    A     0 5.5  12 1.2
+2    A    10 5.8  10 1.1
+3    B     0 6.2  15 1.5
+4    B    10 6.5  13 1.3
+5    C     0 7.0  20 2.0
+6    C    10 7.2  18 1.8</code></pre>
+</div>
+</div>
+<p>请思考：</p>
 <ol type="1">
-<li>查看其前 6 行<br>
+<li>每一列分别表示什么含义？<br>
 </li>
-<li>查看数据维度<br>
-</li>
-<li>计算至少两个数值变量的均值<br>
-</li>
-<li>按一个条件筛选数据<br>
-</li>
-<li>将该数据集写出为 CSV 文件</li>
+<li>数据框与向量最大的区别是什么？</li>
 </ol>
-<p>请将代码整理保存为一个 <code>.R</code> 文件，下节课检查。</p>
+<hr>
+</section>
+<section id="数据框基本操作" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="数据框基本操作"><span class="header-section-number">8.4</span> 数据框基本操作</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 查看结构</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   6 obs. of  5 variables:
+ $ site : chr  "A" "A" "B" "B" ...
+ $ depth: num  0 10 0 10 0 10
+ $ pH   : num  5.5 5.8 6.2 6.5 7 7.2
+ $ SOC  : num  12 10 15 13 20 18
+ $ TN   : num  1.2 1.1 1.5 1.3 2 1.8</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取某一列</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>soil<span class="sc">$</span>pH</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5 5.8 6.2 6.5 7.0 7.2</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取第1行</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>soil[<span class="dv">1</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  site depth  pH SOC  TN
+1    A     0 5.5  12 1.2</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取多列</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>soil[, <span class="fu">c</span>(<span class="st">"pH"</span>, <span class="st">"SOC"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   pH SOC
+1 5.5  12
+2 5.8  10
+3 6.2  15
+4 6.5  13
+5 7.0  20
+6 7.2  18</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 条件筛选</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>soil[soil<span class="sc">$</span>pH <span class="sc">&gt;</span> <span class="dv">6</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  site depth  pH SOC  TN
+3    B     0 6.2  15 1.5
+4    B    10 6.5  13 1.3
+5    C     0 7.0  20 2.0
+6    C    10 7.2  18 1.8</code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li><code>soil$pH</code> 与 <code>soil[, "pH"]</code> 有什么区别？<br>
+</li>
+<li>条件筛选返回的是什么类型？</li>
+</ol>
+<hr>
+</section>
+<section id="新变量构建" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="新变量构建"><span class="header-section-number">8.5</span> 新变量构建</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算 C/N 比</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>soil<span class="sc">$</span>CN <span class="ot">&lt;-</span> soil<span class="sc">$</span>SOC <span class="sc">/</span> soil<span class="sc">$</span>TN</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>soil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  site depth  pH SOC  TN        CN
+1    A     0 5.5  12 1.2 10.000000
+2    A    10 5.8  10 1.1  9.090909
+3    B     0 6.2  15 1.5 10.000000
+4    B    10 6.5  13 1.3 10.000000
+5    C     0 7.0  20 2.0 10.000000
+6    C    10 7.2  18 1.8 10.000000</code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<p>为什么可以直接对整列进行运算？</p>
+<hr>
+</section>
+<section id="常用统计函数" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="常用统计函数"><span class="header-section-number">8.6</span> 常用统计函数</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(soil<span class="sc">$</span>pH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.366667</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(soil<span class="sc">$</span>pH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.665332</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(soil<span class="sc">$</span>SOC)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 88</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(soil<span class="sc">$</span>SOC)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(soil<span class="sc">$</span>SOC)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li><code>mean()</code> 和 <code>sum()</code> 的区别是什么？<br>
+</li>
+<li><code>sd()</code> 表示什么统计意义？</li>
+</ol>
+<hr>
+</section>
+<section id="分组统计重点" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="分组统计重点"><span class="header-section-number">8.7</span> 分组统计（重点）</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 按站点计算平均 SOC</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(SOC <span class="sc">~</span> site, <span class="at">data =</span> soil, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  site SOC
+1    A  11
+2    B  14
+3    C  19</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 按站点计算平均 pH</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(pH <span class="sc">~</span> site, <span class="at">data =</span> soil, <span class="at">FUN =</span> mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  site   pH
+1    A 5.65
+2    B 6.35
+3    C 7.10</code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li><p><code>SOC ~ site</code> <span data-bs-toggle="tooltip" title="`~`：用于构建模型公式，表示“左边是因变量，右边是自变量（或分组变量）">💡 </span>表达的含义是什么？</p></li>
+<li><p><code>aggregate()</code> 与 <code>mean()</code> 的区别是什么？</p></li>
+</ol>
+<hr>
+</section>
+<section id="创建列表list" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="创建列表list"><span class="header-section-number">8.8</span> 创建列表（list）</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>soil_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">basic_info =</span> soil[, <span class="fu">c</span>(<span class="st">"site"</span>, <span class="st">"depth"</span>)],</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">chemistry =</span> soil[, <span class="fu">c</span>(<span class="st">"pH"</span>, <span class="st">"SOC"</span>, <span class="st">"TN"</span>)],</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">statistics =</span> <span class="fu">list</span>(</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_pH =</span> <span class="fu">mean</span>(soil<span class="sc">$</span>pH),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_SOC =</span> <span class="fu">mean</span>(soil<span class="sc">$</span>SOC)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>soil_list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$basic_info
+  site depth
+1    A     0
+2    A    10
+3    B     0
+4    B    10
+5    C     0
+6    C    10
+
+$chemistry
+   pH SOC  TN
+1 5.5  12 1.2
+2 5.8  10 1.1
+3 6.2  15 1.5
+4 6.5  13 1.3
+5 7.0  20 2.0
+6 7.2  18 1.8
+
+$statistics
+$statistics$mean_pH
+[1] 6.366667
+
+$statistics$mean_SOC
+[1] 14.66667</code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li>列表与数据框的本质区别是什么？<br>
+</li>
+<li>列表中可以存放哪些类型的数据？</li>
+</ol>
+<hr>
+</section>
+<section id="访问列表元素重点" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="访问列表元素重点"><span class="header-section-number">8.9</span> 访问列表元素（重点）</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 访问子列表</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>soil_list<span class="sc">$</span>chemistry</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   pH SOC  TN
+1 5.5  12 1.2
+2 5.8  10 1.1
+3 6.2  15 1.5
+4 6.5  13 1.3
+5 7.0  20 2.0
+6 7.2  18 1.8</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 访问嵌套元素</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>soil_list<span class="sc">$</span>statistics<span class="sc">$</span>mean_pH</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.366667</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用索引访问</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>soil_list[[<span class="dv">3</span>]][[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.366667</code></pre>
+</div>
+</div>
+<p>请思考：</p>
+<ol type="1">
+<li><code>$</code> 和 <code>[[ ]]</code> 的区别是什么？<br>
+</li>
+<li>为什么列表可以嵌套？</li>
+</ol>
+<hr>
+</section>
+<section id="请完成以下任务" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="请完成以下任务"><span class="header-section-number">8.10</span> 请完成以下任务：</h2>
+<pre><code> 1. 筛选 pH &gt; 6 且 SOC &gt; 15 的数据
+
+ 2. 按 depth 分组计算 SOC 平均值
+
+ 3. 创建一个列表，包含：
+    - 原始数据
+    - 筛选后的数据
+    - 每个站点的平均 pH
+
+ 4. 从列表中提取平均 pH 的结果</code></pre>
+<hr>
+</section>
+<section id="拓展思考" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="拓展思考"><span class="header-section-number">8.11</span> 拓展思考</h2>
+<ol type="1">
+<li><p>如果数据中存在 NA，应如何处理？</p></li>
+<li><p>数据框是否可以嵌套在列表中？为什么？</p></li>
+</ol>
+<hr>
+</section>
+<section id="本章总结" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="本章总结"><span class="header-section-number">8.12</span> 本章总结</h2>
+<ul>
+<li><p>数据框是 R 中最常用的数据结构之一，适合存储表格数据。</p></li>
+<li><p>列表是一种更灵活的数据结构，可以存储不同类型的数据，包括数据框、向量、函数等。</p></li>
+<li><p>常用统计函数可以快速计算数据的基本统计</p></li>
+<li><p>分组统计（aggregate）是分析分组数据的重要工具，可以按不同的分组变量计算统计量。</p>
+<p>编程细节总结如下：</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/practice1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>图8.1本次课程主要讲授内容</figcaption>
+</figure>
+</div>
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
 
 
 </section>

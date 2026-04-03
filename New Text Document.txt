@@ -1,6 +1,6 @@
 git status
 git add .
-git commit -m "renew" 
+git commit -m "file manipulation" 
 git push -f origin master
 
 

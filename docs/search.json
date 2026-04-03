@@ -62,61 +62,61 @@
   {
     "objectID": "lecture1.html",
     "href": "lecture1.html",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "",
     "text": "2.1 本章学习目标\n完成本章后，你将能够：",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
     "objectID": "lecture1.html#本章学习目标",
     "href": "lecture1.html#本章学习目标",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "",
     "text": "正确理解 R 与 RStudio 的区别\n从官方网站下载 R\n正确安装 R\n下载并安装 RStudio（Posit Desktop）\n在 Windows 系统上安装 Rtools\n解决常见安装问题",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
     "objectID": "lecture1.html#r-与-rstudio-的关系必须先理解",
     "href": "lecture1.html#r-与-rstudio-的关系必须先理解",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "2.2 R 与 RStudio 的关系（必须先理解）",
     "text": "2.2 R 与 RStudio 的关系（必须先理解）\n在开始安装之前，必须澄清一个核心概念。\n\n2.2.1 R 是什么？\nR 是：\n\n一种统计计算语言\n\n一个完整的计算系统\n\n真正执行代码的“核心引擎”\n\nR 负责进行所有的数据计算与统计分析。\n\n\n\n2.2.2 RStudio 是什么？\nRStudio（现称 Posit Desktop）是：\n\n一个开发环境（IDE）\n一个图形界面工具\n帮助我们更方便编写与运行 R 代码\n\n\n\n\n2.2.3 重要结论\n\n必须先安装 R，再安装 RStudio。\n如果没有安装 R，RStudio 将无法运行。",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
     "objectID": "lecture1.html#windows-系统安装-r详细步骤",
     "href": "lecture1.html#windows-系统安装-r详细步骤",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "2.3 Windows 系统安装 R（详细步骤）",
     "text": "2.3 Windows 系统安装 R（详细步骤）\n\n2.3.1 进入官方网站\n打开浏览器访问：https://cran.r-project.org\n\n\n\n图2.1 R下载页面\n\n\n\n\n\n2.3.2 选择系统版本\n点击：\n👉 Download R for Windows\n\n\n\n2.3.3 进入 Windows 下载页面\n点击：\n👉 install R for the first time\n\n\n\n图2.2 R下载页面\n\n\n\n\n\n2.3.4 下载最新版 R\n点击：\n👉 Download R-4.5.2 for Windows (87 megabytes, 64 bit)(2026-3-2)\n\n\n\n2.3.5 开始安装\n双击下载的安装程序。\n安装过程中注意：\n\n语言选择：English 或 Chinese 均可\n安装路径：建议使用默认路径\n\n建议路径：\n⚠ 不建议：\n\n安装在中文路径\n安装在 OneDrive 同步目录\n\n\n\n\n2.3.6 组件选择\n保持默认勾选即可。\n如出现：\n“Add R to system PATH”\n建议勾选。\n\n\n\n2.3.7 安装完成验证\n安装完成后：\n\n打开开始菜单\n运行 “R”\n\n\n\n\n图2.3 开始菜单搜索R\n\n\n若出现控制台界面（图2.4），说明安装成功。\n\n\n\n图2.4 R启动界面",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
     "objectID": "lecture1.html#macos-安装-r",
     "href": "lecture1.html#macos-安装-r",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "2.4 macOS 安装 R",
     "text": "2.4 macOS 安装 R\n\n2.4.1 进入 CRAN\n访问：https://cran.r-project.org\n点击：\n👉 Download R for macOS\n\n\n\n2.4.2 下载 pkg 文件\n下载最新版 .pkg 文件。\n\n\n\n2.4.3 双击安装\n\n按提示安装\n输入管理员密码\n使用默认路径\n\n\n\n\n2.4.4 安装 RStudio（Posit Desktop）\n\n\n2.4.5 进入官网\n在浏览器中访问：https://posit.co/download/rstudio-desktop/\n该页面为 RStudio（现称 Posit Desktop）的官方下载页面（图2.5）。\n\n\n\n图2.5 RStudio下载页面\n\n\n\n\n\n2.4.6 选择版本\n在页面中选择：\n\nWindows 10/11 RStudio-2026.01.1-403.exe\nmacOS 14/15/26 RStudio-2026.01.1-403.dmg\n\n\n\n\n2.4.7 下载对应系统版本\n根据你的操作系统选择下载：\n\nWindows\nmacOS\n\n下载完成后会得到对应的安装文件（.exe 或 .dmg）。\n\n\n\n2.4.8 安装步骤\n双击下载的安装文件，按照提示完成安装。\n建议：\n\n保持默认安装路径\n不需要修改高级设置\n直接点击 “Next” 直到完成\n\n\n\n\n2.4.9 首次启动验证\n安装完成后启动 RStudio。\n在左上角的 Console（控制台） 窗口中，如果显示类似图2.6：\n\n\n\n图2.6 Rstudio的启动页面",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
     "objectID": "lecture1.html#常见错误与问题排查重点",
     "href": "lecture1.html#常见错误与问题排查重点",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "2.5 常见错误与问题排查（重点）",
     "text": "2.5 常见错误与问题排查（重点）\n\n2.5.1 RStudio 无法启动（最常见问题）\n\n2.5.1.1 情况 1：双击无反应\n可能原因：\n\n未安装 R\nR 安装损坏\n系统 PATH 未正确设置\n权限问题\n\n解决方法：\n\n确认是否已成功安装 R\n在开始菜单搜索 “R x64” 是否可以正常打开。\n若 R 无法打开，请重新安装 R。\n右键 RStudio → “以管理员身份运行” 尝试启动。\n若仍失败，卸载 RStudio 后重新安装。\n\n\n\n\n2.5.1.2 情况 2：提示 “R not found”\n原因：\n\n先安装了 RStudio，后安装 R\nR 安装路径异常\n\n解决：\n\n卸载 RStudio\n确认 R 可正常运行\n重新安装 RStudio\n\n\n\n\n2.5.1.3 情况 3：启动后闪退\n可能原因：\n\n系统环境冲突\n杀毒软件拦截\n安装在中文路径或特殊目录\n\n解决建议：\n\n卸载并重新安装\n使用默认路径安装\n关闭杀毒软件后测试\n\n\n\n\n\n2.5.2 安装后没有桌面快捷方式\n这是 Windows 用户常见问题。\n\n2.5.2.1 解决方法：\n\n打开：\n\nC:Files\n\n或\nC:Files\n\n\n找到：\n\nrstudio.exe\n\n右键 → “发送到” → “桌面快捷方式”\n\n\n\n\n\n2.5.3 点击图标提示权限错误\n解决：\n\n右键图标 → 属性\n取消“以管理员身份运行”勾选\n或改为始终以管理员运行（若权限限制）\n\n\n\n\n2.5.4 RStudio 打开但 Console 不显示 R 版本\n说明 RStudio 没有找到 R。\n检查：\n\nR 是否安装在默认路径：\n\nC:Files\n\n\n是否安装 64 位版本\n是否重启过电脑\n\n\n\n\n2.5.5 安装后界面是英文或乱码\n可在 RStudio 中设置：\nTools → Global Options → Appearance\n修改：\n\n字体（建议使用 Consolas / JetBrains Mono）\n编码（UTF-8）",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
@@ -464,7 +464,7 @@
     "href": "lecture5.html#向量vector",
     "title": "6  R的数据结构",
     "section": "6.4 向量（Vector）",
-    "text": "6.4 向量（Vector）\n向量是 R 中最基本的数据结构。\n向量的特点：\n\n由 相同数据类型 的元素组成\n元素按 顺序排列\n\n可以使用 c() 函数创建向量。\n\n\nCode\nx &lt;- c(1, 2, 3, 4, 5)\nx\n\n\n[1] 1 2 3 4 5\n\n\n查看向量信息：\n\n\nCode\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\nlength(x)\n\n\n[1] 5\n\n\n向量也可以是其他类型：\n\n\nCode\ny &lt;- c(\"A\", \"B\", \"C\")\nz &lt;- c(TRUE, FALSE, TRUE)\n\n\n注意：\n\n向量中的元素必须是同一种数据类型。\n\n\n6.4.1 向量化运算：R语言的核心思想\n在 R 语言中，向量化运算（Vectorized Operations） 是一个非常重要的概念。\n很多人认为：\n\n向量化运算是 R 语言的灵魂。\n\n这是因为 R 的设计初衷就是 用于统计计算和数据分析，而这些任务通常需要对 一整组数据同时进行计算。\n\n向量化运算指的是：\n\n一次运算同时作用于整个向量，而不是逐个元素计算。\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\n\nx + 1\n\n\n[1] 2 3 4 5\n\n\n输出结果：\n2 3 4 5\n在这里：\n\n1 自动作用于向量中的每一个元素\n不需要使用循环\n\n\n\n\n6.4.2 向量化运算的优势\n向量化运算具有三个重要优点：\n\n\n\n优点\n解释\n\n\n\n\n代码更简洁\n不需要循环\n\n\n计算更快\nR 内部使用 C 语言优化\n\n\n更符合数学表达\n表达方式更直观\n\n\n\n例如：\n\n\n6.4.3 使用循环\n\n\nCode\nx &lt;- c(1,2,3,4)\ny &lt;- numeric(length(x))\n\nfor(i in 1:length(x)){\n  y[i] &lt;- x[i] + 1\n}\n\ny\n\n\n[1] 2 3 4 5\n\n\n使用向量化\n\n\nCode\nx &lt;- c(1,2,3,4)\n\nx + 1\n\n\n[1] 2 3 4 5\n\n\n可以看到：\n\n向量化代码更加简单。\n\n\n\n\n6.4.4 向量之间的运算\nR 可以直接对 两个向量进行运算。\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- c(4,5,6)\n\nx + y\n\n\n[1] 5 7 9\n\n\n结果：\n5 7 9\n这相当于：\n(1+4, 2+5, 3+6)\n同样可以进行：\n\n\nCode\nx - y\n\n\n[1] -3 -3 -3\n\n\nCode\nx * y\n\n\n[1]  4 10 18\n\n\nCode\nx / y\n\n\n[1] 0.25 0.40 0.50\n\n\n\n\n\n6.4.5 向量与标量运算\nR 还支持 向量与单个数字运算。\n\n\nCode\nx &lt;- c(10,20,30)\n\nx * 2\n\n\n[1] 20 40 60\n\n\n结果：\n20 40 60\n这里的 2 会自动作用到向量的每个元素。\n\n\n\n6.4.6 逻辑向量运算\n向量化运算不仅适用于数值，还适用于 逻辑判断。\n\n\nCode\nx &lt;- c(3,7,2,9)\n\nx &gt; 5\n\n\n[1] FALSE  TRUE FALSE  TRUE\n\n\n结果：\nFALSE TRUE FALSE TRUE\n这在数据筛选中非常重要。\n例如：\n\n\nCode\nx[x &gt; 5]\n\n\n[1] 7 9\n\n\n结果：\n7 9\n\n\n\n6.4.7 常见的向量化函数\nR 中大量函数都是向量化函数，例如：\n\n\n\n函数\n作用\n\n\n\n\nsum()\n求和\n\n\nmean()\n求平均\n\n\nsqrt()\n开平方\n\n\nlog()\n对数\n\n\nabs()\n绝对值\n\n\n\n示例：\n\n\nCode\nx &lt;- c(1,4,9,16)\n\nsqrt(x)\n\n\n[1] 1 2 3 4\n\n\n输出：\n1 2 3 4\n\n\n\n6.4.8 向量长度不一致的情况\n当两个向量长度不一致时，R 会进行 循环回收（recycling）。\n\n\nCode\nx &lt;- c(1,2,3,4)\ny &lt;- c(10,20)\n\nx + y\n\n\n[1] 11 22 13 24\n\n\nR 会自动扩展 y：\n10 20 10 20\n结果：\n11 22 13 24\n如果长度不能整除，R 会给出警告。\n\n\n\n6.4.9 为什么说向量是 R 最重要的数据结构\n在 R 中：\n\n矩阵是 向量的二维形式\n数组是 多维向量\n数据框的每一列也是 向量\n\n因此可以说：\n\n向量是 R 所有数据结构的基础。\n\n理解向量化运算，就等于理解了 R 语言的计算方式。",
+    "text": "6.4 向量（Vector）\n向量是 R 中最基本的数据结构。\n向量的特点：\n\n由 相同数据类型 的元素组成\n元素按 顺序排列\n\n可以使用 c()函数创建向量。\n\n\nCode\nx &lt;- c(1, 2, 3, 4, 5)\nx\n\n\n[1] 1 2 3 4 5\n\n\n查看向量信息：\n\n\nCode\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\nlength(x)\n\n\n[1] 5\n\n\n向量也可以是其他类型：\n\n\nCode\ny &lt;- c(\"A\", \"B\", \"C\")\nz &lt;- c(TRUE, FALSE, TRUE)\n\n\n注意：\n\n向量中的元素必须是同一种数据类型。\n\n\n6.4.1 向量化运算：R语言的核心思想\n在 R 语言中，向量化运算（Vectorized Operations） 是一个非常重要的概念。\n很多人认为：\n\n向量化运算是 R 语言的灵魂。\n\n这是因为 R 的设计初衷就是 用于统计计算和数据分析，而这些任务通常需要对 一整组数据同时进行计算。\n\n向量化运算指的是：\n\n一次运算同时作用于整个向量，而不是逐个元素计算。\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\n\nx + 1\n\n\n[1] 2 3 4 5\n\n\n输出结果：\n2 3 4 5\n在这里：\n\n1 自动作用于向量中的每一个元素\n不需要使用循环\n\n\n向量化运算具有三个重要优点：\n\n\n\n优点\n解释\n\n\n\n\n代码更简洁\n不需要循环\n\n\n计算更快\nR 内部使用 C 语言优化\n\n\n更符合数学表达\n表达方式更直观\n\n\n\n例如使用循环：\n\n\nCode\nx &lt;- c(1,2,3,4)\ny &lt;- numeric(length(x))\nfor(i in 1:length(x)){\n  y[i] &lt;- x[i] + 1\n}\ny\n\n\n[1] 2 3 4 5\n\n\n使用向量化\n\n\nCode\nx &lt;- c(1,2,3,4)\n\nx + 1\n\n\n[1] 2 3 4 5\n\n\n可以看到：\n\n向量化代码更加简单。\n\n\n\n\n6.4.2 向量之间的运算\nR 可以直接对 两个向量进行运算。\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- c(4,5,6)\nx + y\n\n\n[1] 5 7 9\n\n\n结果：\n5 7 9\n这相当于：\n(1+4, 2+5, 3+6)\n同样可以进行：\nx - y\nx * y\nx / y\n\n\n\n6.4.3 向量与标量运算\nR 还支持 向量与单个数字运算。\n\n\nCode\nx &lt;- c(10,20,30)\nx * 2\n\n\n[1] 20 40 60\n\n\n结果：\n20 40 60\n这里的 2 会自动作用到向量的每个元素。\n\n\n\n6.4.4 逻辑向量运算\n向量化运算不仅适用于数值，还适用于 逻辑判断。\n\n\nCode\nx &lt;- c(3,7,2,9)\nx &gt; 5\n\n\n[1] FALSE  TRUE FALSE  TRUE\n\n\n结果：\nFALSE TRUE FALSE TRUE\n这在数据筛选中非常重要。\n例如：\n\n\nCode\nx[x &gt; 5]\n\n\n[1] 7 9\n\n\n结果：\n7 9\n\n\n\n6.4.5 常见的向量化函数\nR 中大量函数都是向量化函数，例如：\n\n\n\n函数\n作用\n\n\n\n\nsum()\n求和\n\n\nmean()\n求平均\n\n\nsqrt()\n开平方\n\n\nlog()\n对数\n\n\nabs()\n绝对值\n\n\n\n示例：\n\n\nCode\nx &lt;- c(1,4,9,16)\nsqrt(x)\n\n\n[1] 1 2 3 4\n\n\n输出：\n1 2 3 4\n\n\n\n6.4.6 向量长度不一致的情况\n当两个向量长度不一致时，R 会进行 循环回收（recycling）。\n\n\nCode\nx &lt;- c(1,2,3,4)\ny &lt;- c(10,20)\nx + y\n\n\n[1] 11 22 13 24\n\n\nR 会自动扩展 y：\n10 20 10 20\n结果：\n11 22 13 24\n如果长度不能整除，R 会给出警告。\n\n\n\n6.4.7 向量是 R最重要的数据结构\n在 R 中：\n\n矩阵是 向量的二维形式\n数组是 多维向量\n数据框的每一列也是 向量\n\n因此可以说：\n\n向量是 R 所有数据结构的基础。\n\n理解向量化运算，就等于理解了 R 语言的计算方式。\n\n假设我们有一组实验数据：\n\n\nCode\nyield &lt;- c(5.2, 6.1, 5.8, 6.5, 5.9)\n\n\n计算平均值：\n\n\nCode\nmean(yield)\n\n\n[1] 5.9\n\n\n计算标准化值：\n\n\nCode\nyield - mean(yield)\n\n\n[1] -0.7  0.2 -0.1  0.6  0.0\n\n\n整个过程不需要循环。",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -483,8 +483,8 @@
     "objectID": "lecture5.html#整个过程不需要循环",
     "href": "lecture5.html#整个过程不需要循环",
     "title": "6  R的数据结构",
-    "section": "6.6 整个过程不需要循环。",
-    "text": "6.6 整个过程不需要循环。",
+    "section": "6.5 整个过程不需要循环。",
+    "text": "6.5 整个过程不需要循环。",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -493,8 +493,8 @@
     "objectID": "lecture5.html#矩阵matrix",
     "href": "lecture5.html#矩阵matrix",
     "title": "6  R的数据结构",
-    "section": "6.7 矩阵（Matrix）",
-    "text": "6.7 矩阵（Matrix）\n矩阵是 二维数据结构。\n可以理解为：\n\n具有行和列的向量\n\n创建矩阵：\n\n\nCode\nm &lt;- matrix(1:6, nrow = 2, ncol = 3)\nm\n\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n\n矩阵结构：\n\n\nCode\ndim(m)\n\n\n[1] 2 3\n\n\n矩阵特点：\n\n所有元素 必须是同一种数据类型\n具有 行和列\n\n访问元素：\n\n\nCode\nm[1,2]\n\n\n[1] 3",
+    "section": "6.5 矩阵（Matrix）",
+    "text": "6.5 矩阵（Matrix）\n矩阵是 二维数据结构， 可以理解为具有行和列的向量\n创建矩阵最常用matrix()函数（把一个数值向量折叠成矩阵）\n\n\nCode\nm &lt;- matrix(1:6, nrow = 2, ncol = 3)\nm\n\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n\n矩阵结构：\n\n\nCode\ndim(m)\n\n\n[1] 2 3\n\n\n矩阵特点：\n\n所有元素 必须是同一种数据类型\n具有 行和列\n\n访问元素：\n\n\nCode\nm[1,2]\n\n\n[1] 3",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -503,8 +503,8 @@
     "objectID": "lecture5.html#数组array",
     "href": "lecture5.html#数组array",
     "title": "6  R的数据结构",
-    "section": "6.8 数组（Array）",
-    "text": "6.8 数组（Array）\n数组是 多维矩阵。\n例如：\n\n三维数据\n多个矩阵组合\n\n创建数组：\n\n\nCode\na &lt;- array(1:12, dim = c(2,3,2))\na\n\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    7    9   11\n[2,]    8   10   12\n\n\n数组特点：\n\n可以有 多个维度\n元素类型必须一致\n\n查看维度：\n\n\nCode\ndim(a)\n\n\n[1] 2 3 2",
+    "section": "6.6 数组（Array）",
+    "text": "6.6 数组（Array）\n数组是 多维矩阵。\n例如：\n\n三维数据\n多个矩阵组合\n\n创建数组常用array()函数\n\n\nCode\na &lt;- array(1:12, dim = c(2,3,2))\na\n\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    7    9   11\n[2,]    8   10   12\n\n\n数组特点：\n\n可以有 多个维度\n元素类型必须一致\n\n查看维度：\n\n\nCode\ndim(a)\n\n\n[1] 2 3 2",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -513,8 +513,8 @@
     "objectID": "lecture5.html#列表list",
     "href": "lecture5.html#列表list",
     "title": "6  R的数据结构",
-    "section": "6.9 列表（List）",
-    "text": "6.9 列表（List）\n列表是一种 非常灵活的数据结构。\n列表的特点：\n\n可以包含不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(80, 90, 85)\n)\n\nmy_list\n\n\n$name\n[1] \"Alice\"\n\n$age\n[1] 25\n\n$score\n[1] 80 90 85\n\n\n查看结构：\n\n\nCode\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 80 90 85\n\n\n列表常用于：\n\n存储复杂对象\n存储模型结果\n存储多种类型数据",
+    "section": "6.7 列表（List）",
+    "text": "6.7 列表（List）\n列表是一种 非常灵活的数据结构。\n列表的特点：\n\n可以包含不同类型的数据。\n\n创建列表最常用list()函数\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(80, 90, 85)\n)\n\nmy_list\n\n\n$name\n[1] \"Alice\"\n\n$age\n[1] 25\n\n$score\n[1] 80 90 85\n\n\n查看结构：\n\n\nCode\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 80 90 85\n\n\n列表常用于：\n\n存储复杂对象\n存储模型结果\n存储多种类型数据",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -523,8 +523,8 @@
     "objectID": "lecture5.html#数据框data-frame",
     "href": "lecture5.html#数据框data-frame",
     "title": "6  R的数据结构",
-    "section": "6.10 数据框（Data Frame）",
-    "text": "6.10 数据框（Data Frame）\n数据框是 R 中最常用的数据结构之一。\n可以理解为：\n\n类似 Excel 表格的数据结构\n\n特点：\n\n每一列是一个向量\n不同列可以是不同类型\n\n创建数据框：\n\n\nCode\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(85, 90, 88)\n)\n\ndf\n\n\n  id name score\n1  1    A    85\n2  2    B    90\n3  3    C    88\n\n\n查看结构：\n\n\nCode\nstr(df)\n\n\n'data.frame':   3 obs. of  3 variables:\n $ id   : int  1 2 3\n $ name : chr  \"A\" \"B\" \"C\"\n $ score: num  85 90 88\n\n\n数据框特点：\n\n列长度必须一致\n不同列可以有不同数据类型",
+    "section": "6.8 数据框（Data Frame）",
+    "text": "6.8 数据框（Data Frame）\n数据框是 R 中最常用的数据结构之一。\n可以理解为：\n\n类似 Excel 表格的数据结构\n\n创建数据框最常用data.frame()函数\n\n\nCode\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"A\", \"B\", \"C\"),\n  score = c(85, 90, 88)\n)\ndf\n\n\n  id name score\n1  1    A    85\n2  2    B    90\n3  3    C    88\n\n\n查看结构：\n\n\nCode\nstr(df)\n\n\n'data.frame':   3 obs. of  3 variables:\n $ id   : int  1 2 3\n $ name : chr  \"A\" \"B\" \"C\"\n $ score: num  85 90 88\n\n\n数据框特点：\n\n列长度必须一致\n不同列可以有不同数据类型",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -533,8 +533,8 @@
     "objectID": "lecture5.html#r-数据结构之间的关系",
     "href": "lecture5.html#r-数据结构之间的关系",
     "title": "6  R的数据结构",
-    "section": "6.11 R 数据结构之间的关系",
-    "text": "6.11 R 数据结构之间的关系\n可以用下面的关系理解：\n\n\n\n数据结构\n维度\n数据类型要求\n\n\n\n\nvector\n一维\n相同类型\n\n\nmatrix\n二维\n相同类型\n\n\narray\n多维\n相同类型\n\n\nlist\n一维\n可不同类型\n\n\ndata frame\n二维\n每列相同，但列之间可不同",
+    "section": "6.9 R 数据结构之间的关系",
+    "text": "6.9 R 数据结构之间的关系\n可以用下面的关系理解：\n\n\n\n数据结构\n维度\n数据类型要求\n\n\n\n\nvector\n一维\n相同类型\n\n\nmatrix\n二维\n相同类型\n\n\narray\n多维\n相同类型\n\n\nlist\n一维\n可不同类型\n\n\ndata frame\n二维\n每列相同，但列之间可不同",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -543,8 +543,8 @@
     "objectID": "lecture5.html#本章总结",
     "href": "lecture5.html#本章总结",
     "title": "6  R的数据结构",
-    "section": "6.12 本章总结",
-    "text": "6.12 本章总结\n在 R 中：\n\n数据类型 描述数据的性质\n数据结构 描述数据如何组织\n\n常见数据类型包括：\n\nnumeric\ninteger\nlogical\ncharacter\nfactor\ncomplex\n\n常见数据结构包括：\n\nvector\nmatrix\narray\nlist\ndata frame\n\n理解数据类型和数据结构，是学习 R 数据分析的重要基础。",
+    "section": "6.11 本章总结",
+    "text": "6.11 本章总结\n在 R 中：\n\n数据类型 描述数据的性质\n数据结构 描述数据如何组织\n\n常见数据类型包括：\n\nnumeric\ninteger\nlogical\ncharacter\nfactor\ncomplex\n\n常见数据结构包括：\n\nvector\nmatrix\narray\nlist\ndata frame\n\n理解数据类型和数据结构，是学习 R 数据分析的重要基础。\n\n\n\n图6.1本次课程主要讲授内容",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -553,8 +553,8 @@
     "objectID": "lecture5.html#r-的原子类型与列表类型",
     "href": "lecture5.html#r-的原子类型与列表类型",
     "title": "6  R的数据结构",
-    "section": "6.13 R 的原子类型与列表类型",
-    "text": "6.13 R 的原子类型与列表类型\n在 R 语言中，对象大体可以分为两类：\n\n原子类型（atomic types）\n列表类型（list）\n\n理解这两种类型，有助于理解 R 的数据结构。\n\n\n6.13.1 原子类型（Atomic Types）\n原子类型是 R 中最基本的数据类型。\n它们的特点是：\n\n一个对象中的所有元素必须是同一种类型。\n\nR 中常见的原子类型包括：\n\n\n\n类型\n示例\n\n\n\n\nnumeric\n3.14\n\n\ninteger\n3L\n\n\nlogical\nTRUE\n\n\ncharacter\n\"R\"\n\n\ncomplex\n2+3i\n\n\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\ntypeof(x)\n\n\n[1] \"double\"\n\n\n这里 x 是一个 数值型向量，所有元素类型相同。\n\n\n\n6.13.2 列表类型（List）\n列表是一种 更灵活的数据结构。\n它的特点是：\n\n列表中的元素可以是不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(90,85,88)\n)\n\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 90 85 88\n\n\n可以看到：\n\nname 是字符型\n\nage 是数值型\n\nscore 是数值向量\n\n\n\n\n6.13.3 原子类型与列表的区别\n\n\n\n特征\n原子类型\n列表\n\n\n\n\n元素类型\n必须相同\n可以不同\n\n\n常见形式\n向量、矩阵、数组\nlist\n\n\n用途\n数值计算\n存储复杂对象\n\n\n\n简单示例：\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- list(1,\"A\",TRUE)\n\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\ntypeof(y)\n\n\n[1] \"list\"\n\n\n结果：\n\nx 是原子向量\n\ny 是列表\n\n\n\n\n\n图6.1本次课程主要讲授内容",
+    "section": "6.10 R 的原子类型与列表类型",
+    "text": "6.10 R 的原子类型与列表类型\n在 R 语言中，数据对象大体可以分为两类：\n\n原子类型（atomic types）\n列表类型（list）\n\n理解这两种类型，有助于理解 R 的数据结构。\n\n\n6.10.1 原子类型（Atomic Types）\n原子类型是 R 中最基本的数据类型。\n它们的特点是：\n\n一个对象中的所有元素必须是同一种类型。\n\nR 中常见的原子类型包括：\n\n\n\n类型\n示例\n\n\n\n\nnumeric\n3.14\n\n\ninteger\n3L\n\n\nlogical\nTRUE\n\n\ncharacter\n\"R\"\n\n\ncomplex\n2+3i\n\n\n\n例如：\n\n\nCode\nx &lt;- c(1,2,3,4)\ntypeof(x)\n\n\n[1] \"double\"\n\n\n这里 x 是一个 数值型向量，所有元素类型相同。\n\n\n\n6.10.2 列表类型（List）\n列表是一种 更灵活的数据结构。\n它的特点是：\n\n列表中的元素可以是不同类型的数据。\n\n例如：\n\n\nCode\nmy_list &lt;- list(\n  name = \"Alice\",\n  age = 25,\n  score = c(90,85,88)\n)\n\nstr(my_list)\n\n\nList of 3\n $ name : chr \"Alice\"\n $ age  : num 25\n $ score: num [1:3] 90 85 88\n\n\n可以看到：\n\nname 是字符型\n\nage 是数值型\n\nscore 是数值向量\n\n\n\n\n6.10.3 原子类型与列表的区别\n\n\n\n特征\n原子类型\n列表\n\n\n\n\n元素类型\n必须相同\n可以不同\n\n\n常见形式\n向量、矩阵、数组\nlist\n\n\n用途\n数值计算\n存储复杂对象\n\n\n\n简单示例：\n\n\nCode\nx &lt;- c(1,2,3)\ny &lt;- list(1,\"A\",TRUE)\n\ntypeof(x)\n\n\n[1] \"double\"\n\n\nCode\ntypeof(y)\n\n\n[1] \"list\"\n\n\n结果：\n\nx 是原子向量\n\ny 是列表",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -573,8 +573,8 @@
     "objectID": "lecture5.html#矩阵的实际应用图像",
     "href": "lecture5.html#矩阵的实际应用图像",
     "title": "6  R的数据结构",
-    "section": "6.15 矩阵的实际应用：图像",
-    "text": "6.15 矩阵的实际应用：图像\n一张图片本质上是一个矩阵。\n每一个像素，对应矩阵中的一个数值。以鸢尾花为例 \n\n\nCode\nlibrary(png)\nimg &lt;- readPNG(\"images/iris.png\")\ndim(img)\n\n\n[1] 859 840   4\n\n\n图片的维度通常为：\n\n高度\n宽度\n颜色通道（RGB）\n\n\n\n6.15.1 显示图片\n\n\nCode\nplot(1:2, type = \"n\", xlab = \"\", ylab = \"\", axes = FALSE)\nrasterImage(img, 1, 1, 2, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n6.15.2 转换为矩阵\n\n\nCode\np &lt;- img[,,1]\nimage(p,col = gray.colors(256))\n\n\n\n\n\n\n\n\n\n这说明：\n\n矩阵不仅是数学结构，也是图像数据的本质表示方式。",
+    "section": "6.13 矩阵的实际应用：图像",
+    "text": "6.13 矩阵的实际应用：图像\n一张图片本质上是一个矩阵。\n每一个像素，对应矩阵中的一个数值。以鸢尾花为例 \n\n\nCode\nlibrary(png)\nimg &lt;- readPNG(\"images/iris.png\")\ndim(img)\n\n\n[1] 859 840   4\n\n\n图片的维度通常为：\n\n高度\n宽度\n颜色通道（RGB）\n\n\n\n6.13.1 显示图片\n\n\nCode\nplot(1:2, type = \"n\", xlab = \"\", ylab = \"\", axes = FALSE)\nrasterImage(img, 1, 1, 2, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n6.13.2 转换为矩阵\n\n\nCode\np &lt;- img[,,1]\nimage(p,col = gray.colors(256))\n\n\n\n\n\n\n\n\n\n这说明：\n\n矩阵不仅是数学结构，也是图像数据的本质表示方式。",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -642,11 +642,11 @@
   {
     "objectID": "lecture7.html",
     "href": "lecture7.html",
-    "title": "8  操作练习",
+    "title": "综合练习：数据框与列表操作",
     "section": "",
-    "text": "8.1 课堂练习说明\n本次练习主要围绕以下内容展开：\n请同学们边做边观察结果，注意区分对象类型、函数用途以及输出结果的含义。",
+    "text": "8.1 本章学习目标\n完成本练习后，你应掌握：",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>操作练习</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
     ]
   },
   {
@@ -654,7 +654,7 @@
     "href": "lecture7.html#课堂练习说明",
     "title": "8  操作练习",
     "section": "",
-    "text": "R 的基本数据结构\n\n向量、矩阵、数据框的基本操作\n\n内置数据集的查看与简单分析\n\n文件读取与写出\n\n基本数学运算与统计量计算",
+    "text": "R 的基本数据结构\n\n向量、矩阵、数据框的基本操作",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>操作练习</span>"
     ]
@@ -674,7 +674,7 @@
     "href": "lecture7.html#向量练习",
     "title": "8  操作练习",
     "section": "8.3 向量练习",
-    "text": "8.3 向量练习\n3：创建向量并进行计算\nx &lt;- c(2, 4, 6, 8, 10)\ny &lt;- 1:5\n\nx\ny\n\nx + y\nx * y\nmean(x)\nsum(x)\nlength(x)\nmax(x)\nmin(x)\n请思考：\n\nc() 的作用是什么？\n\n1:5 生成的是什么？\n\nmean(x) 和 sum(x) 有什么区别？\n\n\n向量筛选\nx &lt;- c(3, 7, 2, 9, 12, 5)\nx &gt; 5\nx[x &gt; 5]\nx[x %% 2 == 0]\n请思考：\n\nx &gt; 5 返回的是什么类型？\n\nx[x &gt; 5] 的含义是什么？",
+    "text": "8.3 向量练习\n3：创建向量并进行计算\nx &lt;- c(2, 4, 6, 8, 10)\ny &lt;- 1:5\nx\ny\nx + y\nx * y\nmean(x)\nsum(x)\nlength(x)\nmax(x)\nmin(x)\n请思考：\n\nc() 的作用是什么？\n\n1:5 生成的是什么？\n\nmean(x) 和 sum(x) 有什么区别？\n\n\n向量筛选\nx &lt;- c(3, 7, 2, 9, 12, 5)\nx &gt; 5\nx[x &gt; 5]\nx[x %% 2 == 0]\n请思考：\n\nx &gt; 5 返回的是什么类型？\n\nx[x &gt; 5] 的含义是什么？",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>操作练习</span>"
     ]
@@ -693,8 +693,8 @@
     "objectID": "lecture7.html#数据框练习",
     "href": "lecture7.html#数据框练习",
     "title": "8  操作练习",
-    "section": "8.5 数据框练习",
-    "text": "8.5 数据框练习\n创建数据框\nstudent &lt;- data.frame(\n  name = c(\"张三\", \"李四\", \"王五\"),\n  age = c(19, 20, 18),\n  score = c(85, 92, 78)\n)\n\nstudent\n请完成：\nclass(student)\nnames(student)\nstudent$score\nstudent[1, ]\nstudent[, \"name\"]\nstudent[student$score &gt; 80, ]\n请思考：\n\n数据框和矩阵有什么区别？\n\nstudent$score 的含义是什么？",
+    "section": "8.4 数据框练习",
+    "text": "8.4 数据框练习\n创建数据框\nstudent &lt;- data.frame(\n  name = c(\"张三\", \"李四\", \"王五\"),\n  age = c(19, 20, 18),\n  score = c(85, 92, 78)\n)\n\nstudent\n请完成：\nclass(student)\nnames(student)\nstudent$score\nstudent[1, ]\nstudent[, \"name\"]\nstudent[student$score &gt; 80, ]\n请思考：\n\n数据框和矩阵有什么区别？\n\nstudent$score 的含义是什么？",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>操作练习</span>"
     ]
@@ -1223,8 +1223,8 @@
     "objectID": "lecture5.html#练习",
     "href": "lecture5.html#练习",
     "title": "6  R的数据结构",
-    "section": "6.14 练习",
-    "text": "6.14 练习\n下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。\n\n\n6.14.1 练习1：创建矩阵\n使用 matrix() 函数创建一个 2×3 的矩阵：\n1 2 3\n4 5 6\n提示：\nmatrix()\n要求：\n\n创建矩阵 A\n查看矩阵内容\n查看矩阵维度\n\n\n\n\n6.14.2 练习2：矩阵加法\n创建两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n创建矩阵 A\n创建矩阵 B\n计算 A + B\n\n思考：\n矩阵加法需要满足什么条件？\n\n\n\n6.14.3 练习3：矩阵乘法\n给定两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n使用 %*% 计算矩阵乘法 A × B\n写出结果矩阵\n\n提示：\nA %*% B\n思考：\n矩阵乘法与普通乘法有什么不同？\n\n\n\n6.14.4 练习4：矩阵转置\n给定矩阵：\nA =\n1 2 3\n4 5 6\n要求：\n\n创建矩阵 A\n计算矩阵转置\n\n提示：\nt(A)\n\n\n\n6.14.5 练习5：矩阵行列式\n给定矩阵：\nA =\n2 1\n3 4\n要求：\n\n创建矩阵 A\n计算矩阵的行列式\n\n提示：\ndet(A)\n\n\n\n6.14.6 练习6：矩阵求逆\n给定矩阵：\nA =\n4 7\n2 6\n要求：\n\n创建矩阵 A\n计算矩阵的逆矩阵\n\n提示：\nsolve(A)\n思考：\n什么情况下矩阵不能求逆？\n\n\n\n6.14.7 练习7：解线性方程组\n求解以下方程组：\n2x + y = 5\nx + 3y = 6\n步骤：\n\n写出系数矩阵 A\n写出常数向量 b\n使用 solve() 求解\n\n提示：\nsolve(A, b)",
+    "section": "6.12 练习",
+    "text": "6.12 练习\n下面练习用于熟悉 R 中的矩阵运算。请完成代码并写出运行结果。\n\n\n6.12.1 练习1：创建矩阵\n使用 matrix() 函数创建一个 2×3 的矩阵：\n1 2 3\n4 5 6\n提示：\nmatrix()\n要求：\n\n创建矩阵 A\n查看矩阵内容\n查看矩阵维度\n\n\n\n\n6.12.2 练习2：矩阵加法\n创建两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n创建矩阵 A\n创建矩阵 B\n计算 A + B\n\n思考：\n矩阵加法需要满足什么条件？\n\n\n\n6.12.3 练习3：矩阵乘法\n给定两个矩阵：\nA =\n1 2\n3 4\n\nB =\n5 6\n7 8\n要求：\n\n使用 %*% 计算矩阵乘法 A × B\n写出结果矩阵\n\n提示：\nA %*% B\n思考：\n矩阵乘法与普通乘法有什么不同？\n\n\n\n6.12.4 练习4：矩阵转置\n给定矩阵：\nA =\n1 2 3\n4 5 6\n要求：\n\n创建矩阵 A\n计算矩阵转置\n\n提示：\nt(A)\n\n\n\n6.12.5 练习5：矩阵行列式\n给定矩阵：\nA =\n2 1\n3 4\n要求：\n\n创建矩阵 A\n计算矩阵的行列式\n\n提示：\ndet(A)\n\n\n\n6.12.6 练习6：矩阵求逆\n给定矩阵：\nA =\n4 7\n2 6\n要求：\n\n创建矩阵 A\n计算矩阵的逆矩阵\n\n提示：\nsolve(A)\n思考：\n什么情况下矩阵不能求逆？\n\n\n\n6.12.7 练习7：解线性方程组\n求解以下方程组：\n2x + y = 5\nx + 3y = 6\n步骤：\n\n写出系数矩阵 A\n写出常数向量 b\n使用 solve() 求解\n\n提示：\nsolve(A, b)",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
     ]
@@ -1232,11 +1232,11 @@
   {
     "objectID": "lecture1.html#本章小结",
     "href": "lecture1.html#本章小结",
-    "title": "2  R语言与RStudio的下载与安装",
+    "title": "2  R与RStudio的下载与安装",
     "section": "2.6 本章小结",
     "text": "2.6 本章小结\n\n必须先安装 R，再安装 RStudio\nRStudio 无法启动通常是 R 未正确安装\n建议使用默认安装路径\n若无桌面图标，可手动创建快捷方式\nWindows 用户建议安装 Rtools\n\n\n\n\n图2.7本次课程主要讲授内容",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R语言与RStudio的下载与安装</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>R与RStudio的下载与安装</span>"
     ]
   },
   {
@@ -1277,6 +1277,156 @@
     "text": "理解数据类型与数据结构的区别，建立“数据是什么 vs 如何组织”的认知\n\n掌握 R 中常见数据结构（vector、matrix、array、list、data frame）的基本特点\n\n理解向量及其向量化运算在 R 计算中的核心作用\n\n能根据数据分析需求选择合适的数据结构进行数据组织与处理",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>R的数据结构</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#常用数学函数",
+    "href": "lecture7.html#常用数学函数",
+    "title": "8  操作练习",
+    "section": "8.2 常用数学函数",
+    "text": "8.2 常用数学函数\n请运行下面代码，并说明每个函数的作用。\nsqrt(81)\nlog(10)\nexp(1)\nabs(-25)\nround(3.14159, 2)\n请思考：\n\nsqrt() 的含义是什么？\n\nround(3.14159, 2) 中的 2 表示什么？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>操作练习</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#综合练习说明",
+    "href": "lecture7.html#综合练习说明",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.2 综合练习说明",
+    "text": "8.2 综合练习说明\n本练习基于一个模拟的土壤数据集，重点掌握：\n\n数据框（data.frame）的基本操作\n\n列表（list）的构建与访问\n\n常用统计函数\n\n分组统计（aggregate）",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#创建土壤数据框",
+    "href": "lecture7.html#创建土壤数据框",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.3 创建土壤数据框",
+    "text": "8.3 创建土壤数据框\n\n\nCode\nsoil &lt;- data.frame(\n  site = c(\"A\", \"A\", \"B\", \"B\", \"C\", \"C\"),\n  depth = c(0, 10, 0, 10, 0, 10),\n  pH = c(5.5, 5.8, 6.2, 6.5, 7.0, 7.2),\n  SOC = c(12, 10, 15, 13, 20, 18),\n  TN = c(1.2, 1.1, 1.5, 1.3, 2.0, 1.8)\n)\n\nsoil\n\n\n  site depth  pH SOC  TN\n1    A     0 5.5  12 1.2\n2    A    10 5.8  10 1.1\n3    B     0 6.2  15 1.5\n4    B    10 6.5  13 1.3\n5    C     0 7.0  20 2.0\n6    C    10 7.2  18 1.8\n\n\n请思考：\n\n每一列分别表示什么含义？\n\n数据框与向量最大的区别是什么？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#数据框基本操作",
+    "href": "lecture7.html#数据框基本操作",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.4 数据框基本操作",
+    "text": "8.4 数据框基本操作\n\n\nCode\n# 查看结构\nstr(soil)\n\n\n'data.frame':   6 obs. of  5 variables:\n $ site : chr  \"A\" \"A\" \"B\" \"B\" ...\n $ depth: num  0 10 0 10 0 10\n $ pH   : num  5.5 5.8 6.2 6.5 7 7.2\n $ SOC  : num  12 10 15 13 20 18\n $ TN   : num  1.2 1.1 1.5 1.3 2 1.8\n\n\nCode\n# 提取某一列\nsoil$pH\n\n\n[1] 5.5 5.8 6.2 6.5 7.0 7.2\n\n\nCode\n# 提取第1行\nsoil[1, ]\n\n\n  site depth  pH SOC  TN\n1    A     0 5.5  12 1.2\n\n\nCode\n# 提取多列\nsoil[, c(\"pH\", \"SOC\")]\n\n\n   pH SOC\n1 5.5  12\n2 5.8  10\n3 6.2  15\n4 6.5  13\n5 7.0  20\n6 7.2  18\n\n\nCode\n# 条件筛选\nsoil[soil$pH &gt; 6, ]\n\n\n  site depth  pH SOC  TN\n3    B     0 6.2  15 1.5\n4    B    10 6.5  13 1.3\n5    C     0 7.0  20 2.0\n6    C    10 7.2  18 1.8\n\n\n请思考：\n\nsoil$pH 与 soil[, \"pH\"] 有什么区别？\n\n条件筛选返回的是什么类型？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#新变量构建",
+    "href": "lecture7.html#新变量构建",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.5 新变量构建",
+    "text": "8.5 新变量构建\n\n\nCode\n# 计算 C/N 比\nsoil$CN &lt;- soil$SOC / soil$TN\n\nsoil\n\n\n  site depth  pH SOC  TN        CN\n1    A     0 5.5  12 1.2 10.000000\n2    A    10 5.8  10 1.1  9.090909\n3    B     0 6.2  15 1.5 10.000000\n4    B    10 6.5  13 1.3 10.000000\n5    C     0 7.0  20 2.0 10.000000\n6    C    10 7.2  18 1.8 10.000000\n\n\n请思考：\n为什么可以直接对整列进行运算？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#常用统计函数",
+    "href": "lecture7.html#常用统计函数",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.6 常用统计函数",
+    "text": "8.6 常用统计函数\n\n\nCode\nmean(soil$pH)\n\n\n[1] 6.366667\n\n\nCode\nsd(soil$pH)\n\n\n[1] 0.665332\n\n\nCode\nsum(soil$SOC)\n\n\n[1] 88\n\n\nCode\nmax(soil$SOC)\n\n\n[1] 20\n\n\nCode\nmin(soil$SOC)\n\n\n[1] 10\n\n\n请思考：\n\nmean() 和 sum() 的区别是什么？\n\nsd() 表示什么统计意义？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#分组统计重点",
+    "href": "lecture7.html#分组统计重点",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.7 分组统计（重点）",
+    "text": "8.7 分组统计（重点）\n\n\nCode\n# 按站点计算平均 SOC\naggregate(SOC ~ site, data = soil, FUN = mean)\n\n\n  site SOC\n1    A  11\n2    B  14\n3    C  19\n\n\nCode\n# 按站点计算平均 pH\naggregate(pH ~ site, data = soil, FUN = mean)\n\n\n  site   pH\n1    A 5.65\n2    B 6.35\n3    C 7.10\n\n\n请思考：\n\nSOC ~ site 💡 表达的含义是什么？\naggregate() 与 mean() 的区别是什么？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#创建列表list",
+    "href": "lecture7.html#创建列表list",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.8 创建列表（list）",
+    "text": "8.8 创建列表（list）\n\n\nCode\nsoil_list &lt;- list(\n  basic_info = soil[, c(\"site\", \"depth\")],\n  chemistry = soil[, c(\"pH\", \"SOC\", \"TN\")],\n  statistics = list(\n    mean_pH = mean(soil$pH),\n    mean_SOC = mean(soil$SOC)\n  )\n)\n\nsoil_list\n\n\n$basic_info\n  site depth\n1    A     0\n2    A    10\n3    B     0\n4    B    10\n5    C     0\n6    C    10\n\n$chemistry\n   pH SOC  TN\n1 5.5  12 1.2\n2 5.8  10 1.1\n3 6.2  15 1.5\n4 6.5  13 1.3\n5 7.0  20 2.0\n6 7.2  18 1.8\n\n$statistics\n$statistics$mean_pH\n[1] 6.366667\n\n$statistics$mean_SOC\n[1] 14.66667\n\n\n请思考：\n\n列表与数据框的本质区别是什么？\n\n列表中可以存放哪些类型的数据？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#访问列表元素重点",
+    "href": "lecture7.html#访问列表元素重点",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.9 访问列表元素（重点）",
+    "text": "8.9 访问列表元素（重点）\n\n\nCode\n# 访问子列表\nsoil_list$chemistry\n\n\n   pH SOC  TN\n1 5.5  12 1.2\n2 5.8  10 1.1\n3 6.2  15 1.5\n4 6.5  13 1.3\n5 7.0  20 2.0\n6 7.2  18 1.8\n\n\nCode\n# 访问嵌套元素\nsoil_list$statistics$mean_pH\n\n\n[1] 6.366667\n\n\nCode\n# 使用索引访问\nsoil_list[[3]][[1]]\n\n\n[1] 6.366667\n\n\n请思考：\n\n$ 和 [[ ]] 的区别是什么？\n\n为什么列表可以嵌套？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#综合练习核心任务",
+    "href": "lecture7.html#综合练习核心任务",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.9 🔹 8. 综合练习（核心任务）",
+    "text": "8.9 🔹 8. 综合练习（核心任务）\n请完成以下任务：\n\n\nCode\n# 1. 筛选 pH &gt; 6 且 SOC &gt; 15 的数据\n\n# 2. 按 depth 分组计算 SOC 平均值\n\n# 3. 创建一个列表，包含：\n#    - 原始数据\n#    - 筛选后的数据\n#    - 每个站点的平均 pH\n\n# 4. 从列表中提取平均 pH 的结果",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#拓展思考",
+    "href": "lecture7.html#拓展思考",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.11 拓展思考",
+    "text": "8.11 拓展思考\n\n如果数据中存在 NA，应如何处理？\n数据框是否可以嵌套在列表中？为什么？",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#学习目标总结",
+    "href": "lecture7.html#学习目标总结",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.11 🎯 学习目标总结",
+    "text": "8.11 🎯 学习目标总结\n完成本练习后，你应掌握：\n\n数据框的索引与筛选\n\n列表的结构与访问方式\n\n常用统计函数\n\n分组统计思想（aggregate）\n\n数据结构之间的联系",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#本章学习目标",
+    "href": "lecture7.html#本章学习目标",
+    "title": "综合练习：数据框与列表操作",
+    "section": "",
+    "text": "数据框的索引与筛选\n\n列表的结构与访问方式\n\n常用统计函数\n\n分组统计思想（aggregate） - 数据结构之间的联系",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#请完成以下任务",
+    "href": "lecture7.html#请完成以下任务",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.10 请完成以下任务：",
+    "text": "8.10 请完成以下任务：\n 1. 筛选 pH &gt; 6 且 SOC &gt; 15 的数据\n\n 2. 按 depth 分组计算 SOC 平均值\n\n 3. 创建一个列表，包含：\n    - 原始数据\n    - 筛选后的数据\n    - 每个站点的平均 pH\n\n 4. 从列表中提取平均 pH 的结果",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7.html#本章总结",
+    "href": "lecture7.html#本章总结",
+    "title": "综合练习：数据框与列表操作",
+    "section": "8.12 本章总结",
+    "text": "8.12 本章总结\n\n数据框是 R 中最常用的数据结构之一，适合存储表格数据。\n列表是一种更灵活的数据结构，可以存储不同类型的数据，包括数据框、向量、函数等。\n常用统计函数可以快速计算数据的基本统计\n分组统计（aggregate）是分析分组数据的重要工具，可以按不同的分组变量计算统计量。\n编程细节总结如下：\n\n\n\n\n图8.1本次课程主要讲授内容",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>综合练习：数据框与列表操作</span>"
     ]
   }
 ]

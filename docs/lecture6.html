@@ -314,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 <pre><code>getwd()</code></pre>
 <p>查看当前目录中的文件：</p>
 <pre><code>list.files()</code></pre>
-<p>👉<a href="data/iris.csv">下载 iris 数据</a></p>
+<p>👉<a href="iris.csv">下载 iris 数据</a></p>
 <pre><code>iris_data &lt;- read.csv("iris.csv")</code></pre>
 <hr>
 </section>
@@ -336,7 +336,7 @@ head(iris_data)</code></pre>
 <p>保留字符串而不是自动转因子</p>
 <pre><code>data1 &lt;- read.csv("iris.csv", stringsAsFactors = FALSE)</code></pre>
 <p>指定文件编码</p>
-<p>如果文件中有中文，可能需要指定编码,如👉<a href="data/soil_data.csv">下载土壤数据</a> ：</p>
+<p>如果文件中有中文，可能需要指定编码,如👉<a href="soil_data.xlsx">下载土壤数据</a> ：</p>
 <pre><code>data2 &lt;- read.csv("soil_data.csv", fileEncoding = "UTF-8")</code></pre>
 <p>通常 CSV 文件第一行是变量名，因此一般使用默认的 <code>header = TRUE</code>。</p>
 <hr>
