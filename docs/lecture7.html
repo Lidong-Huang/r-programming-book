@@ -645,6 +645,287 @@ $statistics$mean_SOC
 <figcaption>图8.1本次课程主要讲授内容</figcaption>
 </figure>
 </div>
+<p>本次课后要进行测试，阶段性测试代码如下：</p>
+<pre><code>library(shiny)
+library(shinythemes)
+library(shinyjs)
+library(DT)
+
+# ==================== 问题数据 ====================
+questions &lt;- list(
+  # 1-10 数据类型
+  list(id=1, question="在R语言中，以下哪个是数值型（numeric）数据的例子？",
+       options=c("\"soil\"", "10", "TRUE", "c(1,2,3)"), correct=2,
+       explanation="10是数值型数据，\"soil\"是字符型，TRUE是逻辑型，c(1,2,3)是数值型向量。"),
+  list(id=2, question="以下哪个是字符型（character）数据？",
+       options=c("3.14", "FALSE", "\"Hello\"", "NA"), correct=3,
+       explanation="\"Hello\"用引号包围，是字符型数据。"),
+  list(id=3, question="逻辑型（logical）数据的取值是什么？",
+       options=c("1/0", "TRUE/FALSE/NA", "Yes/No", "对/错"), correct=2,
+       explanation="R语言中逻辑型数据取值为TRUE和FALSE。"),
+  list(id=4, question="下列代码中，x的数据类型是什么？ x &lt;- 3.14",
+       options=c("character", "logical", "integer", "numeric"), correct=4,
+       explanation="3.14是数值型（numeric）。"),
+  list(id=5, question="下列代码中，y的数据类型是什么？ y &lt;- \"R语言\"",
+       options=c("numeric", "character", "logical", "factor"), correct=2,
+       explanation="用双引号包围的文本是字符型（character）数据。"),
+  list(id=6, question="下列代码中，z的数据类型是什么？ z &lt;- TRUE",
+       options=c("logical", "numeric", "character", "complex"), correct=1,
+       explanation="TRUE是逻辑型（logical）数据。"),
+  list(id=7, question="如何查看变量x的数据类型？",
+       options=c("typeof(x)", "class(x)", "str(x)", "以上都可以"), correct=4,
+       explanation="typeof()返回底层类型，class()返回类，str()显示结构，都可用。"),
+  list(id=8, question="以下哪个函数可以将字符型数据转换为数值型？",
+       options=c("as.character()", "as.logical()", "as.numeric()", "as.integer()"), correct=3,
+       explanation="as.numeric()将字符型数据转换为数值型。"),
+  list(id=9, question="以下哪个是缺失值（missing value）的表示？",
+       options=c("NULL", "NaN", "Inf", "NA"), correct=4,
+       explanation="NA表示缺失值，NULL表示空对象，NaN表示非数字，Inf表示无穷大。"),
+  list(id=10, question="下列哪个是复数（complex）数据类型？",
+       options=c("\"3+2i\"", "3+2i", "c(3,2)", "list(3,2)"), correct=2,
+       explanation="3+2i是复数型数据。"),
+  
+  # 11-25 数据结构
+  list(id=11, question="在R语言中，向量（vector）的特点是什么？",
+       options=c("只能包含同一类型的数据", "可以包含不同类型的数据", "是二维数据结构", "可以用$符号索引"), correct=1,
+       explanation="向量是同一类型数据的一维集合。"),
+  list(id=12, question="如何创建一个包含元素1,2,3,4,5的数值型向量？",
+       options=c("vector(1,5)", "seq(1,5)", "1:5", "c(1,2,3,4,5)"), correct=4,
+       explanation="c()是组合函数，用于创建向量。"),
+  list(id=13, question="矩阵（matrix）的特点是什么？",
+       options=c("可以混合类型", "同一类型的二维数据", "用list()创建", "用data.frame()创建"), correct=2,
+       explanation="矩阵是同一类型数据的二维数组。"),
+  list(id=14, question="如何创建一个3行2列的矩阵，元素为1到6？",
+       options=c("matrix(1:6, nrow=3, ncol=2)", "matrix(1:6, 3, 3)", "c(1:6) %&gt;% matrix()", "list(1:6, 3, 2)"), correct=1,
+       explanation="matrix()函数可以创建矩阵。"),
+  list(id=15, question="列表（list）的特点是什么？",
+       options=c("所有元素必须是同一类型", "是二维数据结构", "可以包含不同类型的元素", "用matrix()创建"), correct=3,
+       explanation="列表可以包含不同类型的元素。"),
+  list(id=16, question="如何创建一个包含数值、字符和逻辑值的列表？",
+       options=c("c(1, \"a\", TRUE)", "list(1, \"a\", TRUE)", "data.frame(1, \"a\", TRUE)", "vector(1, \"a\", TRUE)"), correct=2,
+       explanation="list()函数允许不同类型元素。"),
+  list(id=17, question="数据框（data.frame）的特点是什么？",
+       options=c("类似表格，每列可以是不同类型", "所有元素必须是同一类型", "必须全部为数值型", "用matrix()创建"), correct=1,
+       explanation="数据框类似表格，每列可以不同类型。"),
+  list(id=18, question="如何创建一个包含两列（name和age）的数据框？",
+       options=c("matrix(c(\"Tom\",25,\"Jerry\",30), ncol=2)",
+                 "list(name=c(\"Tom\",\"Jerry\"), age=c(25,30))",
+                 "data.frame(name=c(\"Tom\",\"Jerry\"), age=c(25,30))",
+                 "c(name=c(\"Tom\",\"Jerry\"), age=c(25,30))"), correct=3,
+       explanation="data.frame()函数用于创建数据框。"),
+  list(id=19, question="以下哪个函数可以查看数据框的前几行？",
+       options=c("str()", "summary()", "head()", "view()"), correct=3,
+       explanation="head()专门用于查看数据的前几行（默认6行）。"),
+  list(id=20, question="如何获取数据框df的列名？",
+       options=c("colnames(df)", "names(df)", "rownames(df)", "A和B都可以"), correct=4,
+       explanation="colnames(df)和names(df)都可以。"),
+  list(id=21, question="因子的作用是什么？",
+       options=c("表示数值数据", "表示分类数据", "表示字符数据", "表示逻辑数据"), correct=2,
+       explanation="因子用于表示分类变量。"),
+  
+  # 26-35 数据索引
+  list(id=22, question="对于向量v &lt;- c(10,20,30,40)，如何获取第三个元素？",
+       options=c("v[[3]]", "v(3)", "v[3]", "v$3"), correct=3,
+       explanation="v[3]返回第三个元素。"),
+  list(id=23, question="对于矩阵m &lt;- matrix(1:6, nrow=2)，如何获取第2行第3列的元素？",
+       options=c("m[2,3]", "m[2][3]", "m[[2,3]]", "m$2$3"), correct=1,
+       explanation="矩阵索引使用[行,列]格式。"),
+  list(id=24, question="对于数据框df，如何获取名为\"age\"的列？",
+       options=c("df$age", "df[[\"age\"]]", "df[, \"age\"]", "以上都可以"), correct=4,
+       explanation="数据框列可通过$、[[]]或[,列名]获取。"),
+  list(id=25, question="如何获取数据框df的前三行？",
+       options=c("df[ , 1:3]", "df[1:3, ]", "df[1:3]", "head(df, 3)"), correct=2,
+       explanation="df[1:3, ]选择前三行，注意逗号的位置。"),
+  list(id=26, question="如何获取数据框df中age大于30的行？",
+       options=c("df[age &gt; 30]", "df$age &gt; 30", "df[df$age &gt; 30, ]", "subset(df, age &gt; 30)"), correct=3,
+       explanation="逻辑索引选择满足条件的行。"),
+  list(id=27, question="对于列表lst &lt;- list(a=1, b=\"text\")，如何获取元素a的值？",
+       options=c("lst$a", "lst[[\"a\"]]", "lst[[1]]", "以上都可以"), correct=4,
+       explanation="列表元素可以通过$、[[]]或索引位置获取。"),
+  list(id=28, question="v &lt;- c(10,20,30,40,50)，v[c(TRUE, FALSE, TRUE, FALSE, TRUE)]返回什么？",
+       options=c("c(20,40)", "c(10,30,50)", "c(TRUE, FALSE, TRUE)", "出错"), correct=2,
+       explanation="逻辑索引选中TRUE对应元素。"),
+  list(id=29, question="如何获取数据框df的列数？",
+       options=c("ncol(df)", "length(df)", "dim(df)[2]", "以上都可以"), correct=4,
+       explanation="ncol(df)、length(df)、dim(df)[2]都可获取列数。"),
+  list(id=30, question="如何获取矩阵m的行数和列数？",
+       options=c("dim(m)", "nrow(m)和ncol(m)", "A和B都可以", "length(m)"), correct=3,
+       explanation="dim(m)返回维度，nrow()和ncol()也可。"),
+  
+  list(id=31, question="如何读取CSV格式的数据文件？",
+       options=c("read.table(\"data.csv\")", "load(\"data.csv\")", "read.csv(\"data.csv\")", "import(\"data.csv\")"), correct=3,
+       explanation="read.csv()用于读取CSV文件。"),
+  list(id=32, question="如何将数据框保存为CSV文件？",
+       options=c("save(df, \"data.csv\")", "write.csv(df, \"data.csv\")", "export(df, \"data.csv\")", "write.table(df, \"data.csv\")"), correct=2,
+       explanation="write.csv()用于保存为CSV文件。")
+)
+
+
+# ==================== UI ====================
+ui &lt;- fluidPage(
+  theme = shinytheme("cerulean"),
+  useShinyjs(),
+  titlePanel("R数据类型与结构测验 (黄利东设计)"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      wellPanel(
+        h4("学生身份认证"),
+        textInput("student_name", "姓名：", ""),
+        textInput("student_id", "学号：", ""),
+        helpText("提示：提交后成绩将自动记录。")
+      ),
+      hr(),
+      actionButton("submit", "提交答案", class = "btn-primary", style="width:100%"),
+      br(), br(),
+      actionButton("reset", "重新开始", style="width:100%"),
+      br(), br(),
+      h4("说明"),
+      p("1. 必须填写姓名学号。"),
+      p("2. 提交后下方会显示错题解析。")
+    ),
+    
+    mainPanel(
+      uiOutput("auth_check_ui"),
+      uiOutput("question_ui"),
+      hr(),
+      uiOutput("result_ui"),
+      DTOutput("explanation_table")
+    )
+  )
+)
+
+# ==================== SERVER ====================
+server &lt;- function(input, output, session) {
+  
+  submitted &lt;- reactiveVal(FALSE)
+  
+  # 修改后的身份校验逻辑：增加了长度判断 nchar() == 13
+  is_identified &lt;- reactive({
+    name_ok &lt;- nzchar(trimws(input$student_name))
+    id_ok &lt;- nchar(trimws(input$student_id)) == 13  # 必须精确等于13位
+    return(name_ok &amp;&amp; id_ok)
+  })
+  
+  # 状态提示：根据输入进度显示不同文字
+  output$auth_check_ui &lt;- renderUI({
+    sid &lt;- trimws(input$student_id)
+    sname &lt;- trimws(input$student_name)
+    
+    if (!nzchar(sname)) {
+      h4("请输入姓名", style="color:#f0ad4e; text-align:center;")
+    } else if (nchar(sid) &lt; 13) {
+      h4(paste0("学号位数不足（当前 ", nchar(sid), "/13 位）"), 
+         style="color:#f0ad4e; text-align:center;")
+    } else if (nchar(sid) &gt; 13) {
+      h4("警告：学号超过 13 位，请检查是否输入错误", 
+         style="color:#d9534f; text-align:center;")
+    } else {
+      h4("✅ 身份验证成功，请开始答题", style="color:#5cb85c; text-align:center;")
+    }
+  })
+  
+  # 生成题目 (仅在 satisfies is_identified 时)
+  output$question_ui &lt;- renderUI({
+    if (!is_identified()) return(NULL)
+    
+    # 使用 tagList 包裹题目，增加一点动画感
+    tagList(
+      h4("--- 答题区 ---", style="text-align:center; color:#999;"),
+      lapply(questions, function(q) {
+        radioButtons(paste0("q", q$id), paste0(q$id, ". ", q$question),
+                     choices = setNames(seq_along(q$options), q$options), 
+                     selected = character(0))
+      })
+    )
+  })
+  
+  # 提交并保存
+  observeEvent(input$submit, {
+    if (!is_identified()) {
+      showModal(modalDialog("请先填写完整信息！", title = "提醒", easyClose = TRUE))
+      return()
+    }
+    if (submitted()) {
+      showModal(modalDialog("您已经提交过了，请刷新页面或点重新开始。", title = "提醒", easyClose = TRUE))
+      return()
+    }
+    
+    # --- 核心统计逻辑 ---
+    score &lt;- 0
+    wrong_ids &lt;- c() # 存储错题号
+    
+    for (q in questions) {
+      ans &lt;- input[[paste0("q", q$id)]]
+      user_ans &lt;- if (!is.null(ans)) as.numeric(ans) else NA
+      
+      if (!is.na(user_ans) &amp;&amp; user_ans == q$correct) {
+        score &lt;- score + 1
+      } else {
+        wrong_ids &lt;- c(wrong_ids, q$id) # 记录错题
+      }
+    }
+    
+    # 将错题号转为逗号分隔的字符串，如 "1, 5, 12"
+    wrong_str &lt;- paste(wrong_ids, collapse = ", ")
+    
+    # --- 解决乱码的保存逻辑 ---
+    res_data &lt;- data.frame(
+      提交时间 = format(Sys.time(), "%Y-%m-%d %H:%M:%S"),
+      姓名 = input$student_name,
+      学号 = input$student_id,
+      得分 = score,
+      总题数 = length(questions),
+      错题题号 = wrong_str,
+      stringsAsFactors = FALSE
+    )
+    
+    log_file &lt;- "quiz_results.csv"
+    
+    # 关键点：使用 fileEncoding = "GBK" 适配中文 Windows Excel
+    if (!file.exists(log_file)) {
+      write.csv(res_data, log_file, row.names = FALSE, fileEncoding = "GBK")
+    } else {
+      # 追加模式下 write.csv 不太方便处理表头，改用 write.table
+      write.table(res_data, log_file, sep = ",", row.names = FALSE, col.names = FALSE, 
+                  append = TRUE, fileEncoding = "GBK")
+    }
+    
+    submitted(TRUE)
+    showNotification("成绩已存档！", type = "message")
+  })
+  
+  # 重置
+  observeEvent(input$reset, {
+    session$reload() # 直接重载页面是最彻底的重置
+  })
+  
+  # 结果显示
+  output$result_ui &lt;- renderUI({
+    if (!submitted()) return(NULL)
+    
+    # 构建解析数据
+    explanations &lt;- data.frame(
+      题号 = sapply(questions, function(x) x$id),
+      状态 = sapply(questions, function(q){
+        ans &lt;- input[[paste0("q", q$id)]]
+        if(!is.null(ans) &amp;&amp; as.numeric(ans) == q$correct) "✅ 正确" else "❌ 错误"
+      }),
+      正确答案 = sapply(questions, function(x) x$options[x$correct]),
+      解析 = sapply(questions, function(x) x$explanation)
+    )
+    
+    output$explanation_table &lt;- renderDT({
+      datatable(explanations, options=list(pageLength=5, scrollX=TRUE), rownames=FALSE) %&gt;%
+        formatStyle('状态', color = styleEqual(c("✅ 正确", "❌ 错误"), c("green", "red")))
+    })
+    
+    h3(paste0("测试结束！得分：", sum(explanations$状态 == "✅ 正确"), " / ", length(questions)), 
+       style="text-align:center; color:#2c3e50;")
+  })
+}
+
+shinyApp(ui, server)</code></pre>
 <script>
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 tooltipTriggerList.map(function (tooltipTriggerEl) {
