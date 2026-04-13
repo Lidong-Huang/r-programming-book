@@ -21,7 +21,7 @@ tooltipTriggerList.map(function (tooltipTriggerEl) {
 3 git推送
 git status
 git add .
-git commit -m "file manipulation" 
+git commit -m "reconstruct the content" 
 git push -f origin master
 
 
