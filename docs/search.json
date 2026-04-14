@@ -752,111 +752,111 @@
   {
     "objectID": "lecture8.html",
     "href": "lecture8.html",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "",
     "text": "9.1 本章学习目标\n通过本章学习，你将能够：",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#本章学习目标",
     "href": "lecture8.html#本章学习目标",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "",
     "text": "理解什么是控制流（control flow）\n掌握 if / ifelse / case_when 的使用\n理解 switch 的适用场景\n掌握 for 循环的基本写法\n理解 while 和 repeat 的区别\n知道什么时候应该使用循环，什么时候避免循环",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#什么是控制流",
     "href": "lecture8.html#什么是控制流",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.2 什么是控制流？",
     "text": "9.2 什么是控制流？\n在默认情况下，R 代码是按顺序执行的：\n1 + 1\n2 + 2\n3 + 3\n👉 从上到下依次执行\n但在实际问题中，我们往往需要：\n\n根据条件决定是否执行某段代码\n\n重复执行某段代码\n\n对不同情况采取不同处理方式\n\n👉 这就需要 控制流（Control Flow）\n控制流是指程序在运行过程中，根据条件或规则，决定“哪些代码执行、哪些跳过、执行多少次”的机制。",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#条件判断if-结构",
     "href": "lecture8.html#条件判断if-结构",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.3 条件判断（if 结构）",
     "text": "9.3 条件判断（if 结构）\n\n基本语法\n\nif (condition) {\n  执行内容\n}\n或：\nif (condition) {\n  条件为真执行\n} else {\n  条件为假执行\n}\n\n示例：成绩等级判断\n\n\nCode\nx &lt;- 85\nif (x &gt; 90) {\n  \"A\"\n} else if (x &gt; 80) {\n  \"B\"\n} else if (x &gt; 50) {\n  \"C\"\n} else {\n  \"F\"\n}\n\n\n[1] \"B\"\n\n\n\n\n重要特点\n\n👉 if 只能处理 单个值（标量）\n\n\nCode\nx &lt;- c(80, 90, 70)\n\n# if (x &gt; 80)  ❌ 会报错或只取第一个值",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#向量化判断ifelse",
     "href": "lecture8.html#向量化判断ifelse",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.4 向量化判断（ifelse）",
     "text": "9.4 向量化判断（ifelse）\n当数据是向量（多个值）时，应使用：\nifelse(condition, yes, no)\n\n示例：奇偶判断\n\n\nCode\nx &lt;- 1:10\nifelse(x %% 2 == 0, \"even\", \"odd\")\n\n\n [1] \"odd\"  \"even\" \"odd\"  \"even\" \"odd\"  \"even\" \"odd\"  \"even\" \"odd\"  \"even\"\n\n\n\n核心理解\nifelse = 对每个元素逐个判断\n👉 和 if 的区别：\n\n\n\n结构\n适用对象\n\n\n\n\nif\n单个值\n\n\nifelse\n向量",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#switch-结构",
     "href": "lecture8.html#switch-结构",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.5 switch 结构",
-    "text": "9.5 switch 结构\n👉 根据“选项”返回不同结果（类似菜单）\n\n\n\nCode\nx &lt;- \"a\"\n\nswitch(x,\n  a = \"option 1\",\n  b = \"option 2\",\n  c = \"option 3\",\n  stop(\"Invalid value\")\n)\n\n\n[1] \"option 1\"\n\n\n\nswitch 主要用于“字符选择”，不适合数值比较",
+    "text": "9.5 switch 结构\n基本语法：\nswitch 结构：多选一的“菜单”\n当你有几个明确的、具体的选项时，用 switch 最方便。它就像自动售货机：按 A1 出可乐，按 A2 出雪碧，按 B1 出薯片。\n\n\n基本语法\n\n    switch(选择的值,\n      \"选项1\" = 结果1,\n      \"选项2\" = 结果2,\n      \"选项3\" = 结果3,\n      默认结果 # 如果都不匹配，执行这个\n    )\n👉 根据“选项”返回不同结果（类似菜单）\n\n\n\nCode\nx &lt;- \"a\"\n\nswitch(x,\n  a = \"option 1\",\n  b = \"option 2\",\n  c = \"option 3\",\n  stop(\"Invalid value\")\n)\n\n\n[1] \"option 1\"\n\n\n👉 stop() 就像是在代码里拉下紧急刹车。\n当 R 运行到 stop() 这行代码时，它会立刻停止运行，并且把括号里的文字作为红色报错信息打印在控制台上，提醒你出了什么问题。 如果不加 stop()，当用户输入了错误的选项时，switch 会悄悄返回一个 NULL（空值），代码不会报错，会继续往下跑。但这可能是一个隐患，因为后面的代码如果用到这个结果，遇到 NULL 可能会算出莫名其妙的数据，而且很难排查原因。\n用了 stop()，就是“早发现，早解决”。遇到不对劲的情况，立刻大声报错停下来，防止错误的数据悄悄流传下去。\nx &lt;- \"b\"\nswitch(x,\n  a = \"苹果\",\n  b = \"香蕉\",\n  c = \"橘子\",\n  stop(\"没有这个选项哦！\") # 如果输入的不是a/b/c，就会报错提示\n)\n# 结果会返回 \"香蕉\"\nswitch 主要用于“字符精确匹配”，不适合数值大小比较！比如：判断 score &gt;= 90 是A等，这种范围比较不能用switch，只能用 if / else if。 switch 只能做：x 是 “a” 就给A，是 “b” 就给B 这种一对一的死匹配。",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#循环for",
     "href": "lecture8.html#循环for",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.6 循环（for）",
-    "text": "9.6 循环（for）\n为什么需要循环？\n当你需要：\n重复做同一件事\n例如：\n\n计算多个均值\n\n多次模拟\n\n批量处理数据\n\n\n\n基本语法\n\nfor (i in 序列) {\n  执行内容\n}\n\n\n\nCode\nfor (i in 1:3) {\n  print(i)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\n\n\n控制循环\n\n\n\nCode\nfor (i in 1:10) {\n  \n  if (i &lt; 3) next   # 跳过本次\n  \n  print(i)\n  \n  if (i &gt;= 5) break # 终止循环\n}\n\n\n[1] 3\n[1] 4\n[1] 5\n\n\n\n\n两个关键命令\n\n\n\n\n语句\n作用\n\n\n\n\nnext\n跳过本次循环\n\n\nbreak\n结束整个循环\n\n\n\n\nfor 循环的重要原则\n\n提前分配空间（非常重要）\n\n\n\nCode\nmeans &lt;- c(1, 50, 20)\n\nout &lt;- vector(\"list\", length(means))\n\nfor (i in seq_along(means)) {\n  out[[i]] &lt;- rnorm(10, means[[i]])\n}\n\n\n\n为什么？\n避免在循环中不断扩展对象（效率很低）\n\n推荐写法\nseq_along(x)\n比：\n1:length(x)\n更安全（避免长度为0时报错）",
+    "text": "9.6 循环（for）\n👉 当你需要明确知道要重复几次，或者要挨个处理一组数据时，就用 for 循环。\n就像老师点名：从1号同学开始，挨个念名字，直到念完最后一个同学。\n\n\n基本语法\n\nfor (变量 in 序列) {\n  # 重复执行的代码\n}\n例如：\n\n计算多个均值\n\n多次模拟\n\n批量处理数据\n\n\n\n\nCode\nfor (i in 1:3) {\n  print(i)\n}\n\n\n[1] 1\n[1] 2\n[1] 3\n\n\n\n\n\nCode\nnames &lt;- c(\"小明\", \"小红\", \"小华\")\n \nfor (name in names) {\n  print(paste(\"你好,\", name))\n}\n\n\n[1] \"你好, 小明\"\n[1] \"你好, 小红\"\n[1] \"你好, 小华\"\n\n\nCode\n# 结果：\n# [1] \"你好, 小明\"\n# [1] \"你好, 小红\"\n# [1] \"你好, 小华\"\n\n\n\n控制循环\n\n\n\nCode\nfor (i in 1:10) {\n  \n  if (i &lt; 3) next   # 跳过本次\n  \n  print(i)\n  \n  if (i &gt;= 5) break # 终止循环\n}\n\n\n[1] 3\n[1] 4\n[1] 5\n\n\n\n\n两个关键命令\n\n\n\n\n语句\n作用\n\n\n\n\nnext\n跳过本次循环\n\n\nbreak\n结束整个循环\n\n\n\n\nfor 循环的重要原则\n\n提前分配空间（非常重要） ⚠️ for 循环最重要的一条规矩：提前分配空间！很多新手写循环时，喜欢让结果一点点“长”出来，这在 R 里是大忌，会非常慢！\n\nresults &lt;- c() # 空盒子\nfor (i in 1:10000) {\n  # 每次都要把新结果贴在后面，R要在内存里不断搬家，越来越慢\n  results &lt;- c(results, i * 2) \n}\n# 先准备好一个长度为10000的空盒子（数值型）\nresults &lt;- vector(\"numeric\", length = 10000)\nfor (i in 1:10000) {\n  # 每次只要把结果放进对应的位置即可，非常快\n  results[i] &lt;- i * 2 \n}\n\n为什么？\n避免在循环中不断扩展对象（效率很低）\n\n推荐写法\nseq_along(x)\nx &lt;- c() # 即使向量是空的\nfor (i in seq_along(x)) { # seq_along(c()) 是空的，循环直接不执行，安全！\n  print(x[i])\n}\n比：\n1:length(x)\n更安全（避免长度为0时报错）\nx &lt;- c() # 假设向量是空的，长度为0\nfor (i in 1:length(x)) { # 1:0 会变成 c(1, 0)，循环会倒着跑两次，大错特错！\n  print(x[i])\n}",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#while-与-repeat",
     "href": "lecture8.html#while-与-repeat",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.7 while 与 repeat",
     "text": "9.7 while 与 repeat\n\nwhile 循环\n\nwhile (condition) {\n  执行内容\n}\n示例：\n\n\nCode\ni &lt;- 0\n\nwhile (i &lt; 5) {\n  print(\"I'm happy\")\n  i &lt;- i + 1\n}\n\n\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n[1] \"I'm happy\"\n\n\n\n\nrepeat 循环\n\nrepeat {\n  执行内容\n  if (条件) break\n}\n示例：\n\n\nCode\ni &lt;- 0\n\nrepeat {\n  print(\"Hi\")\n  i &lt;- i + 1\n  \n  if (i &gt; 4) break\n}\n\n\n[1] \"Hi\"\n[1] \"Hi\"\n[1] \"Hi\"\n[1] \"Hi\"\n[1] \"Hi\"\n\n\n\n\n9.7.1 区别总结\n\n\n\n类型\n特点\n\n\n\n\nwhile\n条件控制\n\n\nrepeat\n无限循环 + break 退出",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#什么时候用循环什么时候不用",
     "href": "lecture8.html#什么时候用循环什么时候不用",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.8 什么时候用循环？什么时候不用？",
     "text": "9.8 什么时候用循环？什么时候不用？\n👉 很重要的一点：\nR 更推荐“向量化”，而不是循环\n例如：\n\n\nCode\n# 不推荐\nout &lt;- c()\nfor (i in 1:10) {\n  out[i] &lt;- i^2\n}\n\n# 推荐\n(1:10)^2\n\n\n [1]   1   4   9  16  25  36  49  64  81 100",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#本章总结",
     "href": "lecture8.html#本章总结",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.9 本章总结",
-    "text": "9.9 本章总结\n\n控制流用于控制代码执行逻辑\n\nif 适用于单个条件判断\n\nifelse 适用于向量\n\ncase_when 适用于多条件判断\n\nswitch 用于选项匹配\n\nfor 用于重复执行\n\nwhile 和 repeat 用于条件循环\n\n尽量使用向量化替代循环",
+    "text": "9.9 本章总结\n\n控制流用于控制代码执行逻辑\n\nif 适用于单个条件判断\n\nifelse 适用于向量\n\nswitch 用于选项匹配\n\nfor 用于重复执行\n\nwhile 和 repeat 用于条件循环\n\n尽量使用向量化替代循环",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
     "objectID": "lecture8.html#课堂思考",
     "href": "lecture8.html#课堂思考",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.10 课堂思考",
     "text": "9.10 课堂思考\n\n为什么 if 不能处理向量？\n\n为什么 R 不推荐大量使用 for 循环？",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   },
   {
@@ -1442,11 +1442,21 @@
   {
     "objectID": "lecture8.html#练习成绩等级判断if-else",
     "href": "lecture8.html#练习成绩等级判断if-else",
-    "title": "R控制流练习题（基础）",
+    "title": "9  R中的控制流",
     "section": "9.11 练习：成绩等级判断（if / else）",
-    "text": "9.11 练习：成绩等级判断（if / else）\n题目描述\n给定一个变量 score，请编写 R 代码实现成绩等级划分：\n\nscore ≥ 90 ：A\n\n80 ≤ score &lt; 90 ：B\n\n60 ≤ score &lt; 80 ：C\n\nscore &lt; 60 ：F\n\n要求\n\n使用 if / else if / else\n输入一个 score 值并输出对应等级\n\n示例数据\nscore &lt;- 85",
+    "text": "9.11 练习：成绩等级判断（if / else）\n\n9.11.1 if 训练\n给定一个变量 score，请编写 R 代码实现成绩等级划分：\n\nscore ≥ 90 ：A\n\n80 ≤ score &lt; 90 ：B\n\n60 ≤ score &lt; 80 ：C\n\nscore &lt; 60 ：F\n\n要求\n\n使用 if / else if / else\n输入一个 score 值并输出对应等级\n\n示例数据\nscore &lt;- 85\n\n\n\n9.11.2 switch 训练\n给定一个操作指令 action 和两个数字 a、b，请使用 switch 实现一个简单的计算器：\n\n如果指令是 \"add\"，就执行加法 a + b\n如果指令是 \"subtract\"，就执行减法 a - b\n如果指令是 \"multiply\"，就执行乘法 a * b\n如果指令是 \"divide\"，就执行除法 a / b\n如果输入了其他乱七八糟的指令，使用 stop(\"不支持该操作！\") 报错停止\n\n\n\n\n9.11.3 for循环 训练\n请使用 for 循环，计算从 1 加到 100 的总和。",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R控制流练习题（基础）</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8.html#当你有几个明确的具体的选项时用-switch-最方便它就像自动售货机按-a1-出可乐按-a2-出雪碧按-b1-出薯片",
+    "href": "lecture8.html#当你有几个明确的具体的选项时用-switch-最方便它就像自动售货机按-a1-出可乐按-a2-出雪碧按-b1-出薯片",
+    "title": "9  R中的控制流",
+    "section": "9.6 👉 当你有几个明确的、具体的选项时，用 switch 最方便。它就像自动售货机：按 A1 出可乐，按 A2 出雪碧，按 B1 出薯片。",
+    "text": "9.6 👉 当你有几个明确的、具体的选项时，用 switch 最方便。它就像自动售货机：按 A1 出可乐，按 A2 出雪碧，按 B1 出薯片。\n\n基本语法\n\n    switch(选择的值,\n      \"选项1\" = 结果1,\n      \"选项2\" = 结果2,\n      \"选项3\" = 结果3,\n      默认结果 # 如果都不匹配，执行这个\n    )\n👉 根据“选项”返回不同结果（类似菜单）\n\n\n\nCode\nx &lt;- \"a\"\n\nswitch(x,\n  a = \"option 1\",\n  b = \"option 2\",\n  c = \"option 3\",\n  stop(\"Invalid value\")\n)\n\n\n[1] \"option 1\"\n\n\n👉 stop() 就像是在代码里拉下紧急刹车。\n当 R 运行到 stop() 这行代码时，它会立刻停止运行，并且把括号里的文字作为红色报错信息打印在控制台上，提醒你出了什么问题。 如果不加 stop()，当用户输入了错误的选项时，switch 会悄悄返回一个 NULL（空值），代码不会报错，会继续往下跑。但这可能是一个隐患，因为后面的代码如果用到这个结果，遇到 NULL 可能会算出莫名其妙的数据，而且很难排查原因。\n用了 stop()，就是“早发现，早解决”。遇到不对劲的情况，立刻大声报错停下来，防止错误的数据悄悄流传下去。\nx &lt;- \"b\"\nswitch(x,\n  a = \"苹果\",\n  b = \"香蕉\",\n  c = \"橘子\",\n  stop(\"没有这个选项哦！\") # 如果输入的不是a/b/c，就会报错提示\n)\n# 结果会返回 \"香蕉\"\nswitch 主要用于“字符精确匹配”，不适合数值大小比较！比如：判断 score &gt;= 90 是A等，这种范围比较不能用switch，只能用 if / else if。 switch 只能做：x 是 “a” 就给A，是 “b” 就给B 这种一对一的死匹配。",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R中的控制流</span>"
     ]
   }
 ]

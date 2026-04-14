@@ -6,3 +6,5 @@ git push -f origin master
 
 
 git remote add origin https://github.com/Lidong-Huang/r-programming-book.git
+
+https://github.com/Lidong-Huang/thesis_format_check.git
