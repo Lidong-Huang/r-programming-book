@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; 第九课 自定义函数 – R 编程基础讲义（黄利东）</title>
+<title>10&nbsp; R中的函数 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture9.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture9.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R中的函数</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R与RStudio的下载与安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">综合练习：数据框与列表操作</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture9.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R中的函数</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,18 +246,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r中函数的组成" id="toc-r中函数的组成" class="nav-link active" data-scroll-target="#r中函数的组成"><span class="header-section-number">11</span> <font color="#00CCFF;font" size="28px;"> <strong>R中函数的组成</strong></font></a></li>
-  <li><a href="#r创建函数的规则" id="toc-r创建函数的规则" class="nav-link" data-scroll-target="#r创建函数的规则"><span class="header-section-number">12</span> <font color="#00CCFF;font" size="28px;"> <strong>R创建函数的规则</strong></font></a></li>
-  <li><a href="#匿名函数" id="toc-匿名函数" class="nav-link" data-scroll-target="#匿名函数"><span class="header-section-number">13</span> <font color="#00CCFF;font" size="28px;"> <strong>匿名函数</strong></font></a></li>
-  <li><a href="#r中的原函数" id="toc-r中的原函数" class="nav-link" data-scroll-target="#r中的原函数"><span class="header-section-number">14</span> <font color="#00CCFF;font" size="28px;"> <strong>R中的原函数</strong></font></a></li>
-  <li><a href="#错误的处理办法" id="toc-错误的处理办法" class="nav-link" data-scroll-target="#错误的处理办法"><span class="header-section-number">15</span> <font color="#00CCFF;font" size="28px;"> <strong>错误的处理办法</strong></font></a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">15.1</span> </a></li>
-  </ul></li>
-  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">16</span> <font color="#00CCFF;font" size="28px;"> <strong>HOMEWORK</strong></font></a>
-  <ul class="collapse">
-  <li><a href="#管道函数" id="toc-管道函数" class="nav-link" data-scroll-target="#管道函数"><span class="header-section-number">16.1</span> <font color="#00CCFF;font" size="28px;"> <strong>管道函数</strong></font></a></li>
-  </ul></li>
+  <li><a href="#本章学习目标" id="toc-本章学习目标" class="nav-link active" data-scroll-target="#本章学习目标"><span class="header-section-number">10.1</span> 本章学习目标</a></li>
+  <li><a href="#什么是函数" id="toc-什么是函数" class="nav-link" data-scroll-target="#什么是函数"><span class="header-section-number">10.2</span> 什么是函数？</a></li>
+  <li><a href="#为什么要写函数" id="toc-为什么要写函数" class="nav-link" data-scroll-target="#为什么要写函数"><span class="header-section-number">10.3</span> 为什么要写函数？</a></li>
+  <li><a href="#函数的三个组成部分" id="toc-函数的三个组成部分" class="nav-link" data-scroll-target="#函数的三个组成部分"><span class="header-section-number">10.4</span> 函数的三个组成部分</a></li>
+  <li><a href="#第一个函数从最简单的开始" id="toc-第一个函数从最简单的开始" class="nav-link" data-scroll-target="#第一个函数从最简单的开始"><span class="header-section-number">10.5</span> 第一个函数：从最简单的开始</a></li>
+  <li><a href="#练习-1最基本的函数" id="toc-练习-1最基本的函数" class="nav-link" data-scroll-target="#练习-1最基本的函数"><span class="header-section-number">10.6</span> 练习 1：最基本的函数</a></li>
+  <li><a href="#参数无参数有参数默认值" id="toc-参数无参数有参数默认值" class="nav-link" data-scroll-target="#参数无参数有参数默认值"><span class="header-section-number">10.7</span> 参数：无参数、有参数、默认值</a></li>
+  <li><a href="#参数二按位置-vs-按名称" id="toc-参数二按位置-vs-按名称" class="nav-link" data-scroll-target="#参数二按位置-vs-按名称"><span class="header-section-number">10.8</span> 参数（二）：按位置 vs 按名称</a></li>
+  <li><a href="#练习2参数的使用" id="toc-练习2参数的使用" class="nav-link" data-scroll-target="#练习2参数的使用"><span class="header-section-number">10.9</span> 练习2：参数的使用</a></li>
+  <li><a href="#返回值一两种返回方式" id="toc-返回值一两种返回方式" class="nav-link" data-scroll-target="#返回值一两种返回方式"><span class="header-section-number">10.10</span> 返回值（一）：两种返回方式</a></li>
+  <li><a href="#返回值二返回多个值" id="toc-返回值二返回多个值" class="nav-link" data-scroll-target="#返回值二返回多个值"><span class="header-section-number">10.11</span> 返回值（二）：返回多个值</a></li>
+  <li><a href="#练习-3返回值" id="toc-练习-3返回值" class="nav-link" data-scroll-target="#练习-3返回值"><span class="header-section-number">10.12</span> 练习 3：返回值</a></li>
+  <li><a href="#错误处理" id="toc-错误处理" class="nav-link" data-scroll-target="#错误处理"><span class="header-section-number">10.13</span> 错误处理</a></li>
+  <li><a href="#练习-4错误处理" id="toc-练习-4错误处理" class="nav-link" data-scroll-target="#练习-4错误处理"><span class="header-section-number">10.14</span> 练习 4：错误处理</a></li>
+  <li><a href="#原函数primitive-functions" id="toc-原函数primitive-functions" class="nav-link" data-scroll-target="#原函数primitive-functions"><span class="header-section-number">10.15</span> 原函数（Primitive Functions）</a></li>
+  <li><a href="#匿名函数" id="toc-匿名函数" class="nav-link" data-scroll-target="#匿名函数"><span class="header-section-number">10.16</span> 匿名函数</a></li>
+  <li><a href="#常见错误总结" id="toc-常见错误总结" class="nav-link" data-scroll-target="#常见错误总结"><span class="header-section-number">10.17</span> 常见错误总结</a></li>
+  <li><a href="#本章总结" id="toc-本章总结" class="nav-link" data-scroll-target="#本章总结"><span class="header-section-number">10.18</span> 本章总结</a></li>
   </ul>
 </nav>
     </div>
@@ -266,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R中的函数</span></h1>
 </div>
 
 
@@ -283,173 +289,651 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="r中函数的组成" class="level1 nextsteps" data-transition="zoom" data-number="11">
-<h1 class="nextsteps" data-transition="zoom" data-number="11"><span class="header-section-number">11</span> <font color="#00CCFF;font" size="28px;"> <strong>R中函数的组成</strong></font></h1>
-<style>
-.nextsteps {
-  color: #fff;
-  background-color: #159957;
-  background-image: linear-gradient(90deg, #A100FFFF 0%, #71C4FFFF 100%);
-  padding: 1.5rem 2rem;
-}  
-</style>
+<section id="本章学习目标" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="本章学习目标"><span class="header-section-number">10.1</span> 本章学习目标</h2>
+<p>通过本章学习，你将能够：</p>
 <ul>
-<li><p>formals() 即函数的参数，决定怎么调用函数</p></li>
-<li><p>body() 即函数体，内部的代码</p></li>
-<li><p>environment() 即函数中数据对应的范围</p></li>
+<li>理解什么是函数，为什么要写函数</li>
+<li>掌握 R 函数的三个组成部分</li>
+<li>学会定义带有不同参数类型的函数</li>
+<li>理解返回值的工作方式</li>
+<li>知道如何处理函数中的错误</li>
+<li>能够独立编写解决实际问题的函数</li>
 </ul>
-<p><font color="#FF8F56;font" size="8px;"></font></p><font color="#FF8F56;font" size="8px;">
+<hr>
+</section>
+<section id="什么是函数" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="什么是函数"><span class="header-section-number">10.2</span> 什么是函数？</h2>
+<p>你已经用过很多 R 自带的函数：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>f02 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">+</span> y</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">formals</span>(f02)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(f02)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(f02)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.02765</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 55</code></pre>
+</div>
+</div>
+<p>👉 <code>mean</code>、<code>sd</code>、<code>sum</code> 都是 R 已经帮你写好的函数。你只需要<strong>调用</strong>它们。</p>
+<p>但是，如果 R 没有你需要的函数呢？比如你想算”身高的 BMI 指数”，R 没有 <code>calc_bmi()</code> 这个函数。</p>
+<p>👉 这时你就需要<strong>自己写一个函数</strong>。</p>
+<hr>
+</section>
+<section id="为什么要写函数" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="为什么要写函数"><span class="header-section-number">10.3</span> 为什么要写函数？</h2>
+<p>假设你有三个班级的成绩数据，需要分别计算平均分：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 不写函数：重复劳动</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>class1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">92</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(class1); <span class="fu">sd</span>(class1); <span class="fu">median</span>(class1)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>class2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">88</span>, <span class="dv">82</span>, <span class="dv">91</span>, <span class="dv">79</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(class2); <span class="fu">sd</span>(class2); <span class="fu">median</span>(class2)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>class3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">84</span>, <span class="dv">76</span>, <span class="dv">95</span>, <span class="dv">81</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(class3); <span class="fu">sd</span>(class3); <span class="fu">median</span>(class3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>每次都要把 <code>mean()</code>、<code>sd()</code>、<code>median()</code> 写一遍，很容易漏掉或写错。</p>
+<hr>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 写函数：一次定义，反复使用</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>describe <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x), <span class="at">median =</span> <span class="fu">median</span>(x))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(class1)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(class2)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(class3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>👉 <strong>函数的本质</strong>：把一段可重复使用的代码封装起来，取一个名字。之后每次需要这段逻辑时，<strong>调用函数名即可</strong>，不用再重写代码。</p>
+<hr>
+</section>
+<section id="函数的三个组成部分" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="函数的三个组成部分"><span class="header-section-number">10.4</span> 函数的三个组成部分</h2>
+<p>R 用 <strong><code>function</code></strong> 关键字创建函数。一个函数由三部分组成：</p>
+<pre><code>函数名 &lt;- function(参数列表) {
+  函数体
+}</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>部分</th>
+<th>写在</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>参数列表</td>
+<td>小括号 <code>( )</code> 里</td>
+<td>函数的”输入”，告诉函数要处理什么数据</td>
+</tr>
+<tr class="even">
+<td>函数体</td>
+<td>大括号 <code>{ }</code> 里</td>
+<td>函数的”计算过程”，具体怎么处理数据</td>
+</tr>
+<tr class="odd">
+<td>返回值</td>
+<td>函数体的最后一行，或 <code>return()</code></td>
+<td>函数的”输出”，把计算结果还回去</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>👉 可以用 <code>formals()</code>、<code>body()</code>、<code>environment()</code> 来查看一个函数的三个组成部分：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>f02 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">formals</span>(f02)      <span class="co"># 查看参数</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$x
+
+
+$y</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(f02)         <span class="co"># 查看函数体</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+    x + y
+}</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(f02)  <span class="co"># 查看函数所在环境</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="第一个函数从最简单的开始" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="第一个函数从最简单的开始"><span class="header-section-number">10.5</span> 第一个函数：从最简单的开始</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 写一个求平方的函数</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>square <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 调用函数</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">5</span>)    <span class="co"># 25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">10</span>)   <span class="co"># 100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>👉 整个流程：</p>
+<ol type="1">
+<li><code>square</code> ← 给函数取名字</li>
+<li><code>function(x)</code> ← 告诉 R：这个函数接受一个参数 <code>x</code></li>
+<li><code>{ x^2 }</code> ← 函数体：计算 x 的平方</li>
+<li><code>square(5)</code> ← 调用函数时，5 被赋值给 x，然后计算 5^2，返回 25</li>
+</ol>
+<hr>
+</section>
+<section id="练习-1最基本的函数" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="练习-1最基本的函数"><span class="header-section-number">10.6</span> 练习 1：最基本的函数</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>写一个函数 <span class="st">`</span><span class="at">cube()</span><span class="st">`</span>，输入一个数，返回它的立方（三次方）。</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>写一个函数 <span class="st">`</span><span class="at">double_it()</span><span class="st">`</span>，输入一个数，返回它的两倍。</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>参考答案</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 立方</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#cube(3)   # 27</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#cube(5)   # 125</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 加倍</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>double_it <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">*</span> x</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co">#double_it(7)   # 14</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#double_it(10)  # 20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</font><p><font color="#FF8F56;font" size="8px;"></font></p>
+<hr>
 </section>
-<section id="r创建函数的规则" class="level1" data-background-transition="fade" data-transition-speed="fast" style="color:black;" data-number="12">
-<h1 data-background-transition="fade" data-transition-speed="fast" style="color:black;" data-number="12"><span class="header-section-number">12</span> <font color="#00CCFF;font" size="28px;"> <strong>R创建函数的规则</strong></font></h1>
-<p>R 创建函数的规则非常简单，利用关键字<strong>function</strong>创建函数对象，然后给对象一个名字即可</p>
+<section id="参数无参数有参数默认值" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="参数无参数有参数默认值"><span class="header-section-number">10.7</span> 参数：无参数、有参数、默认值</h2>
+<ul>
+<li>无参数</li>
+</ul>
+<p>最简单的函数，不需要任何输入，每次执行一样的事情：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f01 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sin</span>(<span class="dv">1</span> <span class="sc">/</span> x <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>say_hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hello, World!"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hello</span>()   <span class="co"># 注意：即使没有参数，括号也必须写</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hello, World!"</code></pre>
+</div>
+</div>
+<p>👉 <strong>忘记写 <code>()</code> 是新手最常见的错误之一</strong>。<code>say_hello</code>（不带括号）返回的是函数本身，不是执行结果。</p>
+<hr>
+<ul>
+<li>有参数</li>
+</ul>
+<p>参数就是函数的”输入”。不同输入 → 不同输出：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>greet <span class="ot">&lt;-</span> <span class="cf">function</span>(name) {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"你好，"</span>, name, <span class="st">"！"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">greet</span>(<span class="st">"小明"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "你好，小明！"</code></pre>
+</div>
+</div>
+<hr>
+<ul>
+<li>带默认值的参数</li>
+</ul>
+<p>给参数设定默认值：调用时如果省略该参数，就自动使用默认值。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">y =</span> <span class="dv">10</span>) {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">5</span>)       <span class="co"># 15（y 自动用默认值 10）</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">5</span>, <span class="dv">20</span>)   <span class="co"># 25（y 被指定为 20，覆盖了默认值）</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+</div>
+<p>👉 有默认值的参数是可选的；没有默认值的参数是<strong>必须提供的</strong>。</p>
+<hr>
+</section>
+<section id="参数二按位置-vs-按名称" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="参数二按位置-vs-按名称"><span class="header-section-number">10.8</span> 参数（二）：按位置 vs 按名称</h2>
+<p>调用函数时有两种传参方式：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>divide <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">/</span> y</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 按位置：第 1 个参数给 x，第 2 个给 y</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">divide</span>(<span class="dv">10</span>, <span class="dv">2</span>)   <span class="co"># 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>👉 <strong>常见陷阱</strong>：按位置传参时，顺序搞反了结果完全不对：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">divide</span>(<span class="dv">2</span>, <span class="dv">10</span>)   <span class="co"># 0.2 —— 不是 5！因为 x=2, y=10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2</code></pre>
+</div>
+</div>
+<p>👉 <strong>安全建议</strong>：不确定参数顺序时，直接写参数名。</p>
+<hr>
+</section>
+<section id="练习2参数的使用" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="练习2参数的使用"><span class="header-section-number">10.9</span> 练习2：参数的使用</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>写一个 <span class="st">`</span><span class="at">power()</span><span class="st">`</span> 函数，计算 <span class="st">`</span><span class="at">x</span><span class="st">`</span> 的 <span class="st">`</span><span class="at">n</span><span class="st">`</span> 次方。<span class="st">`</span><span class="at">n</span><span class="st">`</span> 的默认值是 <span class="dv">2</span>（默认求平方）</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>写一个 <span class="st">`</span><span class="at">calc_bmi()</span><span class="st">`</span> 函数，输入身高（米）和体重（千克），返回 BMI。公式：BMI <span class="ot">=</span> 体重 <span class="sc">/</span> 身高的平方。</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>参考答案</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2-1 幂函数（n 默认 2）</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">2</span>) {</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">^</span>n</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#power(5)       # 25（默认平方）</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#power(5, 3)    # </span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2-2 BMI 计算</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>calc_bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(weight, height) {</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  weight <span class="sc">/</span> (height<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">#calc_bmi(70, 1.75)   # 22.86</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
+<hr>
 </section>
-<section id="匿名函数" class="level1" data-background-transition="convex" data-transition-speed="fast" style="color:black;" data-number="13">
-<h1 data-background-transition="convex" data-transition-speed="fast" style="color:black;" data-number="13"><span class="header-section-number">13</span> <font color="#00CCFF;font" size="28px;"> <strong>匿名函数</strong></font></h1>
-<p>有时候在调用函数时并不需要给函数名字</p>
+<section id="返回值一两种返回方式" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="返回值一两种返回方式"><span class="header-section-number">10.10</span> 返回值（一）：两种返回方式</h2>
+<p>R 函数有两种方式返回结果：</p>
+<ul>
+<li>隐式返回（最常用）</li>
+</ul>
+<p>不写 <code>return()</code>，函数自动把<strong>最后一个表达式</strong>的值返回：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">sin</span>(x) <span class="sc">^</span> <span class="dv">2</span>, <span class="dv">0</span>, pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y       <span class="co"># 最后一个表达式，自动返回它的值</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">3</span>, <span class="dv">7</span>)     <span class="co"># 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<ul>
+<li>显式返回</li>
+</ul>
+<p>用 <code>return()</code> 明确指定返回什么。一旦执行到 <code>return()</code>，函数立即退出：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>check <span class="ot">&lt;-</span> <span class="cf">function</span>(score) {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) {</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">"及格"</span>)   </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">"不及格"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">75</span>)   <span class="co"># "及格"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "及格"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check</span>(<span class="dv">55</span>)   <span class="co"># "不及格"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "不及格"</code></pre>
+</div>
+</div>
+<hr>
+<p>👉 <strong><code>return()</code> 的两个作用</strong>：</p>
+<ol type="1">
+<li>返回值</li>
+<li>立即终止函数（后面的代码都不会运行）</li>
+</ol>
+<p>👉 什么时候必须用 <code>return()</code>？</p>
+<ul>
+<li>需要在函数中间就退出（条件判断后提前返回）</li>
+<li>不需要提前退出时，<strong>放最后一行</strong>就更简洁</li>
+</ul>
+<hr>
+</section>
+<section id="返回值二返回多个值" class="level2" data-number="10.11">
+<h2 data-number="10.11" class="anchored" data-anchor-id="返回值二返回多个值"><span class="header-section-number">10.11</span> 返回值（二）：返回多个值</h2>
+<p>R 函数一次只能返回<strong>一个东西</strong>。如果要返回多个结果，用 <strong><code>list()</code></strong> 把它们打包在一起：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>describe <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n      =</span> <span class="fu">length</span>(x),</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean   =</span> <span class="fu">mean</span>(x),</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span> <span class="fu">median</span>(x),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd     =</span> <span class="fu">sd</span>(x)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">describe</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>))</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>result         <span class="co"># 查看全部</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$n
+[1] 10
+
+$mean
+[1] 5.5
+
+$median
+[1] 5.5
+
+$sd
+[1] 3.02765</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>mean    <span class="co"># 单独取出均值</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>sd      <span class="co"># 单独取出标准差</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.02765</code></pre>
+</div>
+</div>
+<p>👉 <code>$</code> 符号用于从 list 中取出单个元素。</p>
+<hr>
+</section>
+<section id="练习-3返回值" class="level2" data-number="10.12">
+<h2 data-number="10.12" class="anchored" data-anchor-id="练习-3返回值"><span class="header-section-number">10.12</span> 练习 3：返回值</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>写一个 <span class="st">`</span><span class="at">is_even()</span><span class="st">`</span> 函数，判断一个数是不是偶数，返回 <span class="st">`</span><span class="at">TRUE</span><span class="st">`</span> 或 <span class="st">`</span><span class="at">FALSE</span><span class="st">`</span>。提示：用 <span class="st">`</span><span class="at">%%</span><span class="st">`</span> 取余数。</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>参考答案</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3-1 判断偶数</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>is_even <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is_even</span>(<span class="dv">4</span>)     <span class="co"># TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_even</span>(<span class="dv">7</span>)     <span class="co"># FALSE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_even</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)  <span class="co"># 对向量也有效</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="错误处理" class="level2" data-number="10.13">
+<h2 data-number="10.13" class="anchored" data-anchor-id="错误处理"><span class="header-section-number">10.13</span> 错误处理</h2>
+<p>当用户传入了不合法的参数时，函数应该报错提醒，而不是悄悄算出错误结果。</p>
+<ul>
+<li>stop()：报告错误并停止</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>safe_log <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) <span class="fu">stop</span>(<span class="st">"x 必须是数值类型"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;=</span> <span class="dv">0</span>)         <span class="fu">stop</span>(<span class="st">"x 必须是正数"</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(x)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">safe_log</span>(<span class="dv">10</span>)    <span class="co"># 正常计算</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.302585</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># safe_log(-5)  # 报错：x 必须是正数</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># safe_log("a") # 报错：x 必须是数值类型</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>👉 <code>stop()</code> 就像<strong>紧急刹车</strong>。一旦执行到它，函数立刻停止，并打印红色报错信息。这样可以”早发现、早解决”，防止错误数据悄悄传播下去。</p>
+<hr>
+</section>
+<section id="练习-4错误处理" class="level2" data-number="10.14">
+<h2 data-number="10.14" class="anchored" data-anchor-id="练习-4错误处理"><span class="header-section-number">10.14</span> 练习 4：错误处理</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>写一个 <span class="st">`</span><span class="at">safe_sqrt()</span><span class="st">`</span> 函数，如果输入是负数，用 <span class="st">`</span><span class="at">stop()</span><span class="st">`</span> 报错：<span class="st">"不能对负数开平方根"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<ul>
+<li>参考答案</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">#安全开根号</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>safe_sqrt <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">stop</span>(<span class="st">"不能对负数开平方根"</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(x)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="fu">safe_sqrt</span>(<span class="dv">9</span>)    <span class="co"># 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># safe_sqrt(-4) # 报错</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<hr>
+</section>
+<section id="原函数primitive-functions" class="level2" data-number="10.15">
+<h2 data-number="10.15" class="anchored" data-anchor-id="原函数primitive-functions"><span class="header-section-number">10.15</span> 原函数（Primitive Functions）</h2>
+<p>R 中有些函数是用 C 语言直接写的，运行速度非常快。可以用 <code>is.primitive()</code> 检查：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>sum                <span class="co"># 查看 sum 函数</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (..., na.rm = FALSE)  .Primitive("sum")</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.primitive</span>(sum)  <span class="co"># TRUE —— 底层 C 语言编写</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, ...) 
+UseMethod("mean")
+&lt;bytecode: 0x0000021c68b33038&gt;
+&lt;environment: namespace:base&gt;</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.primitive</span>(mean) <span class="co"># FALSE —— 用 R 语言编写</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>常见的原函数：<code>sum</code>、<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>c</code>、<code>[</code> 等。它们在 R 启动时就已经加载好了。</p>
+<hr>
+</section>
+<section id="匿名函数" class="level2" data-number="10.16">
+<h2 data-number="10.16" class="anchored" data-anchor-id="匿名函数"><span class="header-section-number">10.16</span> 匿名函数</h2>
+<p>不需要给函数取名字，可以直接在调用处定义。常用在 <code>integrate()</code>、<code>sapply()</code> 等函数中：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 不给函数取名，直接写在 integrate() 里面</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">sin</span>(x)<span class="sc">^</span><span class="dv">2</span>, <span class="dv">0</span>, pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>1.570796 with absolute error &lt; 1.7e-14</code></pre>
 </div>
 </div>
-</section>
-<section id="r中的原函数" class="level1" data-transition="slide" data-number="14">
-<h1 data-transition="slide" data-number="14"><span class="header-section-number">14</span> <font color="#00CCFF;font" size="28px;"> <strong>R中的原函数</strong></font></h1>
-<p>原函数(Primitive functions) 是用C语言编写的函数，可以用is.primitive()检查函数是否是 R 中的原函数</p>
+<p>等价于：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sum</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sin</span>(x)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f, <span class="dv">0</span>, pi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>function (..., na.rm = FALSE)  .Primitive("sum")</code></pre>
+<pre><code>1.570796 with absolute error &lt; 1.7e-14</code></pre>
 </div>
 </div>
+<p>👉 匿名函数适合<strong>只用一次</strong>的情况，没必要单独命名。</p>
+<hr>
 </section>
-<section id="错误的处理办法" class="level1" data-transition="none" data-number="15">
-<h1 data-transition="none" data-number="15"><span class="header-section-number">15</span> <font color="#00CCFF;font" size="28px;"> <strong>错误的处理办法</strong></font></h1>
+<section id="常见错误总结" class="level2" data-number="10.17">
+<h2 data-number="10.17" class="anchored" data-anchor-id="常见错误总结"><span class="header-section-number">10.17</span> 常见错误总结</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>错误</th>
+<th>原因</th>
+<th>正确做法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>调用时忘记写 <code>()</code></td>
+<td>只写了函数名</td>
+<td><code>say_hello()</code> 而不是 <code>say_hello</code></td>
+</tr>
+<tr class="even">
+<td>参数顺序搞反</td>
+<td>按位置传参时搞错对应关系</td>
+<td>用参数名：<code>divide(y=2, x=10)</code></td>
+</tr>
+<tr class="odd">
+<td>做了计算但没有返回</td>
+<td>结果不是最后一个表达式，也没用 <code>return()</code></td>
+<td>结果放最后一行，或用 <code>return(结果)</code></td>
+</tr>
+<tr class="even">
+<td>大括号不匹配</td>
+<td>少写或多写 <code>{</code> 或 <code>}</code></td>
+<td>RStudio 中按 <code>Ctrl + I</code> 自动对齐检查</td>
+</tr>
+<tr class="odd">
+<td>忘记函数只能返回一个值</td>
+<td>写了多个独立的值</td>
+<td>用 <code>list()</code> 打包：<code>list(a=1, b=2)</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="本章总结" class="level2" data-number="10.18">
+<h2 data-number="10.18" class="anchored" data-anchor-id="本章总结"><span class="header-section-number">10.18</span> 本章总结</h2>
 <ul>
-<li><p>报告错误并停止运行(stop)</p></li>
-<li><p>报告错误并继续运行(try)</p></li>
+<li><strong>定义函数</strong>：<code>函数名 &lt;- function(参数) { 函数体 }</code></li>
+<li><strong>参数</strong>：可以没有参数、有参数、设默认值；调用时可以按位置或按名称传参</li>
+<li><strong>返回值</strong>：最后一行自动隐式返回；需要提前退出时用 <code>return()</code>；多个值用 <code>list()</code> 打包</li>
+<li><strong>错误处理</strong>：<code>stop()</code> 报错并停止；<code>try()</code> 尝试执行不中断</li>
+<li><strong>匿名函数</strong>：只用一次时直接写 <code>function(x) { ... }</code>，不必取名</li>
+<li><strong>原函数</strong>：<code>sum</code>、<code>+</code> 等底层函数，运行速度快</li>
 </ul>
-<section id="section" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="section"><span class="header-section-number">15.1</span> </h2>
-<section>
-<pre><code data-trim="" data-noescape="">
-
-::: {.cell}
-
-```{.r .cell-code}
-f2 &lt;- function(x) {#求负对数运算
-  if(is.character(x)) stop("字符型不对数")
-  if(!is.numeric(x))  stop("非数字不对数")
-  if(x&lt;0)             stop("负数不对数")
-  -log(x)
-}
-
-f2(2L)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] -0.6931472
-```
+<p>👉 <strong>学函数的关键不是看懂，而是写熟。</strong> 每学一个知识点，自己打开 RStudio 动手写一遍。</p>
 
 
-:::
-
-```{.r .cell-code}
-# f2(NA)
-f3 &lt;- function(x) {#求负对数运算
-   -try(log(x))
-  print(paste("log 10=",log(10),sep = ""))
-}
-f3(-2)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] "log 10=2.30258509299405"
-```
-
-
-:::
-
-```{.r .cell-code}
-f3(2)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] "log 10=2.30258509299405"
-```
-
-
-:::
-:::
-
-</code></pre>
-</section>
-</section>
-</section>
-<section id="homework" class="level1" data-transition="zoom" data-number="16">
-<h1 data-transition="zoom" data-number="16"><span class="header-section-number">16</span> <font color="#00CCFF;font" size="28px;"> <strong>HOMEWORK</strong></font></h1>
-<p>请大家编写一个计算标准偏差的函数</p>
-<style>
-.bgc {
-  color: #fff;
-  background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-  padding: 1.5rem 2rem;
-}  
-</style>
-<section id="管道函数" class="level2 bgc" data-transition="fade-in slide-out" data-transition-speed="fast" data-number="16.1">
-<h2 class="bgc anchored" data-transition="fade-in slide-out" data-transition-speed="fast" data-number="16.1" data-anchor-id="管道函数"><span class="header-section-number">16.1</span> <font color="#00CCFF;font" size="28px;"> <strong>管道函数</strong></font></h2>
-<p>x %&gt;% f() is equivalent to f(x); x %&gt;% f(y) is equivalent to f(x, y)</p>
-<p><font color="#FF8F56;font" size="28px;"></font></p><font color="#FF8F56;font" size="28px;">
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">deviation</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">square</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</font><p><font color="#FF8F56;font" size="28px;"></font></p>
-
-
-</section>
 </section>
 
 </main> <!-- /main -->
