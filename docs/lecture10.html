@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; 第10次课—初级绘图函数plot – R 编程基础讲义（黄利东）</title>
+<title>11&nbsp; 第10讲：基础绘图 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture10.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10次课—初级绘图函数plot</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture10.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10讲：基础绘图</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R语言与RStudio的下载与安装</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R与RStudio的下载与安装</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">操作练习</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">综合练习：数据框与列表操作</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,13 +203,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R中的函数</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture10.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10次课—初级绘图函数plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10讲：基础绘图</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -246,24 +246,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#plot函数简单用法-generic-x-y-plotting" id="toc-plot函数简单用法-generic-x-y-plotting" class="nav-link active" data-scroll-target="#plot函数简单用法-generic-x-y-plotting"><span class="header-section-number">12</span> plot函数简单用法: Generic X-Y Plotting</a></li>
-  <li><a href="#一修改图形主体部分" id="toc-一修改图形主体部分" class="nav-link" data-scroll-target="#一修改图形主体部分"><span class="header-section-number">13</span> （一）修改图形主体部分</a></li>
-  <li><a href="#二修改图像元素大小" id="toc-二修改图像元素大小" class="nav-link" data-scroll-target="#二修改图像元素大小"><span class="header-section-number">14</span> （二）修改图像元素大小</a></li>
-  <li><a href="#三修改图形元素的形状" id="toc-三修改图形元素的形状" class="nav-link" data-scroll-target="#三修改图形元素的形状"><span class="header-section-number">15</span> （三）修改图形元素的形状</a></li>
-  <li><a href="#四修改图形元素的颜色" id="toc-四修改图形元素的颜色" class="nav-link" data-scroll-target="#四修改图形元素的颜色"><span class="header-section-number">16</span> （四）修改图形元素的颜色</a></li>
-  <li><a href="#五设置图形标题" id="toc-五设置图形标题" class="nav-link" data-scroll-target="#五设置图形标题"><span class="header-section-number">17</span> （五）设置图形标题</a></li>
-  <li><a href="#六修改文字大小" id="toc-六修改文字大小" class="nav-link" data-scroll-target="#六修改文字大小"><span class="header-section-number">18</span> （六）修改文字大小</a></li>
-  <li><a href="#七修改文字字体" id="toc-七修改文字字体" class="nav-link" data-scroll-target="#七修改文字字体"><span class="header-section-number">19</span> （七）修改文字字体</a></li>
-  <li><a href="#八添加标题和禁用标题" id="toc-八添加标题和禁用标题" class="nav-link" data-scroll-target="#八添加标题和禁用标题"><span class="header-section-number">20</span> （八）添加标题和禁用标题</a></li>
-  <li><a href="#九隐藏框架线及坐标轴" id="toc-九隐藏框架线及坐标轴" class="nav-link" data-scroll-target="#九隐藏框架线及坐标轴"><span class="header-section-number">21</span> （九）隐藏框架线及坐标轴</a></li>
-  <li><a href="#十设置坐标轴取值范围" id="toc-十设置坐标轴取值范围" class="nav-link" data-scroll-target="#十设置坐标轴取值范围"><span class="header-section-number">22</span> （十）设置坐标轴取值范围</a></li>
-  <li><a href="#十一修改图形整体尺寸大小" id="toc-十一修改图形整体尺寸大小" class="nav-link" data-scroll-target="#十一修改图形整体尺寸大小"><span class="header-section-number">23</span> （十一）修改图形整体尺寸大小</a></li>
-  <li><a href="#十二给图形添加参考线" id="toc-十二给图形添加参考线" class="nav-link" data-scroll-target="#十二给图形添加参考线"><span class="header-section-number">24</span> （十二）给图形添加参考线</a></li>
-  <li><a href="#十三添加文本" id="toc-十三添加文本" class="nav-link" data-scroll-target="#十三添加文本"><span class="header-section-number">25</span> （十三）添加文本</a></li>
-  <li><a href="#十四组合多个图形" id="toc-十四组合多个图形" class="nav-link" data-scroll-target="#十四组合多个图形"><span class="header-section-number">26</span> （十四）组合多个图形</a></li>
-  <li><a href="#十五精细调整各图形的比例" id="toc-十五精细调整各图形的比例" class="nav-link" data-scroll-target="#十五精细调整各图形的比例"><span class="header-section-number">27</span> （十五）精细调整各图形的比例</a></li>
-  <li><a href="#十六par中fig参数设置图形位置叠加图形" id="toc-十六par中fig参数设置图形位置叠加图形" class="nav-link" data-scroll-target="#十六par中fig参数设置图形位置叠加图形"><span class="header-section-number">28</span> （十六）par()中fig参数设置图形位置,叠加图形</a></li>
-  <li><a href="#十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制" id="toc-十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制" class="nav-link" data-scroll-target="#十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制"><span class="header-section-number">29</span> （十七）以鸢尾花数据集为例子，讲解最简单的线性模型和多图形绘制</a></li>
+  <li><a href="#学习目标" id="toc-学习目标" class="nav-link active" data-scroll-target="#学习目标"><span class="header-section-number">11.1</span> 学习目标</a></li>
+  <li><a href="#画图的常见步骤" id="toc-画图的常见步骤" class="nav-link" data-scroll-target="#画图的常见步骤"><span class="header-section-number">11.2</span> 画图的常见步骤</a></li>
+  <li><a href="#plot中最基础的两个参数x和y" id="toc-plot中最基础的两个参数x和y" class="nav-link" data-scroll-target="#plot中最基础的两个参数x和y"><span class="header-section-number">11.3</span> plot中最基础的两个参数：x和y</a></li>
+  <li><a href="#给图加说明mainxlabylabsub" id="toc-给图加说明mainxlabylabsub" class="nav-link" data-scroll-target="#给图加说明mainxlabylabsub"><span class="header-section-number">11.4</span> 给图加说明：main、xlab、ylab、sub</a></li>
+  <li><a href="#修改点的形状pch" id="toc-修改点的形状pch" class="nav-link" data-scroll-target="#修改点的形状pch"><span class="header-section-number">11.5</span> 修改点的形状：pch</a></li>
+  <li><a href="#修改点的大小cex" id="toc-修改点的大小cex" class="nav-link" data-scroll-target="#修改点的大小cex"><span class="header-section-number">11.6</span> 修改点的大小：cex</a></li>
+  <li><a href="#修改点的颜色col" id="toc-修改点的颜色col" class="nav-link" data-scroll-target="#修改点的颜色col"><span class="header-section-number">11.7</span> 修改点的颜色：col</a></li>
+  <li><a href="#可填充点col和bg分工" id="toc-可填充点col和bg分工" class="nav-link" data-scroll-target="#可填充点col和bg分工"><span class="header-section-number">11.8</span> 可填充点：col和bg分工</a></li>
+  <li><a href="#type画点还是画线" id="toc-type画点还是画线" class="nav-link" data-scroll-target="#type画点还是画线"><span class="header-section-number">11.9</span> type：画点还是画线</a></li>
+  <li><a href="#修改线条lty和lwd" id="toc-修改线条lty和lwd" class="nav-link" data-scroll-target="#修改线条lty和lwd"><span class="header-section-number">11.10</span> 修改线条：lty和lwd</a></li>
+  <li><a href="#修改坐标范围xlim和ylim" id="toc-修改坐标范围xlim和ylim" class="nav-link" data-scroll-target="#修改坐标范围xlim和ylim"><span class="header-section-number">11.11</span> 修改坐标范围：xlim和ylim</a></li>
+  <li><a href="#添加网格线grid" id="toc-添加网格线grid" class="nav-link" data-scroll-target="#添加网格线grid"><span class="header-section-number">11.12</span> 添加网格线：grid</a></li>
+  <li><a href="#添加参考线abline" id="toc-添加参考线abline" class="nav-link" data-scroll-target="#添加参考线abline"><span class="header-section-number">11.13</span> 添加参考线：abline</a></li>
+  <li><a href="#添加文字text" id="toc-添加文字text" class="nav-link" data-scroll-target="#添加文字text"><span class="header-section-number">11.14</span> 添加文字：text</a></li>
+  <li><a href="#添加图例legend" id="toc-添加图例legend" class="nav-link" data-scroll-target="#添加图例legend"><span class="header-section-number">11.15</span> 添加图例：legend</a></li>
+  <li><a href="#目前学过的plot参数" id="toc-目前学过的plot参数" class="nav-link" data-scroll-target="#目前学过的plot参数"><span class="header-section-number">11.16</span> 目前学过的plot参数</a></li>
+  <li><a href="#散点图" id="toc-散点图" class="nav-link" data-scroll-target="#散点图"><span class="header-section-number">11.17</span> 散点图</a></li>
+  <li><a href="#折线图" id="toc-折线图" class="nav-link" data-scroll-target="#折线图"><span class="header-section-number">11.18</span> 折线图</a></li>
+  <li><a href="#直方图" id="toc-直方图" class="nav-link" data-scroll-target="#直方图"><span class="header-section-number">11.19</span> 直方图</a></li>
+  <li><a href="#箱线图" id="toc-箱线图" class="nav-link" data-scroll-target="#箱线图"><span class="header-section-number">11.20</span> 箱线图</a></li>
+  <li><a href="#经典图五柱状图" id="toc-经典图五柱状图" class="nav-link" data-scroll-target="#经典图五柱状图"><span class="header-section-number">11.21</span> 经典图五：柱状图</a></li>
+  <li><a href="#plot的底层逻辑它会看数据类型" id="toc-plot的底层逻辑它会看数据类型" class="nav-link" data-scroll-target="#plot的底层逻辑它会看数据类型"><span class="header-section-number">11.22</span> plot的底层逻辑：它会看数据类型</a></li>
+  <li><a href="#配色原则" id="toc-配色原则" class="nav-link" data-scroll-target="#配色原则"><span class="header-section-number">11.23</span> 配色原则</a></li>
+  <li><a href="#多图排列一par" id="toc-多图排列一par" class="nav-link" data-scroll-target="#多图排列一par"><span class="header-section-number">11.24</span> 多图排列一：par</a></li>
+  <li><a href="#多图排列二layout" id="toc-多图排列二layout" class="nav-link" data-scroll-target="#多图排列二layout"><span class="header-section-number">11.25</span> 多图排列二：layout</a></li>
+  <li><a href="#保存图片" id="toc-保存图片" class="nav-link" data-scroll-target="#保存图片"><span class="header-section-number">11.26</span> 保存图片</a></li>
+  <li><a href="#练习题" id="toc-练习题" class="nav-link" data-scroll-target="#练习题"><span class="header-section-number">11.27</span> 练习题</a></li>
+  <li><a href="#小结" id="toc-小结" class="nav-link" data-scroll-target="#小结"><span class="header-section-number">11.28</span> 小结</a></li>
   </ul>
 </nav>
     </div>
@@ -272,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10次课—初级绘图函数plot</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10讲：基础绘图</span></h1>
 </div>
 
 
@@ -289,610 +299,2159 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="plot函数简单用法-generic-x-y-plotting" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> plot函数简单用法: Generic X-Y Plotting</h1>
-<p>以R语言自带的mtcars数据集为例</p>
+<section id="学习目标" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="学习目标"><span class="header-section-number">11.1</span> 学习目标</h2>
+<p>本章介绍基础 R 绘图方法，重点包括 <code>plot()</code> 的基本用法、图形元素修改、常见图形类型、多图布局和图片保存。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>顺序</th>
+<th>绘图内容</th>
+<th>代表函数或参数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>绘制基础图</td>
+<td><code>plot(x, y)</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>添加图形说明</td>
+<td><code>main</code>、<code>xlab</code>、<code>ylab</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>修改图中的点和线</td>
+<td><code>pch</code>、<code>cex</code>、<code>col</code>、<code>type</code>、<code>lty</code>、<code>lwd</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>修改坐标范围</td>
+<td><code>xlim</code>、<code>ylim</code></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>添加辅助元素</td>
+<td><code>grid()</code>、<code>abline()</code>、<code>text()</code>、<code>legend()</code></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>画常见统计图</td>
+<td>散点图、折线图、直方图、箱线图、柱状图</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>多图排列</td>
+<td><code>par()</code>、<code>layout()</code></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>保存图片</td>
+<td><code>png()</code>、<code>pdf()</code>、<code>dev.off()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="画图的常见步骤" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="画图的常见步骤"><span class="header-section-number">11.2</span> 画图的常见步骤</h2>
+<p>基础 R 画图通常可以分成五步：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>步骤</th>
+<th>做什么</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>第一步</td>
+<td>准备变量</td>
+<td><code>x &lt;- 1:6</code>，<code>y &lt;- c(2, 4, 3, 5, 7, 6)</code></td>
+</tr>
+<tr class="even">
+<td>第二步</td>
+<td>画基础图</td>
+<td><code>plot(x, y)</code></td>
+</tr>
+<tr class="odd">
+<td>第三步</td>
+<td>修改元素</td>
+<td>改标题、颜色、点形状、线宽</td>
+</tr>
+<tr class="even">
+<td>第四步</td>
+<td>添加元素</td>
+<td>加网格线、参考线、文字、图例</td>
+</tr>
+<tr class="odd">
+<td>第五步</td>
+<td>输出图片</td>
+<td>保存为 PNG 或 PDF</td>
+</tr>
+</tbody>
+</table>
+<p>示例变量如下。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt)<span class="co">#当只有一个参数时，索引与值</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture10_files/figure-html/plot1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars)<span class="co">#也就是所谓的图集</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot1-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lecture10_files/figure-html/simple-data-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p><code>x</code> 控制横轴位置，<code>y</code> 控制纵轴位置。</p>
 </section>
-<section id="一修改图形主体部分" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> （一）修改图形主体部分</h1>
-<p>修改类型</p>
-<p>增加一个type参数，即可修改图形的类型了</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="H:/上课材料/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/plot_type.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>图9-1：plot绘图类型</figcaption>
-</figure>
-</div>
+<section id="plot中最基础的两个参数x和y" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="plot中最基础的两个参数x和y"><span class="header-section-number">11.3</span> plot中最基础的两个参数：x和y</h2>
+<p><code>plot(x, y)</code> 中的 <code>x</code> 和 <code>y</code> 是最核心的两个参数。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x</code></td>
+<td>横轴变量</td>
+<td>第一个点的横坐标、第二个点的横坐标，依次排列</td>
+</tr>
+<tr class="even">
+<td><code>y</code></td>
+<td>纵轴变量</td>
+<td>第一个点的纵坐标、第二个点的纵坐标，依次排列</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">type =</span> <span class="st">"p"</span>)<span class="co">#点图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture10_files/figure-html/plot2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">type =</span> <span class="st">"l"</span>)<span class="co">#折线图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">type =</span> <span class="st">"b"</span>)<span class="co">#点折线图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot2-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">type =</span> <span class="st">"o"</span>)<span class="co">#连点图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot2-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">type =</span> <span class="st">"h"</span>)<span class="co">#垂直图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot2-5.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">type =</span> <span class="st">"s"</span>)<span class="co">#阶梯图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot2-6.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lecture10_files/figure-html/xy-meaning-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>这张图上有 4 个点：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>点</th>
+<th style="text-align: right;">横坐标 x</th>
+<th style="text-align: right;">纵坐标 y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>第1个点</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>第2个点</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td>第3个点</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>第4个点</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+<p>以上坐标对应关系是散点图的基础。</p>
 </section>
-<section id="二修改图像元素大小" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> （二）修改图像元素大小</h1>
-<p>cex : 修改点图中点的大小 lwd ：修改线图中线的粗细</p>
+<section id="给图加说明mainxlabylabsub" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="给图加说明mainxlabylabsub"><span class="header-section-number">11.4</span> 给图加说明：main、xlab、ylab、sub</h2>
+<p>图形说明通常包括标题、横轴名称和纵轴名称。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>main</code></td>
+<td>主标题</td>
+<td><code>"简单散点图"</code></td>
+</tr>
+<tr class="even">
+<td><code>xlab</code></td>
+<td>横轴标题</td>
+<td><code>"时间"</code></td>
+</tr>
+<tr class="odd">
+<td><code>ylab</code></td>
+<td>纵轴标题</td>
+<td><code>"观测值"</code></td>
+</tr>
+<tr class="even">
+<td><code>sub</code></td>
+<td>副标题</td>
+<td><code>"示例数据"</code></td>
+</tr>
+</tbody>
+</table>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">cex=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"简单散点图"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub =</span> <span class="st">"示例数据"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture10_files/figure-html/plot3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">cex=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot3-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lecture10_files/figure-html/plot-labels-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="三修改图形元素的形状" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> （三）修改图形元素的形状</h1>
-<p>pch： 修改点的类型</p>
-<p>lty ：修改线条的类型</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">pch=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">pch=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="H:/上课材料/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/plot_pch.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>图9-2：plot绘图所用的点类型</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="H:/上课材料/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/plot_lty.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>图9-3：plot绘图所用的线类型</figcaption>
-</figure>
-</div>
-</section>
-<section id="四修改图形元素的颜色" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> （四）修改图形元素的颜色</h1>
-<p>col： 设置颜色</p>
-<p>-col： 取值可以是颜色名称如”blue”，RGB值如rgb(0,0,1)，颜色代码如”#0000FF”</p>
-<p>-运行colours()可以获取颜色的名称，总共有657种 <img src="H:/上课材料/R语言编程基础/R%20语言第二次2021年春夏/material%20figures/plot_col657.jpg" class="img-fluid" style="width:70.0%" alt="图9-4：plot绘图所用的657种颜色类型"></p>
-<p>-运行rainbow(n)可以获得n种彩虹色</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">cex=</span><span class="dv">3</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,<span class="at">cex=</span><span class="dv">3</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">as.factor</span>(mtcars<span class="sc">$</span>vs))<span class="co">#根据发动机排列类型标记颜色</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot6-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="五设置图形标题" class="level1" data-number="17">
-<h1 data-number="17"><span class="header-section-number">17</span> （五）设置图形标题</h1>
-<p>main：设置主标题</p>
-<p>sub：设置次标题</p>
-<p>xlab：设置x轴标题</p>
-<p>ylab：设置y轴标题</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">3</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot7.0-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="六修改文字大小" class="level1" data-number="18">
-<h1 data-number="18"><span class="header-section-number">18</span> （六）修改文字大小</h1>
-<p>cex.axis : 坐标轴刻度文字大小</p>
-<p>cex.lab: 坐标轴标题文字大小</p>
-<p>cex.main ： 主标题文字大小</p>
-<p>cex.sub ：次标题文字大小</p>
-</section>
-<section id="七修改文字字体" class="level1" data-number="19">
-<h1 data-number="19"><span class="header-section-number">19</span> （七）修改文字字体</h1>
-<p>font.axis : 设置坐标刻度字体，1常规字体，2加粗字体，3斜体字，4斜体加粗</p>
-<p>font.lab：设置坐标轴标题字体，取值同font.axis</p>
-<p>font.main ：设置主标题字体，取值同font.axis</p>
-<p>font.sub ：设置次标题字体，取值同font.axis</p>
-<p>family：设置字体样式系列，family = ‘serif’，family = ‘sans’，family = ‘mono’</p>
-</section>
-<section id="八添加标题和禁用标题" class="level1" data-number="20">
-<h1 data-number="20"><span class="header-section-number">20</span> （八）添加标题和禁用标题</h1>
-<p>ann = FALSE : 设置之后即可不显示原标题</p>
-<p>title() : 使用title()函数可以为图形另外设置标题，其参数与plot()函数中设置标题的参数相同</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">3</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ann=</span>F</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">3</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>,</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ann=</span>F</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.lab =</span> <span class="st">"orange"</span>,</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex.lab =</span> <span class="fl">1.5</span>, <span class="at">font.lab =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="九隐藏框架线及坐标轴" class="level1" data-number="21">
-<h1 data-number="21"><span class="header-section-number">21</span> （九）隐藏框架线及坐标轴</h1>
-<p>fram.plot = FALSE ： 隐藏框架线</p>
-<p>xaxt = “n” ： 隐藏X轴，会留下框架</p>
-<p>yaxt = “n” ： 隐藏Y轴，会留下框架</p>
-<p>axes=FALSE：隐藏所有坐标轴及框架线</p>
-</section>
-<section id="十设置坐标轴取值范围" class="level1" data-number="22">
-<h1 data-number="22"><span class="header-section-number">22</span> （十）设置坐标轴取值范围</h1>
-<p>xlim: 设置x轴取值范围</p>
-<p>ylim： 设置y轴取值范围</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">1</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">35</span>),</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="十一修改图形整体尺寸大小" class="level1" data-number="23">
-<h1 data-number="23"><span class="header-section-number">23</span> （十一）修改图形整体尺寸大小</h1>
-<p>通过par()函数进行调节</p>
-<p>no.readonly = TRUE : 设置画板的参数为可修改状态</p>
-<p>pin: 以英寸表示的图形尺寸（宽和高）</p>
-<p>mai: 以数值向量表示的边界大小，顺序为“下、左、上、右”，单位为英寸</p>
-<p>mar: 以数值向量表示的边界大小，顺序为“下、左、上、右”，单位为英分。默认（5,4,4,2）+ 0.1</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pin =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">6</span>))</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">1</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">35</span>),</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(opar)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="十二给图形添加参考线" class="level1" data-number="24">
-<h1 data-number="24"><span class="header-section-number">24</span> （十二）给图形添加参考线</h1>
-<p>通过abline()函数添加</p>
-<p>参数</p>
-<p>v : 垂直参考线的位点</p>
-<p>h : 水平参考线的位点</p>
-<p>lty: 参考线的样式</p>
-<p>col：参考线的颜色</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">1</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">35</span>),</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">1</span>), <span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="十三添加文本" class="level1" data-number="25">
-<h1 data-number="25"><span class="header-section-number">25</span> （十三）添加文本</h1>
-<p><strong>text()向绘图区域内部添加文本</strong></p>
-<p>text(x, y , labels , pos , cex , col )</p>
-<p>x: 标注位点的横坐标</p>
-<p>y : 标注位点的纵坐标</p>
-<p>labels: 所要添加的标注内容</p>
-<p>pos: 标注所在相对位置，1，2，3，4 分别代表下，左，上，右</p>
-<p>cex: 字体大小</p>
-<p>col: 字体颜色</p>
-<p><strong>mtext()向图形四个边界之一添加文本</strong></p>
-<p>labels : 所要添加的标注内容</p>
-<p>side : 1,2,3,4分别代表下，左，上，右四个边界</p>
-<p>line : 相对边界线的偏移距离</p>
-<p>las : 标注文字的方向，0，1，垂直或水平</p>
-</section>
-<section id="十四组合多个图形" class="level1" data-number="26">
-<h1 data-number="26"><span class="header-section-number">26</span> （十四）组合多个图形</h1>
-<p>使用par()中的mfrow与mfcol参数组合图形</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wt, mpg,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">1</span>,<span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">rainbow</span>(<span class="dv">10</span>),</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">35</span>),</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">1</span>), <span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">35</span>,<span class="dv">5</span>), <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mpg)<span class="co">#频率图</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(am,mpg)<span class="co">#散点图</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.factor</span>(am),mpg)<span class="co">#箱线图</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(opar)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="十五精细调整各图形的比例" class="level1" data-number="27">
-<h1 data-number="27"><span class="header-section-number">27</span> （十五）精细调整各图形的比例</h1>
-<p>使用函数layout()组合图形</p>
-<p>mat : 一个矩阵，设置图形的总体布局</p>
-<p>widths: 向量，设置图形矩阵中每列相对宽度</p>
-<p>heights: 向量，设置图形矩阵中每行的相对高度</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wt<span class="sc">~</span>mpg)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mpg)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.factor</span>(am),mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="十六par中fig参数设置图形位置叠加图形" class="level1" data-number="28">
-<h1 data-number="28"><span class="header-section-number">28</span> （十六）par()中fig参数设置图形位置,叠加图形</h1>
-<p>fig</p>
-<p>整个画布大可以理解为fig = c(0,1,0,1), 向量中的4个数依次代表：x轴起始位置0，x轴结束位置1，y轴起始位置0，y轴结束位置1</p>
-<p>把图形摆放在画面由半部分，设置fig = c(0.5,1,0,1)</p>
-<p>把图放在右上四分之一的位置，设置fig = c(0.5,1,0.5,1)</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly=</span><span class="cn">TRUE</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="dv">0</span>, <span class="fl">0.8</span>))</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wt, mpg,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="at">xlab=</span><span class="st">"Miles Per Gallon"</span>,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="at">ylab=</span><span class="st">"Car Weight"</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="fl">0.55</span>, <span class="dv">1</span>), <span class="at">new=</span><span class="cn">TRUE</span>)<span class="co">#new 表示在原有图形上加图</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt, <span class="at">horizontal=</span><span class="cn">TRUE</span>, <span class="at">axes=</span><span class="cn">FALSE</span>)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="fl">0.65</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.8</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg, <span class="at">axes=</span><span class="cn">FALSE</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">"Enhanced Scatterplot"</span>, <span class="at">side=</span><span class="dv">3</span>, <span class="at">outer=</span><span class="cn">TRUE</span>, <span class="at">line=</span><span class="sc">-</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture10_files/figure-html/plot13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(opar)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-</section>
-<section id="十七以鸢尾花数据集为例子讲解最简单的线性模型和多图形绘制" class="level1" data-number="29">
-<h1 data-number="29"><span class="header-section-number">29</span> （十七）以鸢尾花数据集为例子，讲解最简单的线性模型和多图形绘制</h1>
+<p>图形说明检查项：</p>
 <ul>
-<li>按品种分类，分别拟合花萼长度与花萼宽度的关系</li>
+<li>图的标题有没有说明主题？</li>
+<li>横轴有没有写清楚？</li>
+<li>纵轴有没有写清楚？</li>
 </ul>
-<pre><code># species 1
-sp1 &lt;- iris[iris$Species=="setosa",]
-lm.fit1 &lt;- lm(Sepal.Length~Sepal.Width,data=sp1)
-summary(lm.fit1)
-plot(sp1$Sepal.Width,sp1$Sepal.Length)
-abline(lm.fit1)
-
-# species 2
-unique(iris$Species)
-sp2 &lt;- iris[iris$Species=="versicolor",]
-lm.fit2 &lt;- lm(Sepal.Length~Sepal.Width,data=sp2)
-summary(lm.fit2)
-plot(sp2$Sepal.Width,sp2$Sepal.Length)
-abline(lm.fit2)
-
-# species 3
-unique(iris$Species)
-sp3 &lt;- iris[iris$Species=="virginica",]
-lm.fit3 &lt;- lm(Sepal.Length~Sepal.Width,data=sp3)
-summary(lm.fit3)
-plot(sp3$Sepal.Width,sp3$Sepal.Length)
-abline(lm.fit3)
-###############################
-names(iris)
-library(dplyr)
-lms &lt;- iris %&gt;%
-  group_by(Species) %&gt;%
-  do(broom::tidy(lm(Sepal.Length ~ Sepal.Width, .)))
-lms
-
-</code></pre>
-<ul>
-<li>通过par(mfrow函数)把花萼长度与花萼宽度的关系图放到一起</li>
-</ul>
-<pre><code>par(mfrow=c(1,3))# one row, three cols
-plot(sp1$Sepal.Width,sp1$Sepal.Length)
-abline(lm.fit1)
-plot(sp2$Sepal.Width,sp2$Sepal.Length)
-abline(lm.fit2)
-plot(sp3$Sepal.Width,sp3$Sepal.Length)
-abline(lm.fit3)
-</code></pre>
-<ul>
-<li>通过layout(mat函数)集中展现图形</li>
-</ul>
-<pre><code>layout(matrix(c(1,2,3,4), 2, 2, byrow = TRUE))
-plot(iris$Sepal.Width,iris$Sepal.Length)
-abline(lm(iris$Sepal.Length~iris$Sepal.Width))
-plot(sp1$Sepal.Width,sp1$Sepal.Length)
-abline(lm.fit1)
-plot(sp2$Sepal.Width,sp2$Sepal.Length)
-abline(lm.fit2)
-plot(sp3$Sepal.Width,sp3$Sepal.Length)
-abline(lm.fit3)
-
-layout(matrix(c(1,1,1,2,3,4), 2, 3, byrow = TRUE))
-plot(iris$Sepal.Width,iris$Sepal.Length)
-abline(lm(iris$Sepal.Length~iris$Sepal.Width))
-plot(sp1$Sepal.Width,sp1$Sepal.Length)
-abline(lm.fit1)
-plot(sp2$Sepal.Width,sp2$Sepal.Length)
-abline(lm.fit2)
-plot(sp3$Sepal.Width,sp3$Sepal.Length)
-abline(lm.fit3)</code></pre>
-<ul>
-<li><p>多窗口展示图形可以用函数dev.new()，然后绘图函数如plot()，关闭图形窗口，可以用graphics.off()</p>
-<p>课堂练习：生成二维随机正态数，分别绘制数值散点图和边缘分布</p></li>
-</ul>
+</section>
+<section id="修改点的形状pch" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="修改点的形状pch"><span class="header-section-number">11.5</span> 修改点的形状：pch</h2>
+<p><code>pch</code> 控制点的形状。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pch</code></td>
+<td>点的形状</td>
+</tr>
+</tbody>
+</table>
+<p>常用点形状可以按“是否可填充”分成两类。<code>pch = 21</code> 到 <code>pch = 25</code> 比较特殊，可以同时设置边框颜色和填充颜色。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><code>pch</code> 取值</th>
+<th>形状示例</th>
+<th>点形状</th>
+<th>是否可填充</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>0</code></td>
+<td><span style="font-size:1.35em;">□</span></td>
+<td>空心方形</td>
+<td>否</td>
+<td>简单分类标记</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>1</code></td>
+<td><span style="font-size:1.35em;">○</span></td>
+<td>空心圆</td>
+<td>否</td>
+<td>默认散点、点较多时较轻</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>2</code></td>
+<td><span style="font-size:1.35em;">△</span></td>
+<td>空心三角形</td>
+<td>否</td>
+<td>与圆点区分另一组</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>3</code></td>
+<td><span style="font-size:1.35em;">+</span></td>
+<td>十字</td>
+<td>否</td>
+<td>强调位置，不强调面积</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>4</code></td>
+<td><span style="font-size:1.35em;">×</span></td>
+<td>叉号</td>
+<td>否</td>
+<td>标记特殊点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>15</code></td>
+<td><span style="font-size:1.35em;">■</span></td>
+<td>实心方形</td>
+<td>否</td>
+<td>分类对比</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>16</code></td>
+<td><span style="font-size:1.35em;">●</span></td>
+<td>实心圆</td>
+<td>否</td>
+<td>常用散点</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>17</code></td>
+<td><span style="font-size:1.35em;">▲</span></td>
+<td>实心三角形</td>
+<td>否</td>
+<td>分组散点</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>18</code></td>
+<td><span style="font-size:1.35em;">◆</span></td>
+<td>实心菱形</td>
+<td>否</td>
+<td>标记重点类别</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>19</code></td>
+<td><span style="font-size:1.45em;">●</span></td>
+<td>实心圆</td>
+<td>否</td>
+<td>基础示例和常规散点图</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>21</code></td>
+<td><span style="display:inline-block;width:1em;height:1em;border-radius:50%;background:#DCEEF8;border:2px solid #0072B2;"></span></td>
+<td>可填充圆</td>
+<td>是</td>
+<td>需要边框色和填充色时</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>22</code></td>
+<td><span style="display:inline-block;width:1em;height:1em;background:#DCEEF8;border:2px solid #0072B2;"></span></td>
+<td>可填充方形</td>
+<td>是</td>
+<td>分组图</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>24</code></td>
+<td><span style="font-size:1.35em;color:#0072B2;">▲</span></td>
+<td>可填充三角形</td>
+<td>是</td>
+<td>分组图</td>
+</tr>
+</tbody>
+</table>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">110</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>opar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly=</span><span class="cn">TRUE</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="dv">0</span>, <span class="fl">0.8</span>))</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.8</span>, <span class="fl">0.55</span>, <span class="dv">1</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(x),<span class="at">axes=</span>F,<span class="at">frame.plot=</span>F, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">""</span>)</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="fl">0.65</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.8</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y)<span class="sc">$</span>y,<span class="fu">density</span>(y)<span class="sc">$</span>x,<span class="at">axes=</span>F,<span class="at">frame.plot=</span>F, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>,<span class="at">main=</span><span class="st">""</span>,<span class="at">type =</span> <span class="st">"l"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"pch = 19：实心圆点"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture10_files/figure-html/plot14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lecture10_files/figure-html/pch-demo-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="修改点的大小cex" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="修改点的大小cex"><span class="header-section-number">11.6</span> 修改点的大小：cex</h2>
+<p><code>cex</code> 控制点或文字的放大倍数。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>cex</code></td>
+<td>点的大小</td>
+<td><code>cex = 1</code> 默认，<code>cex = 1.5</code> 放大</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.8</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"cex = 1.8：点变大"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/cex-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>点过小会影响辨认，点过大会增加重叠。常用取值范围为 <code>cex = 1.2</code> 到 <code>cex = 1.8</code>。</p>
+</section>
+<section id="修改点的颜色col" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="修改点的颜色col"><span class="header-section-number">11.7</span> 修改点的颜色：col</h2>
+<p><code>col</code> 控制颜色。颜色可以使用英文名称，也可以使用十六进制颜色代码。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>col</code></td>
+<td>点、线或文字的颜色</td>
+<td><code>"blue"</code>，<code>"red"</code>，<code>"#0072B2"</code></td>
+</tr>
+</tbody>
+</table>
+<p>英文颜色名较为直观，例如 <code>"blue"</code>、<code>"red"</code>、<code>"gray70"</code>。十六进制颜色代码适合正式作图，因为它能精确指定颜色。</p>
+<p>十六进制颜色代码通常写成 <code>#RRGGBB</code>：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>位置</th>
+<th>含义</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>#</code></td>
+<td>颜色代码的开头标记</td>
+<td>固定写法</td>
+</tr>
+<tr class="even">
+<td><code>RR</code></td>
+<td>红色强度</td>
+<td><code>00</code> 到 <code>FF</code></td>
+</tr>
+<tr class="odd">
+<td><code>GG</code></td>
+<td>绿色强度</td>
+<td><code>00</code> 到 <code>FF</code></td>
+</tr>
+<tr class="even">
+<td><code>BB</code></td>
+<td>蓝色强度</td>
+<td><code>00</code> 到 <code>FF</code></td>
+</tr>
+</tbody>
+</table>
+<p>十六进制使用 <code>0-9</code> 和 <code>A-F</code> 表示数值。<code>00</code> 表示没有这种颜色，<code>FF</code> 表示这种颜色最强。例如：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>颜色代码</th>
+<th>色块</th>
+<th>红色 RR</th>
+<th>绿色 GG</th>
+<th>蓝色 BB</th>
+<th>显示含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>#000000</code></td>
+<td><span style="display:inline-block;width:1.4em;height:1.4em;background:#000000;border:1px solid #999;"></span></td>
+<td><code>00</code></td>
+<td><code>00</code></td>
+<td><code>00</code></td>
+<td>黑色</td>
+</tr>
+<tr class="even">
+<td><code>#FFFFFF</code></td>
+<td><span style="display:inline-block;width:1.4em;height:1.4em;background:#FFFFFF;border:1px solid #999;"></span></td>
+<td><code>FF</code></td>
+<td><code>FF</code></td>
+<td><code>FF</code></td>
+<td>白色</td>
+</tr>
+<tr class="odd">
+<td><code>#FF0000</code></td>
+<td><span style="display:inline-block;width:1.4em;height:1.4em;background:#FF0000;border:1px solid #999;"></span></td>
+<td><code>FF</code></td>
+<td><code>00</code></td>
+<td><code>00</code></td>
+<td>红色</td>
+</tr>
+<tr class="even">
+<td><code>#00FF00</code></td>
+<td><span style="display:inline-block;width:1.4em;height:1.4em;background:#00FF00;border:1px solid #999;"></span></td>
+<td><code>00</code></td>
+<td><code>FF</code></td>
+<td><code>00</code></td>
+<td>绿色</td>
+</tr>
+<tr class="odd">
+<td><code>#0000FF</code></td>
+<td><span style="display:inline-block;width:1.4em;height:1.4em;background:#0000FF;border:1px solid #999;"></span></td>
+<td><code>00</code></td>
+<td><code>00</code></td>
+<td><code>FF</code></td>
+<td>蓝色</td>
+</tr>
+<tr class="even">
+<td><code>#0072B2</code></td>
+<td><span style="display:inline-block;width:1.4em;height:1.4em;background:#0072B2;border:1px solid #999;"></span></td>
+<td><code>00</code></td>
+<td><code>72</code></td>
+<td><code>B2</code></td>
+<td>常用蓝色</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.5</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"col 控制颜色"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/color-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>配色规则：主体信息用颜色，辅助信息用灰色。</p>
+</section>
+<section id="可填充点col和bg分工" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="可填充点col和bg分工"><span class="header-section-number">11.8</span> 可填充点：col和bg分工</h2>
+<p>当 <code>pch = 21</code>、<code>22</code>、<code>24</code> 这类点形状时，可以同时设置边框色和填充色。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pch = 21</code></td>
+<td>使用可填充圆点</td>
+</tr>
+<tr class="even">
+<td><code>col</code></td>
+<td>点的边框颜色</td>
+</tr>
+<tr class="odd">
+<td><code>bg</code></td>
+<td>点的填充颜色</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.8</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"pch = 21 时：col 是边框，bg 是填充"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/bg-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这种点在分组散点图中很常用，因为填充色醒目，白色边框能减少点重叠时的混乱。</p>
+</section>
+<section id="type画点还是画线" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="type画点还是画线"><span class="header-section-number">11.9</span> type：画点还是画线</h2>
+<p><code>type</code> 控制图形主体是点、线，还是点线结合。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><code>type</code></th>
+<th>控制什么</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>"p"</code></td>
+<td>只画点</td>
+<td>散点图</td>
+</tr>
+<tr class="even">
+<td><code>"l"</code></td>
+<td>只画线</td>
+<td>时间变化、趋势变化</td>
+</tr>
+<tr class="odd">
+<td><code>"b"</code></td>
+<td>点和线都画</td>
+<td>点数较少的趋势图</td>
+</tr>
+<tr class="even">
+<td><code>"n"</code></td>
+<td>只建立坐标，不画点线</td>
+<td>后面再手动添加元素</td>
+</tr>
+</tbody>
+</table>
+<p>只画点：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"p"</span>, <span class="at">main =</span> <span class="st">"type = 'p'：只画点"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/type-p-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>只画线：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"type = 'l'：只画线"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/type-l-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>点和线都画：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">main =</span> <span class="st">"type = 'b'：点和线都画"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/type-b-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="修改线条lty和lwd" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="修改线条lty和lwd"><span class="header-section-number">11.10</span> 修改线条：lty和lwd</h2>
+<p>如果图里有线，常用 <code>lty</code> 和 <code>lwd</code> 修改线条。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lty</code></td>
+<td>线型</td>
+<td><code>1</code> 实线，<code>2</code> 虚线，<code>3</code> 点线</td>
+</tr>
+<tr class="even">
+<td><code>lwd</code></td>
+<td>线宽</td>
+<td><code>1</code> 默认，<code>2</code> 更粗</td>
+</tr>
+</tbody>
+</table>
+<p>常用线型如下：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><code>lty</code> 取值</th>
+<th>线条示例</th>
+<th>线型名称</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>1</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#333" stroke-width="2"></line></svg></td>
+<td>实线</td>
+<td>主要趋势线</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>2</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#333" stroke-width="2" stroke-dasharray="8 5"></line></svg></td>
+<td>虚线</td>
+<td>参考线、平均线</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>3</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#333" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"></line></svg></td>
+<td>点线</td>
+<td>辅助线</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>4</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#333" stroke-width="2" stroke-dasharray="8 4 1 4" stroke-linecap="round"></line></svg></td>
+<td>点划线</td>
+<td>与其他线区分</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>5</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#333" stroke-width="2" stroke-dasharray="14 5"></line></svg></td>
+<td>长虚线</td>
+<td>强调但不作为主线</td>
+</tr>
+</tbody>
+</table>
+<p>常用线宽如下：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><code>lwd</code> 取值</th>
+<th>线条示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>1</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#0072B2" stroke-width="1"></line></svg></td>
+<td>默认线宽</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>2</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#0072B2" stroke-width="2"></line></svg></td>
+<td>常用强调线宽</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>3</code></td>
+<td><svg width="90" height="12"><line x1="0" y1="6" x2="90" y2="6" stroke="#0072B2" stroke-width="3"></line></svg></td>
+<td>更醒目的主线</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">3</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#D55E00"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"lty 控制线型，lwd 控制线宽"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/line-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>黑白打印场景中，线条可同时使用不同的 <code>lty</code> 进行区分。</p>
+</section>
+<section id="修改坐标范围xlim和ylim" class="level2" data-number="11.11">
+<h2 data-number="11.11" class="anchored" data-anchor-id="修改坐标范围xlim和ylim"><span class="header-section-number">11.11</span> 修改坐标范围：xlim和ylim</h2>
+<p><code>xlim</code> 和 <code>ylim</code> 控制横轴、纵轴的显示范围。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>xlim</code></td>
+<td>横轴范围</td>
+<td><code>xlim = c(0, 8)</code></td>
+</tr>
+<tr class="even">
+<td><code>ylim</code></td>
+<td>纵轴范围</td>
+<td><code>ylim = c(0, 10)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"xlim 和 ylim 控制坐标范围"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/limit-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>坐标范围用于改善图形可读性。过大的范围会压缩数据变化，过窄的范围可能夸大差异。</p>
+</section>
+<section id="添加网格线grid" class="level2" data-number="11.12">
+<h2 data-number="11.12" class="anchored" data-anchor-id="添加网格线grid"><span class="header-section-number">11.12</span> 添加网格线：grid</h2>
+<p>画完基础图后，可以继续添加元素。<code>grid()</code> 用来添加网格线，帮助读数。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>函数或参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>grid()</code></td>
+<td>添加网格线</td>
+</tr>
+<tr class="even">
+<td><code>col</code></td>
+<td>网格线颜色</td>
+</tr>
+<tr class="odd">
+<td><code>lty</code></td>
+<td>网格线线型</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"添加浅灰色网格线"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">col =</span> <span class="st">"gray88"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/grid-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>网格线一般使用浅灰色，视觉强度应低于数据点。</p>
+</section>
+<section id="添加参考线abline" class="level2" data-number="11.13">
+<h2 data-number="11.13" class="anchored" data-anchor-id="添加参考线abline"><span class="header-section-number">11.13</span> 添加参考线：abline</h2>
+<p><code>abline()</code> 可以添加水平线或垂直线。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>h</code></td>
+<td>水平参考线的位置</td>
+<td><code>h = 5</code></td>
+</tr>
+<tr class="even">
+<td><code>v</code></td>
+<td>垂直参考线的位置</td>
+<td><code>v = 3</code></td>
+</tr>
+<tr class="odd">
+<td><code>col</code></td>
+<td>参考线颜色</td>
+<td><code>col = "gray60"</code></td>
+</tr>
+<tr class="even">
+<td><code>lty</code></td>
+<td>参考线线型</td>
+<td><code>lty = 2</code></td>
+</tr>
+<tr class="odd">
+<td><code>lwd</code></td>
+<td>参考线线宽</td>
+<td><code>lwd = 2</code></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"添加水平和垂直参考线"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">5</span>, <span class="at">col =</span> <span class="st">"gray60"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"gray60"</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/abline-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>参考线用于辅助读图，例如标出标准值、平均值或特定时间点。</p>
+</section>
+<section id="添加文字text" class="level2" data-number="11.14">
+<h2 data-number="11.14" class="anchored" data-anchor-id="添加文字text"><span class="header-section-number">11.14</span> 添加文字：text</h2>
+<p><code>text()</code> 可以在图中添加文字标注。适合标出某个重点点。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x</code></td>
+<td>文字所在位置的横坐标</td>
+</tr>
+<tr class="even">
+<td><code>y</code></td>
+<td>文字所在位置的纵坐标</td>
+</tr>
+<tr class="odd">
+<td><code>labels</code></td>
+<td>要写出的文字</td>
+</tr>
+<tr class="even">
+<td><code>pos</code></td>
+<td>文字相对点的位置，<code>1</code> 下，<code>2</code> 左，<code>3</code> 上，<code>4</code> 右</td>
+</tr>
+<tr class="odd">
+<td><code>cex</code></td>
+<td>文字大小</td>
+</tr>
+<tr class="even">
+<td><code>col</code></td>
+<td>文字颜色</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"用 text 标出重点"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fl">2.5</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="dv">3</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="st">"text"</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">3</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">0.9</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#D55E00"</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/text-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>文字标注通常用于重点位置；过多标注会降低图形可读性。</p>
+</section>
+<section id="添加图例legend" class="level2" data-number="11.15">
+<h2 data-number="11.15" class="anchored" data-anchor-id="添加图例legend"><span class="header-section-number">11.15</span> 添加图例：legend</h2>
+<p>当颜色、点形状或线型代表不同组时，图例用于说明符号含义。</p>
+<p>示例分组数据如下。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>group_col <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="st">"#0072B2"</span>, <span class="at">B =</span> <span class="st">"#D55E00"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>函数或参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>legend()</code></td>
+<td>添加图例</td>
+</tr>
+<tr class="even">
+<td><code>"topleft"</code></td>
+<td>图例位置，也可以写 <code>"topright"</code>、<code>"bottomleft"</code> 等</td>
+</tr>
+<tr class="odd">
+<td><code>legend</code></td>
+<td>图例文字</td>
+</tr>
+<tr class="even">
+<td><code>pch</code></td>
+<td>图例中的点形状</td>
+</tr>
+<tr class="odd">
+<td><code>col</code></td>
+<td>图例中的点或线颜色</td>
+</tr>
+<tr class="even">
+<td><code>bty = "n"</code></td>
+<td>去掉图例边框</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> group_col[group],</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"用 legend 解释颜色"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topleft"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">names</span>(group_col),</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> group_col,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/legend-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>图例的任务是解释符号，不是装饰图形。</p>
+</section>
+<section id="目前学过的plot参数" class="level2" data-number="11.16">
+<h2 data-number="11.16" class="anchored" data-anchor-id="目前学过的plot参数"><span class="header-section-number">11.16</span> 目前学过的plot参数</h2>
+<p>到这里，基础参数已经够画很多图。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>常用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x</code></td>
+<td>横轴变量</td>
+<td>所有基础图</td>
+</tr>
+<tr class="even">
+<td><code>y</code></td>
+<td>纵轴变量</td>
+<td>所有基础图</td>
+</tr>
+<tr class="odd">
+<td><code>main</code></td>
+<td>主标题</td>
+<td>说明图的主题</td>
+</tr>
+<tr class="even">
+<td><code>xlab</code></td>
+<td>横轴标题</td>
+<td>说明横轴变量</td>
+</tr>
+<tr class="odd">
+<td><code>ylab</code></td>
+<td>纵轴标题</td>
+<td>说明纵轴变量</td>
+</tr>
+<tr class="even">
+<td><code>sub</code></td>
+<td>副标题</td>
+<td>补充说明</td>
+</tr>
+<tr class="odd">
+<td><code>pch</code></td>
+<td>点形状</td>
+<td>散点图</td>
+</tr>
+<tr class="even">
+<td><code>cex</code></td>
+<td>点或文字大小</td>
+<td>强调重点</td>
+</tr>
+<tr class="odd">
+<td><code>col</code></td>
+<td>颜色</td>
+<td>点、线、文字</td>
+</tr>
+<tr class="even">
+<td><code>bg</code></td>
+<td>可填充点的填充色</td>
+<td><code>pch = 21</code> 等</td>
+</tr>
+<tr class="odd">
+<td><code>type</code></td>
+<td>点线类型</td>
+<td>散点图、折线图</td>
+</tr>
+<tr class="even">
+<td><code>lty</code></td>
+<td>线型</td>
+<td>折线或参考线</td>
+</tr>
+<tr class="odd">
+<td><code>lwd</code></td>
+<td>线宽</td>
+<td>折线或参考线</td>
+</tr>
+<tr class="even">
+<td><code>xlim</code></td>
+<td>横轴范围</td>
+<td>调整显示范围</td>
+</tr>
+<tr class="odd">
+<td><code>ylim</code></td>
+<td>纵轴范围</td>
+<td>调整显示范围</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="散点图" class="level2" data-number="11.17">
+<h2 data-number="11.17" class="anchored" data-anchor-id="散点图"><span class="header-section-number">11.17</span> 散点图</h2>
+<p>散点图适合观察两个数值变量之间的关系。</p>
+<p>下面用 R 自带的 <code>mtcars</code> 数据。<code>wt</code> 是汽车重量，<code>mpg</code> 是每加仑行驶英里数。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"汽车重量与油耗"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/scatter-basic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>图中显示，汽车重量越大，<code>mpg</code> 通常越低。</p>
+<ul>
+<li>散点图加分组颜色</li>
+</ul>
+<p>下面按气缸数分组上色。颜色用于表达类别。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cyl_col <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"#009E73"</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"6"</span> <span class="ot">=</span> <span class="st">"#E69F00"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"8"</span> <span class="ot">=</span> <span class="st">"#D55E00"</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> cyl_col[<span class="fu">as.character</span>(mtcars<span class="sc">$</span>cyl)],</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.4</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"不同气缸数汽车的重量与油耗"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topright"</span>,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">paste</span>(<span class="fu">names</span>(cyl_col), <span class="st">"缸"</span>),</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">21</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.bg =</span> cyl_col,</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/scatter-group-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这里出现一个新参数：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pt.bg</code></td>
+<td>图例中可填充点的填充颜色</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="折线图" class="level2" data-number="11.18">
+<h2 data-number="11.18" class="anchored" data-anchor-id="折线图"><span class="header-section-number">11.18</span> 折线图</h2>
+<p>折线图适合表达有顺序的数据，比如时间变化。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">24</span>, <span class="dv">20</span>, <span class="dv">14</span>, <span class="dv">8</span>, <span class="dv">3</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  month, temperature,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"一年中温度的变化"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"月份"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"温度"</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/line-basic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>type = "b"</code> 可同时显示折线和每个月的观测点。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  month, temperature,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"折线图也可以显示观测点"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"月份"</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"温度"</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/line-points-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>折线图的横轴应具有自然顺序。无序分类变量通常不适合直接连线。</p>
+</section>
+<section id="直方图" class="level2" data-number="11.19">
+<h2 data-number="11.19" class="anchored" data-anchor-id="直方图"><span class="header-section-number">11.19</span> 直方图</h2>
+<p>直方图适合观察一个数值变量的分布。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/hist-basic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>默认直方图可以进一步修改标题、颜色和分组数量。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>breaks</code></td>
+<td>分成多少个柱子，或者指定分组断点</td>
+</tr>
+<tr class="even">
+<td><code>col</code></td>
+<td>柱子的填充颜色</td>
+</tr>
+<tr class="odd">
+<td><code>border</code></td>
+<td>柱子的边框颜色</td>
+</tr>
+<tr class="even">
+<td><code>main</code></td>
+<td>主标题</td>
+</tr>
+<tr class="odd">
+<td><code>xlab</code></td>
+<td>横轴标题</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  airquality<span class="sc">$</span>Temp,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">10</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#DCEEF8"</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"温度分布"</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"温度"</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/hist-better-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>直方图面积较大，浅色填充和白色边框通常能提高图面清晰度。</p>
+</section>
+<section id="箱线图" class="level2" data-number="11.20">
+<h2 data-number="11.20" class="anchored" data-anchor-id="箱线图"><span class="header-section-number">11.20</span> 箱线图</h2>
+<p>箱线图适合比较不同组的数值分布。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  Sepal.Length <span class="sc">~</span> Species,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"不同鸢尾花物种的萼片长度"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"物种"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"萼片长度"</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/boxplot-basic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这里出现了两个重要写法：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>写法或参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Sepal.Length ~ Species</code></td>
+<td>公式写法，左边是数值变量，右边是分组变量</td>
+</tr>
+<tr class="even">
+<td><code>data = iris</code></td>
+<td>说明变量来自 <code>iris</code> 数据集</td>
+</tr>
+</tbody>
+</table>
+<p>修改箱线图颜色：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>species_col <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">setosa =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">versicolor =</span> <span class="st">"#D55E00"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">virginica =</span> <span class="st">"#009E73"</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  Sepal.Length <span class="sc">~</span> Species,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> species_col,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"gray30"</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"给不同组设置颜色"</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"物种"</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"萼片长度"</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/boxplot-color-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>col</code></td>
+<td>箱子的填充颜色</td>
+</tr>
+<tr class="even">
+<td><code>border</code></td>
+<td>箱子的边框颜色</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="经典图五柱状图" class="level2" data-number="11.21">
+<h2 data-number="11.21" class="anchored" data-anchor-id="经典图五柱状图"><span class="header-section-number">11.21</span> 经典图五：柱状图</h2>
+<p>柱状图适合展示频数、总量、均值等汇总结果。</p>
+<p>示例展示不同气缸数汽车的数量。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cyl_count <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(cyl_count)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/barplot-basic-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>修改柱状图：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  cyl_count,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cyl_col[<span class="fu">names</span>(cyl_count)],</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"不同气缸数汽车的数量"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"气缸数"</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"汽车数量"</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/barplot-better-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>border = NA</code></td>
+<td>不显示柱子的边框</td>
+</tr>
+<tr class="even">
+<td><code>names(cyl_count)</code></td>
+<td>取出柱子的类别名称，用来匹配颜色</td>
+</tr>
+</tbody>
+</table>
+<p>柱状图需要明确柱高含义。此处柱高代表汽车数量。</p>
+</section>
+<section id="plot的底层逻辑它会看数据类型" class="level2" data-number="11.22">
+<h2 data-number="11.22" class="anchored" data-anchor-id="plot的底层逻辑它会看数据类型"><span class="header-section-number">11.22</span> plot的底层逻辑：它会看数据类型</h2>
+<p><code>plot(x, y)</code> 是最常见的用法。<code>plot()</code> 还会根据输入对象类型选择不同画法。</p>
+<p><code>plot()</code> 是泛型函数，会根据输入对象类型调用相应的绘图方法。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>代码</th>
+<th>数据类型</th>
+<th>常见结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>plot(x, y)</code></td>
+<td>两个数值向量</td>
+<td>散点图</td>
+</tr>
+<tr class="even">
+<td><code>plot(y ~ x, data = 数据集)</code></td>
+<td>公式写法</td>
+<td>根据变量类型画图</td>
+</tr>
+<tr class="odd">
+<td><code>plot(分类变量, 数值变量)</code></td>
+<td>分组 + 数值</td>
+<td>箱线图</td>
+</tr>
+<tr class="even">
+<td><code>plot(数据框)</code></td>
+<td>多个变量</td>
+<td>散点图矩阵</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Species, iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/plot-factor-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>R 看到横轴是分类变量、纵轴是数值变量，于是自动画箱线图。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/plot-data-frame-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>R 看到一个数据框，于是自动画出变量两两之间的散点图。</p>
+<p>这体现了 <code>plot()</code> 的底层逻辑：根据对象类型选择绘图方法。</p>
+</section>
+<section id="配色原则" class="level2" data-number="11.23">
+<h2 data-number="11.23" class="anchored" data-anchor-id="配色原则"><span class="header-section-number">11.23</span> 配色原则</h2>
+<p>颜色的目的不是让图更花，而是让信息更清楚。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>情况</th>
+<th>推荐做法</th>
+<th>不推荐做法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>只有一个重点</td>
+<td>重点用蓝色或橙色，其他用灰色</td>
+<td>所有元素都用强颜色</td>
+</tr>
+<tr class="even">
+<td>有多个类别</td>
+<td>固定每一类的颜色</td>
+<td>让颜色随机变化</td>
+</tr>
+<tr class="odd">
+<td>点很多</td>
+<td>使用稍微透明或较小的点</td>
+<td>使用又大又深的点</td>
+</tr>
+<tr class="even">
+<td>要打印</td>
+<td>同时使用点型或线型区分</td>
+<td>只靠红色和绿色区分</td>
+</tr>
+</tbody>
+</table>
+<p>下面是一组常用分类配色：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>good_col <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">blue =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">orange =</span> <span class="st">"#E69F00"</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">green =</span> <span class="st">"#009E73"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">red =</span> <span class="st">"#D55E00"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">purple =</span> <span class="st">"#CC79A7"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">gray =</span> <span class="st">"gray60"</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(good_col)),</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> good_col,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">names.arg =</span> <span class="fu">names</span>(good_col),</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">2</span>,</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"一组常用分类配色"</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/palette-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这里出现的新参数：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>names.arg</code></td>
+<td>柱子下面显示的文字</td>
+</tr>
+<tr class="even">
+<td><code>las = 2</code></td>
+<td>坐标轴文字垂直显示</td>
+</tr>
+<tr class="odd">
+<td><code>yaxt = "n"</code></td>
+<td>不显示纵轴</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="多图排列一par" class="level2" data-number="11.24">
+<h2 data-number="11.24" class="anchored" data-anchor-id="多图排列一par"><span class="header-section-number">11.24</span> 多图排列一：par</h2>
+<p><code>par()</code> 用来设置整张画布。最常用的是 <code>mfrow</code>，意思是一页放多张图。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>mfrow</code></td>
+<td>多图按行排列</td>
+<td><code>mfrow = c(1, 2)</code> 表示 1 行 2 列</td>
+</tr>
+<tr class="even">
+<td><code>no.readonly = TRUE</code></td>
+<td>保存当前可修改的图形参数</td>
+<td>常用于画完后恢复设置</td>
+</tr>
+</tbody>
+</table>
+<p>安全写法：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>old_par <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old_par)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>实际画一次：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>old_par <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"散点图"</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>  airquality<span class="sc">$</span>Temp,</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#DCEEF8"</span>,</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"直方图"</span>,</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"温度"</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/par-demo-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(opar)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old_par)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-</section></main></div>
+<p><code>par()</code> 修改的是图形设备设置，使用后通常恢复原设置。</p>
+</section>
+<section id="多图排列二layout" class="level2" data-number="11.25">
+<h2 data-number="11.25" class="anchored" data-anchor-id="多图排列二layout"><span class="header-section-number">11.25</span> 多图排列二：layout</h2>
+<p><code>layout()</code> 比 <code>par(mfrow = ...)</code> 更灵活，可设置不同图形占用不同大小的区域。</p>
+<p>布局矩阵示例：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>它表示：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>位置</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>数字 <code>1</code></td>
+<td>第 1 张图的位置</td>
+</tr>
+<tr class="even">
+<td>两个 <code>1</code> 连在一起</td>
+<td>第 1 张图占两个格子</td>
+</tr>
+<tr class="odd">
+<td>数字 <code>2</code></td>
+<td>第 2 张图的位置</td>
+</tr>
+<tr class="even">
+<td>数字 <code>3</code></td>
+<td>第 3 张图的位置</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>matrix()</code></td>
+<td>创建布局矩阵</td>
+</tr>
+<tr class="even">
+<td><code>nrow = 2</code></td>
+<td>矩阵有 2 行</td>
+</tr>
+<tr class="odd">
+<td><code>byrow = TRUE</code></td>
+<td>按行填入数字</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>old_par <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"主图：散点图"</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#DCEEF8"</span>,</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"油耗分布"</span>,</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"mpg"</span></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl),</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cyl_col,</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"气缸数"</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture10_files/figure-html/layout-demo-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old_par)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><code>layout(1)</code> 的作用是把布局恢复为一张图占满整个画布。</p>
+</section>
+<section id="保存图片" class="level2" data-number="11.26">
+<h2 data-number="11.26" class="anchored" data-anchor-id="保存图片"><span class="header-section-number">11.26</span> 保存图片</h2>
+<p>画完图以后，可以保存为图片文件。常见格式有 PNG 和 PDF。</p>
+<p>PNG 适合放在课件、网页或 Word 文档中。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"scatter_plot.png"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">1200</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">900</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">res =</span> <span class="dv">150</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"汽车重量与油耗"</span>,</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数或函数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>png()</code></td>
+<td>打开一个 PNG 图片设备</td>
+</tr>
+<tr class="even">
+<td><code>filename</code></td>
+<td>保存的文件名</td>
+</tr>
+<tr class="odd">
+<td><code>width</code></td>
+<td>图片宽度，默认单位是像素</td>
+</tr>
+<tr class="even">
+<td><code>height</code></td>
+<td>图片高度，默认单位是像素</td>
+</tr>
+<tr class="odd">
+<td><code>res</code></td>
+<td>图片分辨率</td>
+</tr>
+<tr class="even">
+<td><code>dev.off()</code></td>
+<td>关闭图片设备，真正写出文件</td>
+</tr>
+</tbody>
+</table>
+<p>PDF 适合论文、书籍或需要矢量图的场景。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"scatter_plot.pdf"</span>,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">6</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">4</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"汽车重量与油耗"</span>,</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数或函数</th>
+<th>控制什么</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pdf()</code></td>
+<td>打开一个 PDF 图形设备</td>
+</tr>
+<tr class="even">
+<td><code>file</code></td>
+<td>保存的文件名</td>
+</tr>
+<tr class="odd">
+<td><code>width</code></td>
+<td>图片宽度，单位是英寸</td>
+</tr>
+<tr class="even">
+<td><code>height</code></td>
+<td>图片高度，单位是英寸</td>
+</tr>
+<tr class="odd">
+<td><code>dev.off()</code></td>
+<td>关闭图形设备</td>
+</tr>
+</tbody>
+</table>
+<p>保存图片时需要执行 <code>dev.off()</code> 关闭图形设备，否则文件可能没有正常写完。</p>
+</section>
+<section id="练习题" class="level2" data-number="11.27">
+<h2 data-number="11.27" class="anchored" data-anchor-id="练习题"><span class="header-section-number">11.27</span> 练习题</h2>
+<p>练习一：用 <code>x &lt;- 1:6</code> 和 <code>y &lt;- c(2, 4, 3, 5, 7, 6)</code> 画一张散点图。要求：</p>
+<ul>
+<li>点用实心圆。</li>
+<li>点的颜色用蓝色。</li>
+<li>添加主标题、横轴标题、纵轴标题。</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"简单散点图"</span>,</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>练习二：把练习一改成点线图。要求：</p>
+<ul>
+<li>使用 <code>type = "b"</code>。</li>
+<li>线宽设为 <code>2</code>。</li>
+<li>点大小设为 <code>1.5</code>。</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.5</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"点线图"</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>练习三：用 <code>airquality$Temp</code> 画直方图。要求：</p>
+<ul>
+<li>设置 <code>breaks = 10</code>。</li>
+<li>柱子填充浅蓝色。</li>
+<li>柱子边框为白色。</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  airquality<span class="sc">$</span>Temp,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">10</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#DCEEF8"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"温度分布"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"温度"</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>练习四：用 <code>par(mfrow = c(1, 2))</code> 把散点图和直方图放在同一页。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>old_par <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp, <span class="at">col =</span> <span class="st">"#DCEEF8"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old_par)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>练习五：把自己最满意的一张图保存成 PNG 文件。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"my_first_plot.png"</span>, <span class="at">width =</span> <span class="dv">1200</span>, <span class="at">height =</span> <span class="dv">900</span>, <span class="at">res =</span> <span class="dv">150</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  x, y,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"我的第一张保存图片"</span>,</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"时间"</span>,</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"观测值"</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="小结" class="level2" data-number="11.28">
+<h2 data-number="11.28" class="anchored" data-anchor-id="小结"><span class="header-section-number">11.28</span> 小结</h2>
+<p>基础绘图的常用流程如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>顺序</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>用 <code>plot(x, y)</code> 画出基础图</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>用 <code>main</code>、<code>xlab</code>、<code>ylab</code> 说明图</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>用 <code>pch</code>、<code>cex</code>、<code>col</code> 修改点</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>用 <code>type</code>、<code>lty</code>、<code>lwd</code> 修改线</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>用 <code>grid()</code>、<code>abline()</code>、<code>text()</code>、<code>legend()</code> 添加辅助元素</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>用 <code>par()</code> 或 <code>layout()</code> 排列多图</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>用 <code>png()</code> 或 <code>pdf()</code> 保存图片</td>
+</tr>
+</tbody>
+</table>
+<p>图形质量取决于变量选择、参数设置和信息表达。每个参数都应服务于数据呈现和图形可读性。</p>
 
 
+</section>
 
-
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1295,8 +2854,8 @@ abline(lm.fit3)</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lecture9.html" class="pagination-link" aria-label="第九课 自定义函数">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">第九课 自定义函数</span></span>
+      <a href="./lecture9.html" class="pagination-link" aria-label="R中的函数">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R中的函数</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1305,7 +2864,7 @@ abline(lm.fit3)</code></pre>
       </a>
   </div>
 </nav>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 
