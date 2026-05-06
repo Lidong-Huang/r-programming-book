@@ -1744,7 +1744,7 @@
     "href": "lecture10.html#plot中最基础的两个参数x和y",
     "title": "11  第10讲：基础绘图",
     "section": "11.3 plot中最基础的两个参数：x和y",
-    "text": "11.3 plot中最基础的两个参数：x和y\nplot(x, y) 中的 x 和 y 是最核心的两个参数。\n\n\n\n参数\n控制什么\n说明\n\n\n\n\nx\n横轴变量\n第一个点的横坐标、第二个点的横坐标，依次排列\n\n\ny\n纵轴变量\n第一个点的纵坐标、第二个点的纵坐标，依次排列\n\n\n\n例如：\n\n\nCode\nx &lt;- c(1, 2, 3, 4)\ny &lt;- c(2, 5, 4, 6)\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\n这张图上有 4 个点：\n\n\n\n点\n横坐标 x\n纵坐标 y\n\n\n\n\n第1个点\n1\n2\n\n\n第2个点\n2\n5\n\n\n第3个点\n3\n4\n\n\n第4个点\n4\n6\n\n\n\n以上坐标对应关系是散点图的基础。",
+    "text": "11.3 plot中最基础的两个参数：x和y\nplot(x, y) 中的 x 和 y 是最核心的两个参数。\n\n\n\n参数\n控制什么\n说明\n\n\n\n\nx\n横轴变量\n第一个点的横坐标、第二个点的横坐标，依次排列\n\n\ny\n纵轴变量\n第一个点的纵坐标、第二个点的纵坐标，依次排列\n\n\n\n坐标对应关系是绘图的基础。",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
     ]
@@ -1764,7 +1764,7 @@
     "href": "lecture10.html#修改点的形状pch",
     "title": "11  第10讲：基础绘图",
     "section": "11.5 修改点的形状：pch",
-    "text": "11.5 修改点的形状：pch\npch 控制点的形状。\n\n\n\n参数\n控制什么\n\n\n\n\npch\n点的形状\n\n\n\n常用点形状可以按“是否可填充”分成两类。pch = 21 到 pch = 25 比较特殊，可以同时设置边框颜色和填充颜色。\n\n\n\n\n\n\n\n\n\n\npch 取值\n形状示例\n点形状\n是否可填充\n常见用途\n\n\n\n\n0\n□\n空心方形\n否\n简单分类标记\n\n\n1\n○\n空心圆\n否\n默认散点、点较多时较轻\n\n\n2\n△\n空心三角形\n否\n与圆点区分另一组\n\n\n3\n+\n十字\n否\n强调位置，不强调面积\n\n\n4\n×\n叉号\n否\n标记特殊点\n\n\n15\n■\n实心方形\n否\n分类对比\n\n\n16\n●\n实心圆\n否\n常用散点\n\n\n17\n▲\n实心三角形\n否\n分组散点\n\n\n18\n◆\n实心菱形\n否\n标记重点类别\n\n\n19\n●\n实心圆\n否\n基础示例和常规散点图\n\n\n21\n\n可填充圆\n是\n需要边框色和填充色时\n\n\n22\n\n可填充方形\n是\n分组图\n\n\n24\n▲\n可填充三角形\n是\n分组图\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  main = \"pch = 19：实心圆点\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)",
+    "text": "11.5 修改点的形状：pch\npch 控制点的形状。\n常用点形状可以按“是否可填充”分成两类。pch = 21 到 pch = 25 比较特殊，可以同时设置边框颜色和填充颜色。\n\n\n\n\n\n\n\n\n\n\npch 取值\n形状示例\n点形状\n是否可填充\n常见用途\n\n\n\n\n0\n□\n空心方形\n否\n简单分类标记\n\n\n1\n○\n空心圆\n否\n默认散点、点较多时较轻\n\n\n2\n△\n空心三角形\n否\n与圆点区分另一组\n\n\n3\n+\n十字\n否\n强调位置，不强调面积\n\n\n4\n×\n叉号\n否\n标记特殊点\n\n\n5\n◇\n空心菱形\n否\n分类标记\n\n\n6\n▽\n空心下三角形\n否\n与上三角形区分\n\n\n7\n⊞\n方形加号\n否\n较少使用\n\n\n8\n✳\n星号\n否\n标记特殊点\n\n\n9\n◇\n菱形加号\n否\n较少使用\n\n\n10\n⊕\n圆形加号\n否\n较少使用\n\n\n11\n⊛\n圆形星号\n否\n较少使用\n\n\n12\n⊡\n方形加号\n否\n较少使用\n\n\n13\n⊙\n圆形点\n否\n较少使用\n\n\n14\n□\n方形点\n否\n较少使用\n\n\n15\n■\n实心方形\n否\n分类对比\n\n\n16\n●\n实心圆\n否\n常用散点\n\n\n17\n▲\n实心三角形\n否\n分组散点\n\n\n18\n◆\n实心菱形\n否\n标记重点类别\n\n\n19\n●\n实心圆\n否\n基础示例和常规散点图\n\n\n20\n●\n小实心圆\n否\n点很多时使用\n\n\n21\n\n可填充圆\n是\n需要边框色和填充色时\n\n\n22\n\n可填充方形\n是\n分组图\n\n\n23\n\n可填充菱形\n是\n标记重点类别或分组图\n\n\n24\n▲\n可填充上三角形\n是\n分组图\n\n\n25\n▼\n可填充下三角形\n是\n与上三角形配合区分分组\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  main = \"pch = 19：实心圆点\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
     ]
@@ -1864,7 +1864,7 @@
     "href": "lecture10.html#添加图例legend",
     "title": "11  第10讲：基础绘图",
     "section": "11.15 添加图例：legend",
-    "text": "11.15 添加图例：legend\n当颜色、点形状或线型代表不同组时，图例用于说明符号含义。\n示例分组数据如下。\n\n\nCode\ngroup &lt;- c(\"A\", \"A\", \"A\", \"B\", \"B\", \"B\")\ngroup_col &lt;- c(A = \"#0072B2\", B = \"#D55E00\")\n\n\n\n\n\n函数或参数\n控制什么\n\n\n\n\nlegend()\n添加图例\n\n\n\"topleft\"\n图例位置，也可以写 \"topright\"、\"bottomleft\" 等\n\n\nlegend\n图例文字\n\n\npch\n图例中的点形状\n\n\ncol\n图例中的点或线颜色\n\n\nbty = \"n\"\n去掉图例边框\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = group_col[group],\n  main = \"用 legend 解释颜色\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\nlegend(\n  \"topleft\",\n  legend = names(group_col),\n  pch = 19,\n  col = group_col,\n  bty = \"n\"\n)\n\n\n\n\n\n\n\n\n\n图例的任务是解释符号，不是装饰图形。",
+    "text": "11.15 添加图例：legend\n当颜色、点形状或线型代表不同组时，图例用于说明符号含义。\n示例分组数据如下。\n\n\nCode\ngroup &lt;- c(\"A\", \"A\", \"A\", \"B\", \"B\", \"B\")\ngroup_col &lt;- c(A = \"#0072B2\", B = \"#D55E00\")\nplot(\n  x, y,\n  pch = 19,\n  col = group_col[group],\n  main = \"用 legend 解释颜色\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\nlegend(\n  \"topleft\",\n  legend = names(group_col),\n  pch = 19,\n  col = group_col,\n  bty = \"n\"\n)\n\n\n\n\n\n\n\n\n\n\n\n\n函数或参数\n控制什么\n\n\n\n\nlegend()\n添加图例\n\n\n\"topleft\"\n图例位置，也可以写 \"topright\"、\"bottomleft\" 等\n\n\nlegend\n图例文字\n\n\npch\n图例中的点形状\n\n\ncol\n图例中的点或线颜色\n\n\nbty = \"n\"\n去掉图例边框\n\n\n\n图例的任务是解释符号，不是装饰图形。",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
     ]
