@@ -1794,7 +1794,7 @@
     "href": "lecture10.html#可填充点col和bg分工",
     "title": "11  第10讲：基础绘图",
     "section": "11.8 可填充点：col和bg分工",
-    "text": "11.8 可填充点：col和bg分工\n当 pch = 21、22、24 这类点形状时，可以同时设置边框色和填充色。\n\n\n\n参数\n控制什么\n\n\n\n\npch = 21\n使用可填充圆点\n\n\ncol\n点的边框颜色\n\n\nbg\n点的填充颜色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 21,\n  cex = 1.8,\n  col = \"white\",\n  bg = \"#0072B2\",\n  main = \"pch = 21 时：col 是边框，bg 是填充\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n这种点在分组散点图中很常用，因为填充色醒目，白色边框能减少点重叠时的混乱。",
+    "text": "11.8 可填充点：col和bg分工\n当 pch = 21-25 这类点形状时，可以同时设置边框色和填充色。\n\n\n\n参数\n控制什么\n\n\n\n\npch = 21-25\n使用可填充圆点\n\n\ncol\n点的边框颜色\n\n\nbg\n点的填充颜色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 21,\n  cex = 1.8,\n  col = \"white\",\n  bg = \"#0072B2\",\n  main = \"pch = 21 时：col 是边框，bg 是填充\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n这种点在分组散点图中很常用，因为填充色醒目，白色边框能减少点重叠时的混乱。",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
     ]
@@ -1854,7 +1854,7 @@
     "href": "lecture10.html#添加文字text",
     "title": "11  第10讲：基础绘图",
     "section": "11.14 添加文字：text",
-    "text": "11.14 添加文字：text\ntext() 可以在图中添加文字标注。适合标出某个重点点。\n\n\n\n参数\n控制什么\n\n\n\n\nx\n文字所在位置的横坐标\n\n\ny\n文字所在位置的纵坐标\n\n\nlabels\n要写出的文字\n\n\npos\n文字相对点的位置，1 下，2 左，3 上，4 右\n\n\ncex\n文字大小\n\n\ncol\n文字颜色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"用 text 标出重点\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\ntext(\n  x = 2.5,\n  y = 3,\n  labels = \"text\",\n  pos = 3,\n  cex = 0.9,\n  col = \"#D55E00\"\n)\n\n\n\n\n\n\n\n\n\n文字标注通常用于重点位置；过多标注会降低图形可读性。",
+    "text": "11.14 添加文字：text\ntext() 可以在图中添加文字标注。适合标出某个重点。\n\n\n\n参数\n控制什么\n\n\n\n\nx\n文字所在位置的横坐标\n\n\ny\n文字所在位置的纵坐标\n\n\nlabels\n要写出的文字\n\n\npos\n文字相对点的位置，1 下，2 左，3 上，4 右\n\n\ncex\n文字大小\n\n\ncol\n文字颜色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"用 text 标出重点\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\ntext(\n  x = 2.5,\n  y = 3,\n  labels = \"text\",\n  pos = 3,\n  cex = 0.9,\n  col = \"#D55E00\"\n)\n\n\n\n\n\n\n\n\n\n文字标注通常用于重点位置；过多标注会降低图形可读性。",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
     ]
@@ -2024,7 +2024,7 @@
     "href": "lecture10.html#散点图",
     "title": "11  第10讲：基础绘图",
     "section": "11.17 散点图",
-    "text": "11.17 散点图\n散点图适合观察两个数值变量之间的关系。\n下面用 R 自带的 mtcars 数据。wt 是汽车重量，mpg 是每加仑行驶英里数。\n\n\nCode\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"汽车重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\n\n\n\n\n\n\n\n\n图中显示，汽车重量越大，mpg 通常越低。\n\n散点图加分组颜色\n\n下面按气缸数分组上色。颜色用于表达类别。\n\n\nCode\ncyl_col &lt;- c(\n  \"4\" = \"#009E73\",\n  \"6\" = \"#E69F00\",\n  \"8\" = \"#D55E00\"\n)\n\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 21,\n  bg = cyl_col[as.character(mtcars$cyl)],\n  col = \"white\",\n  cex = 1.4,\n  main = \"不同气缸数汽车的重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\nlegend(\n  \"topright\",\n  legend = paste(names(cyl_col), \"缸\"),\n  pch = 21,\n  pt.bg = cyl_col,\n  col = \"white\",\n  bty = \"n\"\n)\n\n\n\n\n\n\n\n\n\n这里出现一个新参数：\n\n\n\n参数\n控制什么\n\n\n\n\npt.bg\n图例中可填充点的填充颜色",
+    "text": "11.17 散点图\n散点图适合观察两个数值变量之间的关系。\n下面用 R 自带的 mtcars 数据。wt 是汽车重量，mpg 是每加仑行驶英里数。\n\n\nCode\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"汽车重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\n\n\n\n\n\n\n\n\n图中显示，汽车重量越大，mpg 通常越低。\n\n散点图加分组颜色\n\n下面按气缸数分组上色。颜色用于表达类别。\n\n\nCode\ncyl_col &lt;- c(\n  \"4\" = \"#009E73\",\n  \"6\" = \"#E69F00\",\n  \"8\" = \"#D55E00\"\n)\n\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = cyl_col[as.character(mtcars$cyl)],\n  cex = 1.4,\n  main = \"不同气缸数汽车的重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\nlegend(\n  \"topright\",\n  legend = paste(names(cyl_col), \"缸\"),\n  pch = 19,\n  col = cyl_col,\n  bty = \"n\"\n)",
     "crumbs": [
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
     ]

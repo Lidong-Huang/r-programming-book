@@ -913,7 +913,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="可填充点col和bg分工" class="level2" data-number="11.8">
 <h2 data-number="11.8" class="anchored" data-anchor-id="可填充点col和bg分工"><span class="header-section-number">11.8</span> 可填充点：col和bg分工</h2>
-<p>当 <code>pch = 21</code>、<code>22</code>、<code>24</code> 这类点形状时，可以同时设置边框色和填充色。</p>
+<p>当 <code>pch = 21-25</code> 这类点形状时，可以同时设置边框色和填充色。</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -923,7 +923,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pch = 21</code></td>
+<td><code>pch = 21-25</code></td>
 <td>使用可填充圆点</td>
 </tr>
 <tr class="even">
@@ -1329,7 +1329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="添加文字text" class="level2" data-number="11.14">
 <h2 data-number="11.14" class="anchored" data-anchor-id="添加文字text"><span class="header-section-number">11.14</span> 添加文字：text</h2>
-<p><code>text()</code> 可以在图中添加文字标注。适合标出某个重点点。</p>
+<p><code>text()</code> 可以在图中添加文字标注。适合标出某个重点。</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1595,23 +1595,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> cyl_col[<span class="fu">as.character</span>(mtcars<span class="sc">$</span>cyl)],</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.4</span>,</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"不同气缸数汽车的重量与油耗"</span>,</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topright"</span>,</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">paste</span>(<span class="fu">names</span>(cyl_col), <span class="st">"缸"</span>),</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.bg =</span> cyl_col,</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cyl_col[<span class="fu">as.character</span>(mtcars<span class="sc">$</span>cyl)],</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="fl">1.4</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"不同气缸数汽车的重量与油耗"</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"汽车重量"</span>,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"每加仑行驶英里数"</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"topright"</span>,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">paste</span>(<span class="fu">names</span>(cyl_col), <span class="st">"缸"</span>),</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cyl_col,</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1621,21 +1619,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>这里出现一个新参数：</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>参数</th>
-<th>控制什么</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>pt.bg</code></td>
-<td>图例中可填充点的填充颜色</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="折线图" class="level2" data-number="11.18">
 <h2 data-number="11.18" class="anchored" data-anchor-id="折线图"><span class="header-section-number">11.18</span> 折线图</h2>
