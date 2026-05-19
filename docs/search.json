@@ -892,11 +892,11 @@
   {
     "objectID": "lecture10.html",
     "href": "lecture10.html",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "",
     "text": "11.1 学习目标\n本章介绍基础 R 绘图方法，重点包括 plot() 的基本用法、图形元素修改、常见图形类型、多图布局和图片保存。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
@@ -1722,151 +1722,151 @@
   {
     "objectID": "lecture10.html#学习目标",
     "href": "lecture10.html#学习目标",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "",
     "text": "顺序\n绘图内容\n代表函数或参数\n\n\n\n\n1\n绘制基础图\nplot(x, y)\n\n\n2\n添加图形说明\nmain、xlab、ylab\n\n\n3\n修改图中的点和线\npch、cex、col、type、lty、lwd\n\n\n4\n修改坐标范围\nxlim、ylim\n\n\n5\n添加辅助元素\ngrid()、abline()、text()、legend()\n\n\n6\n画常见统计图\n散点图、折线图、直方图、箱线图、柱状图\n\n\n7\n多图排列\npar()、layout()\n\n\n8\n保存图片\npng()、pdf()、dev.off()",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#画图的常见步骤",
     "href": "lecture10.html#画图的常见步骤",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.2 画图的常见步骤",
     "text": "11.2 画图的常见步骤\n基础 R 画图通常可以分成五步：\n\n\n\n步骤\n做什么\n例子\n\n\n\n\n第一步\n准备变量\nx &lt;- 1:6，y &lt;- c(2, 4, 3, 5, 7, 6)\n\n\n第二步\n画基础图\nplot(x, y)\n\n\n第三步\n修改元素\n改标题、颜色、点形状、线宽\n\n\n第四步\n添加元素\n加网格线、参考线、文字、图例\n\n\n第五步\n输出图片\n保存为 PNG 或 PDF\n\n\n\n示例变量如下。\n\n\nCode\nx &lt;- 1:6\ny &lt;- c(2, 4, 3, 5, 7, 6)\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\nx 控制横轴位置，y 控制纵轴位置。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#plot中最基础的两个参数x和y",
     "href": "lecture10.html#plot中最基础的两个参数x和y",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.3 plot中最基础的两个参数：x和y",
     "text": "11.3 plot中最基础的两个参数：x和y\nplot(x, y) 中的 x 和 y 是最核心的两个参数。\n\n\n\n参数\n控制什么\n说明\n\n\n\n\nx\n横轴变量\n第一个点的横坐标、第二个点的横坐标，依次排列\n\n\ny\n纵轴变量\n第一个点的纵坐标、第二个点的纵坐标，依次排列\n\n\n\n坐标对应关系是绘图的基础。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#给图加说明mainxlabylabsub",
     "href": "lecture10.html#给图加说明mainxlabylabsub",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.4 给图加说明：main、xlab、ylab、sub",
     "text": "11.4 给图加说明：main、xlab、ylab、sub\n图形说明通常包括标题、横轴名称和纵轴名称。\n\n\n\n参数\n控制什么\n示例\n\n\n\n\nmain\n主标题\n\"简单散点图\"\n\n\nxlab\n横轴标题\n\"时间\"\n\n\nylab\n纵轴标题\n\"观测值\"\n\n\nsub\n副标题\n\"示例数据\"\n\n\n\n\n\nCode\nplot(\n  x, y,\n  main = \"简单散点图\",\n  xlab = \"时间\",\n  ylab = \"观测值\",\n  sub = \"示例数据\"\n)\n\n\n\n\n\n\n\n\n\n图形说明检查项：\n\n图的标题有没有说明主题？\n横轴有没有写清楚？\n纵轴有没有写清楚？",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#修改点的形状pch",
     "href": "lecture10.html#修改点的形状pch",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.5 修改点的形状：pch",
     "text": "11.5 修改点的形状：pch\npch 控制点的形状。\n常用点形状可以按“是否可填充”分成两类。pch = 21 到 pch = 25 比较特殊，可以同时设置边框颜色和填充颜色。\n\n\n\n\n\n\n\n\n\n\npch 取值\n形状示例\n点形状\n是否可填充\n常见用途\n\n\n\n\n0\n□\n空心方形\n否\n简单分类标记\n\n\n1\n○\n空心圆\n否\n默认散点、点较多时较轻\n\n\n2\n△\n空心三角形\n否\n与圆点区分另一组\n\n\n3\n+\n十字\n否\n强调位置，不强调面积\n\n\n4\n×\n叉号\n否\n标记特殊点\n\n\n5\n◇\n空心菱形\n否\n分类标记\n\n\n6\n▽\n空心下三角形\n否\n与上三角形区分\n\n\n7\n⊞\n方形加号\n否\n较少使用\n\n\n8\n✳\n星号\n否\n标记特殊点\n\n\n9\n◇\n菱形加号\n否\n较少使用\n\n\n10\n⊕\n圆形加号\n否\n较少使用\n\n\n11\n⊛\n圆形星号\n否\n较少使用\n\n\n12\n⊡\n方形加号\n否\n较少使用\n\n\n13\n⊙\n圆形点\n否\n较少使用\n\n\n14\n□\n方形点\n否\n较少使用\n\n\n15\n■\n实心方形\n否\n分类对比\n\n\n16\n●\n实心圆\n否\n常用散点\n\n\n17\n▲\n实心三角形\n否\n分组散点\n\n\n18\n◆\n实心菱形\n否\n标记重点类别\n\n\n19\n●\n实心圆\n否\n基础示例和常规散点图\n\n\n20\n●\n小实心圆\n否\n点很多时使用\n\n\n21\n\n可填充圆\n是\n需要边框色和填充色时\n\n\n22\n\n可填充方形\n是\n分组图\n\n\n23\n\n可填充菱形\n是\n标记重点类别或分组图\n\n\n24\n▲\n可填充上三角形\n是\n分组图\n\n\n25\n▼\n可填充下三角形\n是\n与上三角形配合区分分组\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  main = \"pch = 19：实心圆点\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#修改点的大小cex",
     "href": "lecture10.html#修改点的大小cex",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.6 修改点的大小：cex",
     "text": "11.6 修改点的大小：cex\ncex 控制点或文字的放大倍数。\n\n\n\n参数\n控制什么\n示例\n\n\n\n\ncex\n点的大小\ncex = 1 默认，cex = 1.5 放大\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  cex = 1.8,\n  main = \"cex = 1.8：点变大\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n点过小会影响辨认，点过大会增加重叠。常用取值范围为 cex = 1.2 到 cex = 1.8。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#修改点的颜色col",
     "href": "lecture10.html#修改点的颜色col",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.7 修改点的颜色：col",
     "text": "11.7 修改点的颜色：col\ncol 控制颜色。颜色可以使用英文名称，也可以使用十六进制颜色代码。\n\n\n\n参数\n控制什么\n示例\n\n\n\n\ncol\n点、线或文字的颜色\n\"blue\"，\"red\"，\"#0072B2\"\n\n\n\n英文颜色名较为直观，例如 \"blue\"、\"red\"、\"gray70\"。十六进制颜色代码适合正式作图，因为它能精确指定颜色。\n十六进制颜色代码通常写成 #RRGGBB：\n\n\n\n位置\n含义\n取值范围\n\n\n\n\n#\n颜色代码的开头标记\n固定写法\n\n\nRR\n红色强度\n00 到 FF\n\n\nGG\n绿色强度\n00 到 FF\n\n\nBB\n蓝色强度\n00 到 FF\n\n\n\n十六进制使用 0-9 和 A-F 表示数值。00 表示没有这种颜色，FF 表示这种颜色最强。例如：\n\n\n\n\n\n\n\n\n\n\n\n颜色代码\n色块\n红色 RR\n绿色 GG\n蓝色 BB\n显示含义\n\n\n\n\n#000000\n\n00\n00\n00\n黑色\n\n\n#FFFFFF\n\nFF\nFF\nFF\n白色\n\n\n#FF0000\n\nFF\n00\n00\n红色\n\n\n#00FF00\n\n00\nFF\n00\n绿色\n\n\n#0000FF\n\n00\n00\nFF\n蓝色\n\n\n#0072B2\n\n00\n72\nB2\n常用蓝色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  cex = 1.5,\n  col = \"#0072B2\",\n  main = \"col 控制颜色\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n配色规则：主体信息用颜色，辅助信息用灰色。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#可填充点col和bg分工",
     "href": "lecture10.html#可填充点col和bg分工",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.8 可填充点：col和bg分工",
     "text": "11.8 可填充点：col和bg分工\n当 pch = 21-25 这类点形状时，可以同时设置边框色和填充色。\n\n\n\n参数\n控制什么\n\n\n\n\npch = 21-25\n使用可填充圆点\n\n\ncol\n点的边框颜色\n\n\nbg\n点的填充颜色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 21,\n  cex = 1.8,\n  col = \"white\",\n  bg = \"#0072B2\",\n  main = \"pch = 21 时：col 是边框，bg 是填充\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n这种点在分组散点图中很常用，因为填充色醒目，白色边框能减少点重叠时的混乱。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#type画点还是画线",
     "href": "lecture10.html#type画点还是画线",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.9 type：画点还是画线",
     "text": "11.9 type：画点还是画线\ntype 控制图形主体是点、线，还是点线结合。\n\n\n\ntype\n控制什么\n适合场景\n\n\n\n\n\"p\"\n只画点\n散点图\n\n\n\"l\"\n只画线\n时间变化、趋势变化\n\n\n\"b\"\n点和线都画\n点数较少的趋势图\n\n\n\"n\"\n只建立坐标，不画点线\n后面再手动添加元素\n\n\n\n只画点：\n\n\nCode\nplot(x, y, type = \"p\", main = \"type = 'p'：只画点\")\n\n\n\n\n\n\n\n\n\n只画线：\n\n\nCode\nplot(x, y, type = \"l\", main = \"type = 'l'：只画线\")\n\n\n\n\n\n\n\n\n\n点和线都画：\n\n\nCode\nplot(x, y, type = \"b\", main = \"type = 'b'：点和线都画\")",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#修改线条lty和lwd",
     "href": "lecture10.html#修改线条lty和lwd",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.10 修改线条：lty和lwd",
     "text": "11.10 修改线条：lty和lwd\n如果图里有线，常用 lty 和 lwd 修改线条。\n\n\n\n参数\n控制什么\n示例\n\n\n\n\nlty\n线型\n1 实线，2 虚线，3 点线\n\n\nlwd\n线宽\n1 默认，2 更粗\n\n\n\n常用线型如下：\n\n\n\n\n\n\n\n\n\nlty 取值\n线条示例\n线型名称\n常见用途\n\n\n\n\n1\n\n实线\n主要趋势线\n\n\n2\n\n虚线\n参考线、平均线\n\n\n3\n\n点线\n辅助线\n\n\n4\n\n点划线\n与其他线区分\n\n\n5\n\n长虚线\n强调但不作为主线\n\n\n\n常用线宽如下：\n\n\n\n\n\n\n\n\nlwd 取值\n线条示例\n说明\n\n\n\n\n1\n\n默认线宽\n\n\n2\n\n常用强调线宽\n\n\n3\n\n更醒目的主线\n\n\n\n\n\nCode\nplot(\n  x, y,\n  type = \"l\",\n  lty = 2,\n  lwd = 3,\n  col = \"#D55E00\",\n  main = \"lty 控制线型，lwd 控制线宽\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n黑白打印场景中，线条可同时使用不同的 lty 进行区分。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#修改坐标范围xlim和ylim",
     "href": "lecture10.html#修改坐标范围xlim和ylim",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.11 修改坐标范围：xlim和ylim",
     "text": "11.11 修改坐标范围：xlim和ylim\nxlim 和 ylim 控制横轴、纵轴的显示范围。\n\n\n\n参数\n控制什么\n示例\n\n\n\n\nxlim\n横轴范围\nxlim = c(0, 8)\n\n\nylim\n纵轴范围\nylim = c(0, 10)\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  xlim = c(0, 8),\n  ylim = c(0, 10),\n  main = \"xlim 和 ylim 控制坐标范围\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\n\n\n\n\n\n\n\n\n坐标范围用于改善图形可读性。过大的范围会压缩数据变化，过窄的范围可能夸大差异。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#添加网格线grid",
     "href": "lecture10.html#添加网格线grid",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.12 添加网格线：grid",
     "text": "11.12 添加网格线：grid\n画完基础图后，可以继续添加元素。grid() 用来添加网格线，帮助读数。\n\n\n\n函数或参数\n控制什么\n\n\n\n\ngrid()\n添加网格线\n\n\ncol\n网格线颜色\n\n\nlty\n网格线线型\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"添加浅灰色网格线\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\ngrid(col = \"gray88\", lty = 1)\n\n\n\n\n\n\n\n\n\n网格线一般使用浅灰色，视觉强度应低于数据点。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#添加参考线abline",
     "href": "lecture10.html#添加参考线abline",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.13 添加参考线：abline",
     "text": "11.13 添加参考线：abline\nabline() 可以添加水平线或垂直线。\n\n\n\n参数\n控制什么\n示例\n\n\n\n\nh\n水平参考线的位置\nh = 5\n\n\nv\n垂直参考线的位置\nv = 3\n\n\ncol\n参考线颜色\ncol = \"gray60\"\n\n\nlty\n参考线线型\nlty = 2\n\n\nlwd\n参考线线宽\nlwd = 2\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"添加水平和垂直参考线\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\nabline(h = 5, col = \"gray60\", lty = 2, lwd = 2)\nabline(v = 3, col = \"gray60\", lty = 3, lwd = 2)\n\n\n\n\n\n\n\n\n\n参考线用于辅助读图，例如标出标准值、平均值或特定时间点。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#添加文字text",
     "href": "lecture10.html#添加文字text",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.14 添加文字：text",
     "text": "11.14 添加文字：text\ntext() 可以在图中添加文字标注。适合标出某个重点。\n\n\n\n参数\n控制什么\n\n\n\n\nx\n文字所在位置的横坐标\n\n\ny\n文字所在位置的纵坐标\n\n\nlabels\n要写出的文字\n\n\npos\n文字相对点的位置，1 下，2 左，3 上，4 右\n\n\ncex\n文字大小\n\n\ncol\n文字颜色\n\n\n\n\n\nCode\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"用 text 标出重点\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\ntext(\n  x = 2.5,\n  y = 3,\n  labels = \"text\",\n  pos = 3,\n  cex = 0.9,\n  col = \"#D55E00\"\n)\n\n\n\n\n\n\n\n\n\n文字标注通常用于重点位置；过多标注会降低图形可读性。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#添加图例legend",
     "href": "lecture10.html#添加图例legend",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.15 添加图例：legend",
     "text": "11.15 添加图例：legend\n当颜色、点形状或线型代表不同组时，图例用于说明符号含义。\n示例分组数据如下。\n\n\nCode\ngroup &lt;- c(\"A\", \"A\", \"A\", \"B\", \"B\", \"B\")\ngroup_col &lt;- c(A = \"#0072B2\", B = \"#D55E00\")\nplot(\n  x, y,\n  pch = 19,\n  col = group_col[group],\n  main = \"用 legend 解释颜色\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\nlegend(\n  \"topleft\",\n  legend = names(group_col),\n  pch = 19,\n  col = group_col,\n  bty = \"n\"\n)\n\n\n\n\n\n\n\n\n\n\n\n\n函数或参数\n控制什么\n\n\n\n\nlegend()\n添加图例\n\n\n\"topleft\"\n图例位置，也可以写 \"topright\"、\"bottomleft\" 等\n\n\nlegend\n图例文字\n\n\npch\n图例中的点形状\n\n\ncol\n图例中的点或线颜色\n\n\nbty = \"n\"\n去掉图例边框\n\n\n\n图例的任务是解释符号，不是装饰图形。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
@@ -1932,131 +1932,621 @@
   {
     "objectID": "lecture10.html#经典图五柱状图",
     "href": "lecture10.html#经典图五柱状图",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.21 经典图五：柱状图",
     "text": "11.21 经典图五：柱状图\n柱状图适合展示频数、总量、均值等汇总结果。\n示例展示不同气缸数汽车的数量。\n\n\nCode\ncyl_count &lt;- table(mtcars$cyl)\n\nbarplot(cyl_count)\n\n\n\n\n\n\n\n\n\n修改柱状图：\n\n\nCode\nbarplot(\n  cyl_count,\n  col = cyl_col[names(cyl_count)],\n  border = NA,\n  main = \"不同气缸数汽车的数量\",\n  xlab = \"气缸数\",\n  ylab = \"汽车数量\"\n)\n\n\n\n\n\n\n\n\n\n\n\n\n参数\n控制什么\n\n\n\n\nborder = NA\n不显示柱子的边框\n\n\nnames(cyl_count)\n取出柱子的类别名称，用来匹配颜色\n\n\n\n柱状图需要明确柱高含义。此处柱高代表汽车数量。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#plot的底层逻辑它会看数据类型",
     "href": "lecture10.html#plot的底层逻辑它会看数据类型",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.22 plot的底层逻辑：它会看数据类型",
     "text": "11.22 plot的底层逻辑：它会看数据类型\nplot(x, y) 是最常见的用法。plot() 还会根据输入对象类型选择不同画法。\nplot() 是泛型函数，会根据输入对象类型调用相应的绘图方法。\n\n\n\n代码\n数据类型\n常见结果\n\n\n\n\nplot(x, y)\n两个数值向量\n散点图\n\n\nplot(y ~ x, data = 数据集)\n公式写法\n根据变量类型画图\n\n\nplot(分类变量, 数值变量)\n分组 + 数值\n箱线图\n\n\nplot(数据框)\n多个变量\n散点图矩阵\n\n\n\n例如：\n\n\nCode\nplot(iris$Species, iris$Sepal.Length)\n\n\n\n\n\n\n\n\n\nR 看到横轴是分类变量、纵轴是数值变量，于是自动画箱线图。\n\n\nCode\nplot(iris[1:4])\n\n\n\n\n\n\n\n\n\nR 看到一个数据框，于是自动画出变量两两之间的散点图。\n这体现了 plot() 的底层逻辑：根据对象类型选择绘图方法。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#配色原则",
     "href": "lecture10.html#配色原则",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.23 配色原则",
     "text": "11.23 配色原则\n颜色的目的不是让图更花，而是让信息更清楚。\n\n\n\n情况\n推荐做法\n不推荐做法\n\n\n\n\n只有一个重点\n重点用蓝色或橙色，其他用灰色\n所有元素都用强颜色\n\n\n有多个类别\n固定每一类的颜色\n让颜色随机变化\n\n\n点很多\n使用稍微透明或较小的点\n使用又大又深的点\n\n\n要打印\n同时使用点型或线型区分\n只靠红色和绿色区分\n\n\n\n下面是一组常用分类配色：\n\n\nCode\ngood_col &lt;- c(\n  blue = \"#0072B2\",\n  orange = \"#E69F00\",\n  green = \"#009E73\",\n  red = \"#D55E00\",\n  purple = \"#CC79A7\",\n  gray = \"gray60\"\n)\n\nbarplot(\n  rep(1, length(good_col)),\n  col = good_col,\n  border = NA,\n  names.arg = names(good_col),\n  las = 2,\n  yaxt = \"n\",\n  main = \"一组常用分类配色\"\n)\n\n\n\n\n\n\n\n\n\n这里出现的新参数：\n\n\n\n参数\n控制什么\n\n\n\n\nnames.arg\n柱子下面显示的文字\n\n\nlas = 2\n坐标轴文字垂直显示\n\n\nyaxt = \"n\"\n不显示纵轴",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#多图排列一par",
     "href": "lecture10.html#多图排列一par",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.24 多图排列一：par",
     "text": "11.24 多图排列一：par\npar() 用来设置整张画布。最常用的是 mfrow，意思是一页放多张图。\n\n\n\n\n\n\n\n\n参数\n控制什么\n示例\n\n\n\n\nmfrow\n多图按行排列\nmfrow = c(1, 2) 表示 1 行 2 列\n\n\nno.readonly = TRUE\n保存当前可修改的图形参数\n常用于画完后恢复设置\n\n\n\n安全写法：\n\n\nCode\nold_par &lt;- par(no.readonly = TRUE)\n\npar(mfrow = c(1, 2))\n\nplot(x, y)\nhist(airquality$Temp)\n\npar(old_par)\n\n\n实际画一次：\n\n\nCode\nold_par &lt;- par(no.readonly = TRUE)\n\npar(mfrow = c(1, 2))\n\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"散点图\"\n)\n\nhist(\n  airquality$Temp,\n  col = \"#DCEEF8\",\n  border = \"white\",\n  main = \"直方图\",\n  xlab = \"温度\"\n)\n\n\n\n\n\n\n\n\n\nCode\npar(old_par)\n\n\npar() 修改的是图形设备设置，使用后通常恢复原设置。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#多图排列二layout",
     "href": "lecture10.html#多图排列二layout",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.25 多图排列二：layout",
     "text": "11.25 多图排列二：layout\nlayout() 比 par(mfrow = ...) 更灵活，可设置不同图形占用不同大小的区域。\n布局矩阵示例：\nmatrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE)\n它表示：\n\n\n\n位置\n含义\n\n\n\n\n数字 1\n第 1 张图的位置\n\n\n两个 1 连在一起\n第 1 张图占两个格子\n\n\n数字 2\n第 2 张图的位置\n\n\n数字 3\n第 3 张图的位置\n\n\n\n\n\n\n参数\n控制什么\n\n\n\n\nmatrix()\n创建布局矩阵\n\n\nnrow = 2\n矩阵有 2 行\n\n\nbyrow = TRUE\n按行填入数字\n\n\n\n\n\nCode\nold_par &lt;- par(no.readonly = TRUE)\n\nlayout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))\n\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"主图：散点图\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\nhist(\n  mtcars$mpg,\n  col = \"#DCEEF8\",\n  border = \"white\",\n  main = \"油耗分布\",\n  xlab = \"mpg\"\n)\n\nbarplot(\n  table(mtcars$cyl),\n  col = cyl_col,\n  border = NA,\n  main = \"气缸数\"\n)\n\n\n\n\n\n\n\n\n\nCode\npar(old_par)\nlayout(1)\n\n\nlayout(1) 的作用是把布局恢复为一张图占满整个画布。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#保存图片",
     "href": "lecture10.html#保存图片",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.26 保存图片",
     "text": "11.26 保存图片\n画完图以后，可以保存为图片文件。常见格式有 PNG 和 PDF。\nPNG 适合放在课件、网页或 Word 文档中。\n\n\nCode\npng(\n  filename = \"scatter_plot.png\",\n  width = 1200,\n  height = 900,\n  res = 150\n)\n\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"汽车重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\ndev.off()\n\n\n\n\n\n参数或函数\n控制什么\n\n\n\n\npng()\n打开一个 PNG 图片设备\n\n\nfilename\n保存的文件名\n\n\nwidth\n图片宽度，默认单位是像素\n\n\nheight\n图片高度，默认单位是像素\n\n\nres\n图片分辨率\n\n\ndev.off()\n关闭图片设备，真正写出文件\n\n\n\nPDF 适合论文、书籍或需要矢量图的场景。\n\n\nCode\npdf(\n  file = \"scatter_plot.pdf\",\n  width = 6,\n  height = 4\n)\n\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"汽车重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\ndev.off()\n\n\n\n\n\n参数或函数\n控制什么\n\n\n\n\npdf()\n打开一个 PDF 图形设备\n\n\nfile\n保存的文件名\n\n\nwidth\n图片宽度，单位是英寸\n\n\nheight\n图片高度，单位是英寸\n\n\ndev.off()\n关闭图形设备\n\n\n\n保存图片时需要执行 dev.off() 关闭图形设备，否则文件可能没有正常写完。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#练习题",
     "href": "lecture10.html#练习题",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.27 练习题",
     "text": "11.27 练习题\n练习一：用 x &lt;- 1:6 和 y &lt;- c(2, 4, 3, 5, 7, 6) 画一张散点图。要求：\n\n点用实心圆。\n点的颜色用蓝色。\n添加主标题、横轴标题、纵轴标题。\n\nx &lt;- 1:6\ny &lt;- c(2, 4, 3, 5, 7, 6)\n\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"简单散点图\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n练习二：把练习一改成点线图。要求：\n\n使用 type = \"b\"。\n线宽设为 2。\n点大小设为 1.5。\n\nplot(\n  x, y,\n  type = \"b\",\n  pch = 19,\n  cex = 1.5,\n  lwd = 2,\n  col = \"#0072B2\",\n  main = \"点线图\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n练习三：用 airquality$Temp 画直方图。要求：\n\n设置 breaks = 10。\n柱子填充浅蓝色。\n柱子边框为白色。\n\nhist(\n  airquality$Temp,\n  breaks = 10,\n  col = \"#DCEEF8\",\n  border = \"white\",\n  main = \"温度分布\",\n  xlab = \"温度\"\n)\n练习四：用 par(mfrow = c(1, 2)) 把散点图和直方图放在同一页。\nold_par &lt;- par(no.readonly = TRUE)\n\npar(mfrow = c(1, 2))\n\nplot(x, y, pch = 19, col = \"#0072B2\")\nhist(airquality$Temp, col = \"#DCEEF8\", border = \"white\")\n\npar(old_par)\n练习五：把自己最满意的一张图保存成 PNG 文件。\npng(\"my_first_plot.png\", width = 1200, height = 900, res = 150)\n\nplot(\n  x, y,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"我的第一张保存图片\",\n  xlab = \"时间\",\n  ylab = \"观测值\"\n)\n\ndev.off()",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#小结",
     "href": "lecture10.html#小结",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.28 小结",
     "text": "11.28 小结\n基础绘图的常用流程如下：\n\n\n\n顺序\n操作\n\n\n\n\n1\n用 plot(x, y) 画出基础图\n\n\n2\n用 main、xlab、ylab 说明图\n\n\n3\n用 pch、cex、col 修改点\n\n\n4\n用 type、lty、lwd 修改线\n\n\n5\n用 grid()、abline()、text()、legend() 添加辅助元素\n\n\n6\n用 par() 或 layout() 排列多图\n\n\n7\n用 png() 或 pdf() 保存图片\n\n\n\n图形质量取决于变量选择、参数设置和信息表达。每个参数都应服务于数据呈现和图形可读性。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#目前学过的plot参数",
     "href": "lecture10.html#目前学过的plot参数",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.16 目前学过的plot参数",
     "text": "11.16 目前学过的plot参数\n到这里，基础参数已经够画很多图。\n\n\n\n参数\n控制什么\n常用场景\n\n\n\n\nx\n横轴变量\n所有基础图\n\n\ny\n纵轴变量\n所有基础图\n\n\nmain\n主标题\n说明图的主题\n\n\nxlab\n横轴标题\n说明横轴变量\n\n\nylab\n纵轴标题\n说明纵轴变量\n\n\nsub\n副标题\n补充说明\n\n\npch\n点形状\n散点图\n\n\ncex\n点或文字大小\n强调重点\n\n\ncol\n颜色\n点、线、文字\n\n\nbg\n可填充点的填充色\npch = 21 等\n\n\ntype\n点线类型\n散点图、折线图\n\n\nlty\n线型\n折线或参考线\n\n\nlwd\n线宽\n折线或参考线\n\n\nxlim\n横轴范围\n调整显示范围\n\n\nylim\n纵轴范围\n调整显示范围",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#散点图",
     "href": "lecture10.html#散点图",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.17 散点图",
     "text": "11.17 散点图\n散点图适合观察两个数值变量之间的关系。\n下面用 R 自带的 mtcars 数据。wt 是汽车重量，mpg 是每加仑行驶英里数。\n\n\nCode\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = \"#0072B2\",\n  main = \"汽车重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\n\n\n\n\n\n\n\n\n图中显示，汽车重量越大，mpg 通常越低。\n\n散点图加分组颜色\n\n下面按气缸数分组上色。颜色用于表达类别。\n\n\nCode\ncyl_col &lt;- c(\n  \"4\" = \"#009E73\",\n  \"6\" = \"#E69F00\",\n  \"8\" = \"#D55E00\"\n)\n\nplot(\n  mtcars$wt, mtcars$mpg,\n  pch = 19,\n  col = cyl_col[as.character(mtcars$cyl)],\n  cex = 1.4,\n  main = \"不同气缸数汽车的重量与油耗\",\n  xlab = \"汽车重量\",\n  ylab = \"每加仑行驶英里数\"\n)\n\nlegend(\n  \"topright\",\n  legend = paste(names(cyl_col), \"缸\"),\n  pch = 19,\n  col = cyl_col,\n  bty = \"n\"\n)",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#折线图",
     "href": "lecture10.html#折线图",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.18 折线图",
     "text": "11.18 折线图\n折线图适合表达有顺序的数据，比如时间变化。\n\n\nCode\nmonth &lt;- 1:12\ntemperature &lt;- c(2, 4, 8, 13, 18, 22, 25, 24, 20, 14, 8, 3)\n\nplot(\n  month, temperature,\n  type = \"l\",\n  lwd = 2,\n  col = \"#0072B2\",\n  main = \"一年中温度的变化\",\n  xlab = \"月份\",\n  ylab = \"温度\"\n)\n\n\n\n\n\n\n\n\n\ntype = \"b\" 可同时显示折线和每个月的观测点。\n\n\nCode\nplot(\n  month, temperature,\n  type = \"b\",\n  pch = 19,\n  lwd = 2,\n  col = \"#0072B2\",\n  main = \"折线图也可以显示观测点\",\n  xlab = \"月份\",\n  ylab = \"温度\"\n)\n\n\n\n\n\n\n\n\n\n折线图的横轴应具有自然顺序。无序分类变量通常不适合直接连线。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#直方图",
     "href": "lecture10.html#直方图",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.19 直方图",
     "text": "11.19 直方图\n直方图适合观察一个数值变量的分布。\n\n\nCode\nhist(airquality$Temp)\n\n\n\n\n\n\n\n\n\n默认直方图可以进一步修改标题、颜色和分组数量。\n\n\n\n参数\n控制什么\n\n\n\n\nbreaks\n分成多少个柱子，或者指定分组断点\n\n\ncol\n柱子的填充颜色\n\n\nborder\n柱子的边框颜色\n\n\nmain\n主标题\n\n\nxlab\n横轴标题\n\n\n\n\n\nCode\nhist(\n  airquality$Temp,\n  breaks = 10,\n  col = \"#DCEEF8\",\n  border = \"white\",\n  main = \"温度分布\",\n  xlab = \"温度\"\n)\n\n\n\n\n\n\n\n\n\n直方图面积较大，浅色填充和白色边框通常能提高图面清晰度。",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
     ]
   },
   {
     "objectID": "lecture10.html#箱线图",
     "href": "lecture10.html#箱线图",
-    "title": "11  第10讲：基础绘图",
+    "title": "11  基础绘图plot()",
     "section": "11.20 箱线图",
     "text": "11.20 箱线图\n箱线图适合比较不同组的数值分布。\n\n\nCode\nboxplot(\n  Sepal.Length ~ Species,\n  data = iris,\n  main = \"不同鸢尾花物种的萼片长度\",\n  xlab = \"物种\",\n  ylab = \"萼片长度\"\n)\n\n\n\n\n\n\n\n\n\n这里出现了两个重要写法：\n\n\n\n写法或参数\n控制什么\n\n\n\n\nSepal.Length ~ Species\n公式写法，左边是数值变量，右边是分组变量\n\n\ndata = iris\n说明变量来自 iris 数据集\n\n\n\n修改箱线图颜色：\n\n\nCode\nspecies_col &lt;- c(\n  setosa = \"#0072B2\",\n  versicolor = \"#D55E00\",\n  virginica = \"#009E73\"\n)\n\nboxplot(\n  Sepal.Length ~ Species,\n  data = iris,\n  col = species_col,\n  border = \"gray30\",\n  main = \"给不同组设置颜色\",\n  xlab = \"物种\",\n  ylab = \"萼片长度\"\n)\n\n\n\n\n\n\n\n\n\n\n\n\n参数\n控制什么\n\n\n\n\ncol\n箱子的填充颜色\n\n\nborder\n箱子的边框颜色",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>第10讲：基础绘图</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>基础绘图plot()</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html",
+    "href": "lecture11.html",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "",
+    "text": "12.1 学习目标\n本节课学习用 ggplot2 绘制常见统计图形。重点不是记住很多函数，而是理解一张图由哪些部分组成，以及不同问题应该选择什么图形。\n本节课结束后，应能完成以下任务：",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#本节课要解决什么问题",
+    "href": "lecture11.html#本节课要解决什么问题",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "",
+    "text": "ggplot(data, aes(x, y)) + geom_point()\n\n\n一张 ggplot 图 = 数据 + 映射 + 图层。 更完整地说：数据、映射、图层、标度、分面、坐标、主题。\n\n\n\n\n全文使用 iris 数据集作为主线，去掉 mtcars、diamonds 等混杂例子。\n使用较新的 ggplot2 讲法：从 7 个组成部分理解图形，但入门时先掌握前三个。\n旧写法 ..density.. 改为现在推荐的 after_stat(density)。\n画线时使用 linewidth 表示线宽，避免继续使用已不推荐的 size 线宽写法。\n强调标题、坐标轴、图例、颜色可读性和可复现报告，这是近几年数据可视化教学中越来越重视的部分。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#先准备环境",
+    "href": "lecture11.html#先准备环境",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.2 0. 先准备环境",
+    "text": "12.2 0. 先准备环境\nggplot2 是 R 中最常用的数据可视化包之一。它属于 tidyverse 生态，但本节课只需要加载 ggplot2。\n\nlibrary(ggplot2)\ndata(iris)\n\n如果你的电脑还没有安装 ggplot2，先运行一次：\n\ninstall.packages(\"ggplot2\")",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#先认识-iris-数据",
+    "href": "lecture11.html#先认识-iris-数据",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.3 1. 先认识 iris 数据",
+    "text": "12.3 1. 先认识 iris 数据\n画图之前不要急着敲 ggplot()。第一步永远是看数据。\n\nhead(iris)\n#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n#&gt; 1          5.1         3.5          1.4         0.2  setosa\n#&gt; 2          4.9         3.0          1.4         0.2  setosa\n#&gt; 3          4.7         3.2          1.3         0.2  setosa\n#&gt; 4          4.6         3.1          1.5         0.2  setosa\n#&gt; 5          5.0         3.6          1.4         0.2  setosa\n#&gt; 6          5.4         3.9          1.7         0.4  setosa\n\n\nstr(iris)\n#&gt; 'data.frame':    150 obs. of  5 variables:\n#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...\n#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...\n#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...\n#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...\n#&gt;  $ Species     : Factor w/ 3 levels \"setosa\",\"versicolor\",..: 1 1 1 1 1 1 1 1 1 1 ...\n\niris 是一份鸢尾花数据，共 150 行、5 列。每一行是一朵花，每一列是这朵花的一个信息。\n\ndata.frame(\n  变量名 = names(iris),\n  中文理解 = c(\n    \"萼片长度，数值型，单位 cm\",\n    \"萼片宽度，数值型，单位 cm\",\n    \"花瓣长度，数值型，单位 cm\",\n    \"花瓣宽度，数值型，单位 cm\",\n    \"鸢尾花种类，分类型变量\"\n  ),\n  check.names = FALSE\n)\n#&gt;         变量名                  中文理解\n#&gt; 1 Sepal.Length 萼片长度，数值型，单位 cm\n#&gt; 2  Sepal.Width 萼片宽度，数值型，单位 cm\n#&gt; 3 Petal.Length 花瓣长度，数值型，单位 cm\n#&gt; 4  Petal.Width 花瓣宽度，数值型，单位 cm\n#&gt; 5      Species    鸢尾花种类，分类型变量\n\n三种花各有多少朵？\n\ntable(iris$Species)\n#&gt; \n#&gt;     setosa versicolor  virginica \n#&gt;         50         50         50\n\n\n记忆方法： Sepal = 萼片，Petal = 花瓣。 Length = 长度，Width = 宽度。 Species = 种类。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#第一张图先画出来",
+    "href": "lecture11.html#第一张图先画出来",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.4 2. 第一张图：先画出来",
+    "text": "12.4 2. 第一张图：先画出来\n我们先问一个非常直观的问题：\n\n花瓣越长，花瓣是不是也越宽？\n\n这需要同时看两个数值变量：\n\n横轴：Petal.Length\n纵轴：Petal.Width\n图形：散点图，因为每一朵花都是一个点\n\n\nggplot(data = iris, mapping = aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point()\n\n\n\n\n\n\n\n\n这就是 ggplot2 的最小结构：\nggplot(data = 数据, mapping = aes(x = 横轴变量, y = 纵轴变量)) +\n  geom_图形()\n\n三步成图： 1. 给数据：data = iris 2. 设映射：aes(x = Petal.Length, y = Petal.Width) 3. 加图层：geom_point()",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#什么叫映射-aes",
+    "href": "lecture11.html#什么叫映射-aes",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.5 3. 什么叫映射 aes()",
+    "text": "12.5 3. 什么叫映射 aes()\naes() 的意思是 aesthetics，中文常翻译成“图形属性”。初学时可以把它理解成：\n\n把数据中的变量，安排到图上的某个位置或某种视觉属性上。\n\n比如：\n\nx = Petal.Length：把花瓣长度放到横轴\ny = Petal.Width：把花瓣宽度放到纵轴\ncolor = Species：把花的种类映射成不同颜色\n\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.5, alpha = 0.8)\n\n\n\n\n\n\n\n\n现在这张图比第一张图多回答了一个问题：\n\n三种鸢尾花在花瓣长度和花瓣宽度上是不是能分开？\n\n可以看到，setosa 明显更小，versicolor 和 virginica 有一部分接近，但整体还是有差异。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#最容易犯错的地方映射-vs-固定样式",
+    "href": "lecture11.html#最容易犯错的地方映射-vs-固定样式",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.6 4. 最容易犯错的地方：映射 vs 固定样式",
+    "text": "12.6 4. 最容易犯错的地方：映射 vs 固定样式\n很多同学会写出下面两类代码。它们看起来很像，但意思完全不同。\n\n12.6.1 4.1 颜色跟变量有关：写在 aes() 里面\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.5)\n\n\n\n\n\n\n\n\n意思是：不同 Species 用不同颜色。\n\n\n12.6.2 4.2 颜色只是固定成蓝色：写在 aes() 外面\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(color = \"steelblue\", size = 2.5)\n\n\n\n\n\n\n\n\n意思是：所有点都用同一个蓝色。\n\n最重要的规则： 写在 aes() 里面，表示“让图形属性跟某个变量变化”。 写在 aes() 外面，表示“固定成一个样式”。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#给图加信息标题坐标轴图例",
+    "href": "lecture11.html#给图加信息标题坐标轴图例",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.7 5. 给图加信息：标题、坐标轴、图例",
+    "text": "12.7 5. 给图加信息：标题、坐标轴、图例\n一张图不只是画给自己看，也要让别人看懂。所以我们要给图加上标题、坐标轴名称和图例名称。\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.5, alpha = 0.8) +\n  labs(\n    title = \"鸢尾花的花瓣越长，通常花瓣也越宽\",\n    subtitle = \"每个点代表一朵花，颜色代表鸢尾花种类\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\",\n    caption = \"数据来源：R 内置数据集 iris\"\n  )\n\n\n\n\n\n\n\n\n\n作业和论文里的图，至少要有三样东西：标题、横轴名称、纵轴名称。 如果用了颜色，还要有清楚的图例。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#让图更清爽主题-theme",
+    "href": "lecture11.html#让图更清爽主题-theme",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.8 6. 让图更清爽：主题 theme()",
+    "text": "12.8 6. 让图更清爽：主题 theme()\ntheme() 控制的是“非数据内容”，比如背景、网格线、字体大小、图例位置等。\n最简单的方式是先套一个完整主题：\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.5, alpha = 0.8) +\n  labs(\n    title = \"三种鸢尾花的花瓣大小差异\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n如果想让颜色更适合投影和打印，可以手动设置颜色。下面是一组常用于提高可读性的配色：\n\niris_colors &lt;- c(\n  setosa = \"#0072B2\",\n  versicolor = \"#D55E00\",\n  virginica = \"#009E73\"\n)\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.5, alpha = 0.85) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花的花瓣大小差异\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#加趋势线geom_smooth",
+    "href": "lecture11.html#加趋势线geom_smooth",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.9 7. 加趋势线：geom_smooth()",
+    "text": "12.9 7. 加趋势线：geom_smooth()\n散点图看整体关系，趋势线帮助我们看“总体方向”。\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.75) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"花瓣长度与花瓣宽度的线性趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n这里的 method = \"lm\" 表示使用线性模型。se = FALSE 表示不显示置信区间阴影。\n\n新版写法提醒：线的粗细用 linewidth。 size 仍常用于点的大小，但不建议继续用 size 控制线宽。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#分面-facet把一张图拆成几张小图",
+    "href": "lecture11.html#分面-facet把一张图拆成几张小图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.10 8. 分面 facet：把一张图拆成几张小图",
+    "text": "12.10 8. 分面 facet：把一张图拆成几张小图\n如果同一张图里的颜色太多，或者我们想分别看每一类，可以使用分面。\n\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(color = \"#0072B2\", size = 2.3, alpha = 0.8) +\n  facet_wrap(~ Species) +\n  labs(\n    title = \"把三种鸢尾花分开看\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n分面适合回答：\n\n每一组内部的规律是不是一样？\n\n记住：facet_wrap(~ Species) 的意思是按照 Species 分成多个小图。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#不同问题对应不同图形",
+    "href": "lecture11.html#不同问题对应不同图形",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.11 9. 不同问题对应不同图形",
+    "text": "12.11 9. 不同问题对应不同图形\n学画图不要背函数，而要先想“我的问题是什么”。\n\n\n\n\n\n\n\n\n问题类型\niris 例子\n推荐图形\n\n\n\n\n两个数值变量的关系\n花瓣长度和花瓣宽度是否相关\n散点图 geom_point()\n\n\n一个分类型变量 + 一个数值变量\n三种花的萼片长度是否不同\n箱线图 geom_boxplot()\n\n\n一个数值变量的分布\n萼片长度主要集中在哪\n直方图 geom_histogram()\n\n\n一个分类型变量的数量\n三种花各有多少朵\n条形图 geom_bar()\n\n\n想分组看同一规律\n每种花单独看花瓣关系\n分面 facet_wrap()",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#箱线图比较三组数值",
+    "href": "lecture11.html#箱线图比较三组数值",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.12 10. 箱线图：比较三组数值",
+    "text": "12.12 10. 箱线图：比较三组数值\n现在问：\n\n三种鸢尾花的萼片长度是否不同？\n\n横轴是种类，纵轴是萼片长度，所以用箱线图。\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_boxplot(width = 0.55, alpha = 0.65, outlier.shape = NA) +\n  geom_jitter(aes(color = Species), width = 0.12, alpha = 0.55, size = 1.6, show.legend = FALSE) +\n  scale_fill_manual(values = iris_colors) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花的萼片长度比较\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n箱线图怎么看？\n\n中间粗线：中位数。\n箱子的上下边：中间 50% 的数据范围。\n须线：大多数数据的延伸范围。\n散点：每一朵花的真实观测值。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#直方图看一个数值变量的分布",
+    "href": "lecture11.html#直方图看一个数值变量的分布",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.13 11. 直方图：看一个数值变量的分布",
+    "text": "12.13 11. 直方图：看一个数值变量的分布\n现在问：\n\n萼片长度主要集中在哪些范围？\n\n这时只看一个数值变量，用直方图。\n\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_histogram(binwidth = 0.3, color = \"white\", fill = \"#0072B2\") +\n  labs(\n    title = \"鸢尾花萼片长度的分布\",\n    x = \"萼片长度 (cm)\",\n    y = \"花朵数量\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\nbinwidth = 0.3 表示每 0.3 cm 分成一个区间。区间太宽，细节会被抹掉；区间太窄，图会很碎。\n\n12.13.1 11.1 现代写法：after_stat()\n有时候我们不想看数量，而想看密度。注意：密度不是 iris 数据里原本的一列，而是 ggplot2 计算出来的结果。\n旧代码里常见：\naes(y = ..density..)\n现在推荐写成：\naes(y = after_stat(density))\n\nggplot(iris, aes(x = Sepal.Length, fill = Species)) +\n  geom_histogram(\n    aes(y = after_stat(density)),\n    binwidth = 0.3,\n    position = \"identity\",\n    alpha = 0.45,\n    color = \"white\"\n  ) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度的密度分布\",\n    x = \"萼片长度 (cm)\",\n    y = \"密度\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n如果柱子的高度是 ggplot2 统计出来的，不是数据表里原来就有的变量，就可以想到 after_stat()。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#密度图更平滑地看分布",
+    "href": "lecture11.html#密度图更平滑地看分布",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.14 12. 密度图：更平滑地看分布",
+    "text": "12.14 12. 密度图：更平滑地看分布\n密度图可以理解为“平滑版直方图”。\n\nggplot(iris, aes(x = Sepal.Length, color = Species, fill = Species)) +\n  geom_density(alpha = 0.18, linewidth = 1) +\n  scale_color_manual(values = iris_colors) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"用密度图比较三种鸢尾花的萼片长度\",\n    x = \"萼片长度 (cm)\",\n    y = \"密度\",\n    color = \"种类\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n密度图适合比较分布形状，但对初学者来说，直方图更直观。课堂上可以先讲直方图，再讲密度图。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#条形图数一数每组有多少个",
+    "href": "lecture11.html#条形图数一数每组有多少个",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.15 13. 条形图：数一数每组有多少个",
+    "text": "12.15 13. 条形图：数一数每组有多少个\n问：\n\n三种花各有多少朵？\n\n这是数类别的个数，用 geom_bar()。\n\nggplot(iris, aes(x = Species, fill = Species)) +\n  geom_bar(width = 0.65) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花的样本数量\",\n    x = \"鸢尾花种类\",\n    y = \"花朵数量\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n12.15.1 13.1 geom_bar() 和 geom_col() 的区别\n这两个函数很容易混：\n\ngeom_bar()：没有给 y 时，自动数每组有多少行。\ngeom_col()：已经有 y 值，直接把 y 值画成柱子。\n\n例如，我们先计算每种花的平均萼片长度，再画柱形图。\n\niris_mean &lt;- aggregate(Sepal.Length ~ Species, data = iris, FUN = mean)\niris_mean\n#&gt;      Species Sepal.Length\n#&gt; 1     setosa        5.006\n#&gt; 2 versicolor        5.936\n#&gt; 3  virginica        6.588\n\n\nggplot(iris_mean, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_col(width = 0.65) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花的平均萼片长度\",\n    x = \"鸢尾花种类\",\n    y = \"平均萼片长度 (cm)\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n记住：geom_bar() 是“帮你数”。geom_col() 是“你已经算好，我帮你画”。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#平均值-标准差更像科研图",
+    "href": "lecture11.html#平均值-标准差更像科研图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.16 14. 平均值 + 标准差：更像科研图",
+    "text": "12.16 14. 平均值 + 标准差：更像科研图\n论文和实验报告中，常见做法是画平均值，并加上误差线。\n先计算每组的平均值和标准差：\n\niris_summary &lt;- aggregate(\n  Sepal.Length ~ Species,\n  data = iris,\n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\niris_summary &lt;- do.call(data.frame, iris_summary)\nnames(iris_summary) &lt;- c(\"Species\", \"mean\", \"sd\")\niris_summary\n#&gt;      Species  mean        sd\n#&gt; 1     setosa 5.006 0.3524897\n#&gt; 2 versicolor 5.936 0.5161711\n#&gt; 3  virginica 6.588 0.6358796\n\n再画图：\n\nggplot(iris_summary, aes(x = Species, y = mean, fill = Species)) +\n  geom_col(width = 0.65, alpha = 0.75) +\n  geom_errorbar(\n    aes(ymin = mean - sd, ymax = mean + sd),\n    width = 0.15,\n    linewidth = 0.7\n  ) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度的平均值和标准差\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n这张图适合展示“平均水平 + 变异程度”。但它会隐藏原始数据，所以课堂上建议把箱线图和散点图也讲给学生。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#坐标-coord横着画有时更清楚",
+    "href": "lecture11.html#坐标-coord横着画有时更清楚",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.17 15. 坐标 coord：横着画有时更清楚",
+    "text": "12.17 15. 坐标 coord：横着画有时更清楚\n如果分类名称比较长，可以把图横过来。\n\nggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_boxplot(width = 0.55, alpha = 0.7) +\n  coord_flip() +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"横向箱线图：三种鸢尾花的萼片长度比较\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\ncoord_flip() 不改变数据，只改变显示方向。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#为什么不建议随便画折线图",
+    "href": "lecture11.html#为什么不建议随便画折线图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.18 16. 为什么不建议随便画折线图",
+    "text": "12.18 16. 为什么不建议随便画折线图\n旧课件里常把 iris 的两个变量直接连成线。现在建议不要这样讲。\n原因很简单：\n\n折线图通常表示时间、顺序或连续过程。iris 的每一行是一朵独立的花，没有天然顺序，把点连起来容易误导读者。\n\n如果数据有时间，比如“某块地每天的温度”，就适合折线图。iris 更适合散点图、箱线图、直方图、密度图和条形图。\n\n图形选择口诀： 两个数值看关系，用散点图。 分类比较数值，用箱线图。 一个数值看分布，用直方图。 一个分类数数量，用条形图。 有时间顺序，才优先考虑折线图。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#保存图片ggsave",
+    "href": "lecture11.html#保存图片ggsave",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.19 17. 保存图片：ggsave()",
+    "text": "12.19 17. 保存图片：ggsave()\n课堂练习时可以直接看图。写论文或报告时，要把图保存出来。\n本节所有保存图片的代码都设置为：\n#| eval: false\n意思是：渲染讲义时只显示代码，不真正运行保存图片的命令。这样可以避免因为文件夹不存在、路径不同、没有写入权限等原因导致渲染失败。\n\n12.19.1 17.1 最常用模板：先存图，再保存\n保存图片最稳的写法分两步：\n\n第一步：把图保存到一个对象里，例如 p。\n第二步：用 ggsave() 把 p 保存成图片文件。\n\n\ndir.create(\"figures\", showWarnings = FALSE)\n\np &lt;- ggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.5, alpha = 0.85) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花的花瓣大小差异\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_petal_scatter.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n\n12.19.2 17.2 保存为 PDF\nPNG 适合插入 Word、PPT 和网页。PDF 适合论文排版，放大后不容易模糊。\n\nggsave(\n  filename = \"figures/iris_petal_scatter.pdf\",\n  plot = p,\n  width = 7,\n  height = 5\n)\n\n\n\n12.19.3 17.3 换一张图保存\n同样的方法也可以保存箱线图。关键是给图换一个对象名，例如 p_box，文件名也要写清楚。\n\np_box &lt;- ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_boxplot(width = 0.55, alpha = 0.65, outlier.shape = NA) +\n  geom_jitter(aes(color = Species), width = 0.12, alpha = 0.55, size = 1.6, show.legend = FALSE) +\n  scale_fill_manual(values = iris_colors) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花的萼片长度比较\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_sepal_length_boxplot.png\",\n  plot = p_box,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n建议保存图片时写清楚：\n\n文件名：图的内容是什么。\n宽度和高度：避免图例或文字挤在一起。\n分辨率：论文、报告常用 dpi = 300。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#课堂练习",
+    "href": "lecture11.html#课堂练习",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.26 课堂练习",
+    "text": "12.26 课堂练习\n\n12.26.1 练习：修改变量\n把下面代码中的 Petal.Length 和 Petal.Width 改为 Sepal.Length 和 Sepal.Width，绘制萼片长度和萼片宽度的散点图。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point()\n\n\n\n\n12.26.2 练习：判断图形类型\n请根据问题选择合适图形。\n\n\n\n问题\n合适图形\n\n\n\n\n花瓣长度和花瓣宽度有没有关系？\n\n\n\n三种花的花瓣长度是否不同？\n\n\n\n三种花的萼片长度分布形状是否不同？\n\n\n\n萼片长度主要集中在哪些范围？\n\n\n\n三种花各有多少朵？\n\n\n\n美国失业人数随时间如何变化？\n\n\n\n三种花在四个测量变量上的平均值如何比较？\n\n\n\n\n参考答案：\n\n\n\n问题\n合适图形\n\n\n\n\n花瓣长度和花瓣宽度有没有关系？\n散点图\n\n\n三种花的花瓣长度是否不同？\n箱线图\n\n\n三种花的萼片长度分布形状是否不同？\n小提琴图\n\n\n萼片长度主要集中在哪些范围？\n直方图\n\n\n三种花各有多少朵？\n条形图\n\n\n美国失业人数随时间如何变化？\n折线图\n\n\n三种花在四个测量变量上的平均值如何比较？\n热图\n\n\n\n\n\n12.26.3 练习：解释映射和固定样式\n说明下面两行代码的区别。\n\n\nCode\ngeom_point(aes(color = Species))\ngeom_point(color = \"blue\")\n\n\n答案要点：\n\naes(color = Species)：颜色由 Species 变量决定。\ncolor = \"blue\"：所有点固定为蓝色。\n\n\n\n12.26.4 练习：保存图片\n修改下面代码中的文件名，把图片保存为自己的作业图片。渲染讲义时不要执行。\n\n\nCode\nggsave(\n  filename = \"figures/my_iris_plot.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#本节课最后要记住",
+    "href": "lecture11.html#本节课最后要记住",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.21 19. 本节课最后要记住",
+    "text": "12.21 19. 本节课最后要记住\n\nggplot2 入门只背这一句： ggplot(数据, aes(x = 横轴变量, y = 纵轴变量)) + geom_图形()。\n\n再记住 7 个组成部分：\n\n数据 data：用哪张表。\n映射 aes()：变量放到图上的哪里。\n图层 geom_*()：用点、线、柱子还是箱线。\n标度 scale_*()：颜色、形状、坐标刻度怎么显示。\n分面 facet_*()：按组拆成小图。\n坐标 coord_*()：坐标系统和方向。\n主题 theme_*()：背景、字体、图例等非数据外观。\n\n最容易考、也最容易错的三句话：\n\n写在 aes() 里面，是变量映射。\n写在 aes() 外面，是固定样式。\ngeom_bar() 是自动数数量，geom_col() 是画已经算好的数值。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#参考资料",
+    "href": "lecture11.html#参考资料",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.28 参考资料",
+    "text": "12.28 参考资料\n\nggplot2 官方入门文章：https://ggplot2.tidyverse.org/articles/ggplot2.html\nggplot2 作者与维护者信息：https://ggplot2.tidyverse.org/authors.html\nggplot2 在线书：https://ggplot2-book.org/\nggplot2 地图数据函数 map_data()：https://ggplot2.tidyverse.org/reference/map_data.html\nggplot2 关于 linewidth 的官方说明：https://ggplot2.tidyverse.org/reference/scale_linewidth.html\nggplot2 4.0.0 发布说明：https://tidyverse.org/blog/2025/09/ggplot2-4-0-0/\nQuarto 中使用 R 的官方说明：https://quarto.org/docs/computations/r.html",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#学习目标",
+    "href": "lecture11.html#学习目标",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "",
+    "text": "了解 ggplot2 的作者、基本思想以及它对 R 绘图方式的影响。\n认识 iris 数据集中的变量。\n用 ggplot2 绘制散点图、箱线图、小提琴图、直方图、密度图、条形图、柱形图、热图、折线图和简单地图。\n区分变量映射和固定样式。\n理解图形修饰的顺序：标签、标度、主题。\n在散点图上添加趋势线。\n使用分面把一张图拆成多张小图。\n使用 ggsave() 保存图片，并在讲义渲染时只显示代码、不执行保存。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#准备环境",
+    "href": "lecture11.html#准备环境",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.2 准备环境",
+    "text": "12.2 准备环境\nggplot2 是 R 中常用的数据可视化包。它的基本思想是：先给数据，再说明变量如何映射到图形上，最后选择图形类型。\n如果电脑中还没有安装 ggplot2，先运行一次下面的代码。\n\n\nCode\ninstall.packages(\"ggplot2\")\n\n\n每次开始使用时，需要加载包。\n\n\nCode\nlibrary(ggplot2)\ndata(iris)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#ggplot2-的作者和影响",
+    "href": "lecture11.html#ggplot2-的作者和影响",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.3 ggplot2 的作者和影响",
+    "text": "12.3 ggplot2 的作者和影响\nggplot2 最初由 Hadley Wickham 开发。现在它由 tidyverse 团队共同维护和发展，是 R 语言中最重要的数据可视化包之一。\nggplot2 的理论基础是 The Grammar of Graphics，中文常译为“图形语法”。它的核心思想是：\n\n一张图不是一次性画出来的，而是由数据、映射、图层、坐标、标度、主题等部分逐步组成。\n\n这对 R 的影响主要体现在四个方面：\n\n让 R 绘图从“一个函数画一张图”转向“分层搭建一张图”。\n让不同类型图形具有相似的写法，降低了学习新图形的难度。\n让图形代码更适合放在 R Markdown 或 Quarto 报告中，便于重复运行和修改。\n推动了 R 可视化生态的发展，很多扩展包都围绕 ggplot2 的图层思想继续扩展。\n\n本节课只讲入门用法。先掌握基本图形，再学习主题、趋势线、分面和保存图片。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#ggplot2-的基本结构",
+    "href": "lecture11.html#ggplot2-的基本结构",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.4 ggplot2 的基本结构",
+    "text": "12.4 ggplot2 的基本结构\nggplot2 最基本的写法如下。\nggplot(data = 数据, mapping = aes(x = 横轴变量, y = 纵轴变量)) +\n  geom_图形()\n这段代码包含三个部分：\n\ndata：使用哪一个数据集。\naes()：把哪些变量放到图中。\ngeom_*()：使用哪一种图形。\n\n例如，绘制花瓣长度和花瓣宽度的散点图。\n\n\nCode\nggplot(data = iris, mapping = aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n这个图中，每一个点代表一朵鸢尾花。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#映射和固定样式",
+    "href": "lecture11.html#映射和固定样式",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.5 映射和固定样式",
+    "text": "12.5 映射和固定样式\naes() 表示映射。映射的意思是：把数据中的变量放到图形属性上。\n常见映射包括：\n\nx：横轴位置。\ny：纵轴位置。\ncolor：点或线的颜色。\nfill：柱子、箱子或密度区域的填充颜色。\nshape：点的形状。\n\n例如，把 Species 映射到颜色上。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n如果颜色写在 aes() 里面，表示颜色跟变量有关。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n如果颜色写在 aes() 外面，表示所有点固定为同一种颜色。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(color = \"steelblue\")\n\n\n\n\n\n\n\n\n\n需要记住：\n\n写在 aes() 里面：变量映射。\n写在 aes() 外面：固定样式。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#基本图形的选择",
+    "href": "lecture11.html#基本图形的选择",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.6 基本图形的选择",
+    "text": "12.6 基本图形的选择\n不同问题对应不同图形。先想清楚问题，再选择函数。\n\n\n\n\n\n\n\n\n问题\n变量类型\n常用图形\n\n\n\n\n两个数值变量有没有关系\n数值 + 数值\n散点图 geom_point()\n\n\n不同组的数值是否不同\n分类 + 数值\n箱线图 geom_boxplot()\n\n\n不同组的数值分布形状是否不同\n分类 + 数值\n小提琴图 geom_violin()\n\n\n一个数值变量集中在哪里\n数值\n直方图 geom_histogram()\n\n\n一个数值变量的平滑分布\n数值\n密度图 geom_density()\n\n\n每个类别有多少个样本\n分类\n条形图 geom_bar()\n\n\n已经算好的数值要画成柱子\n分类 + 已计算数值\n柱形图 geom_col()\n\n\n多个分组和多个变量的数值大小\n分类 + 分类 + 数值\n热图 geom_tile()\n\n\n数据随时间如何变化\n时间 + 数值\n折线图 geom_line()\n\n\n简单展示区域轮廓\n经度 + 纬度 + 分组\n地图 geom_polygon()\n\n\n\n下面先绘制基本图形。此时先不重点修改主题，只关注图形是否正确表达问题。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#散点图",
+    "href": "lecture11.html#散点图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.7 散点图",
+    "text": "12.7 散点图\n散点图用于观察两个数值变量之间的关系。\n问题：花瓣越长，花瓣是否也越宽？\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n如果需要比较不同种类，可以把 Species 映射到颜色上。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n从图中可以看出，setosa 的花瓣明显较短、较窄；versicolor 和 virginica 有部分重叠，但整体仍有差异。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#箱线图",
+    "href": "lecture11.html#箱线图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.8 箱线图",
+    "text": "12.8 箱线图\n箱线图用于比较不同组的数值分布。\n问题：三种鸢尾花的萼片长度是否不同？\n\n\nCode\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n箱线图中：\n\n中间的粗线表示中位数。\n箱子的上下边表示中间 50% 的数据范围。\n须线表示大多数数据的范围。\n单独的点通常表示离群值。\n\n也可以把原始数据点叠加到箱线图上。\n\n\nCode\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot(outlier.shape = NA) +\n  geom_jitter(width = 0.12, alpha = 0.5)\n\n\n\n\n\n\n\n\n\ngeom_jitter() 会给点增加一点随机横向偏移，避免点完全重叠。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#小提琴图",
+    "href": "lecture11.html#小提琴图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.9 小提琴图",
+    "text": "12.9 小提琴图\n小提琴图也用于比较不同组的数值分布。它和箱线图的区别是：箱线图强调中位数和四分位数，小提琴图更强调分布形状。\n问题：三种鸢尾花的萼片长度分布形状是否不同？\n\n\nCode\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_violin()\n\n\n\n\n\n\n\n\n\n小提琴图越宽的位置，表示该数值附近的数据越多。\n也可以在小提琴图中叠加一个窄箱线图。\n\n\nCode\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_violin(trim = FALSE) +\n  geom_boxplot(width = 0.12)\n\n\n\n\n\n\n\n\n\ntrim = FALSE 表示不把小提琴图的尾部裁剪到数据范围内。初学时只需要知道：它可以让分布形状显示得更完整。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#直方图",
+    "href": "lecture11.html#直方图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.10 直方图",
+    "text": "12.10 直方图\n直方图用于观察一个数值变量的分布。\n问题：鸢尾花萼片长度主要集中在哪些范围？\n\n\nCode\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_histogram(binwidth = 0.3)\n\n\n\n\n\n\n\n\n\nbinwidth = 0.3 表示每 0.3 cm 分为一个区间。\n\n区间太宽：细节会减少。\n区间太窄：图形会显得零散。\n\n如果想比较三种鸢尾花，可以把 Species 映射到填充颜色。\n\n\nCode\nggplot(iris, aes(x = Sepal.Length, fill = Species)) +\n  geom_histogram(binwidth = 0.3, position = \"identity\", alpha = 0.5)\n\n\n\n\n\n\n\n\n\n这里使用了两个参数：\n\nposition = \"identity\"：不同组的柱子重叠显示。\nalpha = 0.5：设置透明度，便于看到重叠部分。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#密度图",
+    "href": "lecture11.html#密度图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.11 密度图",
+    "text": "12.11 密度图\n密度图可以看作平滑版的直方图，也用于观察数值变量的分布。\n\n\nCode\nggplot(iris, aes(x = Sepal.Length, color = Species)) +\n  geom_density(linewidth = 1)\n\n\n\n\n\n\n\n\n\n如果想让曲线下面有颜色，可以同时设置 fill。\n\n\nCode\nggplot(iris, aes(x = Sepal.Length, color = Species, fill = Species)) +\n  geom_density(alpha = 0.2, linewidth = 1)\n\n\n\n\n\n\n\n\n\n密度图适合比较分布形状。对初学者来说，直方图通常更直观。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#条形图",
+    "href": "lecture11.html#条形图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.12 条形图",
+    "text": "12.12 条形图\n条形图用于统计每个类别有多少个样本。\n问题：三种鸢尾花各有多少朵？\n\n\nCode\nggplot(iris, aes(x = Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\ngeom_bar() 没有指定 y，因为它会自动统计每个类别有多少行。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#柱形图",
+    "href": "lecture11.html#柱形图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.13 柱形图",
+    "text": "12.13 柱形图\n柱形图用于绘制已经计算好的数值。\n例如，先计算三种鸢尾花的平均萼片长度。\n\n\nCode\niris_mean &lt;- aggregate(Sepal.Length ~ Species, data = iris, FUN = mean)\niris_mean\n\n\n     Species Sepal.Length\n1     setosa        5.006\n2 versicolor        5.936\n3  virginica        6.588\n\n\n再把平均值画成柱形图。\n\n\nCode\nggplot(iris_mean, aes(x = Species, y = Sepal.Length)) +\n  geom_col()\n\n\n\n\n\n\n\n\n\ngeom_bar() 和 geom_col() 的区别：\n\ngeom_bar()：原始数据中没有 y，函数自动计数。\ngeom_col()：数据中已经有 y，函数直接画出数值。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#热图",
+    "href": "lecture11.html#热图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.14 热图",
+    "text": "12.14 热图\n热图用于把数值大小显示为颜色深浅。它适合比较“多个组”和“多个变量”的数值。\n这里先计算三种鸢尾花在四个测量变量上的平均值。\n\n\nCode\niris_mean_all &lt;- aggregate(\n  iris[, 1:4],\n  by = list(Species = iris$Species),\n  FUN = mean\n)\n\niris_mean_matrix &lt;- as.matrix(iris_mean_all[, -1])\nrownames(iris_mean_matrix) &lt;- iris_mean_all$Species\n\niris_heat &lt;- as.data.frame(as.table(iris_mean_matrix))\nnames(iris_heat) &lt;- c(\"Species\", \"Variable\", \"Mean\")\n\niris_heat\n\n\n      Species     Variable  Mean\n1      setosa Sepal.Length 5.006\n2  versicolor Sepal.Length 5.936\n3   virginica Sepal.Length 6.588\n4      setosa  Sepal.Width 3.428\n5  versicolor  Sepal.Width 2.770\n6   virginica  Sepal.Width 2.974\n7      setosa Petal.Length 1.462\n8  versicolor Petal.Length 4.260\n9   virginica Petal.Length 5.552\n10     setosa  Petal.Width 0.246\n11 versicolor  Petal.Width 1.326\n12  virginica  Petal.Width 2.026\n\n\n再用 geom_tile() 绘制热图。\n\n\nCode\nggplot(iris_heat, aes(x = Variable, y = Species, fill = Mean)) +\n  geom_tile(color = \"white\") +\n  geom_text(aes(label = round(Mean, 2)), size = 3)\n\n\n\n\n\n\n\n\n\n热图的读法是：\n\n横轴表示变量。\n纵轴表示分组。\n颜色表示数值大小。\n图中的数字是每组的平均值。\n\n热图不是只用来画相关系数矩阵。只要有“行、列、数值”三部分，就可以考虑热图。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#折线图",
+    "href": "lecture11.html#折线图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.15 折线图",
+    "text": "12.15 折线图\n折线图适合表示时间顺序上的变化。iris 中每一行是一朵独立的花，没有时间顺序，因此不适合直接连线。\n这里用 ggplot2 自带的公开数据集 economics 演示折线图。该数据记录了美国经济相关指标随时间的变化。\n\n\nCode\nhead(economics)\n\n\n# A tibble: 6 × 6\n  date         pce    pop psavert uempmed unemploy\n  &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;\n1 1967-07-01  507. 198712    12.6     4.5     2944\n2 1967-08-01  510. 198911    12.6     4.7     2945\n3 1967-09-01  516. 199113    11.9     4.6     2958\n4 1967-10-01  512. 199311    12.9     4.9     3143\n5 1967-11-01  517. 199498    12.8     4.7     3066\n6 1967-12-01  525. 199657    11.8     4.8     3018\n\n\n绘制失业人数随时间变化的折线图。\n\n\nCode\nggplot(economics, aes(x = date, y = unemploy)) +\n  geom_line()\n\n\n\n\n\n\n\n\n\n折线图的关键是：横轴通常是时间或有明确顺序的变量。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#简单地图",
+    "href": "lecture11.html#简单地图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.16 简单地图",
+    "text": "12.16 简单地图\n地图也是一种图形。最基本的地图可以理解为：用经度和纬度确定位置，再把区域边界画出来。\n地图内容后面会单独讲。本节只展示最简单的世界地图轮廓。\n如果没有安装 maps 包，需要先安装。\n\n\nCode\ninstall.packages(\"maps\")\n\n\n下面的代码如果检测到已经安装 maps 包，就显示世界地图；如果没有安装，就只给出提示，不会让讲义渲染报错。\n\n\nCode\nworld_map &lt;- map_data(\"world\")\n\n  ggplot(world_map, aes(x = long, y = lat, group = group)) +\n    geom_polygon(fill = \"grey85\", color = \"white\", linewidth = 0.2) +\n    coord_quickmap()\n\n\n\n\n\n\n\n\n\n这段代码中：\n\nlong 表示经度。\nlat 表示纬度。\ngroup 表示哪些点属于同一个区域边界。\ngeom_polygon() 用来画多边形区域。\ncoord_quickmap() 用来让地图比例更接近真实经纬度比例。\n\n本节只需要知道地图也可以用 ggplot2 画。地图投影、空间数据格式和真实地理分析后面再讲。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#图形修饰的基本顺序",
+    "href": "lecture11.html#图形修饰的基本顺序",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.17 图形修饰的基本顺序",
+    "text": "12.17 图形修饰的基本顺序\n基本图形能够回答问题后，再进行图形修饰。修饰的目的是让图更清楚，而不是改变数据本身。\n推荐顺序如下：\n\n先加文字：labs()。\n再调颜色和坐标显示：scale_*()。\n再选择整体主题：theme_*()。\n最后微调细节：theme()。\n\n这四类函数的作用不同。\n\n\n\n函数\n作用\n是否改变数据\n\n\n\n\nlabs()\n修改标题、坐标轴名称、图例名称\n否\n\n\nscale_*()\n修改颜色、填充、坐标刻度等显示方式\n否\n\n\ntheme_*()\n使用一套完整主题\n否\n\n\ntheme()\n微调字体、图例、网格线、背景等\n否",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#添加标题和坐标轴",
+    "href": "lecture11.html#添加标题和坐标轴",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.18 添加标题和坐标轴",
+    "text": "12.18 添加标题和坐标轴\nlabs() 用来添加标题、坐标轴名称、图例名称和数据来源说明。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point() +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\",\n    caption = \"数据来源：R 内置数据集 iris\"\n  )\n\n\n\n\n\n\n\n\n\n标题应说明图的主要内容。坐标轴名称应说明变量含义和单位。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#修改颜色和标度",
+    "href": "lecture11.html#修改颜色和标度",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.19 修改颜色和标度",
+    "text": "12.19 修改颜色和标度\nscale_*() 控制变量如何显示在图中。\n常见用法包括：\n\nscale_color_manual()：手动设置线或点的颜色。\nscale_fill_manual()：手动设置填充颜色。\nscale_x_continuous()：修改横轴数值刻度。\nscale_y_continuous()：修改纵轴数值刻度。\n\n先定义一组颜色。\n\n\nCode\niris_colors &lt;- c(\n  setosa = \"#0072B2\",\n  versicolor = \"#D55E00\",\n  virginica = \"#009E73\"\n)\n\n\n再应用到图中。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  )\n\n\n\n\n\n\n\n\n\nscale_color_manual() 改变颜色显示方式，但不改变数据。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#选择整体主题",
+    "href": "lecture11.html#选择整体主题",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.20 选择整体主题",
+    "text": "12.20 选择整体主题\n主题控制图中的非数据元素，例如背景、网格线、字体大小和图例位置。\n常用主题包括：\n\ntheme_gray()：默认主题，灰色背景。\ntheme_bw()：白色背景，保留边框。\ntheme_minimal()：背景更简洁。\ntheme_classic()：经典样式，去掉主要背景网格。\n\n例如使用 theme_minimal()。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\nbase_size = 14 表示设置基础字号。课堂投影时可以适当增大字号。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#微调主题细节",
+    "href": "lecture11.html#微调主题细节",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.21 微调主题细节",
+    "text": "12.21 微调主题细节\ntheme() 用来修改主题中的具体元素。\n下面的代码把图例放到底部，并去掉次要网格线。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14) +\n  theme(\n    legend.position = \"bottom\",\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\n\n\n\n主题修改的逻辑是：\n\ntheme_*() 先确定整体风格。\ntheme() 再调整局部细节。\ntheme() 不负责修改数据变量，也不负责选择图形类型。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#添加趋势线",
+    "href": "lecture11.html#添加趋势线",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.22 添加趋势线",
+    "text": "12.22 添加趋势线\n趋势线用于辅助观察两个数值变量之间的整体关系。趋势线通常加在散点图上。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(alpha = 0.7) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  labs(\n    title = \"花瓣长度与花瓣宽度的整体趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n参数含义：\n\nmethod = \"lm\"：使用线性模型拟合趋势线。\nse = FALSE：不显示置信区间阴影。\nlinewidth = 1：设置线宽。\n\n如果把 Species 映射到颜色上，趋势线也会按种类分别绘制。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(alpha = 0.75) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"不同鸢尾花种类的花瓣长度与宽度趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#使用分面",
+    "href": "lecture11.html#使用分面",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.23 使用分面",
+    "text": "12.23 使用分面\n分面用于把同一张图按照某个分类变量拆成多张小图。\n例如，按 Species 分成三个小图。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(color = \"#0072B2\", alpha = 0.75) +\n  facet_wrap(~ Species) +\n  labs(\n    title = \"按鸢尾花种类分别观察花瓣关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\nfacet_wrap(~ Species) 的意思是：按照 Species 的不同取值，把图分成多个面板。\n分面适合回答的问题是：不同组内部的规律是否相同。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#计算统计量并绘图",
+    "href": "lecture11.html#计算统计量并绘图",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.24 计算统计量并绘图",
+    "text": "12.24 计算统计量并绘图\n科研图中常见的形式是“平均值 + 误差线”。先计算每组的平均值和标准差。\n\n\nCode\niris_summary &lt;- aggregate(\n  Sepal.Length ~ Species,\n  data = iris,\n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\niris_summary &lt;- do.call(data.frame, iris_summary)\nnames(iris_summary) &lt;- c(\"Species\", \"mean\", \"sd\")\niris_summary\n\n\n     Species  mean        sd\n1     setosa 5.006 0.3524897\n2 versicolor 5.936 0.5161711\n3  virginica 6.588 0.6358796\n\n\n再绘图。\n\n\nCode\nggplot(iris_summary, aes(x = Species, y = mean, fill = Species)) +\n  geom_col(width = 0.65, alpha = 0.75) +\n  geom_errorbar(\n    aes(ymin = mean - sd, ymax = mean + sd),\n    width = 0.15,\n    linewidth = 0.7\n  ) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度的平均值和标准差\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n平均值图可以概括组间差异，但会隐藏原始数据。展示数据时，可同时考虑箱线图或原始散点。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#保存图片",
+    "href": "lecture11.html#保存图片",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.25 保存图片",
+    "text": "12.25 保存图片\nggsave() 用于保存图形。保存图片时，建议先把图存为对象，再保存对象。\n本节所有保存图片的代码都设置为 eval: false。渲染讲义时只显示代码，不真正执行保存命令。\n\n\nCode\ndir.create(\"figures\", showWarnings = FALSE)\n\np &lt;- ggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_petal_scatter.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n保存为 PDF。\n\n\nCode\nggsave(\n  filename = \"figures/iris_petal_scatter.pdf\",\n  plot = p,\n  width = 7,\n  height = 5\n)\n\n\n保存箱线图。\n\n\nCode\np_box &lt;- ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_boxplot(width = 0.55, alpha = 0.7) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度比较\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_sepal_length_boxplot.png\",\n  plot = p_box,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n保存图片时需要注意：\n\n文件名要能说明图片内容。\nwidth 和 height 控制图片大小。\ndpi = 300 常用于论文、报告和打印。\nPNG 适合插入 Word、PPT 和网页。\nPDF 适合论文排版，放大后不容易模糊。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11.html#本节小结",
+    "href": "lecture11.html#本节小结",
+    "title": "12  第十一课 ggplot2 绘图",
+    "section": "12.27 本节小结",
+    "text": "12.27 本节小结\nggplot2 的基本结构是：\nggplot(data = 数据, mapping = aes(x = 横轴变量, y = 纵轴变量)) +\n  geom_图形()\n需要重点记住：\n\n先判断问题，再选择图形。\n两个数值变量看关系，使用散点图。\n分类变量和数值变量做比较，使用箱线图。\n分类变量和数值变量看分布形状，使用小提琴图。\n一个数值变量看分布，使用直方图或密度图。\n一个分类变量数数量，使用条形图。\n已经计算好的数值，使用柱形图。\n多个组和多个变量的数值比较，可以使用热图。\n时间变化，使用折线图。\n简单区域轮廓可以用经度、纬度和多边形绘制地图。\n写在 aes() 里面是变量映射，写在 aes() 外面是固定样式。\n图形修饰的顺序是：labs()、scale_*()、theme_*()、theme()。\n趋势线用 geom_smooth()，分面用 facet_wrap()。\n保存图片用 ggsave()，讲义中保存代码设置为 eval: false。",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>第十一课 ggplot2 绘图</span>"
     ]
   }
 ]
