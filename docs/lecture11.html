@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; 第十一课 ggplot2 绘图 – R 编程基础讲义（黄利东）</title>
+<title>12&nbsp; ggplot2 绘图 – R 编程基础讲义（黄利东）</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,6 +106,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -119,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture11.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">第十一课 ggplot2 绘图</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture11.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ggplot2 绘图</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -209,13 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10讲：基础绘图</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">基础绘图plot()</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture11.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">第十一课 ggplot2 绘图</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ggplot2 绘图</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -248,38 +277,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#学习目标" id="toc-学习目标" class="nav-link active" data-scroll-target="#学习目标"><span class="header-section-number">12.1</span> 学习目标</a></li>
   <li><a href="#准备环境" id="toc-准备环境" class="nav-link" data-scroll-target="#准备环境"><span class="header-section-number">12.2</span> 准备环境</a></li>
-  <li><a href="#ggplot2-的作者和影响" id="toc-ggplot2-的作者和影响" class="nav-link" data-scroll-target="#ggplot2-的作者和影响"><span class="header-section-number">12.3</span> ggplot2 的作者和影响</a></li>
-  <li><a href="#ggplot2-的基本结构" id="toc-ggplot2-的基本结构" class="nav-link" data-scroll-target="#ggplot2-的基本结构"><span class="header-section-number">12.4</span> ggplot2 的基本结构</a></li>
-  <li><a href="#映射和固定样式" id="toc-映射和固定样式" class="nav-link" data-scroll-target="#映射和固定样式"><span class="header-section-number">12.5</span> 映射和固定样式</a></li>
-  <li><a href="#基本图形的选择" id="toc-基本图形的选择" class="nav-link" data-scroll-target="#基本图形的选择"><span class="header-section-number">12.6</span> 基本图形的选择</a></li>
-  <li><a href="#散点图" id="toc-散点图" class="nav-link" data-scroll-target="#散点图"><span class="header-section-number">12.7</span> 散点图</a></li>
-  <li><a href="#箱线图" id="toc-箱线图" class="nav-link" data-scroll-target="#箱线图"><span class="header-section-number">12.8</span> 箱线图</a></li>
-  <li><a href="#小提琴图" id="toc-小提琴图" class="nav-link" data-scroll-target="#小提琴图"><span class="header-section-number">12.9</span> 小提琴图</a></li>
-  <li><a href="#直方图" id="toc-直方图" class="nav-link" data-scroll-target="#直方图"><span class="header-section-number">12.10</span> 直方图</a></li>
-  <li><a href="#密度图" id="toc-密度图" class="nav-link" data-scroll-target="#密度图"><span class="header-section-number">12.11</span> 密度图</a></li>
-  <li><a href="#条形图" id="toc-条形图" class="nav-link" data-scroll-target="#条形图"><span class="header-section-number">12.12</span> 条形图</a></li>
-  <li><a href="#柱形图" id="toc-柱形图" class="nav-link" data-scroll-target="#柱形图"><span class="header-section-number">12.13</span> 柱形图</a></li>
-  <li><a href="#热图" id="toc-热图" class="nav-link" data-scroll-target="#热图"><span class="header-section-number">12.14</span> 热图</a></li>
-  <li><a href="#折线图" id="toc-折线图" class="nav-link" data-scroll-target="#折线图"><span class="header-section-number">12.15</span> 折线图</a></li>
-  <li><a href="#简单地图" id="toc-简单地图" class="nav-link" data-scroll-target="#简单地图"><span class="header-section-number">12.16</span> 简单地图</a></li>
-  <li><a href="#图形修饰的基本顺序" id="toc-图形修饰的基本顺序" class="nav-link" data-scroll-target="#图形修饰的基本顺序"><span class="header-section-number">12.17</span> 图形修饰的基本顺序</a></li>
-  <li><a href="#添加标题和坐标轴" id="toc-添加标题和坐标轴" class="nav-link" data-scroll-target="#添加标题和坐标轴"><span class="header-section-number">12.18</span> 添加标题和坐标轴</a></li>
-  <li><a href="#修改颜色和标度" id="toc-修改颜色和标度" class="nav-link" data-scroll-target="#修改颜色和标度"><span class="header-section-number">12.19</span> 修改颜色和标度</a></li>
-  <li><a href="#选择整体主题" id="toc-选择整体主题" class="nav-link" data-scroll-target="#选择整体主题"><span class="header-section-number">12.20</span> 选择整体主题</a></li>
-  <li><a href="#微调主题细节" id="toc-微调主题细节" class="nav-link" data-scroll-target="#微调主题细节"><span class="header-section-number">12.21</span> 微调主题细节</a></li>
-  <li><a href="#添加趋势线" id="toc-添加趋势线" class="nav-link" data-scroll-target="#添加趋势线"><span class="header-section-number">12.22</span> 添加趋势线</a></li>
-  <li><a href="#使用分面" id="toc-使用分面" class="nav-link" data-scroll-target="#使用分面"><span class="header-section-number">12.23</span> 使用分面</a></li>
-  <li><a href="#计算统计量并绘图" id="toc-计算统计量并绘图" class="nav-link" data-scroll-target="#计算统计量并绘图"><span class="header-section-number">12.24</span> 计算统计量并绘图</a></li>
-  <li><a href="#保存图片" id="toc-保存图片" class="nav-link" data-scroll-target="#保存图片"><span class="header-section-number">12.25</span> 保存图片</a></li>
-  <li><a href="#课堂练习" id="toc-课堂练习" class="nav-link" data-scroll-target="#课堂练习"><span class="header-section-number">12.26</span> 课堂练习</a>
+  <li><a href="#认识-iris-数据" id="toc-认识-iris-数据" class="nav-link" data-scroll-target="#认识-iris-数据"><span class="header-section-number">12.3</span> 认识 iris 数据</a></li>
+  <li><a href="#ggplot2-的基本思想" id="toc-ggplot2-的基本思想" class="nav-link" data-scroll-target="#ggplot2-的基本思想"><span class="header-section-number">12.4</span> ggplot2 的基本思想</a></li>
+  <li><a href="#ggplot2-的基本结构" id="toc-ggplot2-的基本结构" class="nav-link" data-scroll-target="#ggplot2-的基本结构"><span class="header-section-number">12.5</span> ggplot2 的基本结构</a></li>
+  <li><a href="#一张-ggplot-图由哪些部分组成" id="toc-一张-ggplot-图由哪些部分组成" class="nav-link" data-scroll-target="#一张-ggplot-图由哪些部分组成"><span class="header-section-number">12.6</span> 一张 ggplot 图由哪些部分组成</a></li>
+  <li><a href="#映射和固定样式" id="toc-映射和固定样式" class="nav-link" data-scroll-target="#映射和固定样式"><span class="header-section-number">12.7</span> 映射和固定样式</a></li>
+  <li><a href="#基本图形的选择" id="toc-基本图形的选择" class="nav-link" data-scroll-target="#基本图形的选择"><span class="header-section-number">12.8</span> 基本图形的选择</a></li>
+  <li><a href="#散点图" id="toc-散点图" class="nav-link" data-scroll-target="#散点图"><span class="header-section-number">12.9</span> 散点图</a></li>
+  <li><a href="#箱线图" id="toc-箱线图" class="nav-link" data-scroll-target="#箱线图"><span class="header-section-number">12.10</span> 箱线图</a></li>
+  <li><a href="#小提琴图" id="toc-小提琴图" class="nav-link" data-scroll-target="#小提琴图"><span class="header-section-number">12.11</span> 小提琴图</a></li>
+  <li><a href="#直方图" id="toc-直方图" class="nav-link" data-scroll-target="#直方图"><span class="header-section-number">12.12</span> 直方图</a></li>
+  <li><a href="#密度图" id="toc-密度图" class="nav-link" data-scroll-target="#密度图"><span class="header-section-number">12.13</span> 密度图</a></li>
+  <li><a href="#条形图" id="toc-条形图" class="nav-link" data-scroll-target="#条形图"><span class="header-section-number">12.14</span> 条形图</a></li>
+  <li><a href="#柱形图" id="toc-柱形图" class="nav-link" data-scroll-target="#柱形图"><span class="header-section-number">12.15</span> 柱形图</a></li>
+  <li><a href="#热图" id="toc-热图" class="nav-link" data-scroll-target="#热图"><span class="header-section-number">12.16</span> 热图</a></li>
+  <li><a href="#折线图" id="toc-折线图" class="nav-link" data-scroll-target="#折线图"><span class="header-section-number">12.17</span> 折线图</a></li>
+  <li><a href="#简单地图" id="toc-简单地图" class="nav-link" data-scroll-target="#简单地图"><span class="header-section-number">12.18</span> 简单地图</a></li>
+  <li><a href="#极坐标图形" id="toc-极坐标图形" class="nav-link" data-scroll-target="#极坐标图形"><span class="header-section-number">12.19</span> 极坐标图形</a></li>
+  <li><a href="#和其他包合作画-3d-图" id="toc-和其他包合作画-3d-图" class="nav-link" data-scroll-target="#和其他包合作画-3d-图"><span class="header-section-number">12.20</span> 和其他包合作画 3D 图</a></li>
+  <li><a href="#加载-r-包" id="toc-加载-r-包" class="nav-link" data-scroll-target="#加载-r-包"><span class="header-section-number">12.21</span> 加载 R 包</a></li>
+  <li><a href="#faithfuld-数据集" id="toc-faithfuld-数据集" class="nav-link" data-scroll-target="#faithfuld-数据集"><span class="header-section-number">12.22</span> faithfuld 数据集</a></li>
+  <li><a href="#图形修饰的基本顺序" id="toc-图形修饰的基本顺序" class="nav-link" data-scroll-target="#图形修饰的基本顺序"><span class="header-section-number">12.23</span> 图形修饰的基本顺序</a></li>
+  <li><a href="#添加标题和坐标轴" id="toc-添加标题和坐标轴" class="nav-link" data-scroll-target="#添加标题和坐标轴"><span class="header-section-number">12.24</span> 添加标题和坐标轴</a></li>
+  <li><a href="#修改颜色和标度" id="toc-修改颜色和标度" class="nav-link" data-scroll-target="#修改颜色和标度"><span class="header-section-number">12.25</span> 修改颜色和标度</a></li>
+  <li><a href="#选择整体主题" id="toc-选择整体主题" class="nav-link" data-scroll-target="#选择整体主题"><span class="header-section-number">12.26</span> 选择整体主题</a></li>
+  <li><a href="#微调主题细节" id="toc-微调主题细节" class="nav-link" data-scroll-target="#微调主题细节"><span class="header-section-number">12.27</span> 微调主题细节</a></li>
+  <li><a href="#添加趋势线" id="toc-添加趋势线" class="nav-link" data-scroll-target="#添加趋势线"><span class="header-section-number">12.28</span> 添加趋势线</a></li>
+  <li><a href="#使用分面" id="toc-使用分面" class="nav-link" data-scroll-target="#使用分面"><span class="header-section-number">12.29</span> 使用分面</a></li>
+  <li><a href="#计算统计量并绘图" id="toc-计算统计量并绘图" class="nav-link" data-scroll-target="#计算统计量并绘图"><span class="header-section-number">12.30</span> 计算统计量并绘图</a></li>
+  <li><a href="#保存图片" id="toc-保存图片" class="nav-link" data-scroll-target="#保存图片"><span class="header-section-number">12.31</span> 保存图片</a></li>
+  <li><a href="#课堂练习" id="toc-课堂练习" class="nav-link" data-scroll-target="#课堂练习"><span class="header-section-number">12.32</span> 课堂练习</a>
   <ul class="collapse">
-  <li><a href="#练习修改变量" id="toc-练习修改变量" class="nav-link" data-scroll-target="#练习修改变量"><span class="header-section-number">12.26.1</span> 练习：修改变量</a></li>
-  <li><a href="#练习判断图形类型" id="toc-练习判断图形类型" class="nav-link" data-scroll-target="#练习判断图形类型"><span class="header-section-number">12.26.2</span> 练习：判断图形类型</a></li>
-  <li><a href="#练习解释映射和固定样式" id="toc-练习解释映射和固定样式" class="nav-link" data-scroll-target="#练习解释映射和固定样式"><span class="header-section-number">12.26.3</span> 练习：解释映射和固定样式</a></li>
-  <li><a href="#练习保存图片" id="toc-练习保存图片" class="nav-link" data-scroll-target="#练习保存图片"><span class="header-section-number">12.26.4</span> 练习：保存图片</a></li>
+  <li><a href="#练习修改变量" id="toc-练习修改变量" class="nav-link" data-scroll-target="#练习修改变量"><span class="header-section-number">12.32.1</span> 练习：修改变量</a></li>
+  <li><a href="#练习判断图形类型" id="toc-练习判断图形类型" class="nav-link" data-scroll-target="#练习判断图形类型"><span class="header-section-number">12.32.2</span> 练习：判断图形类型</a></li>
+  <li><a href="#练习解释映射和固定样式" id="toc-练习解释映射和固定样式" class="nav-link" data-scroll-target="#练习解释映射和固定样式"><span class="header-section-number">12.32.3</span> 练习：解释映射和固定样式</a></li>
+  <li><a href="#练习保存图片" id="toc-练习保存图片" class="nav-link" data-scroll-target="#练习保存图片"><span class="header-section-number">12.32.4</span> 练习：保存图片</a></li>
   </ul></li>
-  <li><a href="#本节小结" id="toc-本节小结" class="nav-link" data-scroll-target="#本节小结"><span class="header-section-number">12.27</span> 本节小结</a></li>
-  <li><a href="#参考资料" id="toc-参考资料" class="nav-link" data-scroll-target="#参考资料"><span class="header-section-number">12.28</span> 参考资料</a></li>
+  <li><a href="#本节小结" id="toc-本节小结" class="nav-link" data-scroll-target="#本节小结"><span class="header-section-number">12.33</span> 本节小结</a></li>
+  <li><a href="#参考资料" id="toc-参考资料" class="nav-link" data-scroll-target="#参考资料"><span class="header-section-number">12.34</span> 参考资料</a></li>
   </ul>
 </nav>
     </div>
@@ -288,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">第十一课 ggplot2 绘图</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ggplot2 绘图</span></h1>
 </div>
 
 
@@ -307,16 +342,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="学习目标" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="学习目标"><span class="header-section-number">12.1</span> 学习目标</h2>
-<p>本节课学习用 <code>ggplot2</code> 绘制常见统计图形。重点不是记住很多函数，而是理解一张图由哪些部分组成，以及不同问题应该选择什么图形。</p>
+<p>本节课学习用 <code>ggplot2</code> 绘制常见统计图形。</p>
 <p>本节课结束后，应能完成以下任务：</p>
 <ul>
-<li>了解 <code>ggplot2</code> 的作者、基本思想以及它对 R 绘图方式的影响。</li>
-<li>认识 <code>iris</code> 数据集中的变量。</li>
-<li>用 <code>ggplot2</code> 绘制散点图、箱线图、小提琴图、直方图、密度图、条形图、柱形图、热图、折线图和简单地图。</li>
+<li>认识 <code>ggplot2</code> 的基本思想：用图层一步一步搭建图形。</li>
 <li>区分变量映射和固定样式。</li>
-<li>理解图形修饰的顺序：标签、标度、主题。</li>
+<li>根据变量类型选择散点图、箱线图、直方图、条形图、柱形图、热图、折线图等图形。</li>
+<li>理解 <code>labs()</code>、<code>scale_*()</code>、<code>theme_*()</code> 和 <code>theme()</code> 分别控制什么。</li>
 <li>在散点图上添加趋势线。</li>
 <li>使用分面把一张图拆成多张小图。</li>
+<li>了解 <code>coord_polar()</code> 极坐标图形和 3D 图形作为拓展。</li>
 <li>使用 <code>ggsave()</code> 保存图片，并在讲义渲染时只显示代码、不执行保存。</li>
 </ul>
 </section>
@@ -339,27 +374,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="ggplot2-的作者和影响" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="ggplot2-的作者和影响"><span class="header-section-number">12.3</span> ggplot2 的作者和影响</h2>
-<p><code>ggplot2</code> 最初由 Hadley Wickham 开发。现在它由 tidyverse 团队共同维护和发展，是 R 语言中最重要的数据可视化包之一。</p>
-<p><code>ggplot2</code> 的理论基础是 The Grammar of Graphics，中文常译为“图形语法”。它的核心思想是：</p>
-<blockquote class="blockquote">
-<p>一张图不是一次性画出来的，而是由数据、映射、图层、坐标、标度、主题等部分逐步组成。</p>
-</blockquote>
-<p>这对 R 的影响主要体现在四个方面：</p>
-<ul>
-<li>让 R 绘图从“一个函数画一张图”转向“分层搭建一张图”。</li>
-<li>让不同类型图形具有相似的写法，降低了学习新图形的难度。</li>
-<li>让图形代码更适合放在 R Markdown 或 Quarto 报告中，便于重复运行和修改。</li>
-<li>推动了 R 可视化生态的发展，很多扩展包都围绕 <code>ggplot2</code> 的图层思想继续扩展。</li>
-</ul>
-<p>本节课只讲入门用法。先掌握基本图形，再学习主题、趋势线、分面和保存图片。</p>
+<section id="认识-iris-数据" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="认识-iris-数据"><span class="header-section-number">12.3</span> 认识 iris 数据</h2>
+<p>本节课主要使用 R 自带的 <code>iris</code> 数据集。每一行是一朵鸢尾花，每一列是这朵花的一个信息。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+<p>常用变量如下。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>变量名</th>
+<th>含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Sepal.Length</code></td>
+<td>萼片长度，单位 cm</td>
+<td>数值变量</td>
+</tr>
+<tr class="even">
+<td><code>Sepal.Width</code></td>
+<td>萼片宽度，单位 cm</td>
+<td>数值变量</td>
+</tr>
+<tr class="odd">
+<td><code>Petal.Length</code></td>
+<td>花瓣长度，单位 cm</td>
+<td>数值变量</td>
+</tr>
+<tr class="even">
+<td><code>Petal.Width</code></td>
+<td>花瓣宽度，单位 cm</td>
+<td>数值变量</td>
+</tr>
+<tr class="odd">
+<td><code>Species</code></td>
+<td>鸢尾花种类</td>
+<td>分类变量</td>
+</tr>
+</tbody>
+</table>
+<p>后面选图形时，主要看变量类型：两个数值变量看关系，分类变量加数值变量做分组比较。</p>
 </section>
-<section id="ggplot2-的基本结构" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="ggplot2-的基本结构"><span class="header-section-number">12.4</span> ggplot2 的基本结构</h2>
+<section id="ggplot2-的基本思想" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="ggplot2-的基本思想"><span class="header-section-number">12.4</span> ggplot2 的基本思想</h2>
+<p><code>ggplot2</code> 最初由 Hadley Wickham 开发，现在由 tidyverse 团队维护。它的理论基础是 The Grammar of Graphics，中文常译为“图形语法”。</p>
+<p>这句话可以简单理解为：</p>
+<blockquote class="blockquote">
+<p>一张图不是一次性画出来的，而是由数据、映射、图层、标度、坐标和主题逐步组成。</p>
+</blockquote>
+<p>本节课只讲入门用法。学习顺序是：先会画基本图形，再学习如何修改标题、颜色、主题，最后再讲趋势线、分面和保存图片。</p>
+</section>
+<section id="ggplot2-的基本结构" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="ggplot2-的基本结构"><span class="header-section-number">12.5</span> ggplot2 的基本结构</h2>
 <p><code>ggplot2</code> 最基本的写法如下。</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> 数据, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> 横轴变量, <span class="at">y =</span> 纵轴变量)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  geom_图形()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> 数据, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> 横轴变量, <span class="at">y =</span> 纵轴变量)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  geom_图形()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>这段代码包含三个部分：</p>
 <ul>
 <li><code>data</code>：使用哪一个数据集。</li>
@@ -370,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -383,8 +468,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>这个图中，每一个点代表一朵鸢尾花。</p>
 </section>
-<section id="映射和固定样式" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="映射和固定样式"><span class="header-section-number">12.5</span> 映射和固定样式</h2>
+<section id="一张-ggplot-图由哪些部分组成" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="一张-ggplot-图由哪些部分组成"><span class="header-section-number">12.6</span> 一张 ggplot 图由哪些部分组成</h2>
+<p>初学时可以把 <code>ggplot2</code> 代码看成“搭积木”。每一行通常只负责一件事。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>代码部分</th>
+<th>控制什么</th>
+<th>初学时怎么理解</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ggplot(data = 数据)</code></td>
+<td>使用哪个数据集</td>
+<td>先把数据放到画布上</td>
+</tr>
+<tr class="even">
+<td><code>aes(x = ..., y = ...)</code></td>
+<td>哪些变量放到横轴、纵轴、颜色等位置</td>
+<td>变量映射</td>
+</tr>
+<tr class="odd">
+<td><code>geom_*()</code></td>
+<td>画什么图形元素</td>
+<td>点、线、柱子、箱线、方块等</td>
+</tr>
+<tr class="even">
+<td><code>labs()</code></td>
+<td>标题、坐标轴名称、图例名称、说明文字</td>
+<td>改文字</td>
+</tr>
+<tr class="odd">
+<td><code>scale_*()</code></td>
+<td>颜色、填充色、坐标刻度、图例显示方式</td>
+<td>改“变量如何显示”</td>
+</tr>
+<tr class="even">
+<td><code>theme_*()</code></td>
+<td>一整套图形外观</td>
+<td>换整体风格</td>
+</tr>
+<tr class="odd">
+<td><code>theme()</code></td>
+<td>字体、图例位置、网格线、背景等细节</td>
+<td>微调外观</td>
+</tr>
+<tr class="even">
+<td><code>facet_wrap()</code></td>
+<td>按分类变量拆成多张小图</td>
+<td>分面比较</td>
+</tr>
+<tr class="odd">
+<td><code>coord_*()</code></td>
+<td>坐标系统或坐标比例</td>
+<td>改坐标显示方式</td>
+</tr>
+</tbody>
+</table>
+<p>最常用的顺序是：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(数据, <span class="fu">aes</span>(变量映射)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  geom_图形() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(文字) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  scale_标度() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  theme_整体主题() <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(局部细节)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>不是每张图都要写完所有部分。基础图形通常只需要 <code>ggplot()</code>、<code>aes()</code> 和一个 <code>geom_*()</code>。</p>
+</section>
+<section id="映射和固定样式" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="映射和固定样式"><span class="header-section-number">12.7</span> 映射和固定样式</h2>
 <p><code>aes()</code> 表示映射。映射的意思是：把数据中的变量放到图形属性上。</p>
 <p>常见映射包括：</p>
 <ul>
@@ -398,8 +556,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -413,8 +571,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -428,8 +586,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -445,8 +603,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>写在 <code>aes()</code> 外面：固定样式。</li>
 </ul>
 </section>
-<section id="基本图形的选择" class="level2" data-number="12.6">
-<h2 data-number="12.6" class="anchored" data-anchor-id="基本图形的选择"><span class="header-section-number">12.6</span> 基本图形的选择</h2>
+<section id="基本图形的选择" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="基本图形的选择"><span class="header-section-number">12.8</span> 基本图形的选择</h2>
 <p>不同问题对应不同图形。先想清楚问题，再选择函数。</p>
 <table class="caption-top table">
 <colgroup>
@@ -516,15 +674,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>下面先绘制基本图形。此时先不重点修改主题，只关注图形是否正确表达问题。</p>
 </section>
-<section id="散点图" class="level2" data-number="12.7">
-<h2 data-number="12.7" class="anchored" data-anchor-id="散点图"><span class="header-section-number">12.7</span> 散点图</h2>
+<section id="散点图" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="散点图"><span class="header-section-number">12.9</span> 散点图</h2>
 <p>散点图用于观察两个数值变量之间的关系。</p>
 <p>问题：花瓣越长，花瓣是否也越宽？</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -538,8 +696,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -551,15 +709,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>从图中可以看出，<code>setosa</code> 的花瓣明显较短、较窄；<code>versicolor</code> 和 <code>virginica</code> 有部分重叠，但整体仍有差异。</p>
 </section>
-<section id="箱线图" class="level2" data-number="12.8">
-<h2 data-number="12.8" class="anchored" data-anchor-id="箱线图"><span class="header-section-number">12.8</span> 箱线图</h2>
+<section id="箱线图" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="箱线图"><span class="header-section-number">12.10</span> 箱线图</h2>
 <p>箱线图用于比较不同组的数值分布。</p>
 <p>问题：三种鸢尾花的萼片长度是否不同？</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -580,9 +738,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -594,15 +752,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>geom_jitter()</code> 会给点增加一点随机横向偏移，避免点完全重叠。</p>
 </section>
-<section id="小提琴图" class="level2" data-number="12.9">
-<h2 data-number="12.9" class="anchored" data-anchor-id="小提琴图"><span class="header-section-number">12.9</span> 小提琴图</h2>
+<section id="小提琴图" class="level2" data-number="12.11">
+<h2 data-number="12.11" class="anchored" data-anchor-id="小提琴图"><span class="header-section-number">12.11</span> 小提琴图</h2>
 <p>小提琴图也用于比较不同组的数值分布。它和箱线图的区别是：箱线图强调中位数和四分位数，小提琴图更强调分布形状。</p>
 <p>问题：三种鸢尾花的萼片长度分布形状是否不同？</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -617,9 +775,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -631,15 +789,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>trim = FALSE</code> 表示不把小提琴图的尾部裁剪到数据范围内。初学时只需要知道：它可以让分布形状显示得更完整。</p>
 </section>
-<section id="直方图" class="level2" data-number="12.10">
-<h2 data-number="12.10" class="anchored" data-anchor-id="直方图"><span class="header-section-number">12.10</span> 直方图</h2>
+<section id="直方图" class="level2" data-number="12.12">
+<h2 data-number="12.12" class="anchored" data-anchor-id="直方图"><span class="header-section-number">12.12</span> 直方图</h2>
 <p>直方图用于观察一个数值变量的分布。</p>
 <p>问题：鸢尾花萼片长度主要集中在哪些范围？</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -658,8 +816,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.3</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.3</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -675,14 +833,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>alpha = 0.5</code>：设置透明度，便于看到重叠部分。</li>
 </ul>
 </section>
-<section id="密度图" class="level2" data-number="12.11">
-<h2 data-number="12.11" class="anchored" data-anchor-id="密度图"><span class="header-section-number">12.11</span> 密度图</h2>
+<section id="密度图" class="level2" data-number="12.13">
+<h2 data-number="12.13" class="anchored" data-anchor-id="密度图"><span class="header-section-number">12.13</span> 密度图</h2>
 <p>密度图可以看作平滑版的直方图，也用于观察数值变量的分布。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">linewidth =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">linewidth =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -696,8 +854,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">color =</span> Species, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">color =</span> Species, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -709,15 +867,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>密度图适合比较分布形状。对初学者来说，直方图通常更直观。</p>
 </section>
-<section id="条形图" class="level2" data-number="12.12">
-<h2 data-number="12.12" class="anchored" data-anchor-id="条形图"><span class="header-section-number">12.12</span> 条形图</h2>
+<section id="条形图" class="level2" data-number="12.14">
+<h2 data-number="12.14" class="anchored" data-anchor-id="条形图"><span class="header-section-number">12.14</span> 条形图</h2>
 <p>条形图用于统计每个类别有多少个样本。</p>
 <p>问题：三种鸢尾花各有多少朵？</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species)) <span class="sc">+</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -729,15 +887,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>geom_bar()</code> 没有指定 <code>y</code>，因为它会自动统计每个类别有多少行。</p>
 </section>
-<section id="柱形图" class="level2" data-number="12.13">
-<h2 data-number="12.13" class="anchored" data-anchor-id="柱形图"><span class="header-section-number">12.13</span> 柱形图</h2>
+<section id="柱形图" class="level2" data-number="12.15">
+<h2 data-number="12.15" class="anchored" data-anchor-id="柱形图"><span class="header-section-number">12.15</span> 柱形图</h2>
 <p>柱形图用于绘制已经计算好的数值。</p>
 <p>例如，先计算三种鸢尾花的平均萼片长度。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>iris_mean <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris, <span class="at">FUN =</span> mean)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>iris_mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>iris_mean <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris, <span class="at">FUN =</span> mean)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>iris_mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Species Sepal.Length
@@ -750,8 +908,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_mean, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_mean, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -767,76 +925,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>geom_col()</code>：数据中已经有 <code>y</code>，函数直接画出数值。</li>
 </ul>
 </section>
-<section id="热图" class="level2" data-number="12.14">
-<h2 data-number="12.14" class="anchored" data-anchor-id="热图"><span class="header-section-number">12.14</span> 热图</h2>
+<section id="热图" class="level2" data-number="12.16">
+<h2 data-number="12.16" class="anchored" data-anchor-id="热图"><span class="header-section-number">12.16</span> 热图</h2>
 <p>热图用于把数值大小显示为颜色深浅。它适合比较“多个组”和“多个变量”的数值。</p>
-<p>这里先计算三种鸢尾花在四个测量变量上的平均值。</p>
+<p>这里仍然使用 <code>iris</code> 数据。问题是：三种鸢尾花在四个测量变量上的平均值有什么差异？</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>iris_mean_all <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  iris[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">list</span>(<span class="at">Species =</span> iris<span class="sc">$</span>Species),</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>iris_mean_matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(iris_mean_all[, <span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(iris_mean_matrix) <span class="ot">&lt;-</span> iris_mean_all<span class="sc">$</span>Species</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>iris_heat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.table</span>(iris_mean_matrix))</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris_heat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"Variable"</span>, <span class="st">"Mean"</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>iris_heat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Species     Variable  Mean
-1      setosa Sepal.Length 5.006
-2  versicolor Sepal.Length 5.936
-3   virginica Sepal.Length 6.588
-4      setosa  Sepal.Width 3.428
-5  versicolor  Sepal.Width 2.770
-6   virginica  Sepal.Width 2.974
-7      setosa Petal.Length 1.462
-8  versicolor Petal.Length 4.260
-9   virginica Petal.Length 5.552
-10     setosa  Petal.Width 0.246
-11 versicolor  Petal.Width 1.326
-12  virginica  Petal.Width 2.026</code></pre>
-</div>
-</div>
-<p>再用 <code>geom_tile()</code> 绘制热图。</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_heat, <span class="fu">aes</span>(<span class="at">x =</span> Variable, <span class="at">y =</span> Species, <span class="at">fill =</span> Mean)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(Mean, <span class="dv">2</span>)), <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>cor_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(mtcars)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>cor_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(cor_mat)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(cor_df, <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(value, <span class="dv">2</span>)),</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"blue"</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"white"</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"red"</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="dv">0</span>,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"相关系数"</span>,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"mtcars 数据集变量相关性热图"</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">angle =</span> <span class="dv">45</span>,</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="dv">1</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture11_files/figure-html/basic-heatmap-1.png" class="img-fluid figure-img" alt="三种鸢尾花四个测量变量平均值的热图。" width="672"></p>
+<p><img src="lecture11_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>热图的读法是：</p>
-<ul>
-<li>横轴表示变量。</li>
-<li>纵轴表示分组。</li>
-<li>颜色表示数值大小。</li>
-<li>图中的数字是每组的平均值。</li>
-</ul>
-<p>热图不是只用来画相关系数矩阵。只要有“行、列、数值”三部分，就可以考虑热图。</p>
 </section>
-<section id="折线图" class="level2" data-number="12.15">
-<h2 data-number="12.15" class="anchored" data-anchor-id="折线图"><span class="header-section-number">12.15</span> 折线图</h2>
+<section id="折线图" class="level2" data-number="12.17">
+<h2 data-number="12.17" class="anchored" data-anchor-id="折线图"><span class="header-section-number">12.17</span> 折线图</h2>
 <p>折线图适合表示时间顺序上的变化。<code>iris</code> 中每一行是一朵独立的花，没有时间顺序，因此不适合直接连线。</p>
 <p>这里用 <code>ggplot2</code> 自带的公开数据集 <code>economics</code> 演示折线图。该数据记录了美国经济相关指标随时间的变化。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(economics)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(economics)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
@@ -854,8 +999,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> unemploy)) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> unemploy)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -867,26 +1012,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>折线图的关键是：横轴通常是时间或有明确顺序的变量。</p>
 </section>
-<section id="简单地图" class="level2" data-number="12.16">
-<h2 data-number="12.16" class="anchored" data-anchor-id="简单地图"><span class="header-section-number">12.16</span> 简单地图</h2>
+<section id="简单地图" class="level2" data-number="12.18">
+<h2 data-number="12.18" class="anchored" data-anchor-id="简单地图"><span class="header-section-number">12.18</span> 简单地图</h2>
 <p>地图也是一种图形。最基本的地图可以理解为：用经度和纬度确定位置，再把区域边界画出来。</p>
 <p>地图内容后面会单独讲。本节只展示最简单的世界地图轮廓。</p>
 <p>如果没有安装 <code>maps</code> 包，需要先安装。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"maps"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"maps"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>下面的代码如果检测到已经安装 <code>maps</code> 包，就显示世界地图；如果没有安装，就只给出提示，不会让讲义渲染报错。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(world_map, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">"grey85"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_quickmap</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"maps"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(world_map, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">"grey85"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">linewidth =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_quickmap</span>()</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"请先安装 maps 包后再运行这段代码。"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -906,8 +1054,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>本节只需要知道地图也可以用 <code>ggplot2</code> 画。地图投影、空间数据格式和真实地理分析后面再讲。</p>
 </section>
-<section id="图形修饰的基本顺序" class="level2" data-number="12.17">
-<h2 data-number="12.17" class="anchored" data-anchor-id="图形修饰的基本顺序"><span class="header-section-number">12.17</span> 图形修饰的基本顺序</h2>
+<section id="极坐标图形" class="level2" data-number="12.19">
+<h2 data-number="12.19" class="anchored" data-anchor-id="极坐标图形"><span class="header-section-number">12.19</span> 极坐标图形</h2>
+<p>前面的图大多使用普通直角坐标系：横轴是 <code>x</code>，纵轴是 <code>y</code>。<code>ggplot2</code> 也可以使用极坐标。极坐标用“角度”和“半径”确定位置，常见于圆形图、雷达图和一些数学曲线。</p>
+<p>在 <code>ggplot2</code> 中，<code>coord_polar()</code> 负责把普通坐标转换成极坐标。它不改变数据，只改变显示方式。</p>
+<p>下面画一个简单的数学花形曲线。先生成角度 <code>theta</code>，再用公式计算半径 <code>r</code>。<span class="math inline">\(r = 1 + 0.45\cos(6\theta)\)</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, <span class="at">length.out =</span> <span class="dv">800</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>polar_flower <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">theta =</span> theta,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">r =</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.45</span> <span class="sc">*</span> <span class="fu">cos</span>(<span class="dv">6</span> <span class="sc">*</span> theta)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>再把 <code>theta</code> 放在横轴，<code>r</code> 放在纵轴，最后使用 <code>coord_polar()</code> 转成极坐标。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(polar_flower, <span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">y =</span> r)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#D55E00"</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"极坐标中的数学花形曲线"</span>) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture11_files/figure-html/polar-flower-1.png" class="img-fluid figure-img" alt="使用极坐标绘制的数学花形曲线。" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这段代码可以这样理解：</p>
+<ul>
+<li><code>theta</code> 控制旋转角度。</li>
+<li><code>r</code> 控制离中心的距离。</li>
+<li><code>geom_line()</code> 先画线。</li>
+<li><code>coord_polar()</code> 再把线绕成圆形。</li>
+</ul>
+<p>如果改变 <code>cos(6 * theta)</code> 里的数字，花瓣数量和形状也会改变。</p>
+</section>
+<section id="和其他包合作画-3d-图" class="level2" data-number="12.20">
+<h2 data-number="12.20" class="anchored" data-anchor-id="和其他包合作画-3d-图"><span class="header-section-number">12.20</span> 和其他包合作画 3D 图</h2>
+<p><code>ggplot2</code> 主要用于二维图形。如果想做可旋转的三维图，可以和其他包合作，例如 <code>plotly</code>、<code>rgl</code> 或 <code>rayshader</code>。</p>
+<p>如果电脑中没有安装 <code>plotly</code>，先运行一次下面的代码。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rayshader)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(faithfuld, <span class="fu">aes</span>(waiting, eruptions, <span class="at">fill =</span> density)) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_raster</span>() <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gg</span>(p, <span class="at">width =</span> <span class="dv">5</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">scale =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>这段代码的作用是：</p>
+<blockquote class="blockquote">
+<p>先用 <code>ggplot2</code> 绘制一个二维密度热图，然后用 <code>rayshader</code> 将这个二维图渲染成三维立体图。</p>
+</blockquote>
+<p>核心流程是：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>数据 → ggplot 二维热图 → rayshader 三维渲染图</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="加载-r-包" class="level2" data-number="12.21">
+<h2 data-number="12.21" class="anchored" data-anchor-id="加载-r-包"><span class="header-section-number">12.21</span> 加载 R 包</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rayshader)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>其中：</p>
+<ul>
+<li><code>ggplot2</code> 用于绘制二维图；</li>
+<li><code>rayshader</code> 用于把二维图渲染成三维立体效果。</li>
+</ul>
+<p>可以简单理解为：</p>
+<blockquote class="blockquote">
+<p><code>ggplot2</code> 负责画平面图，<code>rayshader</code> 负责把平面图立起来。</p>
+</blockquote>
+</section>
+<section id="faithfuld-数据集" class="level2" data-number="12.22">
+<h2 data-number="12.22" class="anchored" data-anchor-id="faithfuld-数据集"><span class="header-section-number">12.22</span> faithfuld 数据集</h2>
+<p>本例使用 <code>ggplot2</code> 自带的 <code>faithfuld</code> 数据集。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithfuld)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  eruptions waiting density
+      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1      1.6       43 0.00322
+2      1.65      43 0.00384
+3      1.69      43 0.00444
+4      1.74      43 0.00498
+5      1.79      43 0.00542
+6      1.84      43 0.00574</code></pre>
+</div>
+</div>
+<p><code>faithfuld</code> 是美国黄石公园 Old Faithful 间歇泉数据的二维密度估计结果。</p>
+<p>主要包含以下变量：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>eruptions</code></td>
+<td>喷发持续时间</td>
+</tr>
+<tr class="even">
+<td><code>waiting</code></td>
+<td>两次喷发之间的等待时间</td>
+</tr>
+<tr class="odd">
+<td><code>density</code></td>
+<td>对应位置的数据密度</td>
+</tr>
+</tbody>
+</table>
+<p>这里需要注意：</p>
+<blockquote class="blockquote">
+<p><code>faithfuld</code> 不是原始观测数据，而是已经计算好的二维密度网格数据。</p>
+</blockquote>
+</section>
+<section id="图形修饰的基本顺序" class="level2" data-number="12.23">
+<h2 data-number="12.23" class="anchored" data-anchor-id="图形修饰的基本顺序"><span class="header-section-number">12.23</span> 图形修饰的基本顺序</h2>
 <p>基本图形能够回答问题后，再进行图形修饰。修饰的目的是让图更清楚，而不是改变数据本身。</p>
 <p>推荐顺序如下：</p>
 <ul>
@@ -918,52 +1195,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>这四类函数的作用不同。</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>函数</th>
-<th>作用</th>
-<th>是否改变数据</th>
+<th>主要控制什么</th>
+<th>常见例子</th>
+<th>不负责什么</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>labs()</code></td>
-<td>修改标题、坐标轴名称、图例名称</td>
-<td>否</td>
+<td>图中的文字</td>
+<td>标题、横轴名、纵轴名、图例名、数据来源</td>
+<td>不改颜色和背景</td>
 </tr>
 <tr class="even">
 <td><code>scale_*()</code></td>
-<td>修改颜色、填充、坐标刻度等显示方式</td>
-<td>否</td>
+<td>变量的显示方式</td>
+<td>颜色方案、填充色、坐标刻度、图例范围</td>
+<td>不改标题和主题</td>
 </tr>
 <tr class="odd">
 <td><code>theme_*()</code></td>
-<td>使用一套完整主题</td>
-<td>否</td>
+<td>整体外观</td>
+<td><code>theme_minimal()</code>、<code>theme_bw()</code>、<code>theme_classic()</code></td>
+<td>不改数据映射</td>
 </tr>
 <tr class="even">
 <td><code>theme()</code></td>
-<td>微调字体、图例、网格线、背景等</td>
-<td>否</td>
+<td>外观细节</td>
+<td>图例位置、网格线、字体大小、坐标轴文字角度</td>
+<td>不选择图形类型</td>
 </tr>
 </tbody>
 </table>
+<p>简单记忆：</p>
+<ul>
+<li><code>labs()</code> 管文字。</li>
+<li><code>scale_*()</code> 管变量怎么显示。</li>
+<li><code>theme_*()</code> 管整体风格。</li>
+<li><code>theme()</code> 管外观细节。</li>
+</ul>
 </section>
-<section id="添加标题和坐标轴" class="level2" data-number="12.18">
-<h2 data-number="12.18" class="anchored" data-anchor-id="添加标题和坐标轴"><span class="header-section-number">12.18</span> 添加标题和坐标轴</h2>
+<section id="添加标题和坐标轴" class="level2" data-number="12.24">
+<h2 data-number="12.24" class="anchored" data-anchor-id="添加标题和坐标轴"><span class="header-section-number">12.24</span> 添加标题和坐标轴</h2>
 <p><code>labs()</code> 用来添加标题、坐标轴名称、图例名称和数据来源说明。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span>,</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"数据来源：R 内置数据集 iris"</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"数据来源：R 内置数据集 iris"</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -975,40 +1270,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>标题应说明图的主要内容。坐标轴名称应说明变量含义和单位。</p>
 </section>
-<section id="修改颜色和标度" class="level2" data-number="12.19">
-<h2 data-number="12.19" class="anchored" data-anchor-id="修改颜色和标度"><span class="header-section-number">12.19</span> 修改颜色和标度</h2>
-<p><code>scale_*()</code> 控制变量如何显示在图中。</p>
-<p>常见用法包括：</p>
-<ul>
-<li><code>scale_color_manual()</code>：手动设置线或点的颜色。</li>
-<li><code>scale_fill_manual()</code>：手动设置填充颜色。</li>
-<li><code>scale_x_continuous()</code>：修改横轴数值刻度。</li>
-<li><code>scale_y_continuous()</code>：修改纵轴数值刻度。</li>
-</ul>
+<section id="修改颜色和标度" class="level2" data-number="12.25">
+<h2 data-number="12.25" class="anchored" data-anchor-id="修改颜色和标度"><span class="header-section-number">12.25</span> 修改颜色和标度</h2>
+<p><code>scale_*()</code> 控制变量如何显示在图中。函数名里的 <code>color</code>、<code>fill</code>、<code>x</code>、<code>y</code> 通常对应 <code>aes()</code> 里的映射。</p>
+<p>常见用法如下。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>对应的映射</th>
+<th>适合什么变量</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>scale_color_manual()</code></td>
+<td><code>color</code></td>
+<td>分类变量</td>
+<td>手动设置点或线的颜色</td>
+</tr>
+<tr class="even">
+<td><code>scale_fill_manual()</code></td>
+<td><code>fill</code></td>
+<td>分类变量</td>
+<td>手动设置柱子、箱子等填充颜色</td>
+</tr>
+<tr class="odd">
+<td><code>scale_fill_gradient()</code></td>
+<td><code>fill</code></td>
+<td>连续数值变量</td>
+<td>用浅色到深色表示数值由小到大</td>
+</tr>
+<tr class="even">
+<td><code>scale_fill_gradient2()</code></td>
+<td><code>fill</code></td>
+<td>有中点的连续数值变量</td>
+<td>用两端颜色表示低值和高值，中间颜色表示中点</td>
+</tr>
+<tr class="odd">
+<td><code>scale_x_continuous()</code></td>
+<td><code>x</code></td>
+<td>连续数值变量</td>
+<td>修改横轴刻度、范围、标签</td>
+</tr>
+<tr class="even">
+<td><code>scale_y_continuous()</code></td>
+<td><code>y</code></td>
+<td>连续数值变量</td>
+<td>修改纵轴刻度、范围、标签</td>
+</tr>
+</tbody>
+</table>
+<p><code>scale_fill_gradient2()</code> 常用于相关系数这类数据，因为相关系数有负数、0 和正数。普通平均值热图通常用 <code>scale_fill_gradient()</code> 就够了。</p>
 <p>先定义一组颜色。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>iris_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">setosa =</span> <span class="st">"#0072B2"</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">versicolor =</span> <span class="st">"#D55E00"</span>,</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">virginica =</span> <span class="st">"#009E73"</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>iris_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">setosa =</span> <span class="st">"#0072B2"</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">versicolor =</span> <span class="st">"#D55E00"</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">virginica =</span> <span class="st">"#009E73"</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>再应用到图中。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1020,8 +1364,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>scale_color_manual()</code> 改变颜色显示方式，但不改变数据。</p>
 </section>
-<section id="选择整体主题" class="level2" data-number="12.20">
-<h2 data-number="12.20" class="anchored" data-anchor-id="选择整体主题"><span class="header-section-number">12.20</span> 选择整体主题</h2>
+<section id="选择整体主题" class="level2" data-number="12.26">
+<h2 data-number="12.26" class="anchored" data-anchor-id="选择整体主题"><span class="header-section-number">12.26</span> 选择整体主题</h2>
 <p>主题控制图中的非数据元素，例如背景、网格线、字体大小和图例位置。</p>
 <p>常用主题包括：</p>
 <ul>
@@ -1034,16 +1378,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1055,27 +1399,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>base_size = 14</code> 表示设置基础字号。课堂投影时可以适当增大字号。</p>
 </section>
-<section id="微调主题细节" class="level2" data-number="12.21">
-<h2 data-number="12.21" class="anchored" data-anchor-id="微调主题细节"><span class="header-section-number">12.21</span> 微调主题细节</h2>
+<section id="微调主题细节" class="level2" data-number="12.27">
+<h2 data-number="12.27" class="anchored" data-anchor-id="微调主题细节"><span class="header-section-number">12.27</span> 微调主题细节</h2>
 <p><code>theme()</code> 用来修改主题中的具体元素。</p>
 <p>下面的代码把图例放到底部，并去掉次要网格线。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1092,21 +1436,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>theme()</code> 不负责修改数据变量，也不负责选择图形类型。</li>
 </ul>
 </section>
-<section id="添加趋势线" class="level2" data-number="12.22">
-<h2 data-number="12.22" class="anchored" data-anchor-id="添加趋势线"><span class="header-section-number">12.22</span> 添加趋势线</h2>
+<section id="添加趋势线" class="level2" data-number="12.28">
+<h2 data-number="12.28" class="anchored" data-anchor-id="添加趋势线"><span class="header-section-number">12.28</span> 添加趋势线</h2>
 <p>趋势线用于辅助观察两个数值变量之间的整体关系。趋势线通常加在散点图上。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"花瓣长度与花瓣宽度的整体趋势"</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"花瓣长度与花瓣宽度的整体趋势"</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1126,17 +1470,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"不同鸢尾花种类的花瓣长度与宽度趋势"</span>,</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"不同鸢尾花种类的花瓣长度与宽度趋势"</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1147,22 +1491,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="使用分面" class="level2" data-number="12.23">
-<h2 data-number="12.23" class="anchored" data-anchor-id="使用分面"><span class="header-section-number">12.23</span> 使用分面</h2>
+<section id="使用分面" class="level2" data-number="12.29">
+<h2 data-number="12.29" class="anchored" data-anchor-id="使用分面"><span class="header-section-number">12.29</span> 使用分面</h2>
 <p>分面用于把同一张图按照某个分类变量拆成多张小图。</p>
 <p>例如，按 <code>Species</code> 分成三个小图。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#0072B2"</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Species) <span class="sc">+</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"按鸢尾花种类分别观察花瓣关系"</span>,</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#0072B2"</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Species) <span class="sc">+</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"按鸢尾花种类分别观察花瓣关系"</span>,</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1175,21 +1519,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>facet_wrap(~ Species)</code> 的意思是：按照 <code>Species</code> 的不同取值，把图分成多个面板。</p>
 <p>分面适合回答的问题是：不同组内部的规律是否相同。</p>
 </section>
-<section id="计算统计量并绘图" class="level2" data-number="12.24">
-<h2 data-number="12.24" class="anchored" data-anchor-id="计算统计量并绘图"><span class="header-section-number">12.24</span> 计算统计量并绘图</h2>
+<section id="计算统计量并绘图" class="level2" data-number="12.30">
+<h2 data-number="12.30" class="anchored" data-anchor-id="计算统计量并绘图"><span class="header-section-number">12.30</span> 计算统计量并绘图</h2>
 <p>科研图中常见的形式是“平均值 + 误差线”。先计算每组的平均值和标准差。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>iris_summary <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  Sepal.Length <span class="sc">~</span> Species,</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>iris_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(data.frame, iris_summary)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris_summary) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>)</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>iris_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>iris_summary <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  Sepal.Length <span class="sc">~</span> Species,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>iris_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(data.frame, iris_summary)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris_summary) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>iris_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Species  mean        sd
@@ -1202,21 +1546,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_summary, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> mean, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.65</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, <span class="at">ymax =</span> mean <span class="sc">+</span> sd),</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.15</span>,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.7</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"三种鸢尾花萼片长度的平均值和标准差"</span>,</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"鸢尾花种类"</span>,</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"萼片长度 (cm)"</span>,</span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_summary, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> mean, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.65</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, <span class="at">ymax =</span> mean <span class="sc">+</span> sd),</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.15</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.7</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"三种鸢尾花萼片长度的平均值和标准差"</span>,</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"鸢尾花种类"</span>,</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"萼片长度 (cm)"</span>,</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1228,69 +1572,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>平均值图可以概括组间差异，但会隐藏原始数据。展示数据时，可同时考虑箱线图或原始散点。</p>
 </section>
-<section id="保存图片" class="level2" data-number="12.25">
-<h2 data-number="12.25" class="anchored" data-anchor-id="保存图片"><span class="header-section-number">12.25</span> 保存图片</h2>
+<section id="保存图片" class="level2" data-number="12.31">
+<h2 data-number="12.31" class="anchored" data-anchor-id="保存图片"><span class="header-section-number">12.31</span> 保存图片</h2>
 <p><code>ggsave()</code> 用于保存图形。保存图片时，建议先把图存为对象，再保存对象。</p>
 <p>本节所有保存图片的代码都设置为 <code>eval: false</code>。渲染讲义时只显示代码，不真正执行保存命令。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"figures"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/iris_petal_scatter.png"</span>,</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p,</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"figures"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"鸢尾花花瓣长度与花瓣宽度的关系"</span>,</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"花瓣长度 (cm)"</span>,</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"花瓣宽度 (cm)"</span>,</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/iris_petal_scatter.png"</span>,</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p,</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>保存为 PDF。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/iris_petal_scatter.pdf"</span>,</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p,</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/iris_petal_scatter.pdf"</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>保存箱线图。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>p_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.55</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"三种鸢尾花萼片长度比较"</span>,</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"鸢尾花种类"</span>,</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"萼片长度 (cm)"</span>,</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"鸢尾花种类"</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/iris_sepal_length_boxplot.png"</span>,</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p_box,</span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>p_box <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.55</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> iris_colors) <span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"三种鸢尾花萼片长度比较"</span>,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"鸢尾花种类"</span>,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"萼片长度 (cm)"</span>,</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"鸢尾花种类"</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/iris_sepal_length_boxplot.png"</span>,</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p_box,</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>保存图片时需要注意：</p>
@@ -1302,21 +1646,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>PDF 适合论文排版，放大后不容易模糊。</li>
 </ul>
 </section>
-<section id="课堂练习" class="level2" data-number="12.26">
-<h2 data-number="12.26" class="anchored" data-anchor-id="课堂练习"><span class="header-section-number">12.26</span> 课堂练习</h2>
-<section id="练习修改变量" class="level3" data-number="12.26.1">
-<h3 data-number="12.26.1" class="anchored" data-anchor-id="练习修改变量"><span class="header-section-number">12.26.1</span> 练习：修改变量</h3>
+<section id="课堂练习" class="level2" data-number="12.32">
+<h2 data-number="12.32" class="anchored" data-anchor-id="课堂练习"><span class="header-section-number">12.32</span> 课堂练习</h2>
+<section id="练习修改变量" class="level3" data-number="12.32.1">
+<h3 data-number="12.32.1" class="anchored" data-anchor-id="练习修改变量"><span class="header-section-number">12.32.1</span> 练习：修改变量</h3>
 <p>把下面代码中的 <code>Petal.Length</code> 和 <code>Petal.Width</code> 改为 <code>Sepal.Length</code> 和 <code>Sepal.Width</code>，绘制萼片长度和萼片宽度的散点图。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="练习判断图形类型" class="level3" data-number="12.26.2">
-<h3 data-number="12.26.2" class="anchored" data-anchor-id="练习判断图形类型"><span class="header-section-number">12.26.2</span> 练习：判断图形类型</h3>
+<section id="练习判断图形类型" class="level3" data-number="12.32.2">
+<h3 data-number="12.32.2" class="anchored" data-anchor-id="练习判断图形类型"><span class="header-section-number">12.32.2</span> 练习：判断图形类型</h3>
 <p>请根据问题选择合适图形。</p>
 <table class="caption-top table">
 <thead>
@@ -1396,14 +1740,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="练习解释映射和固定样式" class="level3" data-number="12.26.3">
-<h3 data-number="12.26.3" class="anchored" data-anchor-id="练习解释映射和固定样式"><span class="header-section-number">12.26.3</span> 练习：解释映射和固定样式</h3>
+<section id="练习解释映射和固定样式" class="level3" data-number="12.32.3">
+<h3 data-number="12.32.3" class="anchored" data-anchor-id="练习解释映射和固定样式"><span class="header-section-number">12.32.3</span> 练习：解释映射和固定样式</h3>
 <p>说明下面两行代码的区别。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> Species))</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> Species))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>答案要点：</p>
@@ -1412,28 +1756,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>color = "blue"</code>：所有点固定为蓝色。</li>
 </ul>
 </section>
-<section id="练习保存图片" class="level3" data-number="12.26.4">
-<h3 data-number="12.26.4" class="anchored" data-anchor-id="练习保存图片"><span class="header-section-number">12.26.4</span> 练习：保存图片</h3>
+<section id="练习保存图片" class="level3" data-number="12.32.4">
+<h3 data-number="12.32.4" class="anchored" data-anchor-id="练习保存图片"><span class="header-section-number">12.32.4</span> 练习：保存图片</h3>
 <p>修改下面代码中的文件名，把图片保存为自己的作业图片。渲染讲义时不要执行。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/my_iris_plot.png"</span>,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p,</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"figures/my_iris_plot.png"</span>,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot =</span> p,</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">7</span>,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">5</span>,</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 </section>
-<section id="本节小结" class="level2" data-number="12.27">
-<h2 data-number="12.27" class="anchored" data-anchor-id="本节小结"><span class="header-section-number">12.27</span> 本节小结</h2>
+<section id="本节小结" class="level2" data-number="12.33">
+<h2 data-number="12.33" class="anchored" data-anchor-id="本节小结"><span class="header-section-number">12.33</span> 本节小结</h2>
 <p><code>ggplot2</code> 的基本结构是：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> 数据, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> 横轴变量, <span class="at">y =</span> 纵轴变量)) <span class="sc">+</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  geom_图形()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> 数据, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> 横轴变量, <span class="at">y =</span> 纵轴变量)) <span class="sc">+</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  geom_图形()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>需要重点记住：</p>
 <ul>
 <li>先判断问题，再选择图形。</li>
@@ -1446,14 +1790,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>多个组和多个变量的数值比较，可以使用热图。</li>
 <li>时间变化，使用折线图。</li>
 <li>简单区域轮廓可以用经度、纬度和多边形绘制地图。</li>
+<li><code>coord_polar()</code> 可以把普通图形转换成极坐标图形。</li>
 <li>写在 <code>aes()</code> 里面是变量映射，写在 <code>aes()</code> 外面是固定样式。</li>
 <li>图形修饰的顺序是：<code>labs()</code>、<code>scale_*()</code>、<code>theme_*()</code>、<code>theme()</code>。</li>
 <li>趋势线用 <code>geom_smooth()</code>，分面用 <code>facet_wrap()</code>。</li>
 <li>保存图片用 <code>ggsave()</code>，讲义中保存代码设置为 <code>eval: false</code>。</li>
 </ul>
 </section>
-<section id="参考资料" class="level2" data-number="12.28">
-<h2 data-number="12.28" class="anchored" data-anchor-id="参考资料"><span class="header-section-number">12.28</span> 参考资料</h2>
+<section id="参考资料" class="level2" data-number="12.34">
+<h2 data-number="12.34" class="anchored" data-anchor-id="参考资料"><span class="header-section-number">12.34</span> 参考资料</h2>
 <ul>
 <li>ggplot2 官方入门文章：<a href="https://ggplot2.tidyverse.org/articles/ggplot2.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2.html</a></li>
 <li>ggplot2 作者与维护者信息：<a href="https://ggplot2.tidyverse.org/authors.html" class="uri">https://ggplot2.tidyverse.org/authors.html</a></li>
@@ -1461,7 +1806,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>ggplot2 地图数据函数 <code>map_data()</code>：<a href="https://ggplot2.tidyverse.org/reference/map_data.html" class="uri">https://ggplot2.tidyverse.org/reference/map_data.html</a></li>
 <li>ggplot2 关于 <code>linewidth</code> 的官方说明：<a href="https://ggplot2.tidyverse.org/reference/scale_linewidth.html" class="uri">https://ggplot2.tidyverse.org/reference/scale_linewidth.html</a></li>
 <li>ggplot2 4.0.0 发布说明：<a href="https://tidyverse.org/blog/2025/09/ggplot2-4-0-0/" class="uri">https://tidyverse.org/blog/2025/09/ggplot2-4-0-0/</a></li>
-<li>Quarto 中使用 R 的官方说明：<a href="https://quarto.org/docs/computations/r.html" class="uri">https://quarto.org/docs/computations/r.html</a></li>
 </ul>
 
 
@@ -1870,8 +2214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lecture10.html" class="pagination-link" aria-label="第10讲：基础绘图">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">第10讲：基础绘图</span></span>
+      <a href="./lecture10.html" class="pagination-link" aria-label="基础绘图plot()">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">基础绘图plot()</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
