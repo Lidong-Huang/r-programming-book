@@ -2263,8 +2263,8 @@
     "objectID": "lecture11.html#课堂练习",
     "href": "lecture11.html#课堂练习",
     "title": "12  ggplot2 绘图",
-    "section": "12.32 课堂练习",
-    "text": "12.32 课堂练习\n\n12.32.1 练习：修改变量\n把下面代码中的 Petal.Length 和 Petal.Width 改为 Sepal.Length 和 Sepal.Width，绘制萼片长度和萼片宽度的散点图。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point()\n\n\n\n\n12.32.2 练习：判断图形类型\n请根据问题选择合适图形。\n\n\n\n问题\n合适图形\n\n\n\n\n花瓣长度和花瓣宽度有没有关系？\n\n\n\n三种花的花瓣长度是否不同？\n\n\n\n三种花的萼片长度分布形状是否不同？\n\n\n\n萼片长度主要集中在哪些范围？\n\n\n\n三种花各有多少朵？\n\n\n\n美国失业人数随时间如何变化？\n\n\n\n三种花在四个测量变量上的平均值如何比较？\n\n\n\n\n参考答案：\n\n\n\n问题\n合适图形\n\n\n\n\n花瓣长度和花瓣宽度有没有关系？\n散点图\n\n\n三种花的花瓣长度是否不同？\n箱线图\n\n\n三种花的萼片长度分布形状是否不同？\n小提琴图\n\n\n萼片长度主要集中在哪些范围？\n直方图\n\n\n三种花各有多少朵？\n条形图\n\n\n美国失业人数随时间如何变化？\n折线图\n\n\n三种花在四个测量变量上的平均值如何比较？\n热图\n\n\n\n\n\n12.32.3 练习：解释映射和固定样式\n说明下面两行代码的区别。\n\n\nCode\ngeom_point(aes(color = Species))\ngeom_point(color = \"blue\")\n\n\n答案要点：\n\naes(color = Species)：颜色由 Species 变量决定。\ncolor = \"blue\"：所有点固定为蓝色。\n\n\n\n12.32.4 练习：保存图片\n修改下面代码中的文件名，把图片保存为自己的作业图片。渲染讲义时不要执行。\n\n\nCode\nggsave(\n  filename = \"figures/my_iris_plot.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)",
+    "section": "12.31 课堂练习",
+    "text": "12.31 课堂练习\n\n12.31.1 练习：修改变量\n把下面代码中的 Petal.Length 和 Petal.Width 改为 Sepal.Length 和 Sepal.Width，绘制萼片长度和萼片宽度的散点图。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point()\n\n\n\n\n12.31.2 练习：判断图形类型\n请根据问题选择合适图形。\n\n\n\n问题\n合适图形\n\n\n\n\n花瓣长度和花瓣宽度有没有关系？\n\n\n\n三种花的花瓣长度是否不同？\n\n\n\n三种花的萼片长度分布形状是否不同？\n\n\n\n萼片长度主要集中在哪些范围？\n\n\n\n三种花各有多少朵？\n\n\n\n美国失业人数随时间如何变化？\n\n\n\n三种花在四个测量变量上的平均值如何比较？\n\n\n\n\n参考答案：\n\n\n\n问题\n合适图形\n\n\n\n\n花瓣长度和花瓣宽度有没有关系？\n散点图\n\n\n三种花的花瓣长度是否不同？\n箱线图\n\n\n三种花的萼片长度分布形状是否不同？\n小提琴图\n\n\n萼片长度主要集中在哪些范围？\n直方图\n\n\n三种花各有多少朵？\n条形图\n\n\n美国失业人数随时间如何变化？\n折线图\n\n\n三种花在四个测量变量上的平均值如何比较？\n热图\n\n\n\n\n\n12.31.3 练习：解释映射和固定样式\n说明下面两行代码的区别。\n\n\nCode\ngeom_point(aes(color = Species))\ngeom_point(color = \"blue\")\n\n\n答案要点：\n\naes(color = Species)：颜色由 Species 变量决定。\ncolor = \"blue\"：所有点固定为蓝色。\n\n\n\n12.31.4 练习：保存图片\n修改下面代码中的文件名，把图片保存为自己的作业图片。渲染讲义时不要执行。\n\n\nCode\nggsave(\n  filename = \"figures/my_iris_plot.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2283,8 +2283,8 @@
     "objectID": "lecture11.html#参考资料",
     "href": "lecture11.html#参考资料",
     "title": "12  ggplot2 绘图",
-    "section": "12.34 参考资料",
-    "text": "12.34 参考资料\n\nggplot2 官方入门文章：https://ggplot2.tidyverse.org/articles/ggplot2.html\nggplot2 作者与维护者信息：https://ggplot2.tidyverse.org/authors.html\nggplot2 在线书：https://ggplot2-book.org/\nggplot2 地图数据函数 map_data()：https://ggplot2.tidyverse.org/reference/map_data.html\nggplot2 关于 linewidth 的官方说明：https://ggplot2.tidyverse.org/reference/scale_linewidth.html\nggplot2 4.0.0 发布说明：https://tidyverse.org/blog/2025/09/ggplot2-4-0-0/",
+    "section": "12.33 参考资料",
+    "text": "12.33 参考资料\n\nggplot2 官方入门文章：https://ggplot2.tidyverse.org/articles/ggplot2.html\nggplot2 作者与维护者信息：https://ggplot2.tidyverse.org/authors.html\nggplot2 在线书：https://ggplot2-book.org/\nggplot2 地图数据函数 map_data()：https://ggplot2.tidyverse.org/reference/map_data.html\nggplot2 关于 linewidth 的官方说明：https://ggplot2.tidyverse.org/reference/scale_linewidth.html\nggplot2 4.0.0 发布说明：https://tidyverse.org/blog/2025/09/ggplot2-4-0-0/",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2424,7 +2424,7 @@
     "href": "lecture11.html#热图",
     "title": "12  ggplot2 绘图",
     "section": "12.16 热图",
-    "text": "12.16 热图\n热图用于把数值大小显示为颜色深浅。它适合比较“多个组”和“多个变量”的数值。\n这里仍然使用 iris 数据。问题是：三种鸢尾花在四个测量变量上的平均值有什么差异？\n\n\nCode\nlibrary(reshape2)\nlibrary(ggplot2)\ncor_mat &lt;- cor(mtcars)\ncor_df &lt;- melt(cor_mat)\np &lt;- ggplot(cor_df, aes(x = Var1, y = Var2, fill = value)) +\n  geom_tile(color = \"white\") +\n  geom_text(\n    aes(label = round(value, 2)),\n    size = 3\n  ) +\n  scale_fill_gradient2(\n    low = \"blue\",\n    mid = \"white\",\n    high = \"red\",\n    midpoint = 0,\n    limits = c(-1, 1)\n  ) +\n  labs(\n    x = NULL,\n    y = NULL,\n    fill = \"相关系数\",\n    title = \"mtcars 数据集变量相关性热图\"\n  ) +\n  theme_minimal(base_size = 14) +\n  theme(\n    axis.text.x = element_text(\n      angle = 45,\n      hjust = 1\n    ),\n    panel.grid = element_blank()\n  )\nprint(p)",
+    "text": "12.16 热图\n热图用于把数值大小显示为颜色深浅。它适合比较“多个组”和“多个变量”的数值。\n这里仍然使用 iris 数据。问题是：三种鸢尾花在四个测量变量上的平均值有什么差异？\n\n\nCode\nlibrary(reshape2)\nlibrary(ggplot2)\ncor_mat &lt;- cor(mtcars)\ncor_df &lt;- melt(cor_mat)\np &lt;- ggplot(cor_df, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = \"white\") \nprint(p)",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2444,7 +2444,7 @@
     "href": "lecture11.html#简单地图",
     "title": "12  ggplot2 绘图",
     "section": "12.18 简单地图",
-    "text": "12.18 简单地图\n地图也是一种图形。最基本的地图可以理解为：用经度和纬度确定位置，再把区域边界画出来。\n地图内容后面会单独讲。本节只展示最简单的世界地图轮廓。\n如果没有安装 maps 包，需要先安装。\n\n\nCode\ninstall.packages(\"maps\")\n\n\n下面的代码如果检测到已经安装 maps 包，就显示世界地图；如果没有安装，就只给出提示，不会让讲义渲染报错。\n\n\nCode\nif (requireNamespace(\"maps\", quietly = TRUE)) {\n  world_map &lt;- map_data(\"world\")\n  ggplot(world_map, aes(x = long, y = lat, group = group)) +\n    geom_polygon(fill = \"grey85\", color = \"white\", linewidth = 0.2) +\n    coord_quickmap()\n} else {\n  message(\"请先安装 maps 包后再运行这段代码。\")\n}\n\n\n\n\n\n\n\n\n\n这段代码中：\n\nlong 表示经度。\nlat 表示纬度。\ngroup 表示哪些点属于同一个区域边界。\ngeom_polygon() 用来画多边形区域。\ncoord_quickmap() 用来让地图比例更接近真实经纬度比例。\n\n本节只需要知道地图也可以用 ggplot2 画。地图投影、空间数据格式和真实地理分析后面再讲。",
+    "text": "12.18 简单地图\n地图也是一种图形。最基本的地图可以理解为：用经度和纬度确定位置，再把区域边界画出来。\n地图内容后面会单独讲。本节只展示最简单的世界地图轮廓。\n如果没有安装 maps 包，需要先安装。\n\n\nCode\ninstall.packages(\"maps\")\n\n\n下面的代码如果检测到已经安装 maps 包，就显示世界地图；如果没有安装，就只给出提示，不会让讲义渲染报错。\n\n\nCode\nlibrary(maps)\n  world_map &lt;- map_data(\"world\")\n  ggplot(world_map, aes(x = long, y = lat, group = group)) +\n    geom_polygon(fill = \"grey85\", color = \"white\", linewidth = 0.2) +\n    coord_quickmap()\n\n\n\n\n\n\n\n\n\n这段代码中：\n\nlong 表示经度。\nlat 表示纬度。\ngroup 表示哪些点属于同一个区域边界。\ngeom_polygon() 用来画多边形区域。\ncoord_quickmap() 用来让地图比例更接近真实经纬度比例。\n\n本节只需要知道地图也可以用 ggplot2 画。地图投影、空间数据格式和真实地理分析后面再讲。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2453,8 +2453,8 @@
     "objectID": "lecture11.html#图形修饰的基本顺序",
     "href": "lecture11.html#图形修饰的基本顺序",
     "title": "12  ggplot2 绘图",
-    "section": "12.23 图形修饰的基本顺序",
-    "text": "12.23 图形修饰的基本顺序\n基本图形能够回答问题后，再进行图形修饰。修饰的目的是让图更清楚，而不是改变数据本身。\n推荐顺序如下：\n\n先加文字：labs()。\n再调颜色和坐标显示：scale_*()。\n再选择整体主题：theme_*()。\n最后微调细节：theme()。\n\n这四类函数的作用不同。\n\n\n\n\n\n\n\n\n\n函数\n主要控制什么\n常见例子\n不负责什么\n\n\n\n\nlabs()\n图中的文字\n标题、横轴名、纵轴名、图例名、数据来源\n不改颜色和背景\n\n\nscale_*()\n变量的显示方式\n颜色方案、填充色、坐标刻度、图例范围\n不改标题和主题\n\n\ntheme_*()\n整体外观\ntheme_minimal()、theme_bw()、theme_classic()\n不改数据映射\n\n\ntheme()\n外观细节\n图例位置、网格线、字体大小、坐标轴文字角度\n不选择图形类型\n\n\n\n简单记忆：\n\nlabs() 管文字。\nscale_*() 管变量怎么显示。\ntheme_*() 管整体风格。\ntheme() 管外观细节。",
+    "section": "12.22 图形修饰的基本顺序",
+    "text": "12.22 图形修饰的基本顺序\n基本图形能够回答问题后，再进行图形修饰。修饰的目的是让图更清楚，而不是改变数据本身。\n推荐顺序如下：\n\n先加文字：labs()。\n再调颜色和坐标显示：scale_*()。\n再选择整体主题：theme_*()。\n最后微调细节：theme()。\n\n这四类函数的作用不同。\n\n\n\n\n\n\n\n\n\n函数\n主要控制什么\n常见例子\n不负责什么\n\n\n\n\nlabs()\n图中的文字\n标题、横轴名、纵轴名、图例名、数据来源\n不改颜色和背景\n\n\nscale_*()\n变量的显示方式\n颜色方案、填充色、坐标刻度、图例范围\n不改标题和主题\n\n\ntheme_*()\n整体外观\ntheme_minimal()、theme_bw()、theme_classic()\n不改数据映射\n\n\ntheme()\n外观细节\n图例位置、网格线、字体大小、坐标轴文字角度\n不选择图形类型\n\n\n\n简单记忆：\n\nlabs() 管文字。\nscale_*() 管变量怎么显示。\ntheme_*() 管整体风格。\ntheme() 管外观细节。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2463,8 +2463,8 @@
     "objectID": "lecture11.html#添加标题和坐标轴",
     "href": "lecture11.html#添加标题和坐标轴",
     "title": "12  ggplot2 绘图",
-    "section": "12.24 添加标题和坐标轴",
-    "text": "12.24 添加标题和坐标轴\nlabs() 用来添加标题、坐标轴名称、图例名称和数据来源说明。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point() +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\",\n    caption = \"数据来源：R 内置数据集 iris\"\n  )\n\n\n\n\n\n\n\n\n\n标题应说明图的主要内容。坐标轴名称应说明变量含义和单位。",
+    "section": "12.23 添加标题和坐标轴",
+    "text": "12.23 添加标题和坐标轴\nlabs() 用来添加标题、坐标轴名称、图例名称和数据来源说明。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point() +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\",\n    caption = \"数据来源：R 内置数据集 iris\"\n  )\n\n\n\n\n\n\n\n\n\n标题应说明图的主要内容。坐标轴名称应说明变量含义和单位。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2473,8 +2473,8 @@
     "objectID": "lecture11.html#修改颜色和标度",
     "href": "lecture11.html#修改颜色和标度",
     "title": "12  ggplot2 绘图",
-    "section": "12.25 修改颜色和标度",
-    "text": "12.25 修改颜色和标度\nscale_*() 控制变量如何显示在图中。函数名里的 color、fill、x、y 通常对应 aes() 里的映射。\n常见用法如下。\n\n\n\n\n\n\n\n\n\n函数\n对应的映射\n适合什么变量\n作用\n\n\n\n\nscale_color_manual()\ncolor\n分类变量\n手动设置点或线的颜色\n\n\nscale_fill_manual()\nfill\n分类变量\n手动设置柱子、箱子等填充颜色\n\n\nscale_fill_gradient()\nfill\n连续数值变量\n用浅色到深色表示数值由小到大\n\n\nscale_fill_gradient2()\nfill\n有中点的连续数值变量\n用两端颜色表示低值和高值，中间颜色表示中点\n\n\nscale_x_continuous()\nx\n连续数值变量\n修改横轴刻度、范围、标签\n\n\nscale_y_continuous()\ny\n连续数值变量\n修改纵轴刻度、范围、标签\n\n\n\nscale_fill_gradient2() 常用于相关系数这类数据，因为相关系数有负数、0 和正数。普通平均值热图通常用 scale_fill_gradient() 就够了。\n先定义一组颜色。\n\n\nCode\niris_colors &lt;- c(\n  setosa = \"#0072B2\",\n  versicolor = \"#D55E00\",\n  virginica = \"#009E73\"\n)\n\n\n再应用到图中。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  )\n\n\n\n\n\n\n\n\n\nscale_color_manual() 改变颜色显示方式，但不改变数据。",
+    "section": "12.24 修改颜色和标度",
+    "text": "12.24 修改颜色和标度\nscale_*() 控制变量如何显示在图中。函数名里的 color、fill、x、y 通常对应 aes() 里的映射。\n常见用法如下。\n\n\n\n\n\n\n\n\n\n函数\n对应的映射\n适合什么变量\n作用\n\n\n\n\nscale_color_manual()\ncolor\n分类变量\n手动设置点或线的颜色\n\n\nscale_fill_manual()\nfill\n分类变量\n手动设置柱子、箱子等填充颜色\n\n\nscale_fill_gradient()\nfill\n连续数值变量\n用浅色到深色表示数值由小到大\n\n\nscale_fill_gradient2()\nfill\n有中点的连续数值变量\n用两端颜色表示低值和高值，中间颜色表示中点\n\n\nscale_x_continuous()\nx\n连续数值变量\n修改横轴刻度、范围、标签\n\n\nscale_y_continuous()\ny\n连续数值变量\n修改纵轴刻度、范围、标签\n\n\n\nscale_fill_gradient2() 常用于相关系数这类数据，因为相关系数有负数、0 和正数。普通平均值热图通常用 scale_fill_gradient() 就够了。\n先定义一组颜色。\n\n\nCode\niris_colors &lt;- c(\n  setosa = \"#0072B2\",\n  versicolor = \"#D55E00\",\n  virginica = \"#009E73\"\n)\n\n\n再应用到图中。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  )\n\n\n\n\n\n\n\n\n\nscale_color_manual() 改变颜色显示方式，但不改变数据。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2483,8 +2483,8 @@
     "objectID": "lecture11.html#选择整体主题",
     "href": "lecture11.html#选择整体主题",
     "title": "12  ggplot2 绘图",
-    "section": "12.26 选择整体主题",
-    "text": "12.26 选择整体主题\n主题控制图中的非数据元素，例如背景、网格线、字体大小和图例位置。\n常用主题包括：\n\ntheme_gray()：默认主题，灰色背景。\ntheme_bw()：白色背景，保留边框。\ntheme_minimal()：背景更简洁。\ntheme_classic()：经典样式，去掉主要背景网格。\n\n例如使用 theme_minimal()。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\nbase_size = 14 表示设置基础字号。课堂投影时可以适当增大字号。",
+    "section": "12.25 选择整体主题",
+    "text": "12.25 选择整体主题\n主题控制图中的非数据元素，例如背景、网格线、字体大小和图例位置。\n常用主题包括：\n\ntheme_gray()：默认主题，灰色背景。\ntheme_bw()：白色背景，保留边框。\ntheme_minimal()：背景更简洁。\ntheme_classic()：经典样式，去掉主要背景网格。\n\n例如使用 theme_minimal()。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\nbase_size = 14 表示设置基础字号。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2493,8 +2493,8 @@
     "objectID": "lecture11.html#微调主题细节",
     "href": "lecture11.html#微调主题细节",
     "title": "12  ggplot2 绘图",
-    "section": "12.27 微调主题细节",
-    "text": "12.27 微调主题细节\ntheme() 用来修改主题中的具体元素。\n下面的代码把图例放到底部，并去掉次要网格线。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14) +\n  theme(\n    legend.position = \"bottom\",\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\n\n\n\n主题修改的逻辑是：\n\ntheme_*() 先确定整体风格。\ntheme() 再调整局部细节。\ntheme() 不负责修改数据变量，也不负责选择图形类型。",
+    "section": "12.26 微调主题细节",
+    "text": "12.26 微调主题细节\ntheme() 用来修改主题中的具体元素。\n下面的代码把图例放到底部，并去掉次要网格线。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14) +\n  theme(\n    legend.position = \"bottom\",\n    panel.grid.minor = element_blank()\n  )\n\n\n\n\n\n\n\n\n\n主题修改的逻辑是：\n\ntheme_*() 先确定整体风格。\ntheme() 再调整局部细节。\ntheme() 不负责修改数据变量，也不负责选择图形类型。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2503,8 +2503,8 @@
     "objectID": "lecture11.html#添加趋势线",
     "href": "lecture11.html#添加趋势线",
     "title": "12  ggplot2 绘图",
-    "section": "12.28 添加趋势线",
-    "text": "12.28 添加趋势线\n趋势线用于辅助观察两个数值变量之间的整体关系。趋势线通常加在散点图上。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(alpha = 0.7) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  labs(\n    title = \"花瓣长度与花瓣宽度的整体趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n参数含义：\n\nmethod = \"lm\"：使用线性模型拟合趋势线。\nse = FALSE：不显示置信区间阴影。\nlinewidth = 1：设置线宽。\n\n如果把 Species 映射到颜色上，趋势线也会按种类分别绘制。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(alpha = 0.75) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"不同鸢尾花种类的花瓣长度与宽度趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)",
+    "section": "12.27 添加趋势线",
+    "text": "12.27 添加趋势线\n趋势线用于辅助观察两个数值变量之间的整体关系。趋势线通常加在散点图上。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(alpha = 0.7) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  labs(\n    title = \"花瓣长度与花瓣宽度的整体趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n参数含义：\n\nmethod = \"lm\"：使用线性模型拟合趋势线。\nse = FALSE：不显示置信区间阴影。\nlinewidth = 1：设置线宽。\n\n如果把 Species 映射到颜色上，趋势线也会按种类分别绘制。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(alpha = 0.75) +\n  geom_smooth(method = \"lm\", se = FALSE, linewidth = 1) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"不同鸢尾花种类的花瓣长度与宽度趋势\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2513,8 +2513,8 @@
     "objectID": "lecture11.html#使用分面",
     "href": "lecture11.html#使用分面",
     "title": "12  ggplot2 绘图",
-    "section": "12.29 使用分面",
-    "text": "12.29 使用分面\n分面用于把同一张图按照某个分类变量拆成多张小图。\n例如，按 Species 分成三个小图。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(color = \"#0072B2\", alpha = 0.75) +\n  facet_wrap(~ Species) +\n  labs(\n    title = \"按鸢尾花种类分别观察花瓣关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\nfacet_wrap(~ Species) 的意思是：按照 Species 的不同取值，把图分成多个面板。\n分面适合回答的问题是：不同组内部的规律是否相同。",
+    "section": "12.28 使用分面",
+    "text": "12.28 使用分面\n分面用于把同一张图按照某个分类变量拆成多张小图。\n例如，按 Species 分成三个小图。\n\n\nCode\nggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +\n  geom_point(color = \"#0072B2\", alpha = 0.75) +\n  facet_wrap(~ Species) +\n  labs(\n    title = \"按鸢尾花种类分别观察花瓣关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\nfacet_wrap(~ Species) 的意思是：按照 Species 的不同取值，把图分成多个面板。\n分面适合回答的问题是：不同组内部的规律是否相同。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2523,8 +2523,8 @@
     "objectID": "lecture11.html#计算统计量并绘图",
     "href": "lecture11.html#计算统计量并绘图",
     "title": "12  ggplot2 绘图",
-    "section": "12.30 计算统计量并绘图",
-    "text": "12.30 计算统计量并绘图\n科研图中常见的形式是“平均值 + 误差线”。先计算每组的平均值和标准差。\n\n\nCode\niris_summary &lt;- aggregate(\n  Sepal.Length ~ Species,\n  data = iris,\n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\niris_summary &lt;- do.call(data.frame, iris_summary)\nnames(iris_summary) &lt;- c(\"Species\", \"mean\", \"sd\")\niris_summary\n\n\n     Species  mean        sd\n1     setosa 5.006 0.3524897\n2 versicolor 5.936 0.5161711\n3  virginica 6.588 0.6358796\n\n\n再绘图。\n\n\nCode\nggplot(iris_summary, aes(x = Species, y = mean, fill = Species)) +\n  geom_col(width = 0.65, alpha = 0.75) +\n  geom_errorbar(\n    aes(ymin = mean - sd, ymax = mean + sd),\n    width = 0.15,\n    linewidth = 0.7\n  ) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度的平均值和标准差\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n平均值图可以概括组间差异，但会隐藏原始数据。展示数据时，可同时考虑箱线图或原始散点。",
+    "section": "12.29 计算统计量并绘图",
+    "text": "12.29 计算统计量并绘图\n科研图中常见的形式是“平均值 + 误差线”。先计算每组的平均值和标准差。\n\n\nCode\niris_summary &lt;- aggregate(\n  Sepal.Length ~ Species,\n  data = iris,\n  FUN = function(x) c(mean = mean(x), sd = sd(x))\n)\n\niris_summary &lt;- do.call(data.frame, iris_summary)\nnames(iris_summary) &lt;- c(\"Species\", \"mean\", \"sd\")\niris_summary\n\n\n     Species  mean        sd\n1     setosa 5.006 0.3524897\n2 versicolor 5.936 0.5161711\n3  virginica 6.588 0.6358796\n\n\n再绘图。\n\n\nCode\nggplot(iris_summary, aes(x = Species, y = mean, fill = Species)) +\n  geom_col(width = 0.65, alpha = 0.75) +\n  geom_errorbar(\n    aes(ymin = mean - sd, ymax = mean + sd),\n    width = 0.15,\n    linewidth = 0.7\n  ) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度的平均值和标准差\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\n\n\n\n\n\n\n\n\n平均值图可以概括组间差异，但会隐藏原始数据。展示数据时，可同时考虑箱线图或原始散点。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2533,8 +2533,8 @@
     "objectID": "lecture11.html#保存图片",
     "href": "lecture11.html#保存图片",
     "title": "12  ggplot2 绘图",
-    "section": "12.31 保存图片",
-    "text": "12.31 保存图片\nggsave() 用于保存图形。保存图片时，建议先把图存为对象，再保存对象。\n本节所有保存图片的代码都设置为 eval: false。渲染讲义时只显示代码，不真正执行保存命令。\n\n\nCode\ndir.create(\"figures\", showWarnings = FALSE)\n\np &lt;- ggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_petal_scatter.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n保存为 PDF。\n\n\nCode\nggsave(\n  filename = \"figures/iris_petal_scatter.pdf\",\n  plot = p,\n  width = 7,\n  height = 5\n)\n\n\n保存箱线图。\n\n\nCode\np_box &lt;- ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_boxplot(width = 0.55, alpha = 0.7) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度比较\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_sepal_length_boxplot.png\",\n  plot = p_box,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n保存图片时需要注意：\n\n文件名要能说明图片内容。\nwidth 和 height 控制图片大小。\ndpi = 300 常用于论文、报告和打印。\nPNG 适合插入 Word、PPT 和网页。\nPDF 适合论文排版，放大后不容易模糊。",
+    "section": "12.30 保存图片",
+    "text": "12.30 保存图片\nggsave() 用于保存图形。保存图片时，建议先把图存为对象，再保存对象。\n本节所有保存图片的代码都设置为 eval: false。渲染讲义时只显示代码，不真正执行保存命令。\n\n\nCode\ndir.create(\"figures\", showWarnings = FALSE)\n\np &lt;- ggplot(iris, aes(x = Petal.Length, y = Petal.Width, color = Species)) +\n  geom_point(size = 2.2, alpha = 0.8) +\n  scale_color_manual(values = iris_colors) +\n  labs(\n    title = \"鸢尾花花瓣长度与花瓣宽度的关系\",\n    x = \"花瓣长度 (cm)\",\n    y = \"花瓣宽度 (cm)\",\n    color = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_petal_scatter.png\",\n  plot = p,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n保存为 PDF。\n\n\nCode\nggsave(\n  filename = \"figures/iris_petal_scatter.pdf\",\n  plot = p,\n  width = 7,\n  height = 5\n)\n\n\n保存箱线图。\n\n\nCode\np_box &lt;- ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +\n  geom_boxplot(width = 0.55, alpha = 0.7) +\n  scale_fill_manual(values = iris_colors) +\n  labs(\n    title = \"三种鸢尾花萼片长度比较\",\n    x = \"鸢尾花种类\",\n    y = \"萼片长度 (cm)\",\n    fill = \"鸢尾花种类\"\n  ) +\n  theme_minimal(base_size = 14)\n\nggsave(\n  filename = \"figures/iris_sepal_length_boxplot.png\",\n  plot = p_box,\n  width = 7,\n  height = 5,\n  dpi = 300\n)\n\n\n保存图片时需要注意：\n\n文件名要能说明图片内容。\nwidth 和 height 控制图片大小。\ndpi = 300 常用于论文、报告和打印。\nPNG 适合插入 Word、PPT 和网页。\nPDF 适合论文排版，放大后不容易模糊。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2543,8 +2543,8 @@
     "objectID": "lecture11.html#本节小结",
     "href": "lecture11.html#本节小结",
     "title": "12  ggplot2 绘图",
-    "section": "12.33 本节小结",
-    "text": "12.33 本节小结\nggplot2 的基本结构是：\nggplot(data = 数据, mapping = aes(x = 横轴变量, y = 纵轴变量)) +\n  geom_图形()\n需要重点记住：\n\n先判断问题，再选择图形。\n两个数值变量看关系，使用散点图。\n分类变量和数值变量做比较，使用箱线图。\n分类变量和数值变量看分布形状，使用小提琴图。\n一个数值变量看分布，使用直方图或密度图。\n一个分类变量数数量，使用条形图。\n已经计算好的数值，使用柱形图。\n多个组和多个变量的数值比较，可以使用热图。\n时间变化，使用折线图。\n简单区域轮廓可以用经度、纬度和多边形绘制地图。\ncoord_polar() 可以把普通图形转换成极坐标图形。\n写在 aes() 里面是变量映射，写在 aes() 外面是固定样式。\n图形修饰的顺序是：labs()、scale_*()、theme_*()、theme()。\n趋势线用 geom_smooth()，分面用 facet_wrap()。\n保存图片用 ggsave()，讲义中保存代码设置为 eval: false。",
+    "section": "12.32 本节小结",
+    "text": "12.32 本节小结\nggplot2 的基本结构是：\nggplot(data = 数据, mapping = aes(x = 横轴变量, y = 纵轴变量)) +\n  geom_图形()\n需要重点记住：\n\n先判断问题，再选择图形。\n两个数值变量看关系，使用散点图。\n分类变量和数值变量做比较，使用箱线图。\n分类变量和数值变量看分布形状，使用小提琴图。\n一个数值变量看分布，使用直方图或密度图。\n一个分类变量数数量，使用条形图。\n已经计算好的数值，使用柱形图。\n多个组和多个变量的数值比较，可以使用热图。\n时间变化，使用折线图。\n简单区域轮廓可以用经度、纬度和多边形绘制地图。\ncoord_polar() 可以把普通图形转换成极坐标图形。\n写在 aes() 里面是变量映射，写在 aes() 外面是固定样式。\n图形修饰的顺序是：labs()、scale_*()、theme_*()、theme()。\n趋势线用 geom_smooth()，分面用 facet_wrap()。\n保存图片用 ggsave()，讲义中保存代码设置为 eval: false。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2584,7 +2584,7 @@
     "href": "lecture11.html#极坐标图形",
     "title": "12  ggplot2 绘图",
     "section": "12.19 极坐标图形",
-    "text": "12.19 极坐标图形\n前面的图大多使用普通直角坐标系：横轴是 x，纵轴是 y。ggplot2 也可以使用极坐标。极坐标用“角度”和“半径”确定位置，常见于圆形图、雷达图和一些数学曲线。\n在 ggplot2 中，coord_polar() 负责把普通坐标转换成极坐标。它不改变数据，只改变显示方式。\n下面画一个简单的数学花形曲线。先生成角度 theta，再用公式计算半径 r。\\(r = 1 + 0.45\\cos(6\\theta)\\)\n\n\nCode\ntheta &lt;- seq(0, 2 * pi, length.out = 800)\n\npolar_flower &lt;- data.frame(\n  theta = theta,\n  r = 1 + 0.45 * cos(6 * theta)\n)\n\n\n再把 theta 放在横轴，r 放在纵轴，最后使用 coord_polar() 转成极坐标。\n\n\nCode\nggplot(polar_flower, aes(x = theta, y = r)) +\n  geom_line(color = \"#D55E00\", linewidth = 1.1) +\n  coord_polar(theta = \"x\") +\n  labs(title = \"极坐标中的数学花形曲线\") +\n  theme_void(base_size = 14)\n\n\n\n\n\n\n\n\n\n这段代码可以这样理解：\n\ntheta 控制旋转角度。\nr 控制离中心的距离。\ngeom_line() 先画线。\ncoord_polar() 再把线绕成圆形。\n\n如果改变 cos(6 * theta) 里的数字，花瓣数量和形状也会改变。",
+    "text": "12.19 极坐标图形\n前面的图大多使用普通直角坐标系：横轴是 x，纵轴是 y。ggplot2 也可以使用极坐标。极坐标用“角度”和“半径”确定位置，常见于圆形图、雷达图和一些数学曲线。\n在 ggplot2 中，coord_polar() 负责把普通坐标转换成极坐标。它不改变数据，只改变显示方式。\n下面画一个简单的数学花形曲线。先生成角度 theta，再用公式计算半径 r。\\(r = 1 + 0.45\\cos(6\\theta)\\)\n\n\nCode\ntheta &lt;- seq(0, 2 * pi, length.out = 800)\n\npolar_flower &lt;- data.frame(\n  theta = theta,\n  r = 1 + 0.45 * cos(6 * theta)\n)\n\n\n再把 theta 放在横轴，r 放在纵轴，最后使用 coord_polar() 转成极坐标。\n\n\nCode\nggplot(polar_flower, aes(x = theta, y = r)) +\n  geom_line(color = \"#D55E00\", linewidth = 1.1) +\n  coord_polar(theta = \"x\")\n\n\n\n\n\n\n\n\n\n这段代码可以这样理解：\n\ntheta 控制旋转角度。\nr 控制离中心的距离。\ngeom_line() 先画线。\ncoord_polar() 再把线绕成圆形。\n\n如果改变 cos(6 * theta) 里的数字，花瓣数量和形状也会改变。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2594,7 +2594,7 @@
     "href": "lecture11.html#和其他包合作画-3d-图",
     "title": "12  ggplot2 绘图",
     "section": "12.20 和其他包合作画 3D 图",
-    "text": "12.20 和其他包合作画 3D 图\nggplot2 主要用于二维图形。如果想做可旋转的三维图，可以和其他包合作，例如 plotly、rgl 或 rayshader。\n如果电脑中没有安装 plotly，先运行一次下面的代码。\nlibrary(ggplot2)\nlibrary(rayshader)\np &lt;- ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +\n  geom_raster() +\n  scale_fill_viridis_c() +\n  theme_minimal()\nplot_gg(p, width = 5, height = 4, scale = 300)\n这段代码的作用是：\n\n先用 ggplot2 绘制一个二维密度热图，然后用 rayshader 将这个二维图渲染成三维立体图。\n\n核心流程是：\n数据 → ggplot 二维热图 → rayshader 三维渲染图",
+    "text": "12.20 和其他包合作画 3D 图\nggplot2 主要用于二维图形。如果想做可旋转的三维图，可以和其他包合作，例如 plotly、rgl 或 rayshader。\n如果电脑中没有安装 plotly，先运行一次下面的代码。\nlibrary(ggplot2)\nlibrary(rayshader)\np &lt;- ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +\n  geom_raster() +\n  scale_fill_viridis_c() +\n  theme_minimal()\nplot_gg(p, width = 5, height = 4, scale = 300)\n这段代码的作用是：\n\n先用 ggplot2 绘制一个二维密度热图，然后用 rayshader 将这个二维图渲染成三维立体图。\n\n核心流程是：\n数据 → ggplot 二维热图 → rayshader 三维渲染图\n可以简单理解为：\n\nggplot2 负责画平面图，rayshader 负责把平面图立起来。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2613,8 +2613,8 @@
     "objectID": "lecture11.html#faithfuld-数据集",
     "href": "lecture11.html#faithfuld-数据集",
     "title": "12  ggplot2 绘图",
-    "section": "12.22 faithfuld 数据集",
-    "text": "12.22 faithfuld 数据集\n本例使用 ggplot2 自带的 faithfuld 数据集。\n\n\nCode\nhead(faithfuld)\n\n\n# A tibble: 6 × 3\n  eruptions waiting density\n      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1      1.6       43 0.00322\n2      1.65      43 0.00384\n3      1.69      43 0.00444\n4      1.74      43 0.00498\n5      1.79      43 0.00542\n6      1.84      43 0.00574\n\n\nfaithfuld 是美国黄石公园 Old Faithful 间歇泉数据的二维密度估计结果。\n主要包含以下变量：\n\n\n\n变量\n含义\n\n\n\n\neruptions\n喷发持续时间\n\n\nwaiting\n两次喷发之间的等待时间\n\n\ndensity\n对应位置的数据密度\n\n\n\n这里需要注意：\n\nfaithfuld 不是原始观测数据，而是已经计算好的二维密度网格数据。",
+    "section": "12.21 faithfuld 数据集",
+    "text": "12.21 faithfuld 数据集\n本例使用 ggplot2 自带的 faithfuld 数据集。\n\n\nCode\nhead(faithfuld)\n\n\n# A tibble: 6 × 3\n  eruptions waiting density\n      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1      1.6       43 0.00322\n2      1.65      43 0.00384\n3      1.69      43 0.00444\n4      1.74      43 0.00498\n5      1.79      43 0.00542\n6      1.84      43 0.00574\n\n\nfaithfuld 是美国黄石公园 Old Faithful 间歇泉数据的二维密度估计结果。\n主要包含以下变量：\n\n\n\n变量\n含义\n\n\n\n\neruptions\n喷发持续时间\n\n\nwaiting\n两次喷发之间的等待时间\n\n\ndensity\n对应位置的数据密度\n\n\n\n这里需要注意：\n\nfaithfuld 不是原始观测数据，而是已经计算好的二维密度网格数据。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
