@@ -2424,7 +2424,7 @@
     "href": "lecture11.html#热图",
     "title": "12  ggplot2 绘图",
     "section": "12.16 热图",
-    "text": "12.16 热图\n热图用于把数值大小显示为颜色深浅。它适合比较“多个组”和“多个变量”的数值。\n这里仍然使用 iris 数据。问题是：三种鸢尾花在四个测量变量上的平均值有什么差异？\n\n\nCode\nlibrary(reshape2)\nlibrary(ggplot2)\ncor_mat &lt;- cor(mtcars)\ncor_df &lt;- melt(cor_mat)\np &lt;- ggplot(cor_df, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = \"white\") \nprint(p)",
+    "text": "12.16 热图\n热图用于把数值大小显示为颜色深浅。它适合比较“多个组”和“多个变量”的数值。\n这里仍然使用 iris 数据。问题是：三种鸢尾花在四个测量变量上的平均值有什么差异？\n\n\nCode\nlibrary(reshape2)\nlibrary(ggplot2)\ncor_mat &lt;- cor(mtcars)\ncor_df &lt;- melt(cor_mat)\nggplot(cor_df, aes(x = Var1, y = Var2, fill = value)) + geom_tile(color = \"white\")",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
@@ -2444,7 +2444,7 @@
     "href": "lecture11.html#简单地图",
     "title": "12  ggplot2 绘图",
     "section": "12.18 简单地图",
-    "text": "12.18 简单地图\n地图也是一种图形。最基本的地图可以理解为：用经度和纬度确定位置，再把区域边界画出来。\n地图内容后面会单独讲。本节只展示最简单的世界地图轮廓。\n如果没有安装 maps 包，需要先安装。\n\n\nCode\ninstall.packages(\"maps\")\n\n\n下面的代码如果检测到已经安装 maps 包，就显示世界地图；如果没有安装，就只给出提示，不会让讲义渲染报错。\n\n\nCode\nlibrary(maps)\n  world_map &lt;- map_data(\"world\")\n  ggplot(world_map, aes(x = long, y = lat, group = group)) +\n    geom_polygon(fill = \"grey85\", color = \"white\", linewidth = 0.2) +\n    coord_quickmap()\n\n\n\n\n\n\n\n\n\n这段代码中：\n\nlong 表示经度。\nlat 表示纬度。\ngroup 表示哪些点属于同一个区域边界。\ngeom_polygon() 用来画多边形区域。\ncoord_quickmap() 用来让地图比例更接近真实经纬度比例。\n\n本节只需要知道地图也可以用 ggplot2 画。地图投影、空间数据格式和真实地理分析后面再讲。",
+    "text": "12.18 简单地图\n地图也是一种图形。最基本的地图可以理解为：用经度和纬度确定位置，再把区域边界画出来。\n地图内容后面会单独讲。本节只展示最简单的世界地图轮廓。\n如果没有安装 maps 包，需要先安装。\n\n\nCode\ninstall.packages(\"maps\")\n\n\n\n\nCode\nlibrary(maps)\n  world_map &lt;- map_data(\"world\")\n  ggplot(world_map, aes(x = long, y = lat, group = group)) +  geom_polygon() \n\n\n\n\n\n\n\n\n\n这段代码中：\n\nlong 表示经度。\nlat 表示纬度。\ngroup 表示哪些点属于同一个区域边界。\ngeom_polygon() 用来画多边形区域。\n\n本节只需要知道地图也可以用 ggplot2 画。地图投影、空间数据格式和真实地理分析后面再讲。",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>ggplot2 绘图</span>"
     ]
