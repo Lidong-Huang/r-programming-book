@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; 第16次课 map – R 编程基础讲义（黄利东）</title>
+<title>15&nbsp; 用 R 绘制中国县级地图 – R 编程基础讲义（黄利东）</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,15 +71,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./lecture13.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,40 +106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-
-<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
-
-<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
-
-<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
-
-<script src="site_libs/echarts4r-4.8.0/echarts-en.min.js"></script>
-
-<script src="site_libs/echarts4r-4.8.0/ecStat.min.js"></script>
-
-<script src="site_libs/echarts4r-4.8.0/dataTool.min.js"></script>
-
-<script src="site_libs/echarts4r-binding-0.4.5/echarts4r.js"></script>
-
-<script src="site_libs/echarts-world-1.0.0/world.js"></script>
-
 
 
 <link rel="stylesheet" href="styles.css">
@@ -152,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture14.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecture14.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">用 R 绘制中国县级地图</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,9 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R 编程基础讲义（黄利东）</a> 
     </div>
@@ -266,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture14.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">用 R 绘制中国县级地图</span></span></a>
   </div>
 </li>
     </ul>
@@ -274,15 +240,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#本讲目标" id="toc-本讲目标" class="nav-link active" data-scroll-target="#本讲目标"><span class="header-section-number">15.1</span> 本讲目标</a></li>
+  <li><a href="#数据准备" id="toc-数据准备" class="nav-link" data-scroll-target="#数据准备"><span class="header-section-number">15.2</span> 数据准备</a></li>
+  <li><a href="#读取空间数据" id="toc-读取空间数据" class="nav-link" data-scroll-target="#读取空间数据"><span class="header-section-number">15.3</span> 读取空间数据</a></li>
+  <li><a href="#绘制最基本的全国县级地图" id="toc-绘制最基本的全国县级地图" class="nav-link" data-scroll-target="#绘制最基本的全国县级地图"><span class="header-section-number">15.4</span> 绘制最基本的全国县级地图</a></li>
+  <li><a href="#用-dplyr-理解和整理地图属性表" id="toc-用-dplyr-理解和整理地图属性表" class="nav-link" data-scroll-target="#用-dplyr-理解和整理地图属性表"><span class="header-section-number">15.5</span> 用 dplyr 理解和整理地图属性表</a></li>
+  <li><a href="#根据名称查找县级行政区划代码" id="toc-根据名称查找县级行政区划代码" class="nav-link" data-scroll-target="#根据名称查找县级行政区划代码"><span class="header-section-number">15.6</span> 根据名称查找县级行政区划代码</a></li>
+  <li><a href="#设置家乡县级行政区划代码" id="toc-设置家乡县级行政区划代码" class="nav-link" data-scroll-target="#设置家乡县级行政区划代码"><span class="header-section-number">15.7</span> 设置家乡县级行政区划代码</a></li>
+  <li><a href="#提取目标县级行政区" id="toc-提取目标县级行政区" class="nav-link" data-scroll-target="#提取目标县级行政区"><span class="header-section-number">15.8</span> 提取目标县级行政区</a></li>
+  <li><a href="#在全国地图中标记目标县级行政区" id="toc-在全国地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在全国地图中标记目标县级行政区"><span class="header-section-number">15.9</span> 在全国地图中标记目标县级行政区</a></li>
+  <li><a href="#由县级代码提取省域和市域范围" id="toc-由县级代码提取省域和市域范围" class="nav-link" data-scroll-target="#由县级代码提取省域和市域范围"><span class="header-section-number">15.10</span> 由县级代码提取省域和市域范围</a></li>
+  <li><a href="#在省域地图中标记目标县级行政区" id="toc-在省域地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在省域地图中标记目标县级行政区"><span class="header-section-number">15.11</span> 在省域地图中标记目标县级行政区</a></li>
+  <li><a href="#在市域地图中标记目标县级行政区" id="toc-在市域地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在市域地图中标记目标县级行政区"><span class="header-section-number">15.12</span> 在市域地图中标记目标县级行政区</a></li>
+  <li><a href="#dplyr-语法总结" id="toc-dplyr-语法总结" class="nav-link" data-scroll-target="#dplyr-语法总结"><span class="header-section-number">15.13</span> dplyr 语法总结</a></li>
+  <li><a href="#按地市给省域地图分类填色" id="toc-按地市给省域地图分类填色" class="nav-link" data-scroll-target="#按地市给省域地图分类填色"><span class="header-section-number">15.14</span> 按地市给省域地图分类填色</a></li>
+  <li><a href="#添加比例尺和指北针" id="toc-添加比例尺和指北针" class="nav-link" data-scroll-target="#添加比例尺和指北针"><span class="header-section-number">15.15</span> 添加比例尺和指北针</a></li>
+  <li><a href="#面量图用变量决定地图颜色" id="toc-面量图用变量决定地图颜色" class="nav-link" data-scroll-target="#面量图用变量决定地图颜色"><span class="header-section-number">15.16</span> 面量图：用变量决定地图颜色</a></li>
+  <li><a href="#练习" id="toc-练习" class="nav-link" data-scroll-target="#练习"><span class="header-section-number">15.17</span> 练习</a></li>
+  <li><a href="#作业" id="toc-作业" class="nav-link" data-scroll-target="#作业"><span class="header-section-number">15.18</span> 作业</a></li>
+  <li><a href="#常见问题" id="toc-常见问题" class="nav-link" data-scroll-target="#常见问题"><span class="header-section-number">15.19</span> 常见问题</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">第16次课 map</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">用 R 绘制中国县级地图</span></h1>
 </div>
 
 
@@ -299,246 +289,1143 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<style type="text/css">
-.watch-out {
-  background-color: violet;
-  border: 3px solid black;
-  font-weight: bold;
-}
-</style>
-</div>
-<style>
-div.blue pre { background-color:yellow; }
-div.blue pre.r { background-color:violet; }
-body{ /* Normal  */
-      font-size: 35px;
-      color: DarkBlue;
-  }
-code.r{
-  font-size: 30px;
-  
-}
-pre {
-  font-size: 20px
-}
-</style>
-<div class="blue">
-<section id="中国地图" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="中国地图"><span class="header-section-number">15.1</span> 中国地图</h2>
+<section id="本讲目标" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="本讲目标"><span class="header-section-number">15.1</span> 本讲目标</h2>
+<p>本讲介绍如何在 R 中读取、整理并绘制中国县级行政区划地图。核心思路是：<strong>把空间数据理解为带有几何信息的数据框</strong>。在这个基础上，可以用 <code>dplyr</code> 整理属性表，用 <code>ggplot2</code> 绘制地图，用 <code>sf</code> 处理空间对象。</p>
+<p>本讲围绕一个完整任务展开：根据家乡县级行政区划代码，在全国、省域和市域地图中标记对应的县级行政区。完成该任务需要掌握以下内容：</p>
+<ol type="1">
+<li>Shapefile 的基本文件组成。</li>
+<li><code>sf::st_read()</code> 读取空间数据的方法。</li>
+<li><code>sf</code> 对象与普通数据框的关系。</li>
+<li><code>dplyr</code> 中 <code>filter()</code>、<code>mutate()</code>、<code>select()</code>、<code>group_by()</code>、<code>summarise()</code> 的基本语法。</li>
+<li><code>ggplot2::geom_sf()</code> 绘制空间面数据的方法。</li>
+<li>用县级行政区划代码提取省、市、县三级空间范围。</li>
+</ol>
+<blockquote class="blockquote">
+<p>说明：本讲中的“区号”按县级行政区划代码理解，即数据表中的 <code>dt_adcode</code>。例如武川县的县级行政区划代码为 <code>150125</code>。它不是电话区号。</p>
+</blockquote>
+<hr>
+</section>
+<section id="数据准备" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="数据准备"><span class="header-section-number">15.2</span> 数据准备</h2>
+<p><strong>数据文件下载</strong></p>
+<p>本章使用的中国区县级 Shapefile 已打包为 <code>china_shapefile.zip</code>。可通过以下链接下载：</p>
+<p>👉<a href="china_shapefile.zip">下载 china_shapefile.zip</a></p>
+<p>下载后，将压缩包解压到当前项目工作目录。解压后应包含一组同名、不同后缀的 Shapefile 文件。</p>
+<p><strong>Shapefile 文件组成</strong></p>
+<p>Shapefile 不是单个文件，而是一组同名、不同后缀的文件。一个可正常读取的 Shapefile 至少应包括下列文件：</p>
+<pre class="text"><code>china.shp    几何图形文件，存储点、线或面边界
+china.shx    空间索引文件，用于快速定位几何对象
+china.dbf    属性表文件，存储名称、代码等非空间信息
+china.prj    坐标参考系文件，说明坐标采用何种地理或投影系统
+china.cpg    字符编码文件，说明中文等字符的编码方式</code></pre>
+<p>其中，<code>.shp</code> 提供图形边界，<code>.dbf</code> 提供属性表。二者共同构成“地图上每个区域是什么、在哪里、叫什么”的完整信息。</p>
+<p><strong>安装和加载 R 包</strong></p>
+<p>首次使用时，需要安装相关 R 包：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(maps)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mapdata)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">map</span>(<span class="st">"china"</span>, <span class="at">col =</span> <span class="st">"blue"</span>,  <span class="at">panel.first =</span> <span class="fu">grid</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"sf"</span>, <span class="st">"ggplot2"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggspatial"</span>, <span class="st">"viridis"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/maps1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
+<p>正式运行本讲代码前，先加载三个核心包：</p>
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(mapchina)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(sf)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(china)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>三个包的分工如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>包</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sf</code></td>
+<td>读取、存储和处理空间数据</td>
+</tr>
+<tr class="even">
+<td><code>ggplot2</code></td>
+<td>绘制图形，包括地图</td>
+</tr>
+<tr class="odd">
+<td><code>dplyr</code></td>
+<td>对数据表进行筛选、变换、统计和合并</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="读取空间数据" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="读取空间数据"><span class="header-section-number">15.3</span> 读取空间数据</h2>
+<p><strong>使用 <code>st_read()</code> 读取 Shapefile</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>china <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"china.shp"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><code>st_read()</code> 是 <code>sf</code> 包中读取空间数据的核心函数。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_read</span>(dsn, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>参数说明：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dsn</code></td>
+<td>数据源路径。读取 Shapefile 时，通常写 <code>.shp</code> 文件路径</td>
+</tr>
+<tr class="even">
+<td><code>quiet</code></td>
+<td>是否减少读取过程中的提示信息。<code>TRUE</code> 表示减少提示</td>
+</tr>
+</tbody>
+</table>
+<p>赋值语句 <code>china &lt;- ...</code> 的含义是：把右侧读取到的空间数据保存到名为 <code>china</code> 的对象中。之后所有绘图和数据整理都围绕 <code>china</code> 进行。</p>
+<p><strong>查看数据结构</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(china)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 6 features and 13 fields
+<pre><code>Simple feature collection with 6 features and 8 fields
 Geometry type: MULTIPOLYGON
 Dimension:     XY
-Bounding box:  xmin: 115.4248 ymin: 39.44473 xmax: 116.8805 ymax: 41.05936
+Bounding box:  xmin: 116.0488 ymin: 39.76159 xmax: 116.6453 ymax: 40.16098
 Geodetic CRS:  WGS 84
-# A tibble: 6 × 14
-  Code_County Code_Perfecture Code_Province Name_Province Name_Perfecture
-  &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;          
-1 110101      1101            11            北京市        &lt;NA&gt;           
-2 110102      1101            11            北京市        &lt;NA&gt;           
-3 110114      1101            11            北京市        &lt;NA&gt;           
-4 110115      1101            11            北京市        &lt;NA&gt;           
-5 110111      1101            11            北京市        &lt;NA&gt;           
-6 110116      1101            11            北京市        &lt;NA&gt;           
-# ℹ 9 more variables: Name_County &lt;chr&gt;, Pinyin &lt;chr&gt;, Pop_2000 &lt;dbl&gt;,
-#   Pop_2010 &lt;dbl&gt;, Pop_2017 &lt;dbl&gt;, Pop_2018 &lt;dbl&gt;, Area &lt;dbl&gt;, Density &lt;dbl&gt;,
-#   geometry &lt;MULTIPOLYGON [°]&gt;</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> js <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fu">filter</span>(Code_Province <span class="sc">==</span> <span class="dv">32</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(js) <span class="sc">+</span>      <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">rank</span>(Density))) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"GnBu"</span>, <span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>         <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>         <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/maps1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+  dt_adcode  dt_name ct_adcode  ct_name pr_adcode pr_name cn_adcode
+1    110101   东城区    110100 北京城区    110000  北京市    100000
+2    110102   西城区    110100 北京城区    110000  北京市    100000
+3    110105   朝阳区    110100 北京城区    110000  北京市    100000
+4    110106   丰台区    110100 北京城区    110000  北京市    100000
+5    110107 石景山区    110100 北京城区    110000  北京市    100000
+6    110108   海淀区    110100 北京城区    110000  北京市    100000
+         cn_name                       geometry
+1 中华人民共和国 MULTIPOLYGON (((116.3877 39...
+2 中华人民共和国 MULTIPOLYGON (((116.393 39....
+3 中华人民共和国 MULTIPOLYGON (((116.4439 39...
+4 中华人民共和国 MULTIPOLYGON (((116.1658 39...
+5 中华人民共和国 MULTIPOLYGON (((116.1516 39...
+6 中华人民共和国 MULTIPOLYGON (((116.0489 40...</code></pre>
 </div>
 </div>
-</div>
+<p><code>head(china)</code> 用于查看数据前 6 行。读入后的 <code>china</code> 是一个 <code>sf</code> 对象。它可以像普通数据框一样查看、筛选和新增变量，但它额外包含一列 <code>geometry</code>。</p>
+<p>本数据主要字段如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>字段</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pr_name</code></td>
+<td>省级名称</td>
+<td>内蒙古自治区</td>
+</tr>
+<tr class="even">
+<td><code>ct_name</code></td>
+<td>地市级名称</td>
+<td>呼和浩特市</td>
+</tr>
+<tr class="odd">
+<td><code>dt_name</code></td>
+<td>县级名称</td>
+<td>武川县</td>
+</tr>
+<tr class="even">
+<td><code>pr_adcode</code></td>
+<td>省级行政区划代码</td>
+<td>150000</td>
+</tr>
+<tr class="odd">
+<td><code>ct_adcode</code></td>
+<td>地市级行政区划代码</td>
+<td>150100</td>
+</tr>
+<tr class="even">
+<td><code>dt_adcode</code></td>
+<td>县级行政区划代码</td>
+<td>150125</td>
+</tr>
+<tr class="odd">
+<td><code>geometry</code></td>
+<td>县级行政区边界</td>
+<td>多边形</td>
+</tr>
+</tbody>
+</table>
+<p>对 <code>sf</code> 数据可以这样理解：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>普通数据框</th>
+<th><code>sf</code> 空间数据框</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>每一行是一条观测</td>
+<td>每一行是一个地理单元</td>
+</tr>
+<tr class="even">
+<td>每一列是一个变量</td>
+<td>普通变量 + <code>geometry</code> 几何列</td>
+</tr>
+<tr class="odd">
+<td>不能直接画空间边界</td>
+<td>可由 <code>geom_sf()</code> 识别并绘图</td>
+</tr>
+</tbody>
+</table>
+<hr>
 </section>
-<section id="地图-图层合作" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="地图-图层合作"><span class="header-section-number">15.2</span> 地图 图层合作</h2>
-<p>“This is a quick and dirty way to get map data (from the maps package) on to your plot. This is a good place to start if you need some crude reference lines, but you’ll typically want something more sophisticated for communication graphics.”</p>
+<section id="绘制最基本的全国县级地图" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="绘制最基本的全国县级地图"><span class="header-section-number">15.4</span> 绘制最基本的全国县级地图</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(maps)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(us.cities)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> big_citi <span class="ot">&lt;-</span> <span class="fu">subset</span>(us.cities,pop <span class="sc">&gt;</span> <span class="dv">500000</span>)  <span class="do">##人口大于50万的城市</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">qplot</span>(long,lat,<span class="at">data=</span>big_citi) <span class="sc">+</span> <span class="fu">borders</span>(<span class="st">"state"</span>,<span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(china) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"grey92"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.04</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture14_files/figure-html/maps1.0-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> tx_city <span class="ot">&lt;-</span> <span class="fu">subset</span>(us.cities,country.etc<span class="sc">==</span><span class="st">"TX"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(tx_city,<span class="fu">aes</span>(long,lat)) <span class="sc">+</span> <span class="fu">borders</span>(<span class="st">"county"</span>,<span class="st">"texas"</span>,<span class="at">colour=</span><span class="st">"grey70"</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"black"</span>,<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/maps1.0-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lecture14_files/figure-html/national-map-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>这段代码采用 <code>ggplot2</code> 的“图层叠加”语法。</p>
+<p><code>ggplot(china)</code> 创建绘图对象，并指定默认数据为 <code>china</code>。<br>
+<code>geom_sf()</code> 添加空间图层。它会自动识别 <code>sf</code> 对象中的 <code>geometry</code> 列，因此不需要手动指定经度和纬度。</p>
+<p><code>geom_sf()</code> 中常用参数如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fill</code></td>
+<td>面的填充颜色</td>
+<td><code>"grey92"</code></td>
+</tr>
+<tr class="even">
+<td><code>color</code></td>
+<td>边界线颜色</td>
+<td><code>"white"</code></td>
+</tr>
+<tr class="odd">
+<td><code>size</code></td>
+<td>边界线粗细</td>
+<td><code>0.04</code></td>
+</tr>
+<tr class="even">
+<td><code>alpha</code></td>
+<td>透明度，范围 0 到 1</td>
+<td><code>0.6</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意：当 <code>fill = "grey92"</code> 写在 <code>aes()</code> 外部时，表示所有区域使用同一种固定颜色。</p>
+<hr>
 </section>
-<section id="leaflet-标记" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="leaflet-标记"><span class="header-section-number">15.3</span> leaflet 标记</h2>
+<section id="用-dplyr-理解和整理地图属性表" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="用-dplyr-理解和整理地图属性表"><span class="header-section-number">15.5</span> 用 dplyr 理解和整理地图属性表</h2>
+<p>空间数据首先也是数据表。地图绘制之前，通常需要先对属性表做整理。<code>dplyr</code> 的作用就是用清晰的语法完成这些整理工作。</p>
+<p><strong>管道符 <code>%&gt;%</code></strong></p>
+<p><code>%&gt;%</code> 读作“然后”。它把左侧结果传给右侧函数的第一个参数。</p>
+<p>例如：</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(leaflet)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(magrittr)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Make data with several positions</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> data_red <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LONG=</span><span class="dv">42</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">LAT=</span><span class="dv">23</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">PLACE=</span><span class="fu">paste</span>(<span class="st">"Red_place_"</span>,<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data_blue <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LONG=</span><span class="dv">42</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">LAT=</span><span class="dv">23</span><span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">PLACE=</span><span class="fu">paste</span>(<span class="st">"Blue_place_"</span>,<span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Initialize the leaflet map:</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">setView</span>(<span class="at">lng=</span><span class="dv">42</span>, <span class="at">lat=</span><span class="dv">23</span>, <span class="at">zoom=</span><span class="dv">6</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Add two tiles</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addProviderTiles</span>(<span class="st">"Esri.WorldImagery"</span>, <span class="at">group=</span><span class="st">"background 1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addTiles</span>(<span class="at">options =</span> <span class="fu">providerTileOptions</span>(<span class="at">noWrap =</span> <span class="cn">TRUE</span>), <span class="at">group=</span><span class="st">"background 2"</span>) <span class="sc">%&gt;%</span> <span class="co">#If you happen to have a custom map tile URL template to use, you can provide it as an argument to addTiles()</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Add 2 marker groups</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addCircleMarkers</span>(<span class="at">data=</span>data_red, <span class="at">lng=</span><span class="sc">~</span>LONG , <span class="at">lat=</span><span class="sc">~</span>LAT, <span class="at">radius=</span><span class="dv">8</span> , <span class="at">color=</span><span class="st">"black"</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">fillColor=</span><span class="st">"red"</span>, <span class="at">stroke =</span> <span class="cn">TRUE</span>, <span class="at">fillOpacity =</span> <span class="fl">0.8</span>, <span class="at">group=</span><span class="st">"Red"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addCircleMarkers</span>(<span class="at">data=</span>data_blue, <span class="at">lng=</span><span class="sc">~</span>LONG , <span class="at">lat=</span><span class="sc">~</span>LAT, <span class="at">radius=</span><span class="dv">8</span> , <span class="at">color=</span><span class="st">"black"</span>,</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">fillColor=</span><span class="st">"blue"</span>, <span class="at">stroke =</span> <span class="cn">TRUE</span>, <span class="at">fillOpacity =</span> <span class="fl">0.8</span>, <span class="at">group=</span><span class="st">"Blue"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># Add the control widget</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">addLayersControl</span>(<span class="at">overlayGroups =</span> <span class="fu">c</span>(<span class="st">"Red"</span>,<span class="st">"Blue"</span>) , <span class="at">baseGroups =</span> <span class="fu">c</span>(<span class="st">"background 1"</span>,<span class="st">"background 2"</span>), </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                    <span class="at">options =</span> <span class="fu">layersControlOptions</span>(<span class="at">collapsed =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> m  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-349e16344f42ed7ed1bb" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-349e16344f42ed7ed1bb">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[23,42],6,[]],"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"background 1",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"background 2",{"errorTileUrl":"","noWrap":true,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[23.34445687729587,22.59771817430735,24.55211978382945,23.53765131535107,23.28705118711974,23.68604639850158,24.06719355806451,23.84723190884627,23.64973110659972,22.44522066284261],[42.09817861184668,41.92624092743085,40.12630096201236,41.48496906362569,41.80173118305277,41.30748443601523,42.37115166000397,42.30115102195874,41.26201682449127,42.17134770275579],8,null,"Red",{"interactive":true,"className":"","stroke":true,"color":"black","weight":5,"opacity":0.5,"fill":true,"fillColor":"red","fillOpacity":0.8},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[22.3596602917665,23.21371920859088,20.97287368028431,22.73883576065513,24.64341063996738,21.83629201185326,22.12981753021585,23.71504082896046,22.41945765977165,23.37422827120486],[41.54889950943907,42.57459159892715,42.51648477513588,43.05462607336358,43.0295993581531,43.44634851679471,42.61310962389628,40.88080765798328,41.80130204522464,42.08334237139413],8,null,"Blue",{"interactive":true,"className":"","stroke":true,"color":"black","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":0.8},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[["background 1","background 2"],["Red","Blue"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}],"limits":{"lat":[20.97287368028431,24.64341063996738],"lng":[40.12630096201236,43.44634851679471]}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="网页交互式地图" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="网页交互式地图"><span class="header-section-number">15.4</span> 网页交互式地图</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(echarts4r)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> cns <span class="ot">&lt;-</span> countrycode<span class="sc">::</span>codelist<span class="sc">$</span>country.name.en</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> cns <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">country =</span> cns,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="at">value =</span> <span class="fu">runif</span>(<span class="fu">length</span>(cns), <span class="dv">1</span>, <span class="dv">200</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> )</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> cns <span class="sc">|&gt;</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">e_charts</span>(country) <span class="sc">|&gt;</span> </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">e_map</span>(value) <span class="sc">|&gt;</span> </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">e_visual_map</span>(value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-d936ba4e6fd3967b3020" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-d936ba4e6fd3967b3020">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"map","map":"world","name":"value","data":[{"value":137.9713593651541,"name":"Afghanistan"},{"value":157.7260145612527,"name":"Albania"},{"value":135.5478836987168,"name":"Algeria"},{"value":99.10475492337719,"name":"American Samoa"},{"value":171.4805392543785,"name":"Andorra"},{"value":5.090074297972023,"name":"Angola"},{"value":156.4118288019672,"name":"Anguilla"},{"value":133.5321103364695,"name":"Antarctica"},{"value":117.4606734581757,"name":"Antigua & Barbuda"},{"value":156.2599362041801,"name":"Argentina"},{"value":112.0432782352436,"name":"Armenia"},{"value":78.90107409819029,"name":"Aruba"},{"value":154.7017523471732,"name":"Australia"},{"value":57.20763521827757,"name":"Austria"},{"value":90.7319572463166,"name":"Austria-Hungary"},{"value":115.9116333385464,"name":"Azerbaijan"},{"value":40.32290490833111,"name":"Baden"},{"value":31.69227984873578,"name":"Bahamas"},{"value":31.4637496129144,"name":"Bahrain"},{"value":32.19134886842221,"name":"Bangladesh"},{"value":142.4523875457235,"name":"Barbados"},{"value":165.6889446401037,"name":"Bavaria"},{"value":40.23044421733357,"name":"Belarus"},{"value":46.39626152860001,"name":"Belgium"},{"value":21.1229640499223,"name":"Belize"},{"value":104.6699977545068,"name":"Benin"},{"value":82.64304998796433,"name":"Bermuda"},{"value":6.079831941053271,"name":"Bhutan"},{"value":103.3205811746884,"name":"Bolivia"},{"value":106.7894682348706,"name":"Bosnia & Herzegovina"},{"value":63.03479207516648,"name":"Botswana"},{"value":124.3701501190662,"name":"Bouvet Island"},{"value":81.95244629564695,"name":"Brazil"},{"value":92.10585698951036,"name":"British Indian Ocean Territory"},{"value":82.91390397725627,"name":"British Virgin Islands"},{"value":65.9123765504919,"name":"Brunei"},{"value":66.9806427701842,"name":"Brunswick"},{"value":190.3873108488042,"name":"Bulgaria"},{"value":188.8708550843876,"name":"Burkina Faso"},{"value":85.40296322247013,"name":"Burundi"},{"value":16.1785395971965,"name":"Cambodia"},{"value":100.2443280424923,"name":"Cameroon"},{"value":121.3428463556338,"name":"Canada"},{"value":50.4518932281062,"name":"Cape Verde"},{"value":105.2598413038068,"name":"Caribbean Netherlands"},{"value":147.4428023837972,"name":"Cayman Islands"},{"value":88.08622857928276,"name":"Central African Republic"},{"value":191.4491835830268,"name":"Chad"},{"value":147.0955819452647,"name":"Channel Islands"},{"value":27.34376105503179,"name":"Chile"},{"value":104.2591881540138,"name":"China"},{"value":88.50690267793834,"name":"Christmas Island"},{"value":154.1126404933166,"name":"Cocos (Keeling) Islands"},{"value":29.20254460070282,"name":"Colombia"},{"value":184.202481641667,"name":"Comoros"},{"value":130.8374769659713,"name":"Congo - Brazzaville"},{"value":70.15605963161215,"name":"Congo - Kinshasa"},{"value":135.0910985858645,"name":"Cook Islands"},{"value":106.4311642691027,"name":"Costa Rica"},{"value":122.3183645252138,"name":"Croatia"},{"value":129.1718254797161,"name":"Cuba"},{"value":195.3437650010455,"name":"Curaçao"},{"value":160.4850041877944,"name":"Cyprus"},{"value":126.5759534800891,"name":"Czechia"},{"value":40.12372658518143,"name":"Czechoslovakia"},{"value":109.2619880679995,"name":"Côte d’Ivoire"},{"value":160.4416933497414,"name":"Denmark"},{"value":104.1375021792483,"name":"Djibouti"},{"value":60.54832615097985,"name":"Dominica"},{"value":89.84637219365686,"name":"Dominican Republic"},{"value":78.41681514657103,"name":"Ecuador"},{"value":147.4641324272379,"name":"Egypt"},{"value":160.7493625266943,"name":"El Salvador"},{"value":61.62078701681457,"name":"Equatorial Guinea"},{"value":173.8846444052178,"name":"Eritrea"},{"value":22.01517629320733,"name":"Estonia"},{"value":184.3493244659621,"name":"Eswatini"},{"value":178.3267827783711,"name":"Ethiopia"},{"value":152.2240885449573,"name":"Falkland Islands"},{"value":35.71004376071505,"name":"Faroe Islands"},{"value":104.2291247472167,"name":"Fiji"},{"value":114.5018524869811,"name":"Finland"},{"value":47.79055186128244,"name":"France"},{"value":65.96223483956419,"name":"French Guiana"},{"value":171.0109544752631,"name":"French Polynesia"},{"value":95.67917652358301,"name":"French Southern Territories"},{"value":190.6296450251248,"name":"Gabon"},{"value":52.29939137236215,"name":"Gambia"},{"value":152.5425020430703,"name":"Georgia"},{"value":136.9105105968192,"name":"German Democratic Republic"},{"value":117.2754215344321,"name":"Germany"},{"value":124.1939640927594,"name":"Ghana"},{"value":20.18408463080414,"name":"Gibraltar"},{"value":77.07312684506178,"name":"Greece"},{"value":54.81132230884396,"name":"Greenland"},{"value":197.3548424835317,"name":"Grenada"},{"value":135.3017959229182,"name":"Guadeloupe"},{"value":171.782734244829,"name":"Guam"},{"value":69.84156611585058,"name":"Guatemala"},{"value":167.7351195958909,"name":"Guernsey"},{"value":124.4963833363727,"name":"Guinea"},{"value":186.2957249269821,"name":"Guinea-Bissau"},{"value":192.9022313023452,"name":"Guyana"},{"value":182.8825924387202,"name":"Haiti"},{"value":76.32000776496716,"name":"Hamburg"},{"value":126.0740236572456,"name":"Hanover"},{"value":21.29524431820028,"name":"Heard & McDonald Islands"},{"value":45.25617809453979,"name":"Hesse Electoral"},{"value":71.83317063981667,"name":"Hesse Grand Ducal"},{"value":62.42477945587598,"name":"Hesse-Darmstadt"},{"value":74.58408460416831,"name":"Hesse-Kassel"},{"value":49.09339583152905,"name":"Honduras"},{"value":162.5716137031559,"name":"Hong Kong SAR China"},{"value":13.56904403259978,"name":"Hungary"},{"value":22.00218350975774,"name":"Iceland"},{"value":60.53088597324677,"name":"India"},{"value":18.41620372631587,"name":"Indonesia"},{"value":125.7252837182023,"name":"Iran"},{"value":94.5594415620435,"name":"Iraq"},{"value":160.5713019941468,"name":"Ireland"},{"value":167.3454803742934,"name":"Isle of Man"},{"value":87.46218785899691,"name":"Israel"},{"value":90.37207711441442,"name":"Italy"},{"value":89.38824007916264,"name":"Jamaica"},{"value":20.17820146027952,"name":"Japan"},{"value":94.98445292073302,"name":"Jersey"},{"value":11.54300835449249,"name":"Jordan"},{"value":199.3612422489095,"name":"Kazakhstan"},{"value":56.51317089656368,"name":"Kenya"},{"value":143.2826835371088,"name":"Kiribati"},{"value":110.5313015107531,"name":"Kosovo"},{"value":90.43458981486037,"name":"Kuwait"},{"value":182.0960719620343,"name":"Kyrgyzstan"},{"value":36.6248859744519,"name":"Laos"},{"value":153.2637336207554,"name":"Latvia"},{"value":96.57824011798948,"name":"Lebanon"},{"value":61.91511966357939,"name":"Lesotho"},{"value":129.7635834282264,"name":"Liberia"},{"value":104.419928465737,"name":"Libya"},{"value":130.8240013432223,"name":"Liechtenstein"},{"value":109.1067736507393,"name":"Lithuania"},{"value":15.89048126665875,"name":"Luxembourg"},{"value":25.44670347147621,"name":"Macao SAR China"},{"value":1.744424729375169,"name":"Madagascar"},{"value":147.9837624966167,"name":"Malawi"},{"value":11.07673075352795,"name":"Malaysia"},{"value":195.2086139211897,"name":"Maldives"},{"value":78.11868669069372,"name":"Mali"},{"value":23.62373588955961,"name":"Malta"},{"value":55.29692089511082,"name":"Marshall Islands"},{"value":103.4618792005349,"name":"Martinique"},{"value":186.7659883035813,"name":"Mauritania"},{"value":137.9304389082827,"name":"Mauritius"},{"value":109.6591835091822,"name":"Mayotte"},{"value":88.71395219443366,"name":"Mecklenburg Schwerin"},{"value":51.21442862437107,"name":"Mexico"},{"value":58.37938505224884,"name":"Micronesia (Federated States of)"},{"value":1.650478500174358,"name":"Modena"},{"value":40.59399681910872,"name":"Moldova"},{"value":10.71527014649473,"name":"Monaco"},{"value":113.3657052982599,"name":"Mongolia"},{"value":90.56310142576694,"name":"Montenegro"},{"value":42.49927754374221,"name":"Montserrat"},{"value":199.718512194464,"name":"Morocco"},{"value":30.11255443678237,"name":"Mozambique"},{"value":83.99730112310499,"name":"Myanmar (Burma)"},{"value":111.5729747340083,"name":"Namibia"},{"value":55.90516520407982,"name":"Nassau"},{"value":61.31262619723566,"name":"Nauru"},{"value":171.2432877945248,"name":"Nepal"},{"value":113.4950519741978,"name":"Netherlands"},{"value":112.1806534524076,"name":"Netherlands Antilles"},{"value":181.8119809201453,"name":"New Caledonia"},{"value":48.60903156432323,"name":"New Zealand"},{"value":109.1912701111287,"name":"Nicaragua"},{"value":107.0054173122626,"name":"Niger"},{"value":196.5527917339932,"name":"Nigeria"},{"value":104.0439234657679,"name":"Niue"},{"value":33.22433204995468,"name":"Norfolk Island"},{"value":115.2139322189614,"name":"North Korea"},{"value":88.36147848656401,"name":"North Macedonia"},{"value":47.77345909061842,"name":"Northern Mariana Islands"},{"value":169.7857438456267,"name":"Norway"},{"value":89.69309756625444,"name":"Oldenburg"},{"value":73.72531684744172,"name":"Oman"},{"value":146.281561544165,"name":"Orange Free State"},{"value":172.2602702348959,"name":"Pakistan"},{"value":68.31361334584653,"name":"Palau"},{"value":168.7587732898537,"name":"Palestinian Territories"},{"value":185.582498584874,"name":"Panama"},{"value":51.20035303174518,"name":"Papua New Guinea"},{"value":86.79724215716124,"name":"Paraguay"},{"value":119.0942599854898,"name":"Parma"},{"value":148.9495583649259,"name":"Peru"},{"value":127.5877768930513,"name":"Philippines"},{"value":166.0064812805504,"name":"Piedmont-Sardinia"},{"value":3.651101985946298,"name":"Pitcairn Islands"},{"value":161.4967630121391,"name":"Poland"},{"value":195.8273478571791,"name":"Portugal"},{"value":143.5171819650568,"name":"Prussia"},{"value":146.5784358039964,"name":"Puerto Rico"},{"value":102.3530499390326,"name":"Qatar"},{"value":26.24296399508603,"name":"Republic of Vietnam"},{"value":138.200578577118,"name":"Romania"},{"value":108.2676311037503,"name":"Russia"},{"value":48.80561550077982,"name":"Rwanda"},{"value":54.55799792055041,"name":"Réunion"},{"value":66.11158234928735,"name":"Saint Martin (French part)"},{"value":20.42015519388951,"name":"Samoa"},{"value":180.4627055178862,"name":"San Marino"},{"value":137.4830299869645,"name":"Sardinia"},{"value":20.62592544802465,"name":"Saudi Arabia"},{"value":163.8141865315847,"name":"Saxe-Weimar-Eisenach"},{"value":121.2121220054105,"name":"Saxony"},{"value":4.142593055730686,"name":"Senegal"},{"value":114.9823065481614,"name":"Serbia"},{"value":28.08344486868009,"name":"Serbia and Montenegro"},{"value":132.6161770662293,"name":"Seychelles"},{"value":146.9067088426091,"name":"Sierra Leone"},{"value":22.48139023222029,"name":"Singapore"},{"value":109.5424472279847,"name":"Sint Maarten"},{"value":103.7828882900067,"name":"Slovakia"},{"value":193.5318406827282,"name":"Slovenia"},{"value":157.8859344029333,"name":"Solomon Islands"},{"value":130.4172015653457,"name":"Somalia"},{"value":149.2330904882401,"name":"Somaliland"},{"value":188.1098579536192,"name":"South Africa"},{"value":38.22351365769282,"name":"South Georgia & South Sandwich Islands"},{"value":7.092368377139792,"name":"South Korea"},{"value":16.45775012113154,"name":"South Sudan"},{"value":120.0101433547679,"name":"Spain"},{"value":23.0262801963836,"name":"Sri Lanka"},{"value":83.52786845620722,"name":"St. Barthélemy"},{"value":6.275891106575727,"name":"St. Helena"},{"value":128.4872792637907,"name":"St. Kitts & Nevis"},{"value":177.8509980479721,"name":"St. Lucia"},{"value":46.82753816852346,"name":"St. Pierre & Miquelon"},{"value":18.8690165001899,"name":"St. Vincent & Grenadines"},{"value":119.6562063486781,"name":"Stateless"},{"value":95.95513310632668,"name":"Sudan"},{"value":49.89439365686849,"name":"Suriname"},{"value":87.28923436789773,"name":"Svalbard & Jan Mayen"},{"value":168.7947896451224,"name":"Sweden"},{"value":143.3871451546438,"name":"Switzerland"},{"value":47.70023742131889,"name":"Syria"},{"value":84.35262511647306,"name":"São Tomé & Príncipe"},{"value":95.57605129736476,"name":"Taiwan"},{"value":92.17742089973763,"name":"Tajikistan"},{"value":94.84097861987539,"name":"Tanzania"},{"value":149.76601807517,"name":"Thailand"},{"value":7.061571467900649,"name":"Tibet"},{"value":70.44567485363223,"name":"Timor-Leste"},{"value":50.14541528024711,"name":"Togo"},{"value":69.59841670515016,"name":"Tokelau"},{"value":105.2672313258518,"name":"Tonga"},{"value":127.8648014119826,"name":"Trinidad & Tobago"},{"value":109.2194912596606,"name":"Tunisia"},{"value":24.33333187876269,"name":"Turkey"},{"value":157.949301026063,"name":"Turkmenistan"},{"value":144.2708196537569,"name":"Turks & Caicos Islands"},{"value":115.5787662607618,"name":"Tuscany"},{"value":150.7926108292304,"name":"Tuvalu"},{"value":102.2206896527205,"name":"Two Sicilies"},{"value":46.52386611886322,"name":"U.S. Virgin Islands"},{"value":49.22777272830717,"name":"Uganda"},{"value":8.283448416739702,"name":"Ukraine"},{"value":128.589287069859,"name":"United Arab Emirates"},{"value":38.2100418806076,"name":"United Arab Republic"},{"value":73.41965946229175,"name":"United Kingdom"},{"value":138.3656645352021,"name":"United Province CA"},{"value":54.29891587863676,"name":"United States"},{"value":138.0543539316859,"name":"United States Minor Outlying Islands (the)"},{"value":169.0562452955637,"name":"Unknown"},{"value":122.2186095830984,"name":"Uruguay"},{"value":67.7447615142446,"name":"Uzbekistan"},{"value":11.9823371656239,"name":"Vanuatu"},{"value":150.1889475397766,"name":"Vatican City"},{"value":29.10871707741171,"name":"Venezuela"},{"value":79.21451153908856,"name":"Vietnam"},{"value":185.4272161966655,"name":"Wallis & Futuna"},{"value":29.16534253000282,"name":"Western Sahara"},{"value":95.18280572351068,"name":"Wuerttemburg"},{"value":23.20619545085356,"name":"Würtemberg"},{"value":192.0584412938915,"name":"Yemen"},{"value":195.1205952034798,"name":"Yemen Arab Republic"},{"value":166.9537764019333,"name":"Yemen People's Republic"},{"value":141.4054591997992,"name":"Yugoslavia"},{"value":120.9727579788305,"name":"Zambia"},{"value":18.97886019363068,"name":"Zanzibar"},{"value":110.0117424703203,"name":"Zimbabwe"},{"value":108.2466606530361,"name":"Åland Islands"}]}],"visualMap":[{"calculable":true,"type":"continuous","min":1.650478500174358,"max":199.718512194464}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="地统计分析" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="地统计分析"><span class="header-section-number">15.5</span> 地统计分析</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(sp)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gstat)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">data</span>(meuse)<span class="co">#Meuse河流域表层土壤重金属的采样数据</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">coordinates</span>(meuse) <span class="ot">=</span> <span class="er">~</span>x<span class="sc">+</span>y<span class="co">#构建坐标</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">data</span>(meuse.grid)<span class="co">#网格</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">coordinates</span>(meuse.grid) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>,<span class="st">"y"</span>)<span class="co">#网格编码</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> meuse.grid <span class="ot">&lt;-</span> <span class="fu">as</span>(meuse.grid,<span class="st">"SpatialPixelsDataFrame"</span>)<span class="co">#空间数据转dataframe</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(<span class="fu">variogram</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>,meuse,<span class="at">alpha=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">45</span>,<span class="dv">90</span>,<span class="dv">135</span>)),<span class="at">type=</span><span class="st">"l"</span>) <span class="co">#各向异性判断， 0 北 90 东</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/maps3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> v1 <span class="ot">&lt;-</span> <span class="fu">variogram</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>, meuse, <span class="at">width=</span><span class="dv">90</span>, <span class="at">cutoff=</span><span class="dv">1300</span>)<span class="co">#变异函数与自变量的关系，平均数不变模型</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> v <span class="ot">&lt;-</span> <span class="fu">fit.variogram</span>(<span class="fu">variogram</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>,meuse), <span class="fu">vgm</span>(<span class="st">"Sph"</span>))<span class="co">#球形模型拟合</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(v1,v)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/maps3-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> sk.fit <span class="ot">&lt;-</span> <span class="fu">krige</span>(<span class="fu">log</span>(zinc)<span class="sc">~</span><span class="dv">1</span>,meuse,meuse.grid,v,<span class="at">beta=</span><span class="fl">5.9</span>)<span class="co">#简单克里格插值</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[using simple kriging]</code></pre>
+<pre><code>Simple feature collection with 6 features and 8 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 116.0488 ymin: 39.76159 xmax: 116.6453 ymax: 40.16098
+Geodetic CRS:  WGS 84
+  dt_adcode  dt_name ct_adcode  ct_name pr_adcode pr_name cn_adcode
+1    110101   东城区    110100 北京城区    110000  北京市    100000
+2    110102   西城区    110100 北京城区    110000  北京市    100000
+3    110105   朝阳区    110100 北京城区    110000  北京市    100000
+4    110106   丰台区    110100 北京城区    110000  北京市    100000
+5    110107 石景山区    110100 北京城区    110000  北京市    100000
+6    110108   海淀区    110100 北京城区    110000  北京市    100000
+         cn_name                       geometry
+1 中华人民共和国 MULTIPOLYGON (((116.3877 39...
+2 中华人民共和国 MULTIPOLYGON (((116.393 39....
+3 中华人民共和国 MULTIPOLYGON (((116.4439 39...
+4 中华人民共和国 MULTIPOLYGON (((116.1658 39...
+5 中华人民共和国 MULTIPOLYGON (((116.1516 39...
+6 中华人民共和国 MULTIPOLYGON (((116.0489 40...</code></pre>
 </div>
+</div>
+<p>等价于：</p>
+<div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(sk.fit)<span class="co">#插值结果地图展示</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(china)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 8 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 116.0488 ymin: 39.76159 xmax: 116.6453 ymax: 40.16098
+Geodetic CRS:  WGS 84
+  dt_adcode  dt_name ct_adcode  ct_name pr_adcode pr_name cn_adcode
+1    110101   东城区    110100 北京城区    110000  北京市    100000
+2    110102   西城区    110100 北京城区    110000  北京市    100000
+3    110105   朝阳区    110100 北京城区    110000  北京市    100000
+4    110106   丰台区    110100 北京城区    110000  北京市    100000
+5    110107 石景山区    110100 北京城区    110000  北京市    100000
+6    110108   海淀区    110100 北京城区    110000  北京市    100000
+         cn_name                       geometry
+1 中华人民共和国 MULTIPOLYGON (((116.3877 39...
+2 中华人民共和国 MULTIPOLYGON (((116.393 39....
+3 中华人民共和国 MULTIPOLYGON (((116.4439 39...
+4 中华人民共和国 MULTIPOLYGON (((116.1658 39...
+5 中华人民共和国 MULTIPOLYGON (((116.1516 39...
+6 中华人民共和国 MULTIPOLYGON (((116.0489 40...</code></pre>
+</div>
+</div>
+<p>管道符的优点是可以把多个步骤按从上到下的顺序写出。例如：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dt_adcode  dt_name ct_adcode  ct_name pr_adcode pr_name cn_adcode
+1    110101   东城区    110100 北京城区    110000  北京市    100000
+2    110102   西城区    110100 北京城区    110000  北京市    100000
+3    110105   朝阳区    110100 北京城区    110000  北京市    100000
+4    110106   丰台区    110100 北京城区    110000  北京市    100000
+5    110107 石景山区    110100 北京城区    110000  北京市    100000
+6    110108   海淀区    110100 北京城区    110000  北京市    100000
+         cn_name
+1 中华人民共和国
+2 中华人民共和国
+3 中华人民共和国
+4 中华人民共和国
+5 中华人民共和国
+6 中华人民共和国</code></pre>
+</div>
+</div>
+<p>这段代码的顺序是：</p>
+<ol type="1">
+<li>从 <code>china</code> 开始。</li>
+<li>用 <code>st_drop_geometry()</code> 去掉空间几何列。</li>
+<li>用 <code>head()</code> 查看前几行。</li>
+</ol>
+<p><strong><code>st_drop_geometry()</code>：去掉几何列</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>china_table <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(china_table)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dt_adcode  dt_name ct_adcode  ct_name pr_adcode pr_name cn_adcode
+1    110101   东城区    110100 北京城区    110000  北京市    100000
+2    110102   西城区    110100 北京城区    110000  北京市    100000
+3    110105   朝阳区    110100 北京城区    110000  北京市    100000
+4    110106   丰台区    110100 北京城区    110000  北京市    100000
+5    110107 石景山区    110100 北京城区    110000  北京市    100000
+6    110108   海淀区    110100 北京城区    110000  北京市    100000
+         cn_name
+1 中华人民共和国
+2 中华人民共和国
+3 中华人民共和国
+4 中华人民共和国
+5 中华人民共和国
+6 中华人民共和国</code></pre>
+</div>
+</div>
+<p><code>st_drop_geometry()</code> 来自 <code>sf</code> 包，作用是去掉 <code>geometry</code> 列，把 <code>sf</code> 对象变成普通数据框。查看属性表、做一般统计时，经常先去掉几何列，这样输出更清楚，运行也更快。</p>
+<hr>
+</section>
+<section id="根据名称查找县级行政区划代码" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="根据名称查找县级行政区划代码"><span class="header-section-number">15.6</span> 根据名称查找县级行政区划代码</h2>
+<p>在正式标记地图之前，需要知道目标县级行政区的 <code>dt_adcode</code>。如果不知道代码，可以先按县级名称检索。下面以“武川”为例：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"武川"</span>, dt_name)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       pr_name    ct_name dt_name dt_adcode
+1 内蒙古自治区 呼和浩特市  武川县    150125</code></pre>
+</div>
+</div>
+<p>这里出现了三个重要函数。</p>
+<p><strong><code>filter()</code>：筛选行</strong></p>
+<p><code>filter()</code> 来自 <code>dplyr</code>，用于保留满足条件的行。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(.data, 条件)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>在管道语法中，左侧数据会自动传给 <code>.data</code>，因此常写成：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(条件)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>示例：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pr_name <span class="sc">==</span> <span class="st">"内蒙古自治区"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>其中，<code>==</code> 表示“等于”。注意它不同于赋值符号 <code>=</code> 或 <code>&lt;-</code>。</p>
+<p>常见筛选条件如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pr_name == "内蒙古自治区"</code></td>
+<td>省名等于“内蒙古自治区”</td>
+</tr>
+<tr class="even">
+<td><code>pr_name != "北京市"</code></td>
+<td>省名不等于“北京市”</td>
+</tr>
+<tr class="odd">
+<td><code>pr_name %in% c("山西省", "陕西省")</code></td>
+<td>省名属于给定集合</td>
+</tr>
+<tr class="even">
+<td><code>grepl("武川", dt_name)</code></td>
+<td>县名中包含“武川”</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>grepl()</code>：判断文本是否包含关键词</strong></p>
+<p><code>grepl()</code> 是 R 的基础函数，用于判断一个字符串是否包含某个模式。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(pattern, x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>参数说明：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pattern</code></td>
+<td>要查找的关键词或正则表达式</td>
+</tr>
+<tr class="even">
+<td><code>x</code></td>
+<td>被查找的字符向量</td>
+</tr>
+</tbody>
+</table>
+<p>例如，<code>grepl("武川", dt_name)</code> 会逐行判断 <code>dt_name</code> 中是否包含“武川”，并返回 <code>TRUE</code> 或 <code>FALSE</code>。<code>filter()</code> 再根据这个结果保留对应行。</p>
+<p><strong><code>select()</code>：选择列</strong></p>
+<p><code>select()</code> 来自 <code>dplyr</code>，用于保留指定列。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(.data, 列1, 列2, 列3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>在本例中：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>表示只显示省名、市名、县名和县级行政区划代码。这样可以避免属性表列数过多，影响阅读。</p>
+<hr>
+</section>
+<section id="设置家乡县级行政区划代码" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="设置家乡县级行政区划代码"><span class="header-section-number">15.7</span> 设置家乡县级行政区划代码</h2>
+<p>将下方代码中的 <code>my_home_code</code> 改为目标县级行政区划代码。代码需要写成字符串，即用引号包围。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_home_code <span class="ot">&lt;-</span> <span class="st">"150125"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>写成字符串有两个好处：</p>
+<ol type="1">
+<li>行政区划代码本质上是编码，不应参与加减乘除。</li>
+<li>如果某些地区代码以 0 开头，字符串可以保留开头的 0。</li>
+</ol>
+<hr>
+</section>
+<section id="提取目标县级行政区" class="level2" data-number="15.8">
+<h2 data-number="15.8" class="anchored" data-anchor-id="提取目标县级行政区"><span class="header-section-number">15.8</span> 提取目标县级行政区</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_county <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dt_adcode <span class="sc">==</span> my_home_code)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>my_county <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       pr_name    ct_name dt_name dt_adcode
+1 内蒙古自治区 呼和浩特市  武川县    150125</code></pre>
+</div>
+</div>
+<p>代码逻辑如下：</p>
+<ol type="1">
+<li><code>china</code> 是完整的全国县级空间数据。</li>
+<li><code>filter(dt_adcode == my_home_code)</code> 保留代码等于 <code>my_home_code</code> 的行。</li>
+<li>结果保存为 <code>my_county</code>，即目标县级行政区的空间数据。</li>
+</ol>
+<p>如果输出为空，说明没有匹配到记录。常见原因包括：代码输入错误、误用了电话区号、漏写引号。</p>
+<hr>
+</section>
+<section id="在全国地图中标记目标县级行政区" class="level2" data-number="15.9">
+<h2 data-number="15.9" class="anchored" data-anchor-id="在全国地图中标记目标县级行政区"><span class="header-section-number">15.9</span> 在全国地图中标记目标县级行政区</h2>
+<p><strong><code>mutate()</code>：新增标记变量</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>china_marked <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他地区"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p><code>mutate()</code> 来自 <code>dplyr</code>，用于新增列或修改已有列。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(.data, 新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>在管道语法中常写为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>本例中新增了 <code>is_home</code> 列：</p>
+<ul>
+<li>当 <code>dt_adcode == my_home_code</code> 为真时，取值为“目标县级行政区”。</li>
+<li>否则取值为“其他地区”。</li>
+</ul>
+<p><code>ifelse()</code> 是 R 的基础函数，基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(条件, 条件为真时的值, 条件为假时的值)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>根据变量填色</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(china_marked) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.03</span>) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他地区"</span> <span class="ot">=</span> <span class="st">"grey92"</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"全国地图中的目标县级行政区"</span>,</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(my_county<span class="sc">$</span>pr_name, my_county<span class="sc">$</span>ct_name, my_county<span class="sc">$</span>dt_name)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lecture14_files/figure-html/maps3-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lecture14_files/figure-html/home-on-national-map-1.png" class="img-fluid figure-img" width="864"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>来个电影放松下<a href="https://www.bilibili.com/video/BV1xX4y1V7wd/?spm_id_from=333.788.recommend_more_video.-1" class="uri">https://www.bilibili.com/video/BV1xX4y1V7wd/?spm_id_from=333.788.recommend_more_video.-1</a></p>
+<p>这里的关键是 <code>aes(fill = is_home)</code>。</p>
+<p><code>aes()</code> 表示 aesthetic mapping，即“美学映射”。它把数据变量映射到图形属性上。<code>fill = is_home</code> 的含义是：根据 <code>is_home</code> 这一列的不同取值设置不同填充颜色。</p>
+<p>固定颜色与变量映射的区别如下：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fill = "grey92"</code></td>
+<td>所有区域使用同一种固定颜色</td>
+</tr>
+<tr class="even">
+<td><code>aes(fill = is_home)</code></td>
+<td>根据 <code>is_home</code> 的取值决定颜色</td>
+</tr>
+</tbody>
+</table>
+<p><code>scale_fill_manual()</code> 用于手动指定填充颜色。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"类别1"</span> <span class="ot">=</span> <span class="st">"颜色1"</span>, <span class="st">"类别2"</span> <span class="ot">=</span> <span class="st">"颜色2"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>其中，<code>values</code> 中的类别名称必须与变量中的实际取值一致。</p>
+<hr>
 </section>
+<section id="由县级代码提取省域和市域范围" class="level2" data-number="15.10">
+<h2 data-number="15.10" class="anchored" data-anchor-id="由县级代码提取省域和市域范围"><span class="header-section-number">15.10</span> 由县级代码提取省域和市域范围</h2>
+<p>县级行政区划代码通常为 6 位。以 <code>150125</code> 为例：</p>
+<pre class="text"><code>150125
+15  01  25
+省  市  县</code></pre>
+<p>因此，可以通过截取代码前若干位来判断所属省、市：</p>
+<ul>
+<li>前 2 位表示省级范围。</li>
+<li>前 4 位表示地市级范围。</li>
+<li>6 位完整代码表示县级范围。</li>
+</ul>
+<p><strong><code>substr()</code>：截取字符串</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>my_province_prefix <span class="ot">&lt;-</span> <span class="fu">substr</span>(my_home_code, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>my_city_prefix <span class="ot">&lt;-</span> <span class="fu">substr</span>(my_home_code, <span class="dv">1</span>, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
+<p><code>substr()</code> 是 R 的基础函数，用于截取字符串。基本语法为：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(x, start, stop)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>参数说明：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x</code></td>
+<td>要截取的字符串</td>
+</tr>
+<tr class="even">
+<td><code>start</code></td>
+<td>起始位置</td>
+</tr>
+<tr class="odd">
+<td><code>stop</code></td>
+<td>结束位置</td>
+</tr>
+</tbody>
+</table>
+<p>例如，<code>substr("150125", 1, 2)</code> 的结果是 <code>"15"</code>。</p>
+<p><strong>提取省域和市域数据</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>my_province <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> my_province_prefix)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>my_city <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">==</span> my_city_prefix)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>这里的逻辑是：</p>
+<ul>
+<li>若某一行 <code>dt_adcode</code> 的前 2 位与 <code>my_home_code</code> 的前 2 位一致，则该县级单位属于同一省级范围。</li>
+<li>若前 4 位一致，则属于同一地市级范围。</li>
+</ul>
+<hr>
+</section>
+<section id="在省域地图中标记目标县级行政区" class="level2" data-number="15.11">
+<h2 data-number="15.11" class="anchored" data-anchor-id="在省域地图中标记目标县级行政区"><span class="header-section-number">15.11</span> 在省域地图中标记目标县级行政区</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>province_marked <span class="ot">&lt;-</span> my_province <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他区县"</span>))</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_marked) <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他区县"</span> <span class="ot">=</span> <span class="st">"#E6F0F2"</span>),</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name),</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"标记对象："</span>, my_county<span class="sc">$</span>ct_name, my_county<span class="sc">$</span>dt_name)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/province-map-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>unique()</code> 用于提取唯一值。因为 <code>my_county$pr_name</code> 只有一个省名，使用 <code>unique()</code> 可以得到该省名称，并用于图题。</p>
+<hr>
+</section>
+<section id="在市域地图中标记目标县级行政区" class="level2" data-number="15.12">
+<h2 data-number="15.12" class="anchored" data-anchor-id="在市域地图中标记目标县级行政区"><span class="header-section-number">15.12</span> 在市域地图中标记目标县级行政区</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>city_marked <span class="ot">&lt;-</span> my_city <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他区县"</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(city_marked) <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他区县"</span> <span class="ot">=</span> <span class="st">"#DDECCB"</span>),</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">unique</span>(my_county<span class="sc">$</span>ct_name),</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"标记对象："</span>, my_county<span class="sc">$</span>dt_name)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/city-map-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>至此，已经完成了从全国到省域、再到市域的三级定位。这个过程体现了空间数据分析中的基本流程：</p>
+<pre class="text"><code>读取数据 -&gt; 理解属性表 -&gt; 筛选目标区域 -&gt; 新增标记变量 -&gt; 绘制地图</code></pre>
+<hr>
+</section>
+<section id="dplyr-语法总结" class="level2" data-number="15.13">
+<h2 data-number="15.13" class="anchored" data-anchor-id="dplyr-语法总结"><span class="header-section-number">15.13</span> dplyr 语法总结</h2>
+<p>本节集中整理前面已经使用过的 <code>dplyr</code> 函数。</p>
+<p><strong><code>filter()</code>：按条件筛选行</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pr_name <span class="sc">==</span> <span class="st">"内蒙古自治区"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       pr_name    ct_name    dt_name dt_adcode
+1 内蒙古自治区 呼和浩特市     新城区    150102
+2 内蒙古自治区 呼和浩特市     回民区    150103
+3 内蒙古自治区 呼和浩特市     玉泉区    150104
+4 内蒙古自治区 呼和浩特市     赛罕区    150105
+5 内蒙古自治区 呼和浩特市 土默特左旗    150121
+6 内蒙古自治区 呼和浩特市   托克托县    150122</code></pre>
+</div>
+</div>
+<p>语法：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(条件)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>结果：返回满足条件的行，列保持不变。</p>
+<p><strong><code>select()</code>：选择变量列</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  pr_name  ct_name  dt_name dt_adcode
+1  北京市 北京城区   东城区    110101
+2  北京市 北京城区   西城区    110102
+3  北京市 北京城区   朝阳区    110105
+4  北京市 北京城区   丰台区    110106
+5  北京市 北京城区 石景山区    110107
+6  北京市 北京城区   海淀区    110108</code></pre>
+</div>
+</div>
+<p>语法：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">select</span>(列1, 列2, 列3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>结果：只保留指定列，行数不变。</p>
+<p><strong><code>mutate()</code>：新增或修改变量</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> my_province_prefix) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">code_province =</span> <span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">code_city =</span> <span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_target =</span> dt_adcode <span class="sc">==</span> my_home_code</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dt_name, dt_adcode, code_province, code_city, is_target) <span class="sc">%&gt;%</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     dt_name dt_adcode code_province code_city is_target
+1     新城区    150102            15      1501     FALSE
+2     回民区    150103            15      1501     FALSE
+3     玉泉区    150104            15      1501     FALSE
+4     赛罕区    150105            15      1501     FALSE
+5 土默特左旗    150121            15      1501     FALSE
+6   托克托县    150122            15      1501     FALSE</code></pre>
+</div>
+</div>
+<p>语法：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>结果：在原数据基础上新增列或修改列，行数通常不变。</p>
+<p><strong><code>group_by()</code> + <code>summarise()</code>：分组汇总</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>county_count <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pr_name) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_counties =</span> <span class="fu">n</span>(),</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_counties))</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(county_count, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   pr_name        n_counties
+   &lt;chr&gt;               &lt;int&gt;
+ 1 四川省                183
+ 2 河北省                167
+ 3 河南省                157
+ 4 山东省                136
+ 5 云南省                129
+ 6 广东省                125
+ 7 湖南省                122
+ 8 黑龙江省              122
+ 9 山西省                117
+10 广西壮族自治区        111</code></pre>
+</div>
+</div>
+<p><code>group_by()</code> 用于指定分组变量。<code>summarise()</code> 用于把每组数据压缩成一行汇总结果。<code>n()</code> 表示当前组中的行数。</p>
+<p>语法：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(分组变量) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(新汇总列 <span class="ot">=</span> 汇总函数())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>本例含义是：按照 <code>pr_name</code> 分组，统计每个省级区域包含多少个县级行政区。</p>
+<p><code>arrange(desc(n_counties))</code> 表示按照 <code>n_counties</code> 从大到小排序。其中：</p>
+<ul>
+<li><code>arrange()</code> 用于排序。</li>
+<li><code>desc()</code> 表示降序。</li>
+</ul>
+<hr>
+</section>
+<section id="按地市给省域地图分类填色" class="level2" data-number="15.14">
+<h2 data-number="15.14" class="anchored" data-anchor-id="按地市给省域地图分类填色"><span class="header-section-number">15.14</span> 按地市给省域地图分类填色</h2>
+<p>前面使用 <code>is_home</code> 区分“目标县级行政区”和“其他区县”。如果把 <code>ct_name</code> 映射到 <code>fill</code>，则可以显示省域内各地市的空间分布。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_province) <span class="sc">+</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ct_name), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> my_county, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name), <span class="st">"地市分布"</span>),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"黑色边界为："</span>, my_county<span class="sc">$</span>dt_name)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/province-by-city-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>这段代码包含两个 <code>geom_sf()</code> 图层：</p>
+<ol type="1">
+<li>第一层使用 <code>my_province</code>，按 <code>ct_name</code> 分类填色。</li>
+<li>第二层使用 <code>my_county</code>，只画目标县级行政区边界。</li>
+</ol>
+<p><code>fill = NA</code> 表示不填充颜色，只显示边界。这样可以在不遮挡底图颜色的情况下突出目标区域。</p>
+<hr>
+</section>
+<section id="添加比例尺和指北针" class="level2" data-number="15.15">
+<h2 data-number="15.15" class="anchored" data-anchor-id="添加比例尺和指北针"><span class="header-section-number">15.15</span> 添加比例尺和指北针</h2>
+<p>地图通常需要基本制图要素，包括图题、图例、比例尺和指北针。比例尺和指北针可使用 <code>ggspatial</code> 包添加。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_marked) <span class="sc">+</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他区县"</span> <span class="ot">=</span> <span class="st">"#E6F0F2"</span>),</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">width_hint =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="st">"tr"</span>,</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">which_north =</span> <span class="st">"true"</span>,</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> north_arrow_minimal</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name), <span class="st">"县级行政区划图"</span>),</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"标记对象："</span>, my_county<span class="sc">$</span>ct_name, my_county<span class="sc">$</span>dt_name)</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/scale-north-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>新函数说明：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>annotation_scale()</code></td>
+<td>添加比例尺</td>
+</tr>
+<tr class="even">
+<td><code>annotation_north_arrow()</code></td>
+<td>添加指北针</td>
+</tr>
+</tbody>
+</table>
+<p>常用参数如下：</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>所属函数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>location = "bl"</code></td>
+<td><code>annotation_scale()</code></td>
+<td>比例尺放在左下角</td>
+</tr>
+<tr class="even">
+<td><code>width_hint = 0.3</code></td>
+<td><code>annotation_scale()</code></td>
+<td>比例尺宽度约为图幅宽度的 30%</td>
+</tr>
+<tr class="odd">
+<td><code>location = "tr"</code></td>
+<td><code>annotation_north_arrow()</code></td>
+<td>指北针放在右上角</td>
+</tr>
+<tr class="even">
+<td><code>which_north = "true"</code></td>
+<td><code>annotation_north_arrow()</code></td>
+<td>指向真北</td>
+</tr>
+<tr class="odd">
+<td><code>style = north_arrow_minimal</code></td>
+<td><code>annotation_north_arrow()</code></td>
+<td>使用简洁指北针样式</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="面量图用变量决定地图颜色" class="level2" data-number="15.16">
+<h2 data-number="15.16" class="anchored" data-anchor-id="面量图用变量决定地图颜色"><span class="header-section-number">15.16</span> 面量图：用变量决定地图颜色</h2>
+<p>面量图，也称分级设色图，是根据区域属性值给不同地理单元填充不同颜色的地图。其核心写法是：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> 数值变量))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>下面构造一个模拟指标，演示面量图的基本方法。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>province_value <span class="ot">&lt;-</span> my_province <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">sample</span>(<span class="dv">50</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_value) <span class="sc">+</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> score), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> my_county, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"YlOrRd"</span>,</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="dv">1</span>,</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"模拟指标"</span></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">width_hint =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="st">"tr"</span>,</span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">which_north =</span> <span class="st">"true"</span>,</span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> north_arrow_minimal</span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name), <span class="st">"县级面量图"</span>),</span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"黑色边界为："</span>, my_county<span class="sc">$</span>dt_name)</span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb56-28"><a href="#cb56-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lecture14_files/figure-html/choropleth-map-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>代码说明：</p>
+<ul>
+<li><code>set.seed(123)</code> 固定随机数种子，使每次运行得到相同的随机结果。</li>
+<li><code>sample(50:100, n(), replace = TRUE)</code> 从 50 到 100 中随机抽取数值，抽取次数等于当前数据行数。</li>
+<li><code>n()</code> 在 <code>mutate()</code> 中表示当前数据的行数。</li>
+<li><code>scale_fill_distiller()</code> 用 ColorBrewer 调色板设置连续变量配色。</li>
+<li><code>palette = "YlOrRd"</code> 表示使用 Yellow-Orange-Red 配色方案。</li>
+<li><code>direction = 1</code> 表示使用默认颜色方向；改为 <code>-1</code> 可反转颜色方向。</li>
+</ul>
+<hr>
+</section>
+<section id="练习" class="level2" data-number="15.17">
+<h2 data-number="15.17" class="anchored" data-anchor-id="练习"><span class="header-section-number">15.17</span> 练习</h2>
+<p><strong>按名称查询县级行政区划代码</strong></p>
+<p>将 <code>keyword</code> 改为目标县级行政区名称的一部分，运行后记录对应的 <code>dt_adcode</code>。</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>keyword <span class="ot">&lt;-</span> <span class="st">"武川"</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(keyword, dt_name)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       pr_name    ct_name dt_name dt_adcode
+1 内蒙古自治区 呼和浩特市  武川县    150125</code></pre>
+</div>
+</div>
+<p><strong>绘制目标县级行政区定位图</strong></p>
+<p>完成以下操作：</p>
+<ol type="1">
+<li>将 <code>my_home_code</code> 修改为目标县级行政区划代码。</li>
+<li>重新运行从第 6 节开始的代码。</li>
+<li>得到全国、省域和市域三张定位图。</li>
+</ol>
+<p><strong>修改模拟指标并观察面量图变化</strong></p>
+<p>可尝试将第 15 节中的 <code>score</code> 替换为以下任意形式：</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">row_number</span>())</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">nchar</span>(dt_name))</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>函数说明：</p>
+<ul>
+<li><code>row_number()</code> 返回当前行的序号。</li>
+<li><code>nchar(dt_name)</code> 计算县级名称的字符数。</li>
+<li><code>sample(1:5, n(), replace = TRUE)</code> 从 1 到 5 中随机抽取与行数相同数量的值。</li>
+</ul>
+<hr>
+</section>
+<section id="作业" class="level2" data-number="15.18">
+<h2 data-number="15.18" class="anchored" data-anchor-id="作业"><span class="header-section-number">15.18</span> 作业</h2>
+<p>请提交一份 HTML 或 PDF 文件，包含以下内容：</p>
+<ol type="1">
+<li>目标县级行政区划代码。</li>
+<li>一张全国定位图。</li>
+<li>一张省域定位图。</li>
+<li>一张市域定位图。</li>
+<li>一段简要说明：本讲使用了哪些 <code>dplyr</code> 函数？每个函数在地图制作中承担什么作用？</li>
+</ol>
+<p>进阶要求：寻找一份真实统计数据，例如人口、GDP、降水量或空气质量数据，使用 <code>left_join()</code> 合并到空间数据后制作真实面量图。</p>
+<hr>
+</section>
+<section id="常见问题" class="level2" data-number="15.19">
+<h2 data-number="15.19" class="anchored" data-anchor-id="常见问题"><span class="header-section-number">15.19</span> 常见问题</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>问题</th>
+<th>可能原因</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>中文显示乱码</td>
+<td><code>.cpg</code> 缺失或编码不匹配</td>
+<td>确认 <code>china.cpg</code> 存在，内容通常为 <code>UTF-8</code></td>
+</tr>
+<tr class="even">
+<td><code>st_read()</code> 报错</td>
+<td>Shapefile 文件不齐</td>
+<td>检查 <code>.shp</code>、<code>.shx</code>、<code>.dbf</code>、<code>.prj</code>、<code>.cpg</code> 是否都在</td>
+</tr>
+<tr class="odd">
+<td>查不到目标县级行政区</td>
+<td>代码错误，或误用了电话区号</td>
+<td>使用名称关键词先查询 <code>dt_adcode</code></td>
+</tr>
+<tr class="even">
+<td>地图颜色都一样</td>
+<td>把变量写在 <code>aes()</code> 外部</td>
+<td>根据变量填色应写成 <code>aes(fill = 变量名)</code></td>
+</tr>
+<tr class="odd">
+<td>全国图中目标区域太小</td>
+<td>全国县级单位数量多</td>
+<td>放大到省域或市域查看</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
