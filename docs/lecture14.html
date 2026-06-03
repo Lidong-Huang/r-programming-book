@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#数据准备" id="toc-数据准备" class="nav-link" data-scroll-target="#数据准备"><span class="header-section-number">15.2</span> 数据准备</a></li>
   <li><a href="#读取空间数据" id="toc-读取空间数据" class="nav-link" data-scroll-target="#读取空间数据"><span class="header-section-number">15.3</span> 读取空间数据</a></li>
   <li><a href="#绘制最基本的全国县级地图" id="toc-绘制最基本的全国县级地图" class="nav-link" data-scroll-target="#绘制最基本的全国县级地图"><span class="header-section-number">15.4</span> 绘制最基本的全国县级地图</a></li>
-  <li><a href="#用-dplyr-理解和整理地图属性表" id="toc-用-dplyr-理解和整理地图属性表" class="nav-link" data-scroll-target="#用-dplyr-理解和整理地图属性表"><span class="header-section-number">15.5</span> 用 dplyr 理解和整理地图属性表</a></li>
+  <li><a href="#dplyr-整理地图属性表" id="toc-dplyr-整理地图属性表" class="nav-link" data-scroll-target="#dplyr-整理地图属性表"><span class="header-section-number">15.5</span> dplyr 整理地图属性表</a></li>
   <li><a href="#根据名称查找县级行政区划代码" id="toc-根据名称查找县级行政区划代码" class="nav-link" data-scroll-target="#根据名称查找县级行政区划代码"><span class="header-section-number">15.6</span> 根据名称查找县级行政区划代码</a></li>
   <li><a href="#设置家乡县级行政区划代码" id="toc-设置家乡县级行政区划代码" class="nav-link" data-scroll-target="#设置家乡县级行政区划代码"><span class="header-section-number">15.7</span> 设置家乡县级行政区划代码</a></li>
   <li><a href="#提取目标县级行政区" id="toc-提取目标县级行政区" class="nav-link" data-scroll-target="#提取目标县级行政区"><span class="header-section-number">15.8</span> 提取目标县级行政区</a></li>
@@ -292,7 +292,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="本讲目标" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="本讲目标"><span class="header-section-number">15.1</span> 本讲目标</h2>
 <p>本讲介绍如何在 R 中读取、整理并绘制中国县级行政区划地图。核心思路是：<strong>把空间数据理解为带有几何信息的数据框</strong>。在这个基础上，可以用 <code>dplyr</code> 整理属性表，用 <code>ggplot2</code> 绘制地图，用 <code>sf</code> 处理空间对象。</p>
-<p>本讲围绕一个完整任务展开：根据家乡县级行政区划代码，在全国、省域和市域地图中标记对应的县级行政区。完成该任务需要掌握以下内容：</p>
 <ol type="1">
 <li>Shapefile 的基本文件组成。</li>
 <li><code>sf::st_read()</code> 读取空间数据的方法。</li>
@@ -309,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="数据准备" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="数据准备"><span class="header-section-number">15.2</span> 数据准备</h2>
 <p><strong>数据文件下载</strong></p>
-<p>本章使用中国区县级 Shapefile。由于 <code>.shp</code> 文件体积较大，不建议将数据打包为压缩文件上传到 GitHub。Shapefile 应按组成文件分别下载，并放在同一个项目工作目录中。</p>
+<p>本章使用中国区县级 Shapefile。Shapefile 应按组成文件分别下载，并放在同一个项目工作目录中。</p>
 <p>请分别下载以下文件：</p>
 <table class="caption-top table">
 <thead>
@@ -578,8 +577,8 @@ Geodetic CRS:  WGS 84
 <p>注意：当 <code>fill = "grey92"</code> 写在 <code>aes()</code> 外部时，表示所有区域使用同一种固定颜色。</p>
 <hr>
 </section>
-<section id="用-dplyr-理解和整理地图属性表" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="用-dplyr-理解和整理地图属性表"><span class="header-section-number">15.5</span> 用 dplyr 理解和整理地图属性表</h2>
+<section id="dplyr-整理地图属性表" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="dplyr-整理地图属性表"><span class="header-section-number">15.5</span> dplyr 整理地图属性表</h2>
 <p>空间数据首先也是数据表。地图绘制之前，通常需要先对属性表做整理。<code>dplyr</code> 的作用就是用清晰的语法完成这些整理工作。</p>
 <p><strong>管道符 <code>%&gt;%</code></strong></p>
 <p><code>%&gt;%</code> 读作“然后”。它把左侧结果传给右侧函数的第一个参数。</p>
@@ -856,16 +855,8 @@ Geodetic CRS:  WGS 84
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他地区"</span> <span class="ot">=</span> <span class="st">"grey92"</span>),</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"全国地图中的目标县级行政区"</span>,</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(my_county<span class="sc">$</span>pr_name, my_county<span class="sc">$</span>ct_name, my_county<span class="sc">$</span>dt_name)</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
