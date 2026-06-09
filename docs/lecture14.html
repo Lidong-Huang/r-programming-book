@@ -254,16 +254,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#设置家乡县级行政区划代码" id="toc-设置家乡县级行政区划代码" class="nav-link" data-scroll-target="#设置家乡县级行政区划代码"><span class="header-section-number">15.7</span> 设置家乡县级行政区划代码</a></li>
   <li><a href="#提取目标县级行政区" id="toc-提取目标县级行政区" class="nav-link" data-scroll-target="#提取目标县级行政区"><span class="header-section-number">15.8</span> 提取目标县级行政区</a></li>
   <li><a href="#在全国地图中标记目标县级行政区" id="toc-在全国地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在全国地图中标记目标县级行政区"><span class="header-section-number">15.9</span> 在全国地图中标记目标县级行政区</a></li>
-  <li><a href="#由县级代码提取省域和市域范围" id="toc-由县级代码提取省域和市域范围" class="nav-link" data-scroll-target="#由县级代码提取省域和市域范围"><span class="header-section-number">15.10</span> 由县级代码提取省域和市域范围</a></li>
-  <li><a href="#在省域地图中标记目标县级行政区" id="toc-在省域地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在省域地图中标记目标县级行政区"><span class="header-section-number">15.11</span> 在省域地图中标记目标县级行政区</a></li>
-  <li><a href="#在市域地图中标记目标县级行政区" id="toc-在市域地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在市域地图中标记目标县级行政区"><span class="header-section-number">15.12</span> 在市域地图中标记目标县级行政区</a></li>
-  <li><a href="#dplyr-语法总结" id="toc-dplyr-语法总结" class="nav-link" data-scroll-target="#dplyr-语法总结"><span class="header-section-number">15.13</span> dplyr 语法总结</a></li>
-  <li><a href="#按地市给省域地图分类填色" id="toc-按地市给省域地图分类填色" class="nav-link" data-scroll-target="#按地市给省域地图分类填色"><span class="header-section-number">15.14</span> 按地市给省域地图分类填色</a></li>
-  <li><a href="#添加比例尺和指北针" id="toc-添加比例尺和指北针" class="nav-link" data-scroll-target="#添加比例尺和指北针"><span class="header-section-number">15.15</span> 添加比例尺和指北针</a></li>
-  <li><a href="#面量图用变量决定地图颜色" id="toc-面量图用变量决定地图颜色" class="nav-link" data-scroll-target="#面量图用变量决定地图颜色"><span class="header-section-number">15.16</span> 面量图：用变量决定地图颜色</a></li>
-  <li><a href="#练习" id="toc-练习" class="nav-link" data-scroll-target="#练习"><span class="header-section-number">15.17</span> 练习</a></li>
-  <li><a href="#作业" id="toc-作业" class="nav-link" data-scroll-target="#作业"><span class="header-section-number">15.18</span> 作业</a></li>
-  <li><a href="#常见问题" id="toc-常见问题" class="nav-link" data-scroll-target="#常见问题"><span class="header-section-number">15.19</span> 常见问题</a></li>
+  <li><a href="#在省域地图中标记目标县级行政区" id="toc-在省域地图中标记目标县级行政区" class="nav-link" data-scroll-target="#在省域地图中标记目标县级行政区"><span class="header-section-number">15.10</span> 在省域地图中标记目标县级行政区</a></li>
+  <li><a href="#添加比例尺和指北针" id="toc-添加比例尺和指北针" class="nav-link" data-scroll-target="#添加比例尺和指北针"><span class="header-section-number">15.11</span> 添加比例尺和指北针</a></li>
+  <li><a href="#面量图用变量决定地图颜色" id="toc-面量图用变量决定地图颜色" class="nav-link" data-scroll-target="#面量图用变量决定地图颜色"><span class="header-section-number">15.12</span> 面量图：用变量决定地图颜色</a></li>
+  <li><a href="#作业" id="toc-作业" class="nav-link" data-scroll-target="#作业"><span class="header-section-number">15.13</span> 作业</a></li>
   </ul>
 </nav>
     </div>
@@ -552,40 +546,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>等价于：</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(china)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Simple feature collection with 6 features and 8 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: 116.0488 ymin: 39.76159 xmax: 116.6453 ymax: 40.16098
-Geodetic CRS:  WGS 84
-  dt_adcode  dt_name ct_adcode  ct_name pr_adcode pr_name cn_adcode
-1    110101   东城区    110100 北京城区    110000  北京市    100000
-2    110102   西城区    110100 北京城区    110000  北京市    100000
-3    110105   朝阳区    110100 北京城区    110000  北京市    100000
-4    110106   丰台区    110100 北京城区    110000  北京市    100000
-5    110107 石景山区    110100 北京城区    110000  北京市    100000
-6    110108   海淀区    110100 北京城区    110000  北京市    100000
-         cn_name                       geometry
-1 中华人民共和国 MULTIPOLYGON (((116.3877 39...
-2 中华人民共和国 MULTIPOLYGON (((116.393 39....
-3 中华人民共和国 MULTIPOLYGON (((116.4439 39...
-4 中华人民共和国 MULTIPOLYGON (((116.1658 39...
-5 中华人民共和国 MULTIPOLYGON (((116.1516 39...
-6 中华人民共和国 MULTIPOLYGON (((116.0489 40...</code></pre>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(china)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>管道符的优点是可以把多个步骤按从上到下的顺序写出</p>
 </section>
 <section id="根据名称查找县级行政区划代码" class="level2" data-number="15.6">
 <h2 data-number="15.6" class="anchored" data-anchor-id="根据名称查找县级行政区划代码"><span class="header-section-number">15.6</span> 根据名称查找县级行政区划代码</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(条件)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(条件)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>示例：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pr_name <span class="sc">==</span> <span class="st">"内蒙古自治区"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span> <span class="fu">filter</span>(pr_name <span class="sc">==</span> <span class="st">"内蒙古自治区"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>其中，<code>==</code> 表示“等于”。注意它不同于赋值符号 <code>=</code> 或 <code>&lt;-</code>。</p>
 <p>常见筛选条件如下：</p>
 <table class="caption-top table">
@@ -616,7 +584,7 @@ Geodetic CRS:  WGS 84
 </table>
 <p><strong><code>grepl()</code>：判断文本是否包含关键词</strong></p>
 <p><code>grepl()</code> 是 R 的基础函数，用于判断一个字符串是否包含某个模式。基本语法为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(pattern, x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(pattern, x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>参数说明：</p>
 <table class="caption-top table">
 <thead>
@@ -637,13 +605,6 @@ Geodetic CRS:  WGS 84
 </tbody>
 </table>
 <p>例如，<code>grepl("武川", dt_name)</code> 会逐行判断 <code>dt_name</code> 中是否包含“武川”，并返回 <code>TRUE</code> 或 <code>FALSE</code>。<code>filter()</code> 再根据这个结果保留对应行。</p>
-<p><strong><code>select()</code>：选择列</strong></p>
-<p><code>select()</code> 来自 <code>dplyr</code>，用于保留指定列。基本语法为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(.data, 列1, 列2, 列3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>在本例中：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>表示只显示省名、市名、县名和县级行政区划代码。这样可以避免属性表列数过多，影响阅读。</p>
-<hr>
 </section>
 <section id="设置家乡县级行政区划代码" class="level2" data-number="15.7">
 <h2 data-number="15.7" class="anchored" data-anchor-id="设置家乡县级行政区划代码"><span class="header-section-number">15.7</span> 设置家乡县级行政区划代码</h2>
@@ -651,7 +612,7 @@ Geodetic CRS:  WGS 84
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>my_home_code <span class="ot">&lt;-</span> <span class="st">"150125"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my_home_code <span class="ot">&lt;-</span> <span class="st">"150125"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>写成字符串有两个好处：</p>
@@ -666,17 +627,9 @@ Geodetic CRS:  WGS 84
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_county <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dt_adcode <span class="sc">==</span> my_home_code)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>my_county <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_county <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dt_adcode <span class="sc">==</span> my_home_code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       pr_name    ct_name dt_name dt_adcode
-1 内蒙古自治区 呼和浩特市  武川县    150125</code></pre>
-</div>
 </div>
 <p>代码逻辑如下：</p>
 <ol type="1">
@@ -693,33 +646,33 @@ Geodetic CRS:  WGS 84
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>china_marked <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他地区"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>china_marked <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他地区"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><code>mutate()</code> 来自 <code>dplyr</code>，用于新增列或修改已有列。基本语法为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(.data, 新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(.data, 新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>在管道语法中常写为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>本例中新增了 <code>is_home</code> 列：</p>
 <ul>
 <li>当 <code>dt_adcode == my_home_code</code> 为真时，取值为“目标县级行政区”。</li>
 <li>否则取值为“其他地区”。</li>
 </ul>
 <p><code>ifelse()</code> 是 R 的基础函数，基本语法为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(条件, 条件为真时的值, 条件为假时的值)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(条件, 条件为真时的值, 条件为假时的值)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>根据变量填色</strong></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(china_marked) <span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.03</span>) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他地区"</span> <span class="ot">=</span> <span class="st">"grey92"</span>),</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(china_marked) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.03</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他地区"</span> <span class="ot">=</span> <span class="st">"grey92"</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -751,98 +704,21 @@ Geodetic CRS:  WGS 84
 </tbody>
 </table>
 <p><code>scale_fill_manual()</code> 用于手动指定填充颜色。基本语法为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"类别1"</span> <span class="ot">=</span> <span class="st">"颜色1"</span>, <span class="st">"类别2"</span> <span class="ot">=</span> <span class="st">"颜色2"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"类别1"</span> <span class="ot">=</span> <span class="st">"颜色1"</span>, <span class="st">"类别2"</span> <span class="ot">=</span> <span class="st">"颜色2"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>其中，<code>values</code> 中的类别名称必须与变量中的实际取值一致。</p>
 <hr>
 </section>
-<section id="由县级代码提取省域和市域范围" class="level2" data-number="15.10">
-<h2 data-number="15.10" class="anchored" data-anchor-id="由县级代码提取省域和市域范围"><span class="header-section-number">15.10</span> 由县级代码提取省域和市域范围</h2>
-<p>县级行政区划代码通常为 6 位。以 <code>150125</code> 为例：</p>
-<pre class="text"><code>150125
-15  01  25
-省  市  县</code></pre>
-<p>因此，可以通过截取代码前若干位来判断所属省、市：</p>
-<ul>
-<li>前 2 位表示省级范围。</li>
-<li>前 4 位表示地市级范围。</li>
-<li>6 位完整代码表示县级范围。</li>
-</ul>
-<p><strong><code>substr()</code>：截取字符串</strong></p>
+<section id="在省域地图中标记目标县级行政区" class="level2" data-number="15.10">
+<h2 data-number="15.10" class="anchored" data-anchor-id="在省域地图中标记目标县级行政区"><span class="header-section-number">15.10</span> 在省域地图中标记目标县级行政区</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>my_province_prefix <span class="ot">&lt;-</span> <span class="fu">substr</span>(my_home_code, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>my_city_prefix <span class="ot">&lt;-</span> <span class="fu">substr</span>(my_home_code, <span class="dv">1</span>, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p><code>substr()</code> 是 R 的基础函数，用于截取字符串。基本语法为：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(x, start, stop)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>参数说明：</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>x</code></td>
-<td>要截取的字符串</td>
-</tr>
-<tr class="even">
-<td><code>start</code></td>
-<td>起始位置</td>
-</tr>
-<tr class="odd">
-<td><code>stop</code></td>
-<td>结束位置</td>
-</tr>
-</tbody>
-</table>
-<p>例如，<code>substr("150125", 1, 2)</code> 的结果是 <code>"15"</code>。</p>
-<p><strong>提取省域和市域数据</strong></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_province <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> my_province_prefix)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>my_city <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">==</span> my_city_prefix)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>这里的逻辑是：</p>
-<ul>
-<li>若某一行 <code>dt_adcode</code> 的前 2 位与 <code>my_home_code</code> 的前 2 位一致，则该县级单位属于同一省级范围。</li>
-<li>若前 4 位一致，则属于同一地市级范围。</li>
-</ul>
-<hr>
-</section>
-<section id="在省域地图中标记目标县级行政区" class="level2" data-number="15.11">
-<h2 data-number="15.11" class="anchored" data-anchor-id="在省域地图中标记目标县级行政区"><span class="header-section-number">15.11</span> 在省域地图中标记目标县级行政区</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>province_marked <span class="ot">&lt;-</span> my_province <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他区县"</span>))</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_marked) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他区县"</span> <span class="ot">=</span> <span class="st">"#E6F0F2"</span>),</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name),</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"标记对象："</span>, my_county<span class="sc">$</span>ct_name, my_county<span class="sc">$</span>dt_name)</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_province <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span><span class="fu">filter</span>(pr_name <span class="sc">==</span> <span class="st">"内蒙古自治区"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>province_marked <span class="ot">&lt;-</span> my_province <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他区县"</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_marked) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -852,232 +728,25 @@ Geodetic CRS:  WGS 84
 </div>
 </div>
 </div>
-<p><code>unique()</code> 用于提取唯一值。因为 <code>my_county$pr_name</code> 只有一个省名，使用 <code>unique()</code> 可以得到该省名称，并用于图题。</p>
 <hr>
 </section>
-<section id="在市域地图中标记目标县级行政区" class="level2" data-number="15.12">
-<h2 data-number="15.12" class="anchored" data-anchor-id="在市域地图中标记目标县级行政区"><span class="header-section-number">15.12</span> 在市域地图中标记目标县级行政区</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>city_marked <span class="ot">&lt;-</span> my_city <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">ifelse</span>(dt_adcode <span class="sc">==</span> my_home_code, <span class="st">"目标县级行政区"</span>, <span class="st">"其他区县"</span>))</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(city_marked) <span class="sc">+</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他区县"</span> <span class="ot">=</span> <span class="st">"#DDECCB"</span>),</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">unique</span>(my_county<span class="sc">$</span>ct_name),</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"标记对象："</span>, my_county<span class="sc">$</span>dt_name)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/city-map-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>至此，已经完成了从全国到省域、再到市域的三级定位。这个过程体现了空间数据分析中的基本流程：</p>
-<pre class="text"><code>读取数据 -&gt; 理解属性表 -&gt; 筛选目标区域 -&gt; 新增标记变量 -&gt; 绘制地图</code></pre>
-<hr>
-</section>
-<section id="dplyr-语法总结" class="level2" data-number="15.13">
-<h2 data-number="15.13" class="anchored" data-anchor-id="dplyr-语法总结"><span class="header-section-number">15.13</span> dplyr 语法总结</h2>
-<p>本节集中整理前面已经使用过的 <code>dplyr</code> 函数。</p>
-<p><strong><code>filter()</code>：按条件筛选行</strong></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pr_name <span class="sc">==</span> <span class="st">"内蒙古自治区"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       pr_name    ct_name    dt_name dt_adcode
-1 内蒙古自治区 呼和浩特市     新城区    150102
-2 内蒙古自治区 呼和浩特市     回民区    150103
-3 内蒙古自治区 呼和浩特市     玉泉区    150104
-4 内蒙古自治区 呼和浩特市     赛罕区    150105
-5 内蒙古自治区 呼和浩特市 土默特左旗    150121
-6 内蒙古自治区 呼和浩特市   托克托县    150122</code></pre>
-</div>
-</div>
-<p>语法：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(条件)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>结果：返回满足条件的行，列保持不变。</p>
-<p><strong><code>select()</code>：选择变量列</strong></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  pr_name  ct_name  dt_name dt_adcode
-1  北京市 北京城区   东城区    110101
-2  北京市 北京城区   西城区    110102
-3  北京市 北京城区   朝阳区    110105
-4  北京市 北京城区   丰台区    110106
-5  北京市 北京城区 石景山区    110107
-6  北京市 北京城区   海淀区    110108</code></pre>
-</div>
-</div>
-<p>语法：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">select</span>(列1, 列2, 列3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>结果：只保留指定列，行数不变。</p>
-<p><strong><code>mutate()</code>：新增或修改变量</strong></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">==</span> my_province_prefix) <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">code_province =</span> <span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">code_city =</span> <span class="fu">substr</span>(dt_adcode, <span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_target =</span> dt_adcode <span class="sc">==</span> my_home_code</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dt_name, dt_adcode, code_province, code_city, is_target) <span class="sc">%&gt;%</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     dt_name dt_adcode code_province code_city is_target
-1     新城区    150102            15      1501     FALSE
-2     回民区    150103            15      1501     FALSE
-3     玉泉区    150104            15      1501     FALSE
-4     赛罕区    150105            15      1501     FALSE
-5 土默特左旗    150121            15      1501     FALSE
-6   托克托县    150122            15      1501     FALSE</code></pre>
-</div>
-</div>
-<p>语法：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(新列名 <span class="ot">=</span> 表达式)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>结果：在原数据基础上新增列或修改列，行数通常不变。</p>
-<p><strong><code>group_by()</code> + <code>summarise()</code>：分组汇总</strong></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>county_count <span class="ot">&lt;-</span> china <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pr_name) <span class="sc">%&gt;%</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_counties =</span> <span class="fu">n</span>(),</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_counties))</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(county_count, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   pr_name        n_counties
-   &lt;chr&gt;               &lt;int&gt;
- 1 四川省                183
- 2 河北省                167
- 3 河南省                157
- 4 山东省                136
- 5 云南省                129
- 6 广东省                125
- 7 湖南省                122
- 8 黑龙江省              122
- 9 山西省                117
-10 广西壮族自治区        111</code></pre>
-</div>
-</div>
-<p><code>group_by()</code> 用于指定分组变量。<code>summarise()</code> 用于把每组数据压缩成一行汇总结果。<code>n()</code> 表示当前组中的行数。</p>
-<p>语法：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>数据 <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(分组变量) <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(新汇总列 <span class="ot">=</span> 汇总函数())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>本例含义是：按照 <code>pr_name</code> 分组，统计每个省级区域包含多少个县级行政区。</p>
-<p><code>arrange(desc(n_counties))</code> 表示按照 <code>n_counties</code> 从大到小排序。其中：</p>
-<ul>
-<li><code>arrange()</code> 用于排序。</li>
-<li><code>desc()</code> 表示降序。</li>
-</ul>
-<hr>
-</section>
-<section id="按地市给省域地图分类填色" class="level2" data-number="15.14">
-<h2 data-number="15.14" class="anchored" data-anchor-id="按地市给省域地图分类填色"><span class="header-section-number">15.14</span> 按地市给省域地图分类填色</h2>
-<p>前面使用 <code>is_home</code> 区分“目标县级行政区”和“其他区县”。如果把 <code>ct_name</code> 映射到 <code>fill</code>，则可以显示省域内各地市的空间分布。</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_province) <span class="sc">+</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ct_name), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> my_county, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name), <span class="st">"地市分布"</span>),</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"黑色边界为："</span>, my_county<span class="sc">$</span>dt_name)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lecture14_files/figure-html/province-by-city-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>这段代码包含两个 <code>geom_sf()</code> 图层：</p>
-<ol type="1">
-<li>第一层使用 <code>my_province</code>，按 <code>ct_name</code> 分类填色。</li>
-<li>第二层使用 <code>my_county</code>，只画目标县级行政区边界。</li>
-</ol>
-<p><code>fill = NA</code> 表示不填充颜色，只显示边界。这样可以在不遮挡底图颜色的情况下突出目标区域。</p>
-<hr>
-</section>
-<section id="添加比例尺和指北针" class="level2" data-number="15.15">
-<h2 data-number="15.15" class="anchored" data-anchor-id="添加比例尺和指北针"><span class="header-section-number">15.15</span> 添加比例尺和指北针</h2>
+<section id="添加比例尺和指北针" class="level2" data-number="15.11">
+<h2 data-number="15.11" class="anchored" data-anchor-id="添加比例尺和指北针"><span class="header-section-number">15.11</span> 添加比例尺和指北针</h2>
 <p>地图通常需要基本制图要素，包括图题、图例、比例尺和指北针。比例尺和指北针可使用 <code>ggspatial</code> 包添加。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_marked) <span class="sc">+</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"目标县级行政区"</span> <span class="ot">=</span> <span class="st">"#D73027"</span>, <span class="st">"其他区县"</span> <span class="ot">=</span> <span class="st">"#E6F0F2"</span>),</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="cn">NULL</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">width_hint =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="st">"tr"</span>,</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">which_north =</span> <span class="st">"true"</span>,</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> north_arrow_minimal</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name), <span class="st">"县级行政区划图"</span>),</span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"标记对象："</span>, my_county<span class="sc">$</span>ct_name, my_county<span class="sc">$</span>dt_name)</span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspatial)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_marked) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> is_home), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">width_hint =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="st">"tr"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">which_north =</span> <span class="st">"true"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> north_arrow_minimal</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1150,43 +819,33 @@ Geodetic CRS:  WGS 84
 </table>
 <hr>
 </section>
-<section id="面量图用变量决定地图颜色" class="level2" data-number="15.16">
-<h2 data-number="15.16" class="anchored" data-anchor-id="面量图用变量决定地图颜色"><span class="header-section-number">15.16</span> 面量图：用变量决定地图颜色</h2>
+<section id="面量图用变量决定地图颜色" class="level2" data-number="15.12">
+<h2 data-number="15.12" class="anchored" data-anchor-id="面量图用变量决定地图颜色"><span class="header-section-number">15.12</span> 面量图：用变量决定地图颜色</h2>
 <p>面量图，也称分级设色图，是根据区域属性值给不同地理单元填充不同颜色的地图。其核心写法是：</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> 数值变量))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> 数值变量))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>下面构造一个模拟指标，演示面量图的基本方法。</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>province_value <span class="ot">&lt;-</span> my_province <span class="sc">%&gt;%</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">sample</span>(<span class="dv">50</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_value) <span class="sc">+</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> score), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> my_county, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"YlOrRd"</span>,</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="dv">1</span>,</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"模拟指标"</span></span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">width_hint =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="st">"tr"</span>,</span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">which_north =</span> <span class="st">"true"</span>,</span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> north_arrow_minimal</span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="fu">unique</span>(my_county<span class="sc">$</span>pr_name), <span class="st">"县级面量图"</span>),</span>
-<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"黑色边界为："</span>, my_county<span class="sc">$</span>dt_name)</span>
-<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>province_value <span class="ot">&lt;-</span> my_province <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">sample</span>(<span class="dv">50</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(province_value) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> score), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> my_county, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_distiller</span>(</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">"YlOrRd"</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="dv">1</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"模拟指标"</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_scale</span>(<span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">width_hint =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotation_north_arrow</span>(</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="st">"tr"</span>,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">which_north =</span> <span class="st">"true"</span>,</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> north_arrow_minimal</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1207,52 +866,8 @@ Geodetic CRS:  WGS 84
 </ul>
 <hr>
 </section>
-<section id="练习" class="level2" data-number="15.17">
-<h2 data-number="15.17" class="anchored" data-anchor-id="练习"><span class="header-section-number">15.17</span> 练习</h2>
-<p><strong>按名称查询县级行政区划代码</strong></p>
-<p>将 <code>keyword</code> 改为目标县级行政区名称的一部分，运行后记录对应的 <code>dt_adcode</code>。</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>keyword <span class="ot">&lt;-</span> <span class="st">"武川"</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>china <span class="sc">%&gt;%</span></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(keyword, dt_name)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pr_name, ct_name, dt_name, dt_adcode)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       pr_name    ct_name dt_name dt_adcode
-1 内蒙古自治区 呼和浩特市  武川县    150125</code></pre>
-</div>
-</div>
-<p><strong>绘制目标县级行政区定位图</strong></p>
-<p>完成以下操作：</p>
-<ol type="1">
-<li>将 <code>my_home_code</code> 修改为目标县级行政区划代码。</li>
-<li>重新运行从第 6 节开始的代码。</li>
-<li>得到全国、省域和市域三张定位图。</li>
-</ol>
-<p><strong>修改模拟指标并观察面量图变化</strong></p>
-<p>可尝试将第 15 节中的 <code>score</code> 替换为以下任意形式：</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">row_number</span>())</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">nchar</span>(dt_name))</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>函数说明：</p>
-<ul>
-<li><code>row_number()</code> 返回当前行的序号。</li>
-<li><code>nchar(dt_name)</code> 计算县级名称的字符数。</li>
-<li><code>sample(1:5, n(), replace = TRUE)</code> 从 1 到 5 中随机抽取与行数相同数量的值。</li>
-</ul>
-<hr>
-</section>
-<section id="作业" class="level2" data-number="15.18">
-<h2 data-number="15.18" class="anchored" data-anchor-id="作业"><span class="header-section-number">15.18</span> 作业</h2>
+<section id="作业" class="level2" data-number="15.13">
+<h2 data-number="15.13" class="anchored" data-anchor-id="作业"><span class="header-section-number">15.13</span> 作业</h2>
 <p>请提交一份 HTML 或 PDF 文件，包含以下内容：</p>
 <ol type="1">
 <li>目标县级行政区划代码。</li>
@@ -1263,50 +878,6 @@ Geodetic CRS:  WGS 84
 </ol>
 <p>进阶要求：寻找一份真实统计数据，例如人口、GDP、降水量或空气质量数据，使用 <code>left_join()</code> 合并到空间数据后制作真实面量图。</p>
 <hr>
-</section>
-<section id="常见问题" class="level2" data-number="15.19">
-<h2 data-number="15.19" class="anchored" data-anchor-id="常见问题"><span class="header-section-number">15.19</span> 常见问题</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>问题</th>
-<th>可能原因</th>
-<th>解决方法</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>中文显示乱码</td>
-<td><code>.cpg</code> 缺失或编码不匹配</td>
-<td>确认 <code>china.cpg</code> 存在，内容通常为 <code>UTF-8</code></td>
-</tr>
-<tr class="even">
-<td><code>st_read()</code> 报错</td>
-<td>Shapefile 文件不齐</td>
-<td>检查 <code>.shp</code>、<code>.shx</code>、<code>.dbf</code>、<code>.prj</code>、<code>.cpg</code> 是否都在</td>
-</tr>
-<tr class="odd">
-<td>查不到目标县级行政区</td>
-<td>代码错误，或误用了电话区号</td>
-<td>使用名称关键词先查询 <code>dt_adcode</code></td>
-</tr>
-<tr class="even">
-<td>地图颜色都一样</td>
-<td>把变量写在 <code>aes()</code> 外部</td>
-<td>根据变量填色应写成 <code>aes(fill = 变量名)</code></td>
-</tr>
-<tr class="odd">
-<td>全国图中目标区域太小</td>
-<td>全国县级单位数量多</td>
-<td>放大到省域或市域查看</td>
-</tr>
-</tbody>
-</table>
 
 
 </section>
