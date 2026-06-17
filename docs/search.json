@@ -962,11 +962,11 @@
   {
     "objectID": "lecture12.html",
     "href": "lecture12.html",
-    "title": "13  土壤属性空间分布制图",
+    "title": "13  R中的字符串处理",
     "section": "",
-    "text": "13.1 引言\n土壤调查通常只能在有限的位置采样，但科学研究和环境管理需要了解整个区域的土壤属性分布。这引出了一个核心问题：如何从离散的采样点推测出连续的空间分布面？\n本章使用经典土壤重金属数据集 meuse，介绍两种最常用的空间插值方法：\n两种方法各有适用场景，理解其原理和差异是空间数据分析的基础。",
+    "text": "13.1 本章学习目标\n通过本章学习，你将能够：",
     "crumbs": [
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>土壤属性空间分布制图</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
     ]
   },
   {
@@ -2987,6 +2987,396 @@
     "text": "14.6 蒙特卡洛计算复杂函数的定积分\n\\(~\\)\n复杂函数的定积分非常难求，但我们知道定积分其实就是面积，设面积为\\(A_0\\) ， 。我们可以画一个矩形(面积为\\(A\\))，正好包围在这个积分曲线的边界，然后在矩形区域内产生一些随机数，其数量为 \\(n\\) ，再计算落在积分区域内的随机数，其数量为 \\(n_0\\) ，则产生的随机数在积分区域内的比率为\\(n_0/n\\) ，这与积分区域与总区域面积的比值 \\(A_0/A\\)应该是近似相等的，我们利用的就是这个关系，即\\(n_0/n \\approx A_0/A\\) 最后即得所求定积分。\n下面编程计算函数\\(y=e^{\\frac{-t^2}{2}}\\) 这是标准正态密度函数的一部分。\n\\(~\\)\n\n\nCode\n&gt; n &lt;- 10000# sample numbers\n&gt; a &lt;- -5# lower boundary\n&gt; b &lt;- 2# upper boundary\n&gt; \n&gt; ft &lt;- function(t) exp(-0.5*t^2)# function to be calculated\n&gt; \n&gt; x &lt;- runif(n,a,b)\n&gt; y &lt;- runif(n)\n&gt; sum(ft(x)&gt;=y)/n*(b-a)*1#(b-a)*1 represents area of rectangle\n\n\n[1] 2.4283\n\n\nCode\n&gt; integrate(ft,a,b)# r reuslts\n\n\n2.449601 with absolute error &lt; 4.7e-05\n\n\nCode\n&gt; sqrt(2*pi)*(pnorm(b)-pnorm(a))# because it is parts of normal pdf\n\n\n[1] 2.449601\n\n\nCode\n&gt; xx &lt;- sort(x)\n&gt; plot(xx,y,pch=16,col=c((y&lt;=ft(xx))+1))\n&gt; lines(xx,ft(xx),col=\"blue\",lwd=2)",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>基本统计分析</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html",
+    "href": "lecture13.html",
+    "title": "14  土壤属性空间分布制图",
+    "section": "",
+    "text": "14.1 引言\n土壤调查通常只能在有限的位置采样，但科学研究和环境管理需要了解整个区域的土壤属性分布。这引出了一个核心问题：如何从离散的采样点推测出连续的空间分布面？\n本章使用经典土壤重金属数据集 meuse，介绍两种最常用的空间插值方法：\n两种方法各有适用场景，理解其原理和差异是空间数据分析的基础。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#本章学习目标",
+    "href": "lecture13.html#本章学习目标",
+    "title": "14  R中的字符串处理",
+    "section": "",
+    "text": "掌握字符串长度、截取、大小写等基本操作\n熟练使用 paste() 和 paste0() 拼接字符串\n使用 strsplit() 拆分和 trimws() 清洗字符串\n使用 sprintf() 进行格式化输出\n掌握 grep()、sub()、gsub() 进行模式匹配与替换\n使用 regexpr() + regmatches() 提取匹配内容\n能够独立完成字符串数据清洗任务",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#字符串长度与字符统计",
+    "href": "lecture13.html#字符串长度与字符统计",
+    "title": "14  R中的字符串处理",
+    "section": "14.2 字符串长度与字符统计",
+    "text": "14.2 字符串长度与字符统计\n你已经见过 nchar()：\n\n\nCode\nnchar(\"hello\")\n\n\n[1] 5\n\n\nCode\nnchar(\"你好\")\n\n\n[1] 2\n\n\nCode\nnchar(\"你好\", type = \"bytes\")\n\n\n[1] 6\n\n\n👉 nchar() 返回字符数；type = \"bytes\" 返回字节数（中文字符通常占 2-3 个字节）。\n\nnchar() 和 length() 是两回事：\n\n\nCode\nx &lt;- c(\"a\", \"abc\", \"abcde\")\nlength(x)     # 3 —— 向量里有几个元素\n\n\n[1] 3\n\n\nCode\nnchar(x)      # 1 3 5 —— 每个元素有几个字符\n\n\n[1] 1 3 5\n\n\n👉 一个问”向量多长”，一个问”每个字符串多长”。不要搞混。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#字符串截取与替换",
+    "href": "lecture13.html#字符串截取与替换",
+    "title": "14  R中的字符串处理",
+    "section": "14.3 字符串截取与替换",
+    "text": "14.3 字符串截取与替换\nsubstr(x, start, stop) 按位置截取子串：\n\n\nCode\nsubstr(\"hello\", 2, 4)           # \"ell\"\n\n\n[1] \"ell\"\n\n\nCode\nsubstring(\"hello\", 1:3, 1:3)    # \"h\" \"e\" \"l\"（substring 支持向量化）\n\n\n[1] \"h\" \"e\" \"l\"\n\n\nsubstr() 与 substring() 的区别：substr() 的 start 和 stop 长度必须一致；substring() 会循环较短的参数。\n\nsubstr() 还能用于原地修改：\n\n\nCode\nx &lt;- \"hello\"\nsubstr(x, 1, 1) &lt;- \"H\"\nx                              # \"Hello\"\n\n\n[1] \"Hello\"",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#大小写转换",
+    "href": "lecture13.html#大小写转换",
+    "title": "14  R中的字符串处理",
+    "section": "14.4 大小写转换",
+    "text": "14.4 大小写转换\n\n\nCode\ntoupper(\"hello\")               # \"HELLO\"\n\n\n[1] \"HELLO\"\n\n\nCode\ntolower(\"HELLO\")               # \"hello\"\n\n\n[1] \"hello\"\n\n\nCode\ncasefold(\"HELLO\")              # \"hello\"（默认 upper = FALSE）\n\n\n[1] \"hello\"\n\n\nCode\ncasefold(\"hello\", upper = TRUE) # \"HELLO\"\n\n\n[1] \"HELLO\"\n\n\nchartr() 可以按字符一一对应地翻译：\n\n\nCode\nchartr(\"a-z\", \"A-Z\", \"hello\")   # \"HELLO\"\n\n\n[1] \"HELLO\"\n\n\nCode\nchartr(\"aeiou\", \"AEIOU\", \"hello\")  # \"hEllO\"\n\n\n[1] \"hEllO\"",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#字符串拼接",
+    "href": "lecture13.html#字符串拼接",
+    "title": "14  R中的字符串处理",
+    "section": "14.5 字符串拼接",
+    "text": "14.5 字符串拼接\npaste() 和 paste0() 是 R 中最常用的拼接函数：\n\n\nCode\npaste(\"A\", \"B\", \"C\")            # \"A B C\"（默认空格分隔）\n\n\n[1] \"A B C\"\n\n\nCode\npaste(\"A\", \"B\", sep = \"-\")      # \"A-B\"\n\n\n[1] \"A-B\"\n\n\nCode\npaste0(\"A\", \"B\", \"C\")           # \"ABC\"（等价于 paste(..., sep = \"\")）\n\n\n[1] \"ABC\"\n\n\n👉 记住：paste0() = paste(sep = \"\")，不带分隔符。\n\n向量化拼接——不同长度的向量会自动循环：\n\n\nCode\npaste(\"sample\", 1:3, sep = \"_\")   # \"sample_1\" \"sample_2\" \"sample_3\"\n\n\n[1] \"sample_1\" \"sample_2\" \"sample_3\"\n\n\ncollapse 参数把向量折叠成单个字符串：\n\n\nCode\npaste(c(\"A\", \"B\", \"C\"), collapse = \", \")  # \"A, B, C\"\n\n\n[1] \"A, B, C\"\n\n\nCode\npaste(letters[1:5], collapse = \"-\")       # \"a-b-c-d-e\"\n\n\n[1] \"a-b-c-d-e\"\n\n\n👉 sep 是多个参数之间的分隔符，collapse 是把向量元素合并成一个。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#字符串拆分",
+    "href": "lecture13.html#字符串拆分",
+    "title": "14  R中的字符串处理",
+    "section": "14.6 字符串拆分",
+    "text": "14.6 字符串拆分\nstrsplit() 按分隔符拆分，返回列表：\n\n\nCode\nstrsplit(\"a,b,c\", split = \",\")            # 返回列表\n\n\n[[1]]\n[1] \"a\" \"b\" \"c\"\n\n\nCode\nstrsplit(\"a,b,c\", split = \",\")[[1]]       # c(\"a\", \"b\", \"c\")\n\n\n[1] \"a\" \"b\" \"c\"\n\n\n👉 为什么返回列表？因为拆分后每段长度可能不同，只有列表能容纳。\n\n\n\nCode\n# 拆分为单个字符\nstrsplit(\"abcdef\", split = \"\")\n\n\n[[1]]\n[1] \"a\" \"b\" \"c\" \"d\" \"e\" \"f\"\n\n\nCode\n# 向量化拆分\nstrsplit(c(\"a,b\", \"c,d,e\"), split = \",\")\n\n\n[[1]]\n[1] \"a\" \"b\"\n\n[[2]]\n[1] \"c\" \"d\" \"e\"\n\n\nCode\n# unlist 拉平\nunlist(strsplit(c(\"a,b\", \"c,d,e\"), split = \",\"))\n\n\n[1] \"a\" \"b\" \"c\" \"d\" \"e\"",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#去除空白",
+    "href": "lecture13.html#去除空白",
+    "title": "14  R中的字符串处理",
+    "section": "14.7 去除空白",
+    "text": "14.7 去除空白\ntrimws() 去除首尾空白：\n\n\nCode\ntrimws(\"  hello  \")                  # \"hello\"\n\n\n[1] \"hello\"\n\n\nCode\ntrimws(\"  hello  \", which = \"left\")  # \"hello  \"\n\n\n[1] \"hello  \"\n\n\nCode\ntrimws(\"  hello  \", which = \"right\") # \"  hello\"\n\n\n[1] \"  hello\"\n\n\n清洗数据框中的字符列：\n\n\nCode\ndf &lt;- data.frame(name = c(\" 张三 \", \" 李四  \"), score = 1:2)\ndf$name &lt;- trimws(df$name)\ndf\n\n\n  name score\n1 张三     1\n2 李四     2",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#格式化输出",
+    "href": "lecture13.html#格式化输出",
+    "title": "14  R中的字符串处理",
+    "section": "14.8 格式化输出",
+    "text": "14.8 格式化输出\nsprintf() 用格式占位符生成指定格式的字符串：\n\n\nCode\nsprintf(\"编号%03d\", 7)            # \"编号007\"（零填充到3位）\n\n\n[1] \"编号007\"\n\n\nCode\nsprintf(\"%.2f\", 3.14159)          # \"3.14\"（两位小数）\n\n\n[1] \"3.14\"\n\n\nCode\nsprintf(\"%s：%d\", \"样本\", 1:3)    # \"样本：1\" \"样本：2\" \"样本：3\"\n\n\n[1] \"样本：1\" \"样本：2\" \"样本：3\"\n\n\nCode\nsprintf(\"%10s\", \"abc\")            # \"       abc\"（右对齐，宽度10）\n\n\n[1] \"       abc\"\n\n\nCode\nsprintf(\"%-10s\", \"abc\")           # \"abc       \"（左对齐，宽度10）\n\n\n[1] \"abc       \"\n\n\nCode\nsprintf(\"%05d\", 42)               # \"00042\"（整数零填充）\n\n\n[1] \"00042\"\n\n\n常用格式符：\n\n\n\n格式符\n含义\n\n\n\n\n%s\n字符串\n\n\n%d\n整数\n\n\n%f\n浮点数\n\n\n%e\n科学计数法",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#模式匹配查找",
+    "href": "lecture13.html#模式匹配查找",
+    "title": "14  R中的字符串处理",
+    "section": "14.9 模式匹配：查找",
+    "text": "14.9 模式匹配：查找\ngrep() 返回匹配元素的索引，grepl() 返回逻辑向量：\n\n\nCode\nx &lt;- c(\"apple\", \"banana\", \"grape\", \"pear\", \"apricot\")\n\ngrep(\"^a\", x)                     # 1 5（索引）\n\n\n[1] 1 5\n\n\nCode\ngrep(\"^a\", x, value = TRUE)       # \"apple\" \"apricot\"（值）\n\n\n[1] \"apple\"   \"apricot\"\n\n\nCode\ngrepl(\"^a\", x)                    # TRUE FALSE FALSE FALSE TRUE\n\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\n\n👉 grepl() 返回逻辑向量，可以直接用于 [ ] 筛选或 subset()。\n\n\n\nCode\n# 逻辑向量筛选\nx[grepl(\"a\", x)]                  # 所有含 a 的元素\n\n\n[1] \"apple\"   \"banana\"  \"grape\"   \"pear\"    \"apricot\"\n\n\nCode\n# 忽略大小写\ngrep(\"A\", c(\"apple\", \"Apple\"), ignore.case = TRUE)\n\n\n[1] 1 2\n\n\nCode\n# 反向匹配\ngrep(\"a\", x, invert = TRUE)       # pear（不含 a 的元素）\n\n\ninteger(0)",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#模式匹配替换",
+    "href": "lecture13.html#模式匹配替换",
+    "title": "14  R中的字符串处理",
+    "section": "14.10 模式匹配：替换",
+    "text": "14.10 模式匹配：替换\nsub() 替换首次匹配，gsub() 替换全部匹配：\n\n\nCode\nsub(\"a\", \"X\", \"banana\")           # \"bXnana\"（仅第一个）\n\n\n[1] \"bXnana\"\n\n\nCode\ngsub(\"a\", \"X\", \"banana\")          # \"bXnXnX\"（全部）\n\n\n[1] \"bXnXnX\"\n\n\n👉 工作中绝大多数情况用 gsub()，因为通常要把所有匹配都替换掉。\n\n\n\nCode\n# 删除多余空格\ngsub(\"\\\\s+\", \" \", \"a  b   c\")    # \"a b c\"\n\n\n[1] \"a b c\"\n\n\nCode\n# 向量化替换\nfruits &lt;- c(\"apple\", \"pear\")\ngsub(\"p\", \"P\", fruits)            # \"aPPle\" \"Pear\"\n\n\n[1] \"aPPle\" \"Pear\" \n\n\nCode\n# 删除所有数字\ngsub(\"\\\\d\", \"\", \"abc123def456\")   # \"abcdef\"\n\n\n[1] \"abcdef\"",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#模式匹配提取",
+    "href": "lecture13.html#模式匹配提取",
+    "title": "14  R中的字符串处理",
+    "section": "14.11 模式匹配：提取",
+    "text": "14.11 模式匹配：提取\nregexpr() / gregexpr() 返回匹配位置，配合 regmatches() 提取匹配文本：\n\n\nCode\n# 提取首次匹配\nx &lt;- \"ID编号007\"\nm &lt;- regexpr(\"\\\\d+\", x)\nregmatches(x, m)                  # \"007\"\n\n\n[1] \"007\"\n\n\n\n\n\nCode\n# 提取全部匹配\nx &lt;- \"a1b22c333\"\nm &lt;- gregexpr(\"\\\\d+\", x)\nregmatches(x, m)                  # list(\"1\", \"22\", \"333\")\n\n\n[[1]]\n[1] \"1\"   \"22\"  \"333\"\n\n\nCode\n# 提取邮箱域名（需要 perl = TRUE 支持后顾断言）\nemail &lt;- \"user@example.com\"\nm &lt;- regexpr(\"(?&lt;=@)\\\\S+\", email, perl = TRUE)\nregmatches(email, m)              # \"example.com\"\n\n\n[1] \"example.com\"\n\n\n\n\n\nCode\n# 批量提取\nemails &lt;- c(\"a@gmail.com\", \"b@163.com\", \"c@qq.com\")\nm &lt;- gregexpr(\"(?&lt;=@)\\\\S+\", emails, perl = TRUE)\nunlist(regmatches(emails, m))     # \"gmail.com\" \"163.com\" \"qq.com\"\n\n\n[1] \"gmail.com\" \"163.com\"   \"qq.com\"   \n\n\n👉 perl = TRUE 启用 PCRE 引擎，支持后顾断言 (?&lt;=...) 等高级特性。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#正则表达式速查",
+    "href": "lecture13.html#正则表达式速查",
+    "title": "14  R中的字符串处理",
+    "section": "14.12 正则表达式速查",
+    "text": "14.12 正则表达式速查\nR 默认使用 TRE 正则引擎，设置 perl = TRUE 可使用 PCRE 引擎。\n\n\n\n模式\n含义\n示例\n\n\n\n\n.\n任意单个字符\na.b 匹配 “aab”\n\n\n^\n行首\n^a 以 a 开头\n\n\n$\n行尾\na$ 以 a 结尾\n\n\n\\\\d\n数字 [0-9]\n\\\\d+ 提取数字\n\n\n\\\\w\n单词字符\n\\\\w+ 提取单词\n\n\n\\\\s\n空白字符\n\\\\s+ 匹配连续空格\n\n\n[abc]\n字符类\na、b 或 c\n\n\n[^abc]\n否定字符类\n非 a、b、c\n\n\n*\n零次或多次\na*\n\n\n+\n一次或多次\na+\n\n\n?\n零次或一次\na?\n\n\n{n}\n恰好 n 次\n\\\\d{4} 4位数字\n\n\n{n,m}\nn 到 m 次\n\\\\d{2,4}\n\n\n()\n捕获分组\n(\\\\d+)-(\\\\d+)\n\n\n|\n或\napple\\|banana\n\n\n\n\n\nCode\ngrep(\"^\\\\d{3}-\\\\d{4}\", c(\"010-1234\", \"01-1234\"))  # 匹配电话区号\n\n\n[1] 1\n\n\nCode\ngsub(\"[[:punct:]]\", \"\", \"Hello, World!\")            # 去掉所有标点\n\n\n[1] \"Hello World\"\n\n\nCode\ngsub(\"[^0-9]\", \"\", \"电话：138-1234-5678\")           # 只保留数字\n\n\n[1] \"13812345678\"",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#综合应用示例",
+    "href": "lecture13.html#综合应用示例",
+    "title": "14  R中的字符串处理",
+    "section": "14.13 综合应用示例",
+    "text": "14.13 综合应用示例\n批量处理文件名——提取日期并转格式：\n\n\nCode\nfiles &lt;- c(\"report_20240115.csv\", \"data_20231201.pdf\",\n           \"summary_20240320.xlsx\")\n\n# 提取 8 位日期\nm &lt;- regexpr(\"\\\\d{8}\", files)\ndates &lt;- regmatches(files, m)\ndates  # \"20240115\" \"20231201\" \"20240320\"\n\n\n[1] \"20240115\" \"20231201\" \"20240320\"\n\n\nCode\n# 转为标准格式\ngsub(\"(\\\\d{4})(\\\\d{2})(\\\\d{2})\", \"\\\\1-\\\\2-\\\\3\", dates)\n\n\n[1] \"2024-01-15\" \"2023-12-01\" \"2024-03-20\"\n\n\nCode\n# \"2024-01-15\" \"2023-12-01\" \"2024-03-20\"\n\n\n\n数据框清洗——统一清理字符列：\n\n\nCode\ndf &lt;- data.frame(\n  name  = c(\" 张三 \", \"李  四\", \"王五\"),\n  phone = c(\"138-1234-5678\", \"(010)82345678\", \"13912345678\"),\n  stringsAsFactors = FALSE\n)\n\ndf$name &lt;- trimws(df$name)                         # 去首尾空白\ndf$name &lt;- gsub(\"\\\\s+\", \"\", df$name)               # 去内部空格\ndf$phone &lt;- gsub(\"[^0-9]\", \"\", df$phone)           # 只保留数字\ndf\n\n\n  name       phone\n1 张三 13812345678\n2 李四 01082345678\n3 王五 13912345678\n\n\n\n文本分词与词频统计：\n\n\nCode\ntext &lt;- c(\"R is a language for statistical computing\",\n          \"Python is a general purpose language\")\n\nwords &lt;- unlist(strsplit(tolower(text), \" \"))\nfreq &lt;- sort(table(words), decreasing = TRUE)\nhead(freq, 8)\n\n\nwords\n        a        is  language computing       for   general   purpose    python \n        2         2         2         1         1         1         1         1",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#本章总结",
+    "href": "lecture13.html#本章总结",
+    "title": "14  R中的字符串处理",
+    "section": "14.14 本章总结",
+    "text": "14.14 本章总结\n\n长度：nchar() 字符数，length() 元素数\n截取：substr() / substring() 按位置提取，substr() 可赋值修改\n大小写：toupper()、tolower()、casefold()；chartr() 字符翻译\n拼接：paste() / paste0()，sep 分隔参数，collapse 折叠向量\n拆分：strsplit()，返回列表，用 [[ ]] 或 unlist() 提取\n空白：trimws() 去首尾空白\n格式化：sprintf() 用 %s、%d、%f 生成格式化字符串\n查找：grep() 返回索引，grepl() 返回逻辑值\n替换：sub() 换首个，gsub() 换全部\n提取：regexpr() / gregexpr() + regmatches() 提取匹配内容\n\n👉 字符串处理是数据清洗的基本功。 打开 RStudio，把每个函数的例子都动手跑一遍。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#本章学习目标",
+    "href": "lecture12.html#本章学习目标",
+    "title": "13  R中的字符串处理",
+    "section": "",
+    "text": "掌握字符串长度、截取、大小写等基本操作\n熟练使用 paste() 和 paste0() 拼接字符串\n使用 strsplit() 拆分和 trimws() 清洗字符串\n使用 sprintf() 进行格式化输出\n掌握 grep()、sub()、gsub() 进行模式匹配与替换\n使用 regexpr() + regmatches() 提取匹配内容\n能够独立完成字符串数据清洗任务",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#字符串长度与字符统计",
+    "href": "lecture12.html#字符串长度与字符统计",
+    "title": "13  R中的字符串处理",
+    "section": "13.2 字符串长度与字符统计",
+    "text": "13.2 字符串长度与字符统计\n你已经见过 nchar()：\n\n\nCode\nnchar(\"hello\")\n\n\n[1] 5\n\n\nCode\nnchar(\"你好\")\n\n\n[1] 2\n\n\nCode\nnchar(\"你好\", type = \"bytes\")\n\n\n[1] 6\n\n\n👉 nchar() 返回字符数；type = \"bytes\" 返回字节数（中文字符通常占 2-3 个字节）。\n\nnchar() 和 length() 是两回事：\n\n\nCode\nx &lt;- c(\"a\", \"abc\", \"abcde\")\nlength(x)     # 3 —— 向量里有几个元素\n\n\n[1] 3\n\n\nCode\nnchar(x)      # 1 3 5 —— 每个元素有几个字符\n\n\n[1] 1 3 5\n\n\n👉 一个问”向量多长”，一个问”每个字符串多长”。不要搞混。",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#字符串截取与替换",
+    "href": "lecture12.html#字符串截取与替换",
+    "title": "13  R中的字符串处理",
+    "section": "13.3 字符串截取与替换",
+    "text": "13.3 字符串截取与替换\nsubstr(x, start, stop) 按位置截取子串：\n\n\nCode\nsubstr(\"hello\", 2, 4)           # \"ell\"\n\n\n[1] \"ell\"\n\n\nCode\nsubstring(\"hello\", 1:3, 1:3)    # \"h\" \"e\" \"l\"（substring 支持向量化）\n\n\n[1] \"h\" \"e\" \"l\"\n\n\nsubstr() 与 substring() 的区别：substr() 的 start 和 stop 长度必须一致；substring() 会循环较短的参数。\n\nsubstr() 还能用于原地修改：\n\n\nCode\nx &lt;- \"hello\"\nsubstr(x, 1, 1) &lt;- \"H\"\nx                              # \"Hello\"\n\n\n[1] \"Hello\"",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#大小写转换",
+    "href": "lecture12.html#大小写转换",
+    "title": "13  R中的字符串处理",
+    "section": "13.4 大小写转换",
+    "text": "13.4 大小写转换\n\n\nCode\ntoupper(\"hello\")               # \"HELLO\"\n\n\n[1] \"HELLO\"\n\n\nCode\ntolower(\"HELLO\")               # \"hello\"\n\n\n[1] \"hello\"\n\n\nCode\ncasefold(\"HELLO\")              # \"hello\"（默认 upper = FALSE）\n\n\n[1] \"hello\"\n\n\nCode\ncasefold(\"hello\", upper = TRUE) # \"HELLO\"\n\n\n[1] \"HELLO\"\n\n\nchartr() 可以按字符一一对应地翻译：\n\n\nCode\nchartr(\"a-z\", \"A-Z\", \"hello\")   # \"HELLO\"\n\n\n[1] \"HELLO\"\n\n\nCode\nchartr(\"aeiou\", \"AEIOU\", \"hello\")  # \"hEllO\"\n\n\n[1] \"hEllO\"",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#字符串拼接",
+    "href": "lecture12.html#字符串拼接",
+    "title": "13  R中的字符串处理",
+    "section": "13.5 字符串拼接",
+    "text": "13.5 字符串拼接\npaste() 和 paste0() 是 R 中最常用的拼接函数：\n\n\nCode\npaste(\"A\", \"B\", \"C\")            # \"A B C\"（默认空格分隔）\n\n\n[1] \"A B C\"\n\n\nCode\npaste(\"A\", \"B\", sep = \"-\")      # \"A-B\"\n\n\n[1] \"A-B\"\n\n\nCode\npaste0(\"A\", \"B\", \"C\")           # \"ABC\"（等价于 paste(..., sep = \"\")）\n\n\n[1] \"ABC\"\n\n\n👉 记住：paste0() = paste(sep = \"\")，不带分隔符。\n\n向量化拼接——不同长度的向量会自动循环：\n\n\nCode\npaste(\"sample\", 1:3, sep = \"_\")   # \"sample_1\" \"sample_2\" \"sample_3\"\n\n\n[1] \"sample_1\" \"sample_2\" \"sample_3\"\n\n\ncollapse 参数把向量折叠成单个字符串：\n\n\nCode\npaste(c(\"A\", \"B\", \"C\"), collapse = \", \")  # \"A, B, C\"\n\n\n[1] \"A, B, C\"\n\n\nCode\npaste(letters[1:5], collapse = \"-\")       # \"a-b-c-d-e\"\n\n\n[1] \"a-b-c-d-e\"\n\n\n👉 sep 是多个参数之间的分隔符，collapse 是把向量元素合并成一个。",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#字符串拆分",
+    "href": "lecture12.html#字符串拆分",
+    "title": "13  R中的字符串处理",
+    "section": "13.6 字符串拆分",
+    "text": "13.6 字符串拆分\nstrsplit() 按分隔符拆分，返回列表：\n\n\nCode\nstrsplit(\"a,b,c\", split = \",\")            # 返回列表\n\n\n[[1]]\n[1] \"a\" \"b\" \"c\"\n\n\nCode\nstrsplit(\"a,b,c\", split = \",\")[[1]]       # c(\"a\", \"b\", \"c\")\n\n\n[1] \"a\" \"b\" \"c\"\n\n\n👉 为什么返回列表？因为拆分后每段长度可能不同，只有列表能容纳。\n\n\n\nCode\n# 拆分为单个字符\nstrsplit(\"abcdef\", split = \"\")\n\n\n[[1]]\n[1] \"a\" \"b\" \"c\" \"d\" \"e\" \"f\"\n\n\nCode\n# 向量化拆分\nstrsplit(c(\"a,b\", \"c,d,e\"), split = \",\")\n\n\n[[1]]\n[1] \"a\" \"b\"\n\n[[2]]\n[1] \"c\" \"d\" \"e\"\n\n\nCode\n# unlist 拉平\nunlist(strsplit(c(\"a,b\", \"c,d,e\"), split = \",\"))\n\n\n[1] \"a\" \"b\" \"c\" \"d\" \"e\"",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#去除空白",
+    "href": "lecture12.html#去除空白",
+    "title": "13  R中的字符串处理",
+    "section": "13.7 去除空白",
+    "text": "13.7 去除空白\ntrimws() 去除首尾空白：\n\n\nCode\ntrimws(\"  hello  \")                  # \"hello\"\n\n\n[1] \"hello\"\n\n\nCode\ntrimws(\"  hello  \", which = \"left\")  # \"hello  \"\n\n\n[1] \"hello  \"\n\n\nCode\ntrimws(\"  hello  \", which = \"right\") # \"  hello\"\n\n\n[1] \"  hello\"\n\n\n清洗数据框中的字符列：\n\n\nCode\ndf &lt;- data.frame(name = c(\" 张三 \", \" 李四  \"), score = 1:2)\ndf$name &lt;- trimws(df$name)\ndf\n\n\n  name score\n1 张三     1\n2 李四     2",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#格式化输出",
+    "href": "lecture12.html#格式化输出",
+    "title": "13  R中的字符串处理",
+    "section": "13.8 格式化输出",
+    "text": "13.8 格式化输出\nsprintf() 用格式占位符生成指定格式的字符串：\n\n\nCode\nsprintf(\"编号%03d\", 7)            # \"编号007\"（零填充到3位）\n\n\n[1] \"编号007\"\n\n\nCode\nsprintf(\"%.2f\", 3.14159)          # \"3.14\"（两位小数）\n\n\n[1] \"3.14\"\n\n\nCode\nsprintf(\"%s：%d\", \"样本\", 1:3)    # \"样本：1\" \"样本：2\" \"样本：3\"\n\n\n[1] \"样本：1\" \"样本：2\" \"样本：3\"\n\n\nCode\nsprintf(\"%10s\", \"abc\")            # \"       abc\"（右对齐，宽度10）\n\n\n[1] \"       abc\"\n\n\nCode\nsprintf(\"%-10s\", \"abc\")           # \"abc       \"（左对齐，宽度10）\n\n\n[1] \"abc       \"\n\n\nCode\nsprintf(\"%05d\", 42)               # \"00042\"（整数零填充）\n\n\n[1] \"00042\"\n\n\n常用格式符：\n\n\n\n格式符\n含义\n\n\n\n\n%s\n字符串\n\n\n%d\n整数\n\n\n%f\n浮点数\n\n\n%e\n科学计数法",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#模式匹配查找",
+    "href": "lecture12.html#模式匹配查找",
+    "title": "13  R中的字符串处理",
+    "section": "13.9 模式匹配：查找",
+    "text": "13.9 模式匹配：查找\ngrep() 返回匹配元素的索引，grepl() 返回逻辑向量：\n\n\nCode\nx &lt;- c(\"apple\", \"banana\", \"grape\", \"pear\", \"apricot\")\n\ngrep(\"^a\", x)                     # 1 5（索引）\n\n\n[1] 1 5\n\n\nCode\ngrep(\"^a\", x, value = TRUE)       # \"apple\" \"apricot\"（值）\n\n\n[1] \"apple\"   \"apricot\"\n\n\nCode\ngrepl(\"^a\", x)                    # TRUE FALSE FALSE FALSE TRUE\n\n\n[1]  TRUE FALSE FALSE FALSE  TRUE\n\n\n👉 grepl() 返回逻辑向量，可以直接用于 [ ] 筛选或 subset()。\n\n\n\nCode\n# 逻辑向量筛选\nx[grepl(\"a\", x)]                  # 所有含 a 的元素\n\n\n[1] \"apple\"   \"banana\"  \"grape\"   \"pear\"    \"apricot\"\n\n\nCode\n# 忽略大小写\ngrep(\"A\", c(\"apple\", \"Apple\"), ignore.case = TRUE)\n\n\n[1] 1 2\n\n\nCode\n# 反向匹配\ngrep(\"a\", x, invert = TRUE)       # pear（不含 a 的元素）\n\n\ninteger(0)",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#模式匹配替换",
+    "href": "lecture12.html#模式匹配替换",
+    "title": "13  R中的字符串处理",
+    "section": "13.10 模式匹配：替换",
+    "text": "13.10 模式匹配：替换\nsub() 替换首次匹配，gsub() 替换全部匹配：\n\n\nCode\nsub(\"a\", \"X\", \"banana\")           # \"bXnana\"（仅第一个）\n\n\n[1] \"bXnana\"\n\n\nCode\ngsub(\"a\", \"X\", \"banana\")          # \"bXnXnX\"（全部）\n\n\n[1] \"bXnXnX\"\n\n\n👉 工作中绝大多数情况用 gsub()，因为通常要把所有匹配都替换掉。\n\n\n\nCode\n# 删除多余空格\ngsub(\"\\\\s+\", \" \", \"a  b   c\")    # \"a b c\"\n\n\n[1] \"a b c\"\n\n\nCode\n# 向量化替换\nfruits &lt;- c(\"apple\", \"pear\")\ngsub(\"p\", \"P\", fruits)            # \"aPPle\" \"Pear\"\n\n\n[1] \"aPPle\" \"Pear\" \n\n\nCode\n# 删除所有数字\ngsub(\"\\\\d\", \"\", \"abc123def456\")   # \"abcdef\"\n\n\n[1] \"abcdef\"",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#模式匹配提取",
+    "href": "lecture12.html#模式匹配提取",
+    "title": "13  R中的字符串处理",
+    "section": "13.11 模式匹配：提取",
+    "text": "13.11 模式匹配：提取\nregexpr() / gregexpr() 返回匹配位置，配合 regmatches() 提取匹配文本：\n\n\nCode\n# 提取首次匹配\nx &lt;- \"ID编号007\"\nm &lt;- regexpr(\"\\\\d+\", x)\nregmatches(x, m)                  # \"007\"\n\n\n[1] \"007\"\n\n\n\n\n\nCode\n# 提取全部匹配\nx &lt;- \"a1b22c333\"\nm &lt;- gregexpr(\"\\\\d+\", x)\nregmatches(x, m)                  # list(\"1\", \"22\", \"333\")\n\n\n[[1]]\n[1] \"1\"   \"22\"  \"333\"\n\n\nCode\n# 提取邮箱域名（需要 perl = TRUE 支持后顾断言）\nemail &lt;- \"user@example.com\"\nm &lt;- regexpr(\"(?&lt;=@)\\\\S+\", email, perl = TRUE)\nregmatches(email, m)              # \"example.com\"\n\n\n[1] \"example.com\"\n\n\n\n\n\nCode\n# 批量提取\nemails &lt;- c(\"a@gmail.com\", \"b@163.com\", \"c@qq.com\")\nm &lt;- gregexpr(\"(?&lt;=@)\\\\S+\", emails, perl = TRUE)\nunlist(regmatches(emails, m))     # \"gmail.com\" \"163.com\" \"qq.com\"\n\n\n[1] \"gmail.com\" \"163.com\"   \"qq.com\"   \n\n\n👉 perl = TRUE 启用 PCRE 引擎，支持后顾断言 (?&lt;=...) 等高级特性。",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#正则表达式速查",
+    "href": "lecture12.html#正则表达式速查",
+    "title": "13  R中的字符串处理",
+    "section": "13.12 正则表达式速查",
+    "text": "13.12 正则表达式速查\nR 默认使用 TRE 正则引擎，设置 perl = TRUE 可使用 PCRE 引擎。\n\n\n\n模式\n含义\n示例\n\n\n\n\n.\n任意单个字符\na.b 匹配 “aab”\n\n\n^\n行首\n^a 以 a 开头\n\n\n$\n行尾\na$ 以 a 结尾\n\n\n\\\\d\n数字 [0-9]\n\\\\d+ 提取数字\n\n\n\\\\w\n单词字符\n\\\\w+ 提取单词\n\n\n\\\\s\n空白字符\n\\\\s+ 匹配连续空格\n\n\n[abc]\n字符类\na、b 或 c\n\n\n[^abc]\n否定字符类\n非 a、b、c\n\n\n*\n零次或多次\na*\n\n\n+\n一次或多次\na+\n\n\n?\n零次或一次\na?\n\n\n{n}\n恰好 n 次\n\\\\d{4} 4位数字\n\n\n{n,m}\nn 到 m 次\n\\\\d{2,4}\n\n\n()\n捕获分组\n(\\\\d+)-(\\\\d+)\n\n\n|\n或\napple\\|banana\n\n\n\n\n\nCode\ngrep(\"^\\\\d{3}-\\\\d{4}\", c(\"010-1234\", \"01-1234\"))  # 匹配电话区号\n\n\n[1] 1\n\n\nCode\ngsub(\"[[:punct:]]\", \"\", \"Hello, World!\")            # 去掉所有标点\n\n\n[1] \"Hello World\"\n\n\nCode\ngsub(\"[^0-9]\", \"\", \"电话：138-1234-5678\")           # 只保留数字\n\n\n[1] \"13812345678\"",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#综合应用示例",
+    "href": "lecture12.html#综合应用示例",
+    "title": "13  R中的字符串处理",
+    "section": "13.13 综合应用示例",
+    "text": "13.13 综合应用示例\n批量处理文件名——提取日期并转格式：\n\n\nCode\nfiles &lt;- c(\"report_20240115.csv\", \"data_20231201.pdf\",\n           \"summary_20240320.xlsx\")\n\n# 提取 8 位日期\nm &lt;- regexpr(\"\\\\d{8}\", files)\ndates &lt;- regmatches(files, m)\ndates  # \"20240115\" \"20231201\" \"20240320\"\n\n\n[1] \"20240115\" \"20231201\" \"20240320\"\n\n\nCode\n# 转为标准格式\ngsub(\"(\\\\d{4})(\\\\d{2})(\\\\d{2})\", \"\\\\1-\\\\2-\\\\3\", dates)\n\n\n[1] \"2024-01-15\" \"2023-12-01\" \"2024-03-20\"\n\n\nCode\n# \"2024-01-15\" \"2023-12-01\" \"2024-03-20\"\n\n\n\n数据框清洗——统一清理字符列：\n\n\nCode\ndf &lt;- data.frame(\n  name  = c(\" 张三 \", \"李  四\", \"王五\"),\n  phone = c(\"138-1234-5678\", \"(010)82345678\", \"13912345678\"),\n  stringsAsFactors = FALSE\n)\n\ndf$name &lt;- trimws(df$name)                         # 去首尾空白\ndf$name &lt;- gsub(\"\\\\s+\", \"\", df$name)               # 去内部空格\ndf$phone &lt;- gsub(\"[^0-9]\", \"\", df$phone)           # 只保留数字\ndf\n\n\n  name       phone\n1 张三 13812345678\n2 李四 01082345678\n3 王五 13912345678\n\n\n\n文本分词与词频统计：\n\n\nCode\ntext &lt;- c(\"R is a language for statistical computing\",\n          \"Python is a general purpose language\")\n\nwords &lt;- unlist(strsplit(tolower(text), \" \"))\nfreq &lt;- sort(table(words), decreasing = TRUE)\nhead(freq, 8)\n\n\nwords\n        a        is  language computing       for   general   purpose    python \n        2         2         2         1         1         1         1         1",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12.html#本章总结",
+    "href": "lecture12.html#本章总结",
+    "title": "13  R中的字符串处理",
+    "section": "13.14 本章总结",
+    "text": "13.14 本章总结\n\n长度：nchar() 字符数，length() 元素数\n截取：substr() / substring() 按位置提取，substr() 可赋值修改\n大小写：toupper()、tolower()、casefold()；chartr() 字符翻译\n拼接：paste() / paste0()，sep 分隔参数，collapse 折叠向量\n拆分：strsplit()，返回列表，用 [[ ]] 或 unlist() 提取\n空白：trimws() 去首尾空白\n格式化：sprintf() 用 %s、%d、%f 生成格式化字符串\n查找：grep() 返回索引，grepl() 返回逻辑值\n替换：sub() 换首个，gsub() 换全部\n提取：regexpr() / gregexpr() + regmatches() 提取匹配内容\n\n👉 字符串处理是数据清洗的基本功。 打开 RStudio，把每个函数的例子都动手跑一遍。",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#引言",
+    "href": "lecture13.html#引言",
+    "title": "14  土壤属性空间分布制图",
+    "section": "",
+    "text": "反距离加权插值（Inverse Distance Weighting, IDW）：基于”距离越近越相似”的基本假设\n克里格插值（Kriging）：基于空间自相关结构的统计方法",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#meuse-数据集及其背景",
+    "href": "lecture13.html#meuse-数据集及其背景",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.2 meuse 数据集及其背景",
+    "text": "14.2 meuse 数据集及其背景\n\n14.2.1 数据来源与研究动机\nMeuse 河（荷兰语称 Maas，马斯河）发源于法国东北部，流经比利时，最终在荷兰汇入莱茵河。19 世纪以来，比利时和法国北部的采矿与冶金工业持续将富含重金属的废水排入河中。Meuse 河中游流经比利时列日（Liège）等老工业区，锌、镉、铜、铅等重金属随河水输送至下游。\n每逢洪水季节，河水携带的重金属随悬浮泥沙漫过堤岸，沉积在下游泛滥平原的土壤中。日积月累，荷兰林堡省（Limburg）Stein 村附近的河岸土壤积累了异常高浓度的重金属，对农业生产和生态环境构成了潜在风险。\n1980 年代末至 1990 年代初，荷兰土壤科学研究者对该区域进行了系统的土壤采样，记录了 155 个采样点的空间坐标（x, y）及表层土壤中多种重金属的浓度。该数据随后由 Edzer Pebesma 教授整理并纳入其开发的 gstat 包，成为地质统计学教学中沿用至今的经典示例数据集。\n\n\n14.2.2 数据集的科学价值\nmeuse 数据集成为了解空间插值方法的理想素材，原因有三：\n\n典型的空间趋势：重金属浓度从河流向两侧内陆呈梯度递减，构成了一个有规律但非均匀的空间分布面，适合演示插值方法的差异\n适中的样本量：155 个采样点既不至于因样本过少导致插值不稳定，也不至因样本过多掩盖方法的差异\n真实的非规则研究区：河岸泛滥平原呈狭长弯曲的带状，并非规则矩形，有助于训练在实际地理约束下进行插值的能力\n\n\n\nCode\nlibrary(sp)\nlibrary(gstat)\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\n\n# 加载 meuse 数据\ndata(meuse)\ndata(meuse.grid)",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#采样点空间分布的初步探索",
+    "href": "lecture13.html#采样点空间分布的初步探索",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.3 采样点空间分布的初步探索",
+    "text": "14.3 采样点空间分布的初步探索\n在插值之前，先通过散点图观察采样点的空间分布和重金属浓度的总体格局。这一步有助于形成对数据的直观认识。\n\n\nCode\n# 采样点空间分布——颜色深浅表示锌浓度\nggplot(meuse, aes(x = x, y = y, color = zinc)) +\n  geom_point(size = 2) +\n  scale_color_gradient(low = \"yellow\", high = \"red\") +\n    theme_bw()\n\n\n\n\n\n\n\n\n\n从图中可见，锌浓度较高的点主要集中在河流附近（图的下方）。这一空间趋势——靠近河流处浓度偏高——是 Meuse 河泛滥平原的典型特征：洪水携带的重金属在河岸沉积。\n\n\nCode\n# 将多种重金属数据转换为长格式以便分面绘制\nmeuse_long &lt;- meuse %&gt;%\n  select(x, y, cadmium, copper, lead, zinc) %&gt;%\n  pivot_longer(\n    cols = c(cadmium, copper, lead, zinc),\n    names_to = \"metal\",\n    values_to = \"concentration\"\n  )\n\nggplot(meuse_long, aes(x = x, y = y, color = concentration)) +\n  geom_point(size = 1.5) +\n  scale_color_gradient(low = \"yellow\", high = \"red\") +\n  facet_wrap(~ metal, nrow = 2) +\n    theme_bw()\n\n\n\n\n\n\n\n\n\n四种重金属（镉、铜、铅、锌）的空间分布格局高度相似，均表现为靠近河流的高浓度区域。这提示它们可能具有共同的污染源（河流沉积）。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#预测网格的准备",
+    "href": "lecture13.html#预测网格的准备",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.4 预测网格的准备",
+    "text": "14.4 预测网格的准备\n插值需要在规则网格点上预测土壤属性值。meuse 数据集的配套文件 meuse.grid 提供了预定义的 40 m × 40 m 分辨率网格，且已按照研究区边界裁剪。\n\n\nCode\n# meuse.grid 已包含预定义的规则网格\ncoordinates(meuse) &lt;- ~ x + y\ncoordinates(meuse.grid) &lt;- ~ x + y\ngridded(meuse.grid) &lt;- TRUE\n\ncat(\"网格点数：\", nrow(meuse.grid), \"\\n\")\n\n\n网格点数： 3103 \n\n\n说明：meuse.grid 的空间范围与采样点所在的研究区一致，并非矩形外框，因此后续插值结果会自动限制在有效区域内，无需额外裁剪。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#反距离加权插值-idw",
+    "href": "lecture13.html#反距离加权插值-idw",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.5 反距离加权插值 (IDW)",
+    "text": "14.5 反距离加权插值 (IDW)\n\n14.5.1 基本原理\n反距离加权插值是最直观的确定性插值方法。其核心假设是：离预测点越近的已知点，对预测值的影响越大。这是一个符合直觉的假设——在大多数自然过程中，空间上靠近的两点通常比相距遥远的两点更相似。\n对于待预测位置 \\((x_0, y_0)\\)，IDW 的预测值为所有已知采样点观测值的加权平均：\n\\[\n\\hat{z}(x_0, y_0) = \\frac{\\sum_{i=1}^{n} w_i \\cdot z_i}{\\sum_{i=1}^{n} w_i}\n\\]\n其中权重 \\(w_i\\) 是距离的递减函数：\n\\[\nw_i = \\frac{1}{d_i^{\\,p}}\n\\]\n各符号的含义：\n\n\\(z_i\\)：第 \\(i\\) 个已知采样点的观测值\n\\(d_i\\)：预测点 \\((x_0, y_0)\\) 与第 \\(i\\) 个采样点 \\((x_i, y_i)\\) 之间的欧氏距离\n\\(p\\)：幂参数（power parameter），控制权重随距离衰减的速度\n\n\n\n14.5.2 幂参数 p 的含义\n幂参数 \\(p\\) 是 IDW 方法中唯一的超参数，决定了距离对权重的影响程度：\n\n\\(p = 0\\)：所有权重相等，退化为简单算术平均，预测值处处相同\n\\(p = 1\\)：权重与距离成反比，衰减较为温和\n\\(p = 2\\)：权重与距离平方成反比，衰减较快，是最常用的取值，通常称为”距离平方倒数法”\n\\(p \\to \\infty\\)：退化为最近邻插值（仅最近的一个样本点起作用）\n\n\\(p\\) 值越大，近处样本点的话语权越重，插值面越不光滑。\n\n\n14.5.3 IDW 插值的实现\n使用 gstat 包中的 idw() 函数进行反距离加权插值。此处采用 \\(p = 2\\) 作为幂参数。\n\n\nCode\n# IDW 插值（p = 2）\nidw_result &lt;- idw(\n  zinc ~ 1,              # 公式：~1 表示仅由截距项描述（简单 IDW）\n  locations = meuse,     # 已知采样点（SpatialPointsDataFrame）\n  newdata = meuse.grid,  # 预测网格（SpatialPixelsDataFrame）\n  idp = 2                # 幂参数 p\n)\n\n\n[inverse distance weighted interpolation]\n\n\nCode\n# 查看前几行预测结果\nhead(idw_result@data)\n\n\n  var1.pred var1.var\n1  633.6864       NA\n2  712.5450       NA\n3  654.1617       NA\n4  604.4422       NA\n5  857.2558       NA\n6  755.5061       NA\n\n\n\n\nCode\n# 可视化 IDW 插值结果\nidw_df &lt;- as.data.frame(idw_result)\n\nggplot(idw_df, aes(x = x, y = y, fill = var1.pred)) +\n  geom_tile() +\n  scale_fill_gradient(low = \"yellow\", high = \"red\") +\n  geom_point(\n    data = as.data.frame(meuse),\n    aes(x = x, y = y),\n    inherit.aes = FALSE,\n    size = 0.5,\n    color = \"black\",\n    alpha = 0.5\n  ) +\n  labs(\n    title = \"IDW 插值结果（锌浓度，p = 2）\",\n    x = \"X 坐标 (m)\",\n    y = \"Y 坐标 (m)\",\n    fill = \"Zn (ppm)\"\n  ) +\n  coord_fixed() +\n  theme_bw()\n\n\n\n\n\n\n\n\n\nIDW 插值结果清晰地呈现了锌浓度从河流向外递减的空间趋势。然而，IDW 存在一个明显的局限性：它仅依赖距离信息分配权重，完全忽略了数据的空间结构——换言之，IDW 不知道”两个很近的采样点可能提供冗余信息”这一事实。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#克里格插值-kriging",
+    "href": "lecture13.html#克里格插值-kriging",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.6 克里格插值 (Kriging)",
+    "text": "14.6 克里格插值 (Kriging)\n\n14.6.1 IDW 的不足与克里格的改进思路\n在 IDW 中，两个采样点获得多大的权重仅取决于它们各自到预测点的距离。设想以下情形：两个采样点几乎重叠在同一个位置，IDW 会给它们各自分配几乎相同的、很高的权重（因为它们都很近）。但实际上，这两个点提供了几乎完全相同的信息——将权重同时给两者，等于对同一份信息进行了双重计算。\n克里格（Kriging）的核心改进在于：权重不仅取决于距离，还取决于采样点之间的空间自相关结构。如果两个采样点高度相关，克里格会在计算权重时自动降低它们各自的冗余贡献。这一特性使得克里格在理论上是最优线性无偏估计（Best Linear Unbiased Predictor, BLUP）。\n\n\n14.6.2 半变异函数：量化空间自相关\n克里格的基础工具是半变异函数（semivariogram），它用于量化”相隔一定距离的两个点有多相似”。\n经验半变异函数的计算公式为：\n\\[\n\\gamma(h) = \\frac{1}{2N(h)} \\sum_{i=1}^{N(h)} \\left[z(x_i) - z(x_i + h)\\right]^2\n\\]\n各符号含义：\n\n\\(h\\)：两点之间的距离（滞后距，lag distance）\n\\(N(h)\\)：相距约为 \\(h\\) 的点对数量\n\\(z(x_i)\\) 和 \\(z(x_i + h)\\)：相距 \\(h\\) 的一对观测值\n\\(\\gamma(h)\\)：距离 \\(h\\) 处的半方差\n\n直觉解释：如果两点距离很近，它们的观测值通常差异很小，因此 \\(\\gamma(h)\\) 也小；随着距离增大，差异逐渐增大直至不再相关，\\(\\gamma(h)\\) 也趋于平稳。半变异函数从数学上刻画了这一直觉。\n\n\n14.6.3 变异函数的三个结构参数\n理论变异函数模型通常包含三个参数，它们共同描述了空间变异的结构特征：\n\n\n\n\n\n\n\n\n\n参数\n英文\n符号\n地质统计学含义\n\n\n\n\n块金值\nNugget\n\\(c_0\\)\n距离趋近于零时的半方差。由测量误差或小于采样间距的微观变异造成\n\n\n偏基台值\nPartial Sill\n\\(c\\)\n由空间自相关结构解释的变异分量\n\n\n变程\nRange\n\\(a\\)\n空间自相关的有效距离。超过此距离后，两点不再具有相关性\n\n\n\n块金值与偏基台值之和称为基台值（Sill），即 \\(c_0 + c\\)，代表系统的总变异。\n\n\nCode\n# 计算 log(锌) 的经验半变异函数\n# 使用对数变换是因为重金属浓度通常近似服从对数正态分布\nv_emp &lt;- variogram(log(zinc) ~ 1, data = meuse)\n\n# 绘制经验半变异函数\nggplot(v_emp, aes(x = dist, y = gamma)) +\n  geom_point(size = 2, color = \"steelblue\") +\n  labs(\n    title = expression(\"log(锌) 的经验半变异函数\"),\n    x = \"距离 h (m)\",\n    y = expression(gamma(h))\n  ) +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n图中每个点代表一个距离区间内所有点对的平均半方差。半方差随着距离增大先上升后趋于平缓——这正是空间自相关的典型表现。\n\n\nCode\n# 拟合理论变异函数模型（球状模型）\nv_fit &lt;- fit.variogram(v_emp, model = vgm(1, \"Sph\", 900, 0.1))\n\n# 输出拟合参数\nprint(v_fit)\n\n\n  model      psill    range\n1   Nug 0.05066243   0.0000\n2   Sph 0.59060780 897.0209\n\n\nCode\n# 构造拟合曲线用于绘图\ndist_range &lt;- seq(0, max(v_emp$dist), length.out = 200)\npred_line &lt;- variogramLine(v_fit, dist_vector = dist_range)\n\nggplot() +\n  geom_point(data = v_emp, aes(x = dist, y = gamma),\n             size = 2, color = \"steelblue\") +\n  geom_line(data = pred_line, aes(x = dist, y = gamma),\n            color = \"red\", linewidth = 1) +\n  labs(\n    title = \"经验半变异函数与球状模型拟合\",\n    subtitle = paste0(\n      \"块金值 = \", round(v_fit$psill[1], 3),\n      \"，偏基台值 = \", round(v_fit$psill[2], 3),\n      \"，变程 = \", round(v_fit$range[2], 0), \" m\"\n    ),\n    x = \"距离 h (m)\",\n    y = expression(gamma(h))\n  ) +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n拟合结果中，红色曲线为球状模型（Spherical model）的理论半变异函数。球状模型的特点是在变程处以平滑的方式趋近基台值，是土壤科学中最常用的变异函数模型之一。从拟合参数可知，该区域 log(锌) 的空间自相关范围约为 897 m。\n\n\n14.6.4 普通克里格插值\n有了变异函数模型之后，即可进行克里格插值。与 IDW 形式相似，普通克里格（Ordinary Kriging）的预测值也是已知观测值的加权平均：\n\\[\n\\hat{z}(x_0) = \\sum_{i=1}^{n} \\lambda_i \\cdot z(x_i)\n\\]\n但关键区别在于权重的确定方式：IDW 的权重仅由距离按反幂函数机械算出；克里格的权重 \\(\\lambda_i\\) 通过求解一个线性方程组得到，该方程组由变异函数模型构建，约束条件为”预测误差的方差最小”。\n克里格同时输出两个图层：预测值和预测方差。后者是 IDW 无法提供的信息。\n\n\nCode\n# 普通克里格插值\nkriging_result &lt;- krige(\n  log(zinc) ~ 1,          # ~1 表示普通克里格（无外部趋势）\n  locations = meuse,      # 已知采样点\n  newdata = meuse.grid,   # 预测网格\n  model = v_fit           # 拟合的变异函数模型\n)\n\n\n[using ordinary kriging]\n\n\nCode\nhead(kriging_result@data)\n\n\n  var1.pred  var1.var\n1  6.499624 0.3198084\n2  6.622356 0.2520205\n3  6.505166 0.2729855\n4  6.387590 0.2955290\n5  6.764492 0.1779424\n6  6.635513 0.2022045\n\n\n\n\nCode\nkrige_df &lt;- as.data.frame(kriging_result)\n\n# 克里格预测值（log 尺度）\nggplot(krige_df, aes(x = x, y = y, fill = var1.pred)) +\n  geom_tile() +\n  scale_fill_gradient(low = \"yellow\", high = \"red\") +\n  geom_point(\n    data = as.data.frame(meuse),\n    aes(x = x, y = y),\n    inherit.aes = FALSE,\n    size = 0.5,\n    color = \"black\",\n    alpha = 0.5\n  ) +\n  labs(\n    title = \"普通克里格插值：log(锌) 空间分布\",\n    x = \"X 坐标 (m)\",\n    y = \"Y 坐标 (m)\",\n    fill = \"log(Zn)\"\n  ) +\n  coord_fixed() +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# 克里格预测方差\nggplot(krige_df, aes(x = x, y = y, fill = var1.var)) +\n  geom_tile() +\n  scale_fill_gradient(low = \"white\", high = \"darkblue\") +\n  geom_point(\n    data = as.data.frame(meuse),\n    aes(x = x, y = y),\n    inherit.aes = FALSE,\n    size = 0.5,\n    color = \"red\",\n    alpha = 0.5\n  ) +\n  labs(\n    title = \"克里格预测方差\",\n    subtitle = \"采样点附近方差最小（预测最可靠），远离采样点的区域方差增大\",\n    x = \"X 坐标 (m)\",\n    y = \"Y 坐标 (m)\",\n    fill = \"预测方差\"\n  ) +\n  coord_fixed() +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n预测方差图是克里格方法独有的输出。采样点位置附近的预测方差最小（图中浅色区域），说明这些位置的预测值可信度高；而远离采样点的边缘区域预测方差较大（深色），反映了预测的不确定性。这一信息对优化采样设计具有直接的指导意义——方差大的区域即为需要补充采样的候选位置。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#idw-与克里格的并排比较",
+    "href": "lecture13.html#idw-与克里格的并排比较",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.7 IDW 与克里格的并排比较",
+    "text": "14.7 IDW 与克里格的并排比较\n\n\nCode\n# 将克里格预测值反向变换至原始 Zn 浓度尺度\nkrige_df$zinc_pred &lt;- exp(krige_df$var1.pred)\n\n# 构造并排比较数据框\nidw_df$method &lt;- \"IDW (p = 2)\"\nkrige_compare &lt;- data.frame(\n  x = krige_df$x,\n  y = krige_df$y,\n  var1.pred = krige_df$zinc_pred,\n  method = \"普通克里格\"\n)\n\ncompare_df &lt;- rbind(\n  idw_df[, c(\"x\", \"y\", \"var1.pred\", \"method\")],\n  krige_compare\n)\n\nggplot(compare_df, aes(x = x, y = y, fill = var1.pred)) +\n  geom_tile() +\n  scale_fill_gradient(low = \"yellow\", high = \"red\") +\n  facet_wrap(~ method, nrow = 1) +\n  labs(\n    title = \"IDW 与克里格插值结果比较（锌浓度，ppm）\",\n    x = \"X 坐标 (m)\",\n    y = \"Y 坐标 (m)\",\n    fill = \"Zn (ppm)\"\n  ) +\n  coord_fixed() +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n两种方法的总体趋势一致——高浓度区域集中在河流附近。但克里格插值面通常更为平滑、过渡更自然。这是因为克里格通过变异函数明确了空间自相关的有效范围（变程），从而在权重分配时正确处理了采样点之间的冗余信息。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#小结",
+    "href": "lecture13.html#小结",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.8 小结",
+    "text": "14.8 小结\n\n\n\n\n\n\n\n\n特性\nIDW\n克里格\n\n\n\n\n分类\n确定性插值\n地质统计学插值\n\n\n权重依据\n仅距离\n距离 + 空间自相关结构\n\n\n预测方差\n不提供\n提供（量化预测可靠性）\n\n\n最优性\n无理论最优保证\n最优线性无偏估计（BLUP）\n\n\n优点\n原理简单、计算快捷、易于实现\n充分利用空间结构、附带不确定性信息\n\n\n局限性\n忽略空间结构，幂参数的选择缺乏客观标准\n需要充足样本拟合变异函数，计算复杂度更高\n\n\n\n对于基础较为薄弱的读者，建议首先掌握 IDW 的基本原理和 R 实现，理解插值的本质——利用空间邻近性，从已知推测未知。在此基础上，进一步学习变异函数的构造与解读，这是理解克里格方法的关键。",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#延伸观影",
+    "href": "lecture13.html#延伸观影",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.9 延伸观影",
+    "text": "14.9 延伸观影\n科恩兄弟执导的电影《巴斯特·斯克鲁格斯的歌谣》（The Ballad of Buster Scruggs, 2018）由六个独立的西部短片组成，其中第四个故事《黄金谷》（All Gold Canyon）与本课程的知识点高度相关。\n故事讲述了一位老淘金者深入人迹罕至的山谷，凭借经验判断黄金的富集位置，一铲一铲地挖掘、淘洗、计数，最终找到金矿脉的过程。从空间数据分析的角度来看，淘金者的行为本质上是一次空间采样与富集区识别：\n\n他沿溪流方向逐步取样，依据河床沉积物的特征判断矿脉的空间走向——这与本课程使用的 Meuse 河沿岸沿洪水方向的重金属富集规律如出一辙\n他不断地”打孔”（挖掘）以获取地下的样品信息，呼应了土壤采样点的空间布设逻辑\n当发现砂金颗粒后，他循着浓度递增的方向追溯矿脉源头——这正是空间梯度（gradient）追踪的朴素实践，与克里格插值中利用空间自相关推测未知位置的思路不谋而合\n\n建议在学完本课程后观看此片段（约 20 分钟），思考以下问题：\n\n淘金者如何利用”空间采样”信息推断矿脉位置？这一过程与 IDW 还是克里格的思路更为接近？\n如果没有系统的采样逻辑，仅凭运气在山谷中随机挖掘，结果会如何？\n影片中老淘金者的行为，哪些环节体现了现代地质统计学的基本原则？\n\n视频链接：《巴斯特·斯克鲁格斯的歌谣》—— 黄金谷片段",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
+    ]
+  },
+  {
+    "objectID": "lecture13.html#参考文献",
+    "href": "lecture13.html#参考文献",
+    "title": "14  土壤属性空间分布制图",
+    "section": "14.10 参考文献",
+    "text": "14.10 参考文献\n\nPebesma, E. J. (2004). Multivariable geostatistics in S: the gstat package. Computers & Geosciences, 30(7), 683-691.\nBivand, R. S., Pebesma, E., & Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer.\nIsaaks, E. H., & Srivastava, R. M. (1989). An Introduction to Applied Geostatistics. Oxford University Press.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>R中的字符串处理</span>"
     ]
   }
 ]
