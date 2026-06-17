@@ -3154,7 +3154,7 @@
     "href": "lecture12.html#字符串长度与字符统计",
     "title": "13  R中的字符串处理",
     "section": "13.2 字符串长度与字符统计",
-    "text": "13.2 字符串长度与字符统计\n你已经见过 nchar()：\n\n\nCode\nnchar(\"hello\")\n\n\n[1] 5\n\n\nCode\nnchar(\"你好\")\n\n\n[1] 2\n\n\nCode\nnchar(\"你好\", type = \"bytes\")\n\n\n[1] 6\n\n\n👉 nchar() 返回字符数；type = \"bytes\" 返回字节数（中文字符通常占 2-3 个字节）。\n\nnchar() 和 length() 是两回事：\n\n\nCode\nx &lt;- c(\"a\", \"abc\", \"abcde\")\nlength(x)     # 3 —— 向量里有几个元素\n\n\n[1] 3\n\n\nCode\nnchar(x)      # 1 3 5 —— 每个元素有几个字符\n\n\n[1] 1 3 5\n\n\n👉 一个问”向量多长”，一个问”每个字符串多长”。不要搞混。",
+    "text": "13.2 字符串长度与字符统计\n你已经见过 nchar()：\n\n\nCode\nnchar(\"hello\")\n\n\n[1] 5\n\n\n👉 nchar() 返回字符数；type = \"bytes\" 返回字节数（中文字符通常占 2-3 个字节）。\n\nnchar() 和 length() 是两回事：\n\n\nCode\nx &lt;- c(\"a\", \"abc\", \"abcde\")\nlength(x)     # 3 —— 向量里有几个元素\n\n\n[1] 3\n\n\nCode\nnchar(x)      # 1 3 5 —— 每个元素有几个字符\n\n\n[1] 1 3 5\n\n\n👉 一个问”向量多长”，一个问”每个字符串多长”。不要搞混。",
     "crumbs": [
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
     ]
@@ -3164,7 +3164,7 @@
     "href": "lecture12.html#字符串截取与替换",
     "title": "13  R中的字符串处理",
     "section": "13.3 字符串截取与替换",
-    "text": "13.3 字符串截取与替换\nsubstr(x, start, stop) 按位置截取子串：\n\n\nCode\nsubstr(\"hello\", 2, 4)           # \"ell\"\n\n\n[1] \"ell\"\n\n\nCode\nsubstring(\"hello\", 1:3, 1:3)    # \"h\" \"e\" \"l\"（substring 支持向量化）\n\n\n[1] \"h\" \"e\" \"l\"\n\n\nsubstr() 与 substring() 的区别：substr() 的 start 和 stop 长度必须一致；substring() 会循环较短的参数。\n\nsubstr() 还能用于原地修改：\n\n\nCode\nx &lt;- \"hello\"\nsubstr(x, 1, 1) &lt;- \"H\"\nx                              # \"Hello\"\n\n\n[1] \"Hello\"",
+    "text": "13.3 字符串截取与替换\nsubstr(x, start, stop) 按位置截取子串：\n\n\nCode\nsubstr(\"hello\", 2, 4)           # \"ell\"\n\n\n[1] \"ell\"\n\n\n\nsubstr() 还能用于原地修改：\n\n\nCode\nx &lt;- \"hello\"\nsubstr(x, 1, 1) &lt;- \"H\"\nx                              # \"Hello\"\n\n\n[1] \"Hello\"",
     "crumbs": [
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
     ]
@@ -3214,7 +3214,7 @@
     "href": "lecture12.html#格式化输出",
     "title": "13  R中的字符串处理",
     "section": "13.8 格式化输出",
-    "text": "13.8 格式化输出\nsprintf() 用格式占位符生成指定格式的字符串：\n\n\nCode\nsprintf(\"编号%03d\", 7)            # \"编号007\"（零填充到3位）\n\n\n[1] \"编号007\"\n\n\nCode\nsprintf(\"%.2f\", 3.14159)          # \"3.14\"（两位小数）\n\n\n[1] \"3.14\"\n\n\nCode\nsprintf(\"%s：%d\", \"样本\", 1:3)    # \"样本：1\" \"样本：2\" \"样本：3\"\n\n\n[1] \"样本：1\" \"样本：2\" \"样本：3\"\n\n\nCode\nsprintf(\"%10s\", \"abc\")            # \"       abc\"（右对齐，宽度10）\n\n\n[1] \"       abc\"\n\n\nCode\nsprintf(\"%-10s\", \"abc\")           # \"abc       \"（左对齐，宽度10）\n\n\n[1] \"abc       \"\n\n\nCode\nsprintf(\"%05d\", 42)               # \"00042\"（整数零填充）\n\n\n[1] \"00042\"\n\n\n常用格式符：\n\n\n\n格式符\n含义\n\n\n\n\n%s\n字符串\n\n\n%d\n整数\n\n\n%f\n浮点数\n\n\n%e\n科学计数法",
+    "text": "13.8 格式化输出\nsprintf() 用格式占位符生成指定格式的字符串：\n\n\nCode\nsprintf(\"编号%03d\", 7)            # \"编号007\"（零填充到3位）\n\n\n[1] \"编号007\"\n\n\nCode\nsprintf(\"%.2f\", 3.14159)          # \"3.14\"（两位小数）\n\n\n[1] \"3.14\"\n\n\nCode\nsprintf(\"%s：%d\", \"样本\", 1:3)    # \"样本：1\" \"样本：2\" \"样本：3\"\n\n\n[1] \"样本：1\" \"样本：2\" \"样本：3\"\n\n\nCode\nsprintf(\"%10s\", \"abc\")            # \"       abc\"（右对齐，宽度10）\n\n\n[1] \"       abc\"\n\n\nCode\nsprintf(\"%-10s\", \"abc\")           # \"abc       \"（左对齐，宽度10）\n\n\n[1] \"abc       \"\n\n\nCode\nsprintf(\"%05d\", 42)               # \"00042\"（整数零填充）\n\n\n[1] \"00042\"\n\n\n常用格式符：\n\n\n\n格式符\n含义\n\n\n\n\n%s\n字符串\n\n\n%d\n整数\n\n\n%f\n浮点数\n\n\n%e\n科学计数法\n\n\n\n\nfor (i in 1:10) {\n  \n  filename &lt;- sprintf(\"Fig_%02d.png\", i)\n  \n  png(filename, width = 800, height = 600)\n  \n  x &lt;- 1:20\n  y &lt;- rnorm(20, mean = i * 2, sd = 3)\n  \n  plot(x, y, type = \"b\", pch = 16, col = i + 1, lwd = 2,\n       main = paste0(\"Figure_\", i),\n       xlab = \"x\", ylab = \"y\")\n  \n  dev.off()\n}",
     "crumbs": [
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>R中的字符串处理</span>"
     ]
